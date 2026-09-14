@@ -1,4 +1,5 @@
 import type { Character, GameWorld, SceneNode, StagePortrait } from '../shared/types';
+import { ART_MANIFESTS, readArtManifest } from './art-manifest-cache';
 
 export type CutoutSource = {
   nodeId: string; jobId?: string; sourceHash?: string; assetKind: string;
@@ -106,7 +107,7 @@ export async function loadCharacterCutouts(world: GameWorld, sources: CutoutSour
   for (const character of [...world.characters, ...(world.artCharacters ?? [])]) delete character.stagePortraits;
   for (const node of Object.values(world.nodes)) delete node.stageCharacter;
   try {
-    const response = await fetch('/generated-art/character-cutouts.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
-    if (response.ok) bindCharacterCutouts(world, sources, await response.json() as CutoutManifest, sceneCharacters, illustratedScenes);
+    const manifest = await readArtManifest<CutoutManifest>(ART_MANIFESTS[1]);
+    bindCharacterCutouts(world, sources, manifest, sceneCharacters, illustratedScenes);
   } catch { /* Missing derivative approval never suppresses a complete scene or source reference. */ }
 }

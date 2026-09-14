@@ -98,6 +98,75 @@ test('an explicit completed event finishes without waiting for the HTTP connecti
   });
 });
 
+async function within<T>(promise: Promise<T>, milliseconds = 1500): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try { return await Promise.race([promise, new Promise<never>((_resolve, reject) => { timer = setTimeout(() => reject(new Error('relay cancellation did not close the response in time')), milliseconds); })]); }
+  finally { if (timer) clearTimeout(timer); }
+}
+
+test('external cancellation closes a live HTTP stream and stops further progress, even if fetch ignores its signal', async () => {
+  const controller = new AbortController();
+  let closeResponse!: () => void, firstDelta!: () => void;
+  const closed = new Promise<void>(resolve => closeResponse = resolve), started = new Promise<void>(resolve => firstDelta = resolve);
+  const progress: number[] = [];
+  await withRelayServer((_req, res) => {
+    res.writeHead(200, { 'content-type': 'text/event-stream' });
+    res.write(delta('{'));
+    const timer = setInterval(() => res.write(delta('continuing uncompleted output ')), 10);
+    res.once('close', () => { clearInterval(timer); closeResponse(); });
+  }, async endpoint => {
+    const originalFetch = globalThis.fetch;
+    // Exercise the explicit reader cancellation, independently of Undici's
+    // request-level abort implementation, using a real local HTTP connection.
+    globalThis.fetch = ((input, options) => originalFetch(input, { ...options, signal: undefined })) as typeof fetch;
+    try {
+      const running = requestRelay(mockConfig(endpoint), {}, 'x', characters => { progress.push(characters); if (characters) firstDelta(); }, { signal: controller.signal, timeoutMs: 10000 });
+      const rejected = assert.rejects(running, error => error instanceof RelayRequestError && error.diagnostics.category === 'timeout');
+      await within(started); controller.abort();
+      await within(rejected); await within(closed);
+      const count = progress.length;
+      await new Promise<void>(resolve => setTimeout(resolve, 40));
+      assert.equal(progress.length, count, 'an aborted relay must not keep consuming chunks');
+    } finally { globalThis.fetch = originalFetch; }
+  });
+});
+
+test('a request timeout closes a stalled HTTP reader while preserving received diagnostics', async () => {
+  let closeResponse!: () => void;
+  const closed = new Promise<void>(resolve => closeResponse = resolve);
+  await withRelayServer((_req, res) => {
+    res.writeHead(200, { 'content-type': 'text/event-stream' });
+    res.write(event({ type: 'response.created', response: { id: 'resp_timeout_fixture' } }) + delta('{'));
+    res.once('close', closeResponse);
+  }, async endpoint => {
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = ((input, options) => originalFetch(input, { ...options, signal: undefined })) as typeof fetch;
+    try {
+      await within(assert.rejects(requestRelay(mockConfig(endpoint), {}, 'x', () => {}, { timeoutMs: 100 }), error => {
+        assert.ok(error instanceof RelayRequestError);
+        assert.equal(error.diagnostics.category, 'timeout'); assert.equal(error.diagnostics.completed, false);
+        assert.equal(error.diagnostics.characters, 1); assert.equal(error.diagnostics.httpStatus, 200);
+        assert.equal(error.diagnostics.responseId, 'resp_timeout_fixture');
+        return true;
+      }));
+      await within(closed);
+    } finally { globalThis.fetch = originalFetch; }
+  });
+});
+
+test('an abort during a progress callback cannot promote a buffered completion to success', async () => {
+  const controller = new AbortController();
+  await withRelayServer((_req, res) => {
+    res.writeHead(200, { 'content-type': 'text/event-stream' });
+    res.end(delta('{') + event({ type: 'response.completed', response: { status: 'completed', output_text: '{"ok":true}' } }));
+  }, async endpoint => {
+    await assert.rejects(requestRelay(mockConfig(endpoint), {}, 'x', characters => { if (characters === 1) controller.abort(); }, { signal: controller.signal }), error => {
+      assert.ok(error instanceof RelayRequestError); assert.equal(error.diagnostics.category, 'timeout');
+      assert.equal(error.diagnostics.completed, false); return true;
+    });
+  });
+});
+
 test('a parseable JSON prefix without a Responses completion is still interrupted', async () => {
   for (const tail of ['', 'data: [DONE]\n\n']) await withRelayServer((_req, res) => {
     res.writeHead(200, { 'content-type': 'text/event-stream' }); res.end(delta('{"ok":true}') + tail);

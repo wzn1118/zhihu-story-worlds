@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-09-14T12:39:08.552207+00:00",
+  "release": "/data/zhihu-project/releases/hotlist-navigation-20260914",
+  "tests": {
+    "passed": 30,
+    "failed": 0
+  },
+  "ui": {
+    "ok": true,
+    "scope": "Real browser UI with deterministic local browser API; no live Zhihu requests or account login.",
+    "scenarios": [
+      "desktop-cloned-hotlist-link-preserves-control-and-url",
+      "desktop-denied-40362-stops-poll-and-input",
+      "desktop-denied-original-url-and-recovery-controls",
+      "desktop-back-and-hotlist-recovery",
+      "desktop-verification-remains-live-and-interactive",
+      "mobile-cloned-hotlist-link-preserves-control-and-url",
+      "mobile-denied-40362-stops-poll-and-input",
+      "mobile-denied-original-url-and-recovery-controls",
+      "mobile-back-and-hotlist-recovery",
+      "mobile-verification-remains-live-and-interactive"
+    ]
+  },
+  "anonymousLive": {
+    "authenticated": false,
+    "url": "https://www.zhihu.com/account/unhuman",
+    "status": "blocked",
+    "httpStatus": 200,
+    "accessIssue": {
+      "kind": "verification"
+    },
+    "screenshotAvailable": true,
+    "frameUpdated": true,
+    "posts": 0
+  },
+  "authenticatedQuestionAccess": "requires user retry; not verified",
+  "deployment": {
+    "publicHomepageMatches": true,
+    "publicBundleMatches": true,
+    "publicHealth": "ok",
+    "originChecks": "passed",
+    "service": [
+      "NRestarts=0",
+      "ActiveState=active"
+    ]
+  },
+  "runtimeFiles": {
+    "server/index.ts": "5d71e9af1b2368c73361e9f9bf13b37be2c12c0501550810847245b33ed71a27",
+    "server/zhihu-browser-access.ts": "236a4ba2b12667ba58ee0732614106f6ac7b1642da75357e7def79e9a6aa920c",
+    "server/zhihu-browser.ts": "592381b671f27c53b82062d251ed7f9587e0a63458365793c8015143c56cb792",
+    "shared/zhihu-browser.ts": "fd3794da795a057546d26dba46c5b0bab3b565acc2f94cfcc10e79127fb059e7",
+    "src/ZhihuLivePage.tsx": "1e9ae0c96146dd8043d3315f41de5cfcbe24e21cdabd54e3d74aba5e0157fb17",
+    "src/ZhihuWorkspace.css": "441d3e876774563deaca996ea14cd9e1f813b86dc85da9519be9adcb162c2b94",
+    "src/ZhihuWorkspace.tsx": "4a5da4aa59a8367bc64ac364b5f1fbe8108ab857b81d54ab91aa88de1f4ee24b"
+  }
+}

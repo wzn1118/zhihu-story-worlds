@@ -1,3 +1,4 @@
+import { accountLocalStorage } from './account-storage';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowLeft, BookOpen, Download, Maximize2, RotateCcw, Save, Settings2, Upload } from 'lucide-react';
 import type { Settings } from './game';
@@ -17,17 +18,17 @@ export const redrainStory = {
   cover: '/games/redrain/public/assets/v6/retro-anime/prologue/01.png',
 };
 export function readRedRainSave(): RedRainSave | null {
-  try { const text = localStorage.getItem(REDRAIN_KEY); return text ? normalizeSave(JSON.parse(text)) : null; }
+  try { const text = accountLocalStorage.getItem(REDRAIN_KEY); return text ? normalizeSave(JSON.parse(text)) : null; }
   catch { return null; }
 }
 export function storeRedRainSave(save: unknown, replaceUnreadable = false): RedRainSave {
-  const text = localStorage.getItem(REDRAIN_KEY);
+  const text = accountLocalStorage.getItem(REDRAIN_KEY);
   // A damaged or newer save must remain available for recovery instead of being overwritten by a fresh session.
   let previous: RedRainSave | null = null;
   try { previous = text ? normalizeSave(JSON.parse(text)) : null; }
   catch { if (!replaceUnreadable) throw new Error('本机原存档无法读取，已保留原文件；可在存档页确认导入备份。'); }
   const merged = mergeSaveEndings(save, previous);
-  localStorage.setItem(REDRAIN_KEY, JSON.stringify(merged));
+  accountLocalStorage.setItem(REDRAIN_KEY, JSON.stringify(merged));
   return merged;
 }
 export function redRainSummary(save: RedRainSave) {

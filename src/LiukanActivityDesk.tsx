@@ -1,3 +1,4 @@
+import { accountFetch } from './account-storage';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { BookOpen, Check, ChevronRight, Download, ExternalLink, FileClock, FolderOpen, History, LoaderCircle, Search, X } from 'lucide-react';
 import type { LiukanMemoryProfile, LiukanMemoryRecord } from '../shared/liukan';
@@ -20,7 +21,7 @@ type Tab = 'projects' | 'preflight' | 'memories';
 const focusableSelector = 'button:not(:disabled),input:not(:disabled),select:not(:disabled),a[href],[tabindex]:not([tabindex="-1"])';
 
 async function getJson<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const response = await fetch(path, { signal });
+  const response = await accountFetch(path, { signal });
   const data = await response.json().catch(() => null) as T & { error?: { message?: string } } | null;
   if (!response.ok) throw new Error(data?.error?.message || '这一页暂时没有读到。');
   return data as T;
@@ -131,7 +132,7 @@ export function LiukanActivityDesk({ playerId, onClose, onProject, onOpenMemorie
     const url = URL.createObjectURL(blob); const anchor = document.createElement('a'); anchor.href = url; anchor.download = `${memory.endingTitle.replace(/[\\/:*?"<>|]/g, '-').slice(0, 60) || '关卡回忆'}.md`; anchor.click(); URL.revokeObjectURL(url);
   }
 
-  return createPortal(<div className="lad-overlay" ref={overlayRef} role="presentation">
+  return <div className="lad-overlay" ref={overlayRef} role="presentation">
     <section className="lad-desk" ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="刘看山活动记录">
       <header className="lad-header"><div className="lad-heading"><div className="lad-avatar"><LiuKanShanAvatar action={tab === 'memories' ? 'recall-ending' : 'make-game'} size={58} reducedMotion /></div><div><p>刘看山 · 活动记录</p><h2>你留下的故事，和走过的路</h2></div></div><button type="button" className="lad-close" onClick={onClose} aria-label="关闭活动记录"><X size={18} /></button></header>
       <nav className="lad-tabs" aria-label="活动记录分类"><button type="button" aria-pressed={tab === 'projects'} onClick={() => switchTab('projects')}><FolderOpen size={15} />制作中的故事<span>{projects.length}</span></button><button type="button" aria-pressed={tab === 'preflight'} onClick={() => switchTab('preflight')}><Check size={15} />开工检查<span>{preflight.confirmed}/5</span></button><button type="button" aria-pressed={tab === 'memories'} onClick={() => switchTab('memories')}><History size={15} />走过的关卡<span>{playerId ? memories.length : '—'}</span></button></nav>
@@ -145,6 +146,5 @@ export function LiukanActivityDesk({ playerId, onClose, onProject, onOpenMemorie
       </div>
       <div className="lad-check"><Check size={13} />只展示本机实际保存的进度与回忆</div>
     </section>
-  </div>, document.body);
+  </div>;
 }
-import { createPortal } from 'react-dom';

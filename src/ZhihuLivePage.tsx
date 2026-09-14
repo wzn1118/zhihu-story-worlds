@@ -11,6 +11,7 @@ export function ZhihuLivePage({ frame, busy, active = true, onAction, onFeed }: 
   const currentUrl = useRef(frame.url);
   const [selected, setSelected] = useState(readingPositions.get(frame.url)?.postId ?? '');
   const [ready, setReady] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [dragPreview, setDragPreview] = useState<{ x: number; y: number; title: string } | null>(null);
   const loadMoreRequested = useRef<string | null>(null);
   const previewElement = useRef<HTMLDivElement>(null);
@@ -18,6 +19,14 @@ export function ZhihuLivePage({ frame, busy, active = true, onAction, onFeed }: 
   const cleanup = useRef<() => void>(() => {});
   const connectedDocument = useRef<Document | null>(null);
   const post = frame.posts.find(item => item.id === selected);
+  const isQuestion = /^https:\/\/(?:www\.)?zhihu\.com\/question\/\d+(?:\/|[?#]|$)/.test(frame.url);
+  const loadingMorePending = useRef(false);
+  const requestMore = async () => {
+    if (loadingMorePending.current || callbacks.current.busy) return;
+    loadingMorePending.current = true; setLoadingMore(true);
+    try { await callbacks.current.onAction({ kind: 'load-more' }); }
+    finally { loadingMorePending.current = false; setLoadingMore(false); }
+  };
   useEffect(() => () => cleanup.current(), []);
   useEffect(() => {
     if (!active) return;
@@ -53,15 +62,18 @@ export function ZhihuLivePage({ frame, busy, active = true, onAction, onFeed }: 
       const root = doc.documentElement;
       const remaining = root.scrollHeight - (win.scrollY + win.innerHeight);
       // The iframe is an inert native rendering of the authenticated page.
-      // At its edge, ask the real browser to advance the feed and publish a
-      // fresh snapshot. One request per snapshot prevents a wheel burst from
-      // queueing duplicate network work.
-      if (remaining < Math.max(420, win.innerHeight * 0.55) && root.scrollHeight > win.innerHeight + 32 && loadMoreRequested.current !== callbacks.current.frame.frameId && !callbacks.current.busy) {
-        loadMoreRequested.current = callbacks.current.frame.frameId;
-        void callbacks.current.onAction({ kind: 'scroll', deltaY: Math.max(760, Math.round(win.innerHeight * 0.82)) }).catch(() => {
+      // Reading scroll happens locally; the real browser may still be near the
+      // top of a long answer. Explicitly load the live list's next page instead
+      // of advancing the remote viewport by one small, unrelated wheel step.
+      // Identical content stays disarmed after a no-op response, so restoring
+      // this scroll position cannot start an endless sequence of requests.
+      const contentKey = callbacks.current.frame.url + '\n' + callbacks.current.frame.posts.map(item => item.id).join(',') + '\n' + root.scrollHeight;
+      if (remaining < Math.max(420, win.innerHeight * 0.55) && root.scrollHeight > win.innerHeight + 32 && loadMoreRequested.current !== contentKey && !callbacks.current.busy && !loadingMorePending.current) {
+        loadMoreRequested.current = contentKey;
+        void requestMore().catch(() => {
           // Automatic feed extension is opportunistic. Keep the current page
           // usable and allow a later deliberate scroll to retry it.
-          if (loadMoreRequested.current === callbacks.current.frame.frameId) loadMoreRequested.current = null;
+          if (loadMoreRequested.current === contentKey) loadMoreRequested.current = null;
         });
       }
     };
@@ -151,13 +163,12 @@ export function ZhihuLivePage({ frame, busy, active = true, onAction, onFeed }: 
       if (!control.matches('a[href],button,summary,label[for],[role="button"],[role="tab"],[role="link"],.ContentItem-more')) return;
       event.preventDefault();
       if (win.getSelection()?.toString() || callbacks.current.busy) return;
-      // Dynamic Zhihu lists recycle their live nodes. The cloned page has a
-      // stable, allowlisted href, so navigate directly instead of requiring a
-      // short-lived DOM control ID to still exist in the live browser.
+      // Follow the matching live link so the site's click handler, routing and
+      // referrer policy remain intact even when a list recycles control IDs.
       if (control.matches('a[href]')) {
         const href = (control as HTMLAnchorElement).href;
         if (/^https:\/\/(?:www\.)?zhihu\.com(?:\/|$)|^https:\/\/zhuanlan\.zhihu\.com(?:\/|$)/.test(href)) {
-          void callbacks.current.onAction({ kind: 'navigate', url: href });
+          void callbacks.current.onAction({ kind: 'link', url: href, documentId: callbacks.current.frame.document!.id, elementId: control.dataset.redleafControl });
           return;
         }
       }
@@ -187,7 +198,8 @@ export function ZhihuLivePage({ frame, busy, active = true, onAction, onFeed }: 
       annotated.add(id);
       root.style.position ||= 'relative';
       const bar = doc.createElement('div'); bar.className = 'redleaf-answer-tools';
-      const handle = doc.createElement('button'); handle.type = 'button'; handle.textContent = '⠿ 拖给刘看山'; handle.style.touchAction = 'none'; handle.setAttribute('data-redleaf-feed', ''); handle.title = '拖动这篇回答，或点击交给刘看山';
+      const item = callbacks.current.frame.posts.find(post => post.id === id);
+      const handle = doc.createElement('button'); handle.type = 'button'; handle.textContent = '⠿ 拖给刘看山'; handle.style.touchAction = 'none'; handle.draggable = true; handle.setAttribute('data-redleaf-feed', ''); handle.setAttribute('aria-label', `把${item?.author || '这位作者'}的回答交给刘看山`); handle.title = '直接拖动或点击，自动获取回答全文';
       bar.append(handle); root.append(bar);
     }
     const style = doc.createElement('style'); style.textContent = '.redleaf-answer-tools{display:flex;justify-content:flex-end;padding:8px 0;position:relative;z-index:4}.redleaf-answer-tools button{font:500 13px/1.5 system-ui;color:#056de8;border:1px solid #d4e7ff;background:#f2f8ff;border-radius:7px;padding:7px 12px;cursor:grab}.redleaf-answer-tools button:active{cursor:grabbing} [data-redleaf-post]:hover{outline:1px solid #a8d0ff;outline-offset:3px} ::selection{background:#b9dcff;color:#122f57}'; doc.head.append(style);
@@ -209,8 +221,9 @@ export function ZhihuLivePage({ frame, busy, active = true, onAction, onFeed }: 
     cleanup.current = () => { finishPointer(); doc.removeEventListener('click', click, true); doc.removeEventListener('keydown', key, true); window.removeEventListener('keydown', key, true); doc.removeEventListener('submit', submit, true); doc.removeEventListener('pointerdown', pointerDown, true); doc.removeEventListener('pointermove', pointerMove, true); doc.removeEventListener('pointerup', pointerUp, true); doc.removeEventListener('pointercancel', finishPointer, true); doc.removeEventListener('selectionchange', selection); doc.removeEventListener('dragstart', drag); doc.removeEventListener('dragend', end); win.removeEventListener('scroll', scroll); };
   }
   return <div className="zhw-live-page">
-    <div className="zhw-selection-bar"><span>{post ? `已选：${post.title}` : '直接选中文字，拖给右下角的刘看山'}</span>{post && <button disabled={busy} draggable={!busy} onDragStart={event => { event.dataTransfer.setData(ZHIHU_BROWSER_POST_MIME, JSON.stringify({ postId: post.id, frameId: frame.frameId })); event.dataTransfer.effectAllowed = 'copy'; }} onClick={() => onFeed(post.id)}>交给看山 · {post.characters.toLocaleString()} 字</button>}<small>{busy ? '知乎正在响应…' : ready ? '原网页排版 · 文字可选 · 本地滚动' : '正在还原页面…'}</small></div>
+    <div className="zhw-selection-bar"><span>{post ? `已选：${post.title}` : '无需展开，直接把回答拖给右下角的刘看山'}</span>{post && <button disabled={busy} draggable={!busy} onDragStart={event => { event.dataTransfer.setData(ZHIHU_BROWSER_POST_MIME, JSON.stringify({ postId: post.id, frameId: frame.frameId })); event.dataTransfer.effectAllowed = 'copy'; }} onClick={() => onFeed(post.id)}>交给看山 · 获取全文</button>}<small>{busy ? '知乎正在响应…' : ready ? '原网页排版 · 文字可选 · 本地滚动' : '正在还原页面…'}</small></div>
     <iframe ref={iframe} title="知乎原网页，可直接选字和拖给刘看山" sandbox="allow-same-origin" srcDoc={frame.document?.html} onLoad={connect} />
+    <div className="zhw-answer-list-controls"><span>{isQuestion ? `已读取 ${frame.posts.length} 条回答，每条都可拖给刘看山` : '滚动浏览，遇到喜欢的回答就交给刘看山'}</span><button type="button" disabled={busy || loadingMore} onClick={() => void requestMore().catch(() => undefined)}>{loadingMore ? '正在加载…' : isQuestion ? '继续加载回答' : '继续浏览'}</button></div>
     {dragPreview && <div ref={previewElement} className="zhw-answer-drag-preview" style={{ left: 0, top: 0, transform: `translate3d(${Math.min(innerWidth - 228, Math.max(8, dragPreview.x - 110))}px,${Math.max(8, dragPreview.y - 70)}px,0)` }}><b>交给刘看山</b><span>{dragPreview.title}</span></div>}
   </div>;
 }

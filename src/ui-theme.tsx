@@ -1,10 +1,11 @@
 import { useSyncExternalStore } from 'react';
 import { Palette } from 'lucide-react';
+import { accountLocalStorage, accountStorageKey, subscribeAccountStorage } from './account-storage';
 
 const key = 'redleaf.ui-theme';
 type Theme = 'archive' | 'zhihu';
 function readTheme(): Theme {
-  try { return localStorage.getItem(key) === 'zhihu' ? 'zhihu' : 'archive'; }
+  try { return accountLocalStorage.getItem(key) === 'zhihu' ? 'zhihu' : 'archive'; }
   catch { return 'archive'; }
 }
 let current = readTheme();
@@ -15,10 +16,11 @@ function applyTheme(theme: Theme) {
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'zhihu' ? '#ffffff' : '#120d0e');
   listeners.forEach(listener => listener());
 }
-// Apply before React mounts so a saved light theme does not flash dark.
+// The login page uses the default theme; restore preferences after verifying the account.
 applyTheme(current);
+subscribeAccountStorage(() => applyTheme(readTheme()));
 window.addEventListener('storage', event => {
-  if (event.key === key || event.key === null) applyTheme(readTheme());
+  if (event.key === accountStorageKey(key) || event.key === null) applyTheme(readTheme());
 });
 function subscribe(listener: () => void) {
   listeners.add(listener);
@@ -31,7 +33,7 @@ export function ThemeSwitch() {
     aria-pressed={blue} title={blue ? '当前：知乎蓝白 · 点击切换赤页深色' : '当前：赤页深色 · 点击切换知乎蓝白'}
     onClick={() => {
       const next = blue ? 'archive' : 'zhihu';
-      try { localStorage.setItem(key, next); } catch { /* Switching still works when storage is unavailable. */ }
+      try { accountLocalStorage.setItem(key, next); } catch { /* Switching still works when storage is unavailable. */ }
       applyTheme(next);
     }}><Palette size={15} /><span>{blue ? '赤页深色' : '知乎蓝白'}</span></button>;
 }

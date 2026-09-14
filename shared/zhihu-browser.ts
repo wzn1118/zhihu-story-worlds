@@ -17,15 +17,21 @@ export interface ZhihuBrowserFrame {
   posts: ZhihuBrowserPost[];
   channel?: ZhihuBrowserChannel;
   httpStatus?: number;
+  accessIssue?: { kind: 'request-denied' | 'verification'; code?: number };
   message?: string;
+  /** Input capabilities only; field values and account credentials stay in the browser. */
+  focusedInput?: { type: string; inputMode?: string };
+  inputs?: Array<{ type: string; inputMode?: string; x: number; y: number; width: number; height: number }>;
   capturedAt: string;
 }
 export interface ZhihuBrowserOpen { url?: string; width?: number; height?: number; channel?: ZhihuBrowserChannel }
 export type ZhihuBrowserAction =
   | ZhihuElementAction
   | { kind: 'navigate'; url: string }
-  | { kind: 'back' | 'reload' }
+  | { kind: 'link'; url: string; documentId?: string; elementId?: string }
+  | { kind: 'back' | 'reload' | 'load-more' }
   | { kind: 'click'; frameId: string; x: number; y: number }
+  | { kind: 'drag'; frameId: string; points: Array<{ x: number; y: number }>; durationMs?: number }
   | { kind: 'scroll'; deltaX?: number; deltaY: number }
   | { kind: 'text'; text: string }
   | { kind: 'key'; key: 'Enter' | 'Backspace' | 'Tab' | 'Escape' | 'ArrowUp' | 'ArrowDown' | 'ArrowLeft' | 'ArrowRight' | 'Control+A' };

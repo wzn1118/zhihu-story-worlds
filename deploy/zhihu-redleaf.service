@@ -1,0 +1,25 @@
+[Unit]
+Description=Red Leaf official website (zhihu.hegelsalon.com)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/data/zhihu-project/releases/liukan-session-20260914
+Environment=NODE_ENV=production
+Environment=PUBLIC_MODE=1
+Environment=HOST=127.0.0.1
+Environment=PORT=18080
+Environment=TRUST_PROXY=loopback
+Environment=ALLOWED_HOSTS=127.0.0.1,localhost,[::1],zhihu.hegelsalon.com
+Environment=RUNTIME_CONFIG=/data/zhihu-project/shared/config/runtime.json
+Environment=ZHIHU_OAUTH_SESSION_STORE=/data/zhihu-project/shared/.private/zhihu-oauth-sessions.enc.json
+ExecStart=/opt/node/bin/node --import tsx /data/zhihu-project/deploy/start.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

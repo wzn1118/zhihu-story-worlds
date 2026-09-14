@@ -1,4 +1,8 @@
+import { accountFetch } from './account-storage';
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { authenticateAccount, logoutAccount, readAuthSession, type Account, type Authentication, type AuthMode } from './auth-session';
+import { configureAccountStorage } from './account-storage';
+import { announceAccountChange, watchAccountChanges } from './account-sync';
 import {
   ArrowLeft, ArrowRight, Bookmark, BookOpen, Check, ChevronDown, ChevronRight, CircleHelp, Clock3,
   Compass, Download, FileText, Heart, History, Images, Library, LoaderCircle, Maximize2,
@@ -36,9 +40,12 @@ import { BookJacket } from './BookJacket';
 import { ThemeSwitch } from './ui-theme';
 import { hasSceneArtHold } from './scene-art-holds';
 import { withPublishedArt } from './published-art';
-import { applySessionArt, ART_REFRESH_INTERVAL, checkArtRevisions, versionedArtUrl, type ArtRevisions } from './live-published-art';
+import { applySessionArt, ART_REFRESH_INTERVAL, checkArtRevisions, type ArtRevisions } from './live-published-art';
 import { clueLabel } from './clue-labels';
 import { choiceCostLabels, choiceLockLabels } from './choice-presentation';
+import { Artwork, ArtworkActivity, type ArtworkState } from './Artwork';
+import { sceneArtSources as sourcesForScene, upcomingSceneArt } from './scene-art-loading';
+import { useArtPrefetch } from './use-art-prefetch';
 import { challengeInitials, CHALLENGE_REWINDS, type DifficultyMode } from './difficulty';
 import {
   choose, defaultSettings, encodeSaveFile, fetchJson, MAX_SAVE_FILE_BYTES, parseSaveFile,
@@ -63,61 +70,6 @@ type SaveImportState =
   | { status: 'loading'; fileName: string }
   | { status: 'error'; message: string }
   | { status: 'preview'; fileName: string; saved: SavedGame; error?: string };
-interface ArtworkState {
-  requestedSource: string | null;
-  source: string | null;
-  status: 'loading' | 'ready' | 'unavailable';
-  degraded: boolean;
-  width?: number;
-  height?: number;
-}
-
-const artworkLoads = new Map<string, Promise<{ width: number; height: number }>>();
-const artworkPreloadQueue: string[] = [];
-const artworkPreloadQueued = new Set<string>();
-let artworkPreloadActive = 0;
-const ARTWORK_PRELOAD_CONCURRENCY = 2;
-
-function loadArtwork(source: string): Promise<{ width: number; height: number }> {
-  const cached = artworkLoads.get(source);
-  if (cached) return cached;
-  const pending = new Promise<{ width: number; height: number }>((resolve, reject) => {
-    const image = new Image();
-    image.decoding = 'async';
-    image.onload = () => resolve({ width: image.naturalWidth, height: image.naturalHeight });
-    image.onerror = () => { artworkLoads.delete(source); reject(new Error('ART_LOAD_FAILED')); };
-    image.src = source;
-  });
-  artworkLoads.set(source, pending);
-  return pending;
-}
-
-function drainArtworkPreloadQueue() {
-  while (artworkPreloadActive < ARTWORK_PRELOAD_CONCURRENCY && artworkPreloadQueue.length) {
-    const source = artworkPreloadQueue.shift()!;
-    artworkPreloadQueued.delete(source);
-    artworkPreloadActive += 1;
-    void loadArtwork(source).catch(() => undefined).finally(() => {
-      artworkPreloadActive -= 1;
-      drainArtworkPreloadQueue();
-    });
-  }
-}
-
-function scheduleArtworkPreload(sources: string[]) {
-  const uniqueSources = [...new Set(sources.filter(Boolean))];
-  uniqueSources.forEach(source => {
-    if (artworkLoads.has(source) || artworkPreloadQueued.has(source)) return;
-    artworkPreloadQueued.add(source);
-    artworkPreloadQueue.push(source);
-  });
-  if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
-    window.requestIdleCallback(drainArtworkPreloadQueue, { timeout: 1200 });
-  } else {
-    setTimeout(drainArtworkPreloadQueue, 180);
-  }
-}
-
 function errorMessage(error: unknown) { return error instanceof Error ? error.message : '发生了意外错误，请重试。'; }
 function pad(value: number) { return String(value).padStart(2, '0'); }
 
@@ -163,42 +115,6 @@ function IconButton({ label, children, className = '', onClick, disabled = false
   return <button type="button" className={`icon-button ${className}`} title={label} aria-label={label} onClick={onClick} disabled={disabled}>{children}</button>;
 }
 
-function Artwork({ src, fallback, fallbacks = [], versions = {}, className, alt, onStateChange, placeholder }: {
-  src?: string; fallback?: string; fallbacks?: string[]; className?: string; alt: string;
-  versions?: Record<string, string>;
-  placeholder?: ReactNode;
-  onStateChange?: (state: ArtworkState) => void;
-}) {
-  const [failed, setFailed] = useState<string[]>([]);
-  const [loaded, setLoaded] = useState<{ source: string; width: number; height: number } | null>(null);
-  const current = [src, fallback, ...fallbacks].find((candidate) => candidate && !failed.includes(versionedArtUrl(candidate, versions[candidate])));
-  const requestSource = current ? versionedArtUrl(current, versions[current]) : undefined;
-  const status = !current ? 'unavailable' : loaded?.source === requestSource ? 'ready' : 'loading';
-  useEffect(() => {
-    if (!requestSource) return;
-    let active = true;
-    void loadArtwork(requestSource).then(({ width, height }) => {
-      if (active) setLoaded({ source: requestSource, width, height });
-    }).catch(() => {
-      if (active) setFailed((previous) => previous.includes(requestSource) ? previous : [...previous, requestSource]);
-    });
-    return () => { active = false; };
-  }, [requestSource]);
-  useEffect(() => {
-    onStateChange?.({
-      requestedSource: src ?? null,
-      source: current ?? null,
-      status,
-      degraded: Boolean(src && current !== src),
-      ...(loaded && loaded.source === requestSource ? { width: loaded.width, height: loaded.height } : {}),
-    });
-  }, [src, current, requestSource, status, loaded, onStateChange]);
-  return <>{status !== 'ready' && placeholder}{current && status === 'ready' ? <img key={requestSource} className={className} src={requestSource} alt={alt} referrerPolicy="no-referrer" data-art-state={status}
-    style={{ visibility: 'visible' }}
-    onLoad={(event) => setLoaded({ source: requestSource!, width: event.currentTarget.naturalWidth, height: event.currentTarget.naturalHeight })}
-    onError={() => setFailed((previous) => [...previous, requestSource!])} /> : null}</>;
-}
-
 function Modal({ title, children, footer, onClose, large = false, className = '', focusKey }: {
   title: string; children: ReactNode; footer?: ReactNode; onClose: () => void; large?: boolean;
   className?: string; focusKey?: string;
@@ -241,27 +157,85 @@ function Modal({ title, children, footer, onClose, large = false, className = ''
   </div>;
 }
 
+function AccountControl({ account }: { account: Account }) {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const logout = async () => {
+    setBusy(true); setError('');
+    try { await logoutAccount(); announceAccountChange(); window.location.reload(); }
+    catch (error) { setError(errorMessage(error)); setBusy(false); }
+  };
+  return <div className="account-control"><span className="account-name" title={account.name}>{account.name}</span><button type="button" className="text-button" disabled={busy} onClick={() => void logout()}>{busy ? '正在退出…' : '退出登录'}</button>{error && <span className="auth-error" role="alert">{error}</span>}</div>;
+}
+
 function App() {
-  const [account, setAccount] = useState<{ id: string; email: string; name: string } | null>(null);
+  const [account, setAccount] = useState<Account | null>(null);
+  const [authentication, setAuthentication] = useState<Authentication | null>(null);
   const [authReady, setAuthReady] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [authMode, setAuthMode] = useState<AuthMode>('login');
   const [authEmail, setAuthEmail] = useState('');
   const [authName, setAuthName] = useState('');
   const [authPassword, setAuthPassword] = useState('');
   const [authError, setAuthError] = useState('');
   const [authBusy, setAuthBusy] = useState(false);
-  useEffect(() => { void fetch('/api/auth/me').then(response => response.json()).then(data => setAccount(data.user)).catch(() => undefined).finally(() => setAuthReady(true)); }, []);
+  const [checkingAccount, setCheckingAccount] = useState(false);
+  useEffect(() => {
+    let active = true;
+    void readAuthSession()
+      .then(session => {
+        if (!active) return;
+        const nextAuthentication = session.authentication ?? { required: process.env.NODE_ENV === 'production', provider: 'local', configured: true, loginUrl: '/api/oauth/start', browserAvailable: true };
+        // Select the account before any workspace state initializer reads browser storage.
+        configureAccountStorage(nextAuthentication, session.user?.id ?? null);
+        announceAccountChange();
+        setAccount(session.user);
+        setAuthentication(nextAuthentication);
+        if (session.error) setAuthError(session.error.message);
+      })
+      .catch(error => { if (active) setAuthError(errorMessage(error)); })
+      .finally(() => { if (active) setAuthReady(true); });
+    return () => { active = false; };
+  }, []);
+  useEffect(() => {
+    if (!authReady || !authentication || (!authentication.required && authentication.provider !== 'zhihu')) return;
+    let active = true, checking = false;
+    const recheck = () => {
+      if (checking) return;
+      checking = true;
+      setCheckingAccount(true);
+      void readAuthSession().then(session => {
+        if (!active) return;
+        if ((session.user?.id ?? null) !== (account?.id ?? null) || (session.authentication?.provider ?? authentication.provider) !== authentication.provider) {
+          // Reload before selecting another namespace so pending work cannot write into the next account.
+          setAuthReady(false);
+          window.location.reload();
+        }
+      }).catch(error => {
+        if (!active) return;
+        setAuthentication(null);
+        setAuthError(errorMessage(error));
+      }).finally(() => { checking = false; if (active) setCheckingAccount(false); });
+    };
+    const unwatch = watchAccountChanges(recheck);
+    return () => { active = false; unwatch(); };
+  }, [authReady, authentication?.provider, authentication?.required, account?.id]);
   const submitAuth = async (event: import('react').FormEvent) => {
     event.preventDefault(); setAuthBusy(true); setAuthError('');
-    try { const response = await fetch(`/api/auth/${authMode}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: authEmail, name: authName, password: authPassword }) }); const data = await response.json(); if (!response.ok) throw new Error(data.error?.message ?? '账号操作失败。'); setAccount(data.user); setAuthPassword(''); }
+    try {
+      const user = await authenticateAccount(authMode, { email: authEmail, name: authName, password: authPassword });
+      setAccount(user);
+      setAuthPassword('');
+    }
     catch (error) { setAuthError(error instanceof Error ? error.message : '账号操作失败。'); } finally { setAuthBusy(false); }
   };
   if (!authReady) return <div className="fetch-status"><h2>正在检查账号状态</h2></div>;
-  if (!account && process.env.NODE_ENV === 'production') return <div className="auth-gate"><form className="auth-panel" onSubmit={submitAuth}><p className="eyebrow">RED LEAF ACCOUNT</p><h1>{authMode === 'login' ? '登录赤页' : '创建赤页账号'}</h1><p>账号用于隔离你的故事工作台和进度。</p>{authMode === 'register' && <input value={authName} onChange={event => setAuthName(event.target.value)} placeholder="昵称" autoComplete="name" required /> }<input value={authEmail} onChange={event => setAuthEmail(event.target.value)} placeholder="邮箱" type="email" autoComplete="email" required /><input value={authPassword} onChange={event => setAuthPassword(event.target.value)} placeholder="密码（至少 8 位）" type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} required minLength={8} />{authError && <p role="alert" className="auth-error">{authError}</p>}<button className="primary-button" disabled={authBusy}>{authBusy ? '处理中…' : authMode === 'login' ? '登录' : '注册'}</button><button type="button" className="text-button" onClick={() => { setAuthMode(authMode === 'login' ? 'register' : 'login'); setAuthError(''); }}>{authMode === 'login' ? '创建新账号' : '已有账号，去登录'}</button></form></div>;
-  return <AppWorkspace />;
+  if (!authentication) return <div className="auth-gate"><section className="auth-panel"><p className="eyebrow">RED LEAF ACCOUNT</p><h1>登录状态暂时无法读取</h1><p className="auth-error" role="alert">{authError || '请稍后重新连接。'}</p><button className="primary-button" onClick={() => window.location.reload()}>重新连接</button></section></div>;
+  if (!account && authentication.required && authentication.provider === 'zhihu') return <div className="auth-gate"><section className="auth-panel auth-panel-zhihu"><p className="eyebrow">RED LEAF / 知乎</p><h1>用知乎登录赤页</h1><p>连接你的知乎账号，开始阅读故事和创作互动改编。</p>{authError && <p role="alert" className="auth-error">{authError}</p>}{authentication.configured ? <a className="primary-button zhihu-login-button" href="/api/oauth/start"><span aria-hidden="true">知</span>使用知乎账号登录<ArrowRight size={17} /></a> : <><p className="auth-error" role="alert">知乎登录暂未配置完成，请稍后重试。</p><button type="button" className="text-button" onClick={() => window.location.reload()}>重新检查</button></>}<small className="auth-provider-note">将在知乎官方页面完成授权，授权后自动返回赤页。</small></section></div>;
+  if (!account && authentication.required) return <div className="auth-gate"><form className="auth-panel" onSubmit={submitAuth}><p className="eyebrow">RED LEAF ACCOUNT</p><h1>{authMode === 'login' ? '登录赤页' : '创建赤页账号'}</h1><p>账号用于隔离你的故事工作台和进度。</p>{authMode === 'register' && <input value={authName} onChange={event => setAuthName(event.target.value)} placeholder="昵称" autoComplete="name" required /> }<input value={authEmail} onChange={event => setAuthEmail(event.target.value)} placeholder="邮箱" type="email" autoComplete="email" required /><input value={authPassword} onChange={event => setAuthPassword(event.target.value)} placeholder="密码（至少 8 位）" type="password" autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} required minLength={8} />{authError && <p role="alert" className="auth-error">{authError}</p>}<button className="primary-button" disabled={authBusy}>{authBusy ? '处理中…' : authMode === 'login' ? '登录' : '注册'}</button><button type="button" className="text-button" onClick={() => { setAuthMode(authMode === 'login' ? 'register' : 'login'); setAuthError(''); }}>{authMode === 'login' ? '创建新账号' : '已有账号，去登录'}</button></form></div>;
+  return <><div style={{ display: 'contents' }} inert={checkingAccount}><AppWorkspace key={account?.id ?? 'local'} account={account} browserAvailable={authentication.browserAvailable} /></div>{checkingAccount && <div className="auth-gate" role="status" style={{ position: 'fixed', inset: 0, zIndex: 10000 }}><p>正在检查账号状态…</p></div>}</>;
 }
 
-function AppWorkspace() {
+function AppWorkspace({ account, browserAvailable }: { account: Account | null; browserAvailable: boolean }) {
   const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
   const [readingDesk, setReadingDesk] = useState<{ postId?: string } | null>(null);
   const [activityDeskOpen, setActivityDeskOpen] = useState(false);
@@ -304,12 +278,6 @@ function AppWorkspace() {
   const [session, setSession] = useState<Session | null>(null);
   const { projects: zhihuProjects, error: projectsError, refresh: refreshProjects } = useZhihuProjects(view === 'library' && !session);
   const stories = useMemo(() => mergeStoryLibrary([redrainStory, ...(library?.stories ?? [])], zhihuProjects), [library, zhihuProjects]);
-  useEffect(() => {
-    if (view !== 'library' || session) return;
-    // Warm only the first visible covers during idle time; the queue keeps image
-    // decoding off the critical render path and caps concurrent work.
-    scheduleArtworkPreload(stories.slice(0, 10).flatMap(story => [story.cover, story.sourceCover].filter((source): source is string => Boolean(source))));
-  }, [stories, view, session]);
   const selectedLibraryStory = selectedStory ? stories.find(story => story.id === selectedStory.id) ?? selectedStory : null;
   const [pendingWorld, setPendingWorld] = useState<GameWorld | null>(null);
   const [pendingDifficulty, setPendingDifficulty] = useState<DifficultyMode>('challenge');
@@ -337,6 +305,7 @@ function AppWorkspace() {
   const [backgroundState, setBackgroundState] = useState<ArtworkState>({ requestedSource: null, source: null, status: 'unavailable', degraded: false });
   const [sceneArtSelection, setSceneArtSelection] = useState<Record<string, string>>({});
   const [artAttempt, setArtAttempt] = useState(0);
+  const [artIntent, setArtIntent] = useState<{ scene: string; nodeId: string } | null>(null);
   const audioRef = useRef<AudioContext | null>(null);
   const detailRequest = useRef(0);
   const importRequest = useRef(0);
@@ -504,6 +473,13 @@ function AppWorkspace() {
     ? { requestedSource: backgroundSource ?? null, source: backgroundSource ?? null, status: 'loading' as const, degraded: false } : backgroundState;
   const canRetryArt = Boolean(backgroundSource && (currentBackgroundState.degraded || currentBackgroundState.status === 'unavailable'))
     || (hasCharacterLayer && (currentPortraitState.degraded || currentPortraitState.status === 'unavailable'));
+
+  const intendedNodeId = artIntent?.scene === sceneArtKey ? artIntent.nodeId
+    : session?.choices.length === 1 ? session.choices[0].nextNodeId : undefined;
+  useArtPrefetch(pendingWorld ? sourcesForScene(pendingWorld, pendingWorld.nodes[pendingWorld.startNodeId]) : [], Boolean(pendingWorld));
+  useArtPrefetch(session && displayNode && !backgroundHeld
+    ? upcomingSceneArt(session.world, displayNode, session.paragraphs, session.paragraphIndex, intendedNodeId) : [],
+    Boolean(session && !modal && !selectedStory && !tourOpen));
 
   useEffect(() => {
     setVisibleCharacters(settings.reducedMotion || settings.textSpeed >= 100 ? currentText.length : 0);
@@ -885,13 +861,13 @@ function AppWorkspace() {
       if (ticket !== tourNavigation.current) return;
       if (!story) throw new Error('书库暂时没有可展示的故事，请稍后重试。');
       if (destination === 'story-intro') {
-        const response = await fetch(worldEndpoint(story.id), { signal: AbortSignal.timeout(60_000) });
+        const response = await accountFetch(worldEndpoint(story.id), { signal: AbortSignal.timeout(60_000) });
         if (!response.ok) throw new Error('这篇故事的序章暂时无法读取。');
         const world: GameWorld = await response.json();
         if (ticket !== tourNavigation.current) return;
         setPendingWorld(world); setModal('background');
       } else {
-        const response = await fetch(`/api/stories/${encodeURIComponent(story.id)}`, { signal: AbortSignal.timeout(35_000) });
+        const response = await accountFetch(`/api/stories/${encodeURIComponent(story.id)}`, { signal: AbortSignal.timeout(35_000) });
         if (!response.ok) throw new Error('这篇故事的原文暂时无法读取。');
         const source: StoryDetail = await response.json();
         if (ticket !== tourNavigation.current) return;
@@ -938,7 +914,7 @@ function AppWorkspace() {
   };
 
   return <Suspense fallback={<div className="app-loading" role="status">正在打开赤页…</div>}><div className={`app ${settings.reducedMotion ? 'reduced-motion' : ''}`} style={{ '--reading-size': `${settings.textSize}px` } as CSSProperties}>
-    {redrainActive && !tourOpen ? <RedRainPlayer initialSave={redrainSave} settings={settings} paused={Boolean(modal)} onSaved={setRedrainSave} onExit={returnToLibrary} onSettings={() => setModal('settings')} /> : !session || tourOpen ? <div className="library-shell">
+    {redrainActive && !tourOpen ? <RedRainPlayer initialSave={redrainSave} settings={settings} paused={Boolean(modal)} onSaved={setRedrainSave} onExit={returnToLibrary} onSettings={() => setModal('settings')} /> : !session || tourOpen ? <ArtworkActivity.Provider value={!modal && !selectedStory && !redrainDetail}><div className="library-shell">
       <aside className="side-rail">
         <Brand onClick={() => setView('library')} />
         <div className="rail-source"><ZhihuBadge label="故事" /><span>原作在这里，下一步由你。</span></div>
@@ -955,15 +931,15 @@ function AppWorkspace() {
         <div className="rail-bottom"><div className="rail-clock"><span className="status-dot" />{library?.source === 'live' ? '知乎书库已连接' : library ? '知乎书库 · 本地缓存' : '正在连接知乎书库'}</div><div className="rail-theme-switch"><ThemeSwitch /></div><IconButton label="阅读设置" onClick={() => setModal('settings')}><Settings2 /></IconButton></div>
       </aside>
       <main className="library-main">
-        <header className="top-bar"><div className="breadcrumb"><span>赤页</span><ChevronRight size={10} /><strong>{view === 'workshop' ? '新故事工作台' : view === 'library' ? '知乎故事书库' : '结局档案'}</strong></div><div className="top-controls"><ThemeSwitch /><button className="text-button liukan-help-entry" onClick={() => setTourOpen(true)}>怎么开始</button><span className="volume-caption">原作阅读 / 互动改编</span><IconButton label="阅读引导" onClick={() => setModal('guide')}><CircleHelp /></IconButton><IconButton label="刷新故事" onClick={() => { void loadLibrary(); void refreshProjects(); }} disabled={fetching}><RefreshCw className={fetching ? 'spin' : ''} /></IconButton></div></header>
+        <header className="top-bar"><div className="breadcrumb"><span>赤页</span><ChevronRight size={10} /><strong>{view === 'workshop' ? '新故事工作台' : view === 'library' ? '知乎故事书库' : '结局档案'}</strong></div><div className="top-controls">{account && <AccountControl account={account} />}<ThemeSwitch /><button className="text-button liukan-help-entry" onClick={() => setTourOpen(true)}>怎么开始</button><span className="volume-caption">原作阅读 / 互动改编</span><IconButton label="阅读引导" onClick={() => setModal('guide')}><CircleHelp /></IconButton><IconButton label="刷新故事" onClick={() => { void loadLibrary(); void refreshProjects(); }} disabled={fetching}><RefreshCw className={fetching ? 'spin' : ''} /></IconButton></div></header>
         <div className="library-content">
-          {view === 'workshop' ? <StoryWorkshop tourStep={tourStep} onBrowseZhihu={() => { setZhihuReadingPost(null); setZhihuWorkspaceOpen(true); }} stories={library?.stories ?? []} requestedSource={workshopSource} requestedProjectId={workshopProjectId} onReadZhihu={story => void openStory(story, 'reader')} onPlay={id => void prepareWorld(id)} onRead={id => void readImportedSource(id)} /> : <>
+          {view === 'workshop' ? <StoryWorkshop allowServiceConfiguration={account?.provider !== 'zhihu'} tourStep={tourStep} onBrowseZhihu={() => { setZhihuReadingPost(null); setZhihuWorkspaceOpen(true); }} stories={library?.stories ?? []} requestedSource={workshopSource} requestedProjectId={workshopProjectId} onReadZhihu={story => void openStory(story, 'reader')} onPlay={id => void prepareWorld(id)} onRead={id => void readImportedSource(id)} /> : <>
           <div className="section-heading"><div><p className="page-kicker">{view === 'library' ? 'ZHIHU STORIES / RED LEAF EDITION' : 'YOUR ENDINGS'}</p><h1 className="page-title">{view === 'library' ? '知乎故事书库' : '结局档案'}<span className="heading-punctuation">。</span></h1></div><div className="archive-number"><b>{pad(view === 'library' ? stories.length : allEndingCount)}</b><span>{view === 'library' ? '篇原作' : '个已解锁结局'}</span></div></div>
           {view === 'library' ? <>
             {library?.warning && <div className="library-notice"><Clock3 size={14} /><span>{library.warning}</span></div>}
             {libraryError && <div className="library-notice"><CircleHelp size={15} /><span>{libraryError} <button className="text-button" onClick={() => void loadLibrary()}>重新连接 <RefreshCw size={12} /></button></span></div>}
             {featured ? <section className="featured-story" aria-label="本期精选故事">
-              <Artwork src={featured.cover || featured.sourceCover} fallback={featured.sourceCover} className="featured-image" alt={`${featured.title}的故事封面`} placeholder={<BookJacket title={featured.title} author={featured.author} className="featured-image" />} />
+              <Artwork src={featured.sourceCover || featured.cover} fallback={featured.cover} className="featured-image" priority="critical" alt={`${featured.title}的故事封面`} placeholder={<BookJacket title={featured.title} author={featured.author} className="featured-image" />} />
               <div className="feature-copy"><div className="issue-tag"><ZhihuBadge label="原作精选" /><span>本期夜读</span></div><h2 className="feature-title">{featured.title}</h2><p className="feature-excerpt">{featured.description}</p><AuthorIdentity name={featured.author} avatar={featured.authorAvatar} label="知乎原作作者" /><div className="feature-actions"><button id="start-btn" data-tour="library-play" className="primary-button" onClick={() => void openStory(featured)}>翻开这个故事 <ArrowRight /></button>{!featured.playable && <button className="secondary-button feature-adapt" onClick={() => adaptStory(featured)}><Sparkles size={15} />{featured.project ? '查看改编' : '改编这篇'}</button>}</div></div>
               <span className="feature-stamp">原作 / {featured.labels.slice(0, 2).join(' · ')}</span><div className="feature-bottom">{featuredPool.map((story, index) => <button className={`feature-index ${featured.id === story.id ? 'active' : ''}`} key={story.id} aria-label={`精选故事 ${index + 1}：${story.title}`} onClick={() => setFeaturedIndex(index)}>{pad(index + 1)}</button>)}</div>
             </section> : fetching ? <div className="fetch-status" role="status"><p className="eyebrow">RED LEAF / ARCHIVE CONNECTION</p><h2>正在打开知乎故事书库</h2><div className="fetch-line" /><p>读取真实故事、原作作者与书目。</p></div> : <div className="empty-state"><BookOpen size={27} /><h2>书库暂时无法打开</h2><p>{libraryError || '当前没有可用的故事。'}</p><button className="secondary-button" onClick={() => void loadLibrary()}><RefreshCw />重新连接</button></div>}
@@ -982,7 +958,7 @@ function AppWorkspace() {
           </>}
         </div>
       </main>
-    </div> : <div className={`game-shell ${session.world.generated && !backgroundSource ? 'text-reading' : ''}`} ref={gameShellRef}>
+    </div></ArtworkActivity.Provider> : <div className={`game-shell ${session.world.generated && !backgroundSource ? 'text-reading' : ''}`} ref={gameShellRef}>
       <header className="game-topbar"><div className="game-ident"><Brand onClick={returnToLibrary} /><span className="game-story-title">{session.world.title}</span></div><div className="game-tools"><ThemeSwitch />
         {canRetryArt && <IconButton label="重新加载插画" className="art-retry" onClick={() => setArtAttempt(value => value + 1)}><RefreshCw /></IconButton>}
         {canSwitchSceneArt && <IconButton label="切换本节点已审场景图" onClick={cycleSceneArt}><Images /></IconButton>}
@@ -998,8 +974,8 @@ function AppWorkspace() {
       {session.world.generated && !session.world.generated.artReady && <div className="generated-art-pending" role="status">改编故事 · 插图尚未完成，当前可阅读和游玩</div>}
       {toast && !modal && !selectedStory && <div className="game-status" role="status"><Check size={14} />{toast}</div>}
       {session.node.ending && <div className="ending-outcome"><Outcome outcome={session.lastOutcome} worldId={session.world.id} /></div>}
-      {session.node.ending ? <main className="ending-view"><Artwork key={`${session.world.id}:${session.node.id}:${artAttempt}`} src={backgroundSource} className="scene-image" alt="故事结局场景" onStateChange={setBackgroundState} /><div className="ending-content"><p className="ending-index">END OF THIS TIMELINE / {session.node.ending.tone.toUpperCase()}</p><h1>{session.node.ending.title}</h1><div className="ending-divider" /><p className="ending-prose">{currentText}</p><div className="ending-stats"><div><b>{pad(session.choiceCount)}</b><span>次选择</span></div><div><b>{pad(session.clues.length)}</b><span>条线索</span></div><div><b>{pad(endings.filter((ending) => ending.worldId === session.world.id).length)}</b><span>个已解锁结局</span></div></div><div className="ending-actions"><button className="primary-button" onClick={() => { setPendingWorld(session.world); setModal('background'); }}>重新开始 <RotateCcw /></button><button className="secondary-button" onClick={() => { setJournalTab('history'); setModal('journal'); }}><History />回看剧情</button><button className="secondary-button" onClick={returnToLibrary}><Library />返回书库</button></div><EndingSourceBridge world={session.world} endingTitle={session.node.ending.title} choices={session.choiceCount} onRead={openSessionSource} onHistory={() => { setJournalTab('history'); setModal('journal'); }} /></div></main> : <main className="game-stage">
-        <Artwork key={`${session.world.id}:${session.node.id}:${artAttempt}`} src={backgroundSource} className="scene-image" alt={`${session.node.location}场景`} onStateChange={setBackgroundState} /><div className="scene-wash" />
+      {session.node.ending ? <main className="ending-view"><Artwork key={`${session.world.id}:${session.node.id}:${artAttempt}`} src={backgroundSource} className="scene-image" priority="critical" alt="故事结局场景" onStateChange={setBackgroundState} /><div className="ending-content"><p className="ending-index">END OF THIS TIMELINE / {session.node.ending.tone.toUpperCase()}</p><h1>{session.node.ending.title}</h1><div className="ending-divider" /><p className="ending-prose">{currentText}</p><div className="ending-stats"><div><b>{pad(session.choiceCount)}</b><span>次选择</span></div><div><b>{pad(session.clues.length)}</b><span>条线索</span></div><div><b>{pad(endings.filter((ending) => ending.worldId === session.world.id).length)}</b><span>个已解锁结局</span></div></div><div className="ending-actions"><button className="primary-button" onClick={() => { setPendingWorld(session.world); setModal('background'); }}>重新开始 <RotateCcw /></button><button className="secondary-button" onClick={() => { setJournalTab('history'); setModal('journal'); }}><History />回看剧情</button><button className="secondary-button" onClick={returnToLibrary}><Library />返回书库</button></div><EndingSourceBridge world={session.world} endingTitle={session.node.ending.title} choices={session.choiceCount} onRead={openSessionSource} onHistory={() => { setJournalTab('history'); setModal('journal'); }} /></div></main> : <main className="game-stage">
+        <Artwork key={`${session.world.id}:${session.node.id}:${artAttempt}`} src={backgroundSource} className="scene-image" priority="critical" alt={`${session.node.location}场景`} onStateChange={setBackgroundState} /><div className="scene-wash" />
         <div className={`scene-frame ${hasCharacterLayer ? 'has-character' : ''}`} data-character-position={hasCharacterLayer ? characterPosition : undefined}>
           <div className="scene-topline"><div className="chapter-mark"><div><p className="chapter-number">{session.node.chapter} / {session.timeLabel}</p><h2>{session.node.location}</h2></div></div><div className="scene-stats" aria-label="当前状态">{!session.world.generated && <><span className="scene-stat"><Shield />决心 <b>{session.resolve}</b></span><span className="scene-stat"><Heart />信任 <b>{session.trust}</b></span></>}<span className="scene-stat"><FileText />线索 <b>{pad(session.clues.length)}</b></span></div></div>
           <div className="run-difficulty" data-mode={session.difficulty}><Shield size={12} /><span>{session.difficulty === 'challenge' ? `挑战模式 · 回溯剩余 ${session.rewindsRemaining} 次` : '经典模式 · 自由回溯'}</span></div>
@@ -1007,24 +983,24 @@ function AppWorkspace() {
           <span className="scene-annotation">{session.node.title}</span>
           {hasCharacterLayer && <div className="character-layer" data-character-id={sceneCharacter!.id} data-position={characterPosition} data-art-state={currentPortraitState.status}>
             <Artwork key={`${sceneCharacter!.id}:${characterExpression}:${artAttempt}:${portraitRevision}`} src={portraitSources[0]} fallbacks={portraitSources.slice(1)} versions={portraitVersions}
-              className="character-portrait" alt={sceneCharacter!.name} onStateChange={setPortraitState} />
+              className="character-portrait" priority="critical" alt={sceneCharacter!.name} onStateChange={setPortraitState} />
           </div>}
           {hasCharacterLayer && <div className="character-clearance" aria-hidden="true" />}
           <div className="choice-region" aria-label="剧情选择" ref={choiceRegionRef}><Outcome key={`${session.world.id}:${session.choiceCount}:${session.node.id}`} outcome={session.lastOutcome} worldId={session.world.id} />{lastParagraph && textComplete && <>
             {session.node.challenge && (session.difficulty === 'challenge'
               ? <div className="challenge-box challenge-prompt"><CircleHelp /><p>{session.node.challenge.prompt}</p><small>从当前剧情和已收集的线索判断。</small></div>
               : <details className="challenge-box" key={`${session.world.id}:${session.node.id}`}><summary><CircleHelp /><span>{session.node.challenge.prompt}</span></summary><p>{session.node.challenge.hint}</p></details>)}
-            {session.choices.map((choice, index) => <button className="choice-button" key={choice.id} style={{ '--choice-index': index } as CSSProperties} onFocus={() => performLiukanAction(choiceBlockers(choice, session, session.world.resources).length ? 'careful' : 'choose')} onClick={() => makeChoice(choice)}><span className="choice-number">{pad(index + 1)}</span><span className="choice-copy"><span className="choice-action">{choice.text}</span>{choiceCostLabels(choice, session.world.resources ?? []).length > 0 && <small className="choice-cost">{choiceCostLabels(choice, session.world.resources ?? []).join(' · ')}</small>}</span><ArrowRight /></button>)}
+            {session.choices.map((choice, index) => <button className="choice-button" key={choice.id} style={{ '--choice-index': index } as CSSProperties} onPointerEnter={() => setArtIntent({ scene: sceneArtKey, nodeId: choice.nextNodeId })} onPointerLeave={() => setArtIntent(null)} onBlur={() => setArtIntent(null)} onFocus={() => { setArtIntent({ scene: sceneArtKey, nodeId: choice.nextNodeId }); performLiukanAction(choiceBlockers(choice, session, session.world.resources).length ? 'careful' : 'choose'); }} onClick={() => makeChoice(choice)}><span className="choice-number">{pad(index + 1)}</span><span className="choice-copy"><span className="choice-action">{choice.text}</span>{choiceCostLabels(choice, session.world.resources ?? []).length > 0 && <small className="choice-cost">{choiceCostLabels(choice, session.world.resources ?? []).join(' · ')}</small>}</span><ArrowRight /></button>)}
             {session.node.choices.filter(choice => choiceBlockers(choice, session, session.world.resources).length).map(choice => <div className="locked-choice" key={choice.id} aria-disabled="true"><LockKeyhole /><div>{choice.text}<small>{choiceLockLabels(choice, session, session.world.resources ?? [], session.difficulty === 'challenge', clue => clueLabel(session.world.id, clue)).join('；')}</small></div></div>)}
           </>}</div>
         </div>
         <section className="dialogue-panel" key={`${session.world.id}:${session.node.id}:${session.paragraphIndex}`} aria-label="当前剧情"><div className="speaker-line"><span className="speaker-name">{session.node.speaker ?? '旁白'}</span><span className="scene-time">{session.world.generated ? `改编 ${session.world.version}` : session.world.id.toUpperCase()} / {pad(session.history.length)}</span></div><p className="dialogue-text" onClick={nextParagraph}>{currentText.slice(0, visibleCharacters)}</p>{(!lastParagraph || !textComplete) ? <button className="dialogue-next" onClick={nextParagraph}>{textComplete ? '继续' : '显示全文'}<ChevronDown /></button> : <div className="dialogue-next"><span>{session.choices.length ? '接下来怎么做？' : '暂时没有可用选项'}</span><Sparkles size={11} /></div>}</section>
       </main>}
-      <footer className="game-bottomline"><span className="source-credit">{worldSourceLabel(session.world)} / <button className="source-reader-link" onClick={openSessionSource} title={isZhihuWorld(session.world) ? '查看原作节选' : '查看导入原文'}>{session.world.source.author} · {session.world.source.title}</button> / 互动改编</span><span className="page-indicator">{session.node.ending ? 'END' : `${pad(session.paragraphIndex + 1)} / ${pad(session.paragraphs.length)}`} · AUTO SAVED</span></footer>
+      <footer className="game-bottomline"><span className="source-credit">{worldSourceLabel(session.world)} / <button className="source-reader-link" onClick={openSessionSource} title={session.world.source.origin?.contentScope === 'favorite-summary' ? '查看收藏摘要' : isZhihuWorld(session.world) ? '查看原作节选' : '查看导入原文'}>{session.world.source.author} · {session.world.source.title}</button> / 互动改编</span><span className="page-indicator">{session.node.ending ? 'END' : `${pad(session.paragraphIndex + 1)} / ${pad(session.paragraphs.length)}`} · AUTO SAVED</span></footer>
     </div>}
 
-    {modal === 'imported-source' && <Modal title={importedSource?.scope === 'zhihu-excerpt' ? '知乎原作节选' : '导入原文'} large className="reader-modal" onClose={() => { ++importedReaderRequest.current; setModal(null); }} footer={<button className="primary-button" onClick={() => { ++importedReaderRequest.current; setModal(null); }}>{session ? '继续当前故事' : view === 'workshop' ? '返回工作台' : '返回书库'} <ArrowRight /></button>}>{importedSource ? <ImportedSourceReader source={importedSource} /> : importedSourceError ? <div role="alert"><p>{importedSourceError}</p><button className="secondary-button" onClick={() => void readImportedSource(importedSourceId)}><RefreshCw />重读原文</button></div> : <p role="status">正在读取独立保存的原文…</p>}</Modal>}
-    {redrainDetail && <Modal title={redrainStory.title} onClose={() => setRedrainDetail(false)} footer={<><button className="secondary-button" onClick={() => setRedrainDetail(false)}>返回书库</button><button id="redrain-start" className="primary-button" onClick={openRedRain}>{redrainSave ? '继续重生周' : '进入重生周'} <ArrowRight /></button></>}><div className="redrain-intro"><img src={redrainStory.cover} alt="重生周序幕场景" /><p>你是屠亦娆，醒来时距离记忆中的灾变还有七天。囤积物资、核实预知、决定相信谁，每一次选择都会留下不同的后续。</p><p>完整文字分支冒险 · 50 个决策位置 · 20 个常规结局 / 8 个失败结局</p>{redrainSave && <p>上次读到：{summaryLabel(redrainSave)}</p>}<div className="redrain-source"><p>原作：y甜酱不闲《末日的45度角躺平》<br />本作保留主线剧情与分支玩法，新增分支和结局属于互动改编。</p><a className="text-button" href={redrainStory.originalUrl} target="_blank" rel="noreferrer"><BookOpen size={15} />打开知乎原作</a></div></div></Modal>}
+    {modal === 'imported-source' && <Modal title={importedSource?.origin?.contentScope === 'favorite-summary' ? '知乎收藏摘要' : importedSource?.scope === 'zhihu-excerpt' ? '知乎原作节选' : '导入原文'} large className="reader-modal" onClose={() => { ++importedReaderRequest.current; setModal(null); }} footer={<button className="primary-button" onClick={() => { ++importedReaderRequest.current; setModal(null); }}>{session ? '继续当前故事' : view === 'workshop' ? '返回工作台' : '返回书库'} <ArrowRight /></button>}>{importedSource ? <ImportedSourceReader source={importedSource} /> : importedSourceError ? <div role="alert"><p>{importedSourceError}</p><button className="secondary-button" onClick={() => void readImportedSource(importedSourceId)}><RefreshCw />重读原文</button></div> : <p role="status">正在读取独立保存的原文…</p>}</Modal>}
+    {redrainDetail && <Modal title={redrainStory.title} onClose={() => setRedrainDetail(false)} footer={<><button className="secondary-button" onClick={() => setRedrainDetail(false)}>返回书库</button><button id="redrain-start" className="primary-button" onClick={openRedRain}>{redrainSave ? '继续重生周' : '进入重生周'} <ArrowRight /></button></>}><div className="redrain-intro"><Artwork src={redrainStory.cover} alt="重生周序幕场景" /><p>你是屠亦娆，醒来时距离记忆中的灾变还有七天。囤积物资、核实预知、决定相信谁，每一次选择都会留下不同的后续。</p><p>完整文字分支冒险 · 50 个决策位置 · 20 个常规结局 / 8 个失败结局</p>{redrainSave && <p>上次读到：{summaryLabel(redrainSave)}</p>}<div className="redrain-source"><p>原作：y甜酱不闲《末日的45度角躺平》<br />本作保留主线剧情与分支玩法，新增分支和结局属于互动改编。</p><a className="text-button" href={redrainStory.originalUrl} target="_blank" rel="noreferrer"><BookOpen size={15} />打开知乎原作</a></div></div></Modal>}
 
     {selectedStory && <Modal
       title={storyPanel === 'reader' ? '原作节选' : '故事档案'} large
@@ -1066,7 +1042,7 @@ function AppWorkspace() {
       {worldForBackground.mechanics && <section className="world-mechanics"><h4>{worldForBackground.mechanics.title}</h4>{mechanicsDescription && <p>{mechanicsDescription}</p>}<dl>{worldForBackground.resources?.map(resource => <div key={resource.id}><dt>{resource.label} · 初始 {introResources?.[resource.id] ?? resource.initial} / {resource.max}</dt><dd>{resource.description}</dd></div>)}</dl>{introDifficulty === 'classic' && <p className="beginner-tip">{worldForBackground.mechanics.beginnerTip}</p>}</section>}
       <WorldArtOverview world={worldForBackground} /><div className="source-line"><p>{worldSourceLabel(worldForBackground)} / {worldForBackground.source.author} · 《{worldForBackground.source.title}》<br />后续剧情与结局属于游戏改编，原文另行保留。</p><details><summary>改编说明（含剧情透露）</summary><p>{worldForBackground.adaptation.note}</p></details></div></div></Modal>}
 
-    {modal === 'settings' && <Modal title="阅读设置" onClose={() => setModal(null)} footer={<><button className="text-button" onClick={() => { setSettings(defaultSettings); notify('已恢复默认阅读设置。'); }}><RotateCcw />恢复默认</button><div style={{ flex: 1 }} /><button className="primary-button" onClick={() => setModal(null)}>完成 <Check /></button></>}><div className="settings-row"><label>界面风格<small>一键切换，自动记住你的选择</small></label><ThemeSwitch /></div><div className="settings-row" data-tour="reading-settings"><label htmlFor="text-size">正文字号<small>故事阅读区的文字大小</small></label><div className="range-control"><input id="text-size" type="range" min="15" max="23" value={settings.textSize} onChange={(event) => setSettings({ ...settings, textSize: Number(event.target.value) })} /><output>{settings.textSize}</output></div></div><div className="settings-row"><label htmlFor="text-speed">文字速度<small>调至 100 时立即显示全文</small></label><div className="range-control"><input id="text-speed" type="range" min="15" max="100" value={settings.textSpeed} onChange={(event) => setSettings({ ...settings, textSpeed: Number(event.target.value) })} /><output>{settings.textSpeed}</output></div></div><div className="settings-row"><label htmlFor="sound">交互音效<small>翻页与选择的轻声提示</small></label><input className="toggle" id="sound" type="checkbox" checked={settings.sound} onChange={(event) => setSettings({ ...settings, sound: event.target.checked })} /></div><div className="settings-row"><label htmlFor="reduced-motion">减少动态效果<small>关闭逐字呈现与过渡动画</small></label><input className="toggle" id="reduced-motion" type="checkbox" checked={settings.reducedMotion} onChange={(event) => setSettings({ ...settings, reducedMotion: event.target.checked })} /></div></Modal>}
+    {modal === 'settings' && <Modal title="阅读设置" onClose={() => setModal(null)} footer={<><button className="text-button" onClick={() => { setSettings(defaultSettings); notify('已恢复默认阅读设置。'); }}><RotateCcw />恢复默认</button><div style={{ flex: 1 }} /><button className="primary-button" onClick={() => setModal(null)}>完成 <Check /></button></>}>{account && <div className="settings-row"><label>当前账号</label><AccountControl account={account} /></div>}<div className="settings-row"><label>界面风格<small>一键切换，自动记住你的选择</small></label><ThemeSwitch /></div><div className="settings-row" data-tour="reading-settings"><label htmlFor="text-size">正文字号<small>故事阅读区的文字大小</small></label><div className="range-control"><input id="text-size" type="range" min="15" max="23" value={settings.textSize} onChange={(event) => setSettings({ ...settings, textSize: Number(event.target.value) })} /><output>{settings.textSize}</output></div></div><div className="settings-row"><label htmlFor="text-speed">文字速度<small>调至 100 时立即显示全文</small></label><div className="range-control"><input id="text-speed" type="range" min="15" max="100" value={settings.textSpeed} onChange={(event) => setSettings({ ...settings, textSpeed: Number(event.target.value) })} /><output>{settings.textSpeed}</output></div></div><div className="settings-row"><label htmlFor="sound">交互音效<small>翻页与选择的轻声提示</small></label><input className="toggle" id="sound" type="checkbox" checked={settings.sound} onChange={(event) => setSettings({ ...settings, sound: event.target.checked })} /></div><div className="settings-row"><label htmlFor="reduced-motion">减少动态效果<small>关闭逐字呈现与过渡动画</small></label><input className="toggle" id="reduced-motion" type="checkbox" checked={settings.reducedMotion} onChange={(event) => setSettings({ ...settings, reducedMotion: event.target.checked })} /></div></Modal>}
 
     {modal === 'saves' && <Modal title={saveImport.status === 'preview' ? '导入存档' : '保存与载入'} onClose={closeSaves}
       className="saves-modal" focusKey={saveImport.status === 'preview' ? 'import-preview' : 'save-slots'}
@@ -1136,10 +1112,10 @@ function AppWorkspace() {
     <div className={capabilitiesOpen ? 'liukan-capabilities-overlay' : undefined} onKeyDown={event => { event.stopPropagation(); if (event.key === 'Escape') setCapabilitiesOpen(false); }}>{capabilitiesOpen && <LiukanCapabilities onActivityDesk={() => { setCapabilitiesOpen(false); setActivityDeskOpen(true); }} onReadingDesk={() => { setCapabilitiesOpen(false); setReadingDesk({}); }} onClose={() => setCapabilitiesOpen(false)} onOpenSource={url => { setCapabilitiesOpen(false); setZhihuReadingPost(null); setZhihuWorkspaceUrl(url); setZhihuWorkspaceOpen(true); }} />}</div>
     {activityDeskOpen && <LiukanActivityDesk playerId={companionProgress?.playerId ?? 'local-player'} onClose={() => setActivityDeskOpen(false)} onProject={showCompanionProject} onOpenMemories={() => { setActivityDeskOpen(false); returnToLibrary(); setView('endings'); }} onReadPost={post => { setActivityDeskOpen(false); setZhihuReadingPost(post.candidate); setZhihuWorkspaceOpen(true); }} />}
     {readingDesk && <LiukanReadingDesk onProject={showCompanionProject} initialPostId={readingDesk.postId} onClose={() => setReadingDesk(null)} onReadPost={post => { setReadingDesk(null); setZhihuReadingPost(post.candidate); setZhihuWorkspaceOpen(true); }} />}
-    <LiukanTour open={tourOpen} onClose={closeTour} onNavigate={navigateTour} reducedMotion={settings.reducedMotion} />
+    <LiukanTour allowServiceConfiguration={account?.provider !== 'zhihu'} browserAvailable={browserAvailable} open={tourOpen} onClose={closeTour} onNavigate={navigateTour} reducedMotion={settings.reducedMotion} />
     {gameError && <Modal title="这一页暂时无法继续" onClose={() => setGameError('')} footer={<button className="primary-button" onClick={() => { setGameError(''); returnToLibrary(); }}>回到书库 <Library size={14} /></button>}><p className="inline-error" role="alert">{gameError}</p></Modal>}
-    {zhihuWorkspaceOpen && <ZhihuWorkspace initialUrl={zhihuWorkspaceUrl} onClose={() => setZhihuWorkspaceOpen(false)} initialPost={zhihuReadingPost} />}
-    {((!redrainDetail && !modal) || tourOpen) && <LiuKanShanPet memory={{ completedLevels: redrainEndings.length + endings.length, recentTitles: [...endings.slice(-1).map(item => item.title), ...redrainEndings.slice(-1).map(item => item.title)] }} onActivityDesk={() => { setCapabilitiesOpen(false); setReadingDesk(null); setActivityDeskOpen(true); }} onReadingDesk={postId => { setCapabilitiesOpen(false); setReadingDesk({ postId }); }} onCapabilities={() => setCapabilitiesOpen(true)} onStartGuide={() => setTourOpen(true)} onReadPost={post => { setZhihuReadingPost(post.candidate); setZhihuWorkspaceOpen(true); }} onProject={showCompanionProject} progress={companionProgress} worldTitle={session?.world.title ?? (redrainActive ? redrainStory.title : undefined)} isEnding={Boolean(session?.node.ending)} reducedMotion={settings.reducedMotion} />}
+    {zhihuWorkspaceOpen && <ZhihuWorkspace browserAvailable={browserAvailable} initialUrl={zhihuWorkspaceUrl} onClose={() => setZhihuWorkspaceOpen(false)} initialPost={zhihuReadingPost} />}
+    {((!redrainDetail && !modal) || tourOpen) && <LiuKanShanPet browserAvailable={browserAvailable} memory={{ completedLevels: redrainEndings.length + endings.length, recentTitles: [...endings.slice(-1).map(item => item.title), ...redrainEndings.slice(-1).map(item => item.title)] }} onActivityDesk={() => { setCapabilitiesOpen(false); setReadingDesk(null); setActivityDeskOpen(true); }} onReadingDesk={postId => { setCapabilitiesOpen(false); setReadingDesk({ postId }); }} onCapabilities={() => setCapabilitiesOpen(true)} onStartGuide={() => setTourOpen(true)} onReadPost={post => { setZhihuReadingPost(post.candidate); setZhihuWorkspaceOpen(true); }} onProject={showCompanionProject} progress={companionProgress} worldTitle={session?.world.title ?? (redrainActive ? redrainStory.title : undefined)} isEnding={Boolean(session?.node.ending)} reducedMotion={settings.reducedMotion} />}
     {toast && !session && !modal && !selectedStory && <div className="toast" role="status"><Check size={15} />{toast}</div>}
   </div></Suspense>;
 }

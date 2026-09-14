@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server/index.ts",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit -p tsconfig.production.json && vite build",
     "start": "tsx server/index.ts --production",
     "stories": "tsx scripts/stories.ts",
-    "test": "tsx --test --test-concurrency=4 tests/*.test.ts"
+    "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {
     "express": "^5.1.0",

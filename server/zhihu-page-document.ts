@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import type { Page } from 'playwright';
 import type { ZhihuBrowserPost } from '../shared/zhihu-browser.ts';
 import type { ZhihuPageDocument } from '../shared/zhihu-page-document.ts';
+import { ZHIHU_POST_DOM_HELPERS } from './zhihu-post-dom.ts';
 
 // Application-owned code reads the current page. Source text is passed as data;
 // the returned document has no scripts and does not inherit the website session.
@@ -19,14 +20,7 @@ const DOCUMENT_SCRIPT = String.raw`async ({ id, posts }) => {
       return url.href;
     } catch { return null; }
   };
-  const source = value => {
-    try {
-      const url = new URL(value, location.href);
-      if (url.protocol !== 'https:' || url.username || url.password || url.port) return null;
-      if ((url.hostname === 'www.zhihu.com' && /^\/question\/\d{5,24}\/answer\/\d{5,24}\/?$/.test(url.pathname)) || (url.hostname === 'zhuanlan.zhihu.com' && /^\/p\/\d{5,24}\/?$/.test(url.pathname))) return url.origin + url.pathname.replace(/\/$/, '');
-    } catch {}
-    return null;
-  };
+  ${ZHIHU_POST_DOM_HELPERS}
   const css = (value, base) => value
     .replace(/@import\s+(?:url\(\s*)?(?:"[^"]*"|'[^']*'|[^;\s)]+)\s*\)?[^;]*;/gi, '')
     .replace(/(?:-moz-binding|behavior)\s*:[^;}]+[;}]?/gi, '')
@@ -57,18 +51,8 @@ const DOCUMENT_SCRIPT = String.raw`async ({ id, posts }) => {
     }
   }
   const postsBySource = new Map(posts.map(post => [source(post.sourceUrl), post]));
-  for (const node of liveRoot.querySelectorAll('.AnswerItem, .ArticleItem, .Post-Main, .TopstoryItem .ContentItem, .TopstoryItem, .List-item .ContentItem')) {
-    if (node.querySelector('.AnswerItem,.ArticleItem,.Post-Main,.ContentItem')) continue;
-    const urls = [...node.querySelectorAll('meta[itemprop="url"]')].map(item => item.getAttribute('content'));
-    urls.push(...[...node.querySelectorAll('a[href*="/answer/"], a[href*="zhuanlan.zhihu.com/p/"]')].map(item => item.href));
-    if (node.matches('.Post-Main, .AnswerItem')) urls.push(location.href);
-    let identity = urls.map(source).find(Boolean);
-    const zop = node.getAttribute('data-zop') || node.querySelector('[data-zop]')?.getAttribute('data-zop');
-    if (!identity && /"type"\s*:\s*"answer"/.test(zop || '')) {
-      const questionId = [...node.querySelectorAll('a[href],meta[itemprop="url"]')].map(item => item.href || item.getAttribute('content')).map(value => value?.match(/\/question\/(\d{5,24})\/?(?:[?#]|$)/)?.[1]).find(Boolean);
-      const answerId = zop?.match(/"itemId"\s*:\s*"?(\d{5,24})"?(?=\s*[,}])/)?.[1];
-      if (questionId && answerId) identity = source('https://www.zhihu.com/question/' + questionId + '/answer/' + answerId);
-    }
+  for (const node of postRoots) {
+    const identity = postSource(node);
     const post = postsBySource.get(identity);
     if (post) {
       node.setAttribute(postAttribute, post.id);

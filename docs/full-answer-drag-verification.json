@@ -1,0 +1,64 @@
+{
+  "release": "full-answer-drag-20260914",
+  "publishedAt": "2026-09-14T14:39:50.581543+00:00",
+  "status": "deployed and verified",
+  "checks": {
+    "nativeRegression": {
+      "pass": 20,
+      "fail": 0
+    },
+    "candidateFulltextFinal": {
+      "pass": 10,
+      "fail": 0
+    },
+    "releaseServiceDOMAuthentication": {
+      "pass": 48,
+      "fail": 0
+    },
+    "desktopAndMobileUI": {
+      "passed": true,
+      "scope": "Real Workspace and LiuKanShan UI, real persisted discovery/inbox records, deterministic browser fixture. No live Zhihu or model requests.",
+      "checks": [
+        "desktop: collapsed and manually expanded native drag both show 166 exact characters and one answer; refreshed frame can be operated immediately",
+        "desktop: discovery candidate drag fetches full source; pending/failure never save preview; retry saves exact full answer",
+        "desktop: candidate expansion in the hidden website refreshes on return; new document controls work without navigation",
+        "desktop: browser-unavailable fallback preserves its honest excerpt label and makes no full-text request",
+        "desktop: pending capture visibly waits without writing; failed retrieval does not enter the bag; explicit retry succeeds",
+        "desktop: other answer of same question remains distinct; reload preserves the full answer and deduplicated count",
+        "mobile: collapsed and manually expanded native drag both show 166 exact characters and one answer; refreshed frame can be operated immediately",
+        "mobile: official answer candidate drag fetches full source; pending/failure never save preview; retry saves exact full answer",
+        "mobile: candidate expansion in the hidden website refreshes on return; new document controls work without navigation",
+        "mobile: browser-unavailable fallback preserves its honest excerpt label and makes no full-text request",
+        "mobile: pending capture visibly waits without writing; failed retrieval does not enter the bag; explicit retry succeeds",
+        "mobile: other answer of same question remains distinct; reload preserves the full answer and deduplicated count"
+      ]
+    },
+    "typescript": "passed",
+    "viteBuild": "passed",
+    "originDeployment": "passed",
+    "publicDeployment": {
+      "health": {
+        "status": "ok",
+        "service": "zhihu-story-worlds",
+        "release": "full-answer-drag-20260914"
+      },
+      "assetsMatchBuild": [
+        "/assets/index-DqOv-9Lo.js",
+        "/assets/icons-DZv_NVdb.js",
+        "/assets/react-DJNdI_yy.js",
+        "/assets/ink-THPtW3_R.js",
+        "/assets/index-CyrX0xkH.css",
+        "/assets/ZhihuWorkspace-DC1nh5et.js"
+      ],
+      "anonymousFulltextRoute": 401,
+      "activeReleaseMatches": true
+    }
+  },
+  "scope": "真实 Chromium/React 与实际读取、捕获和存储代码；远端知乎页面/部分响应是隔离夹具。未使用用户 Cookie，未实测用户当前登录账号的回答。",
+  "changes": [
+    "公网原网页、搜索卡片、问题列表拖入均获取展开后的真实正文，再保存",
+    "自动读取服务端验证来源的准确回答详情，保留前台页面与滚动位置",
+    "后台读取使用当前账号自己的浏览器会话，按账号验证候选ID",
+    "异步展开、隐藏页面更新、登录/访问限制明确失败且不保存摘要"
+  ]
+}

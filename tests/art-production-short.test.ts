@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
-import { readArtSourceBook } from '../server/art-production-books.ts';
+import { copyFile, mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { authoredWorlds } from '../content/worlds.ts';
@@ -51,10 +50,10 @@ test('scoped scene and reaction repairs retain cast order and leave all unrelate
   for (const owner of ['cel-drawing', 'painted-background', 'scene-composition']) {
     const relative = `${production}/art-team/${owner}/short-production-20260907/book.json`;
     await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
-    await writeFile(path.join(root, relative), JSON.stringify(await readArtSourceBook(process.cwd(), owner)));
+    await copyFile(path.join(process.cwd(), relative), path.join(root, relative));
   }
   const relative = `${production}/formal-production-20260907/review-repairs.json`;
-  const repairs: Record<string, { prompt: string; referenceFiles: string[] }> = {};
+  const repairs = JSON.parse(await readFile(path.join(process.cwd(), relative), 'utf8'));
   await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
   await writeFile(path.join(root, relative), JSON.stringify(repairs));
   const before = await buildShortPlans(root, authoredWorlds);

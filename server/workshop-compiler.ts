@@ -93,8 +93,8 @@ export function buildGeneratedWorld(id: string, revision: number, source: Import
     mechanics: { title: '线索、余量与不可逆路线 · 实际游戏规则', description: outline.resources.map(r => `${r.label}：${r.description}`).join('\n'), beginnerTip: workshopRuntimeGuidance },
     source: { title: source.title, author: source.author, url: `/api/workshop/projects/${id}/source`, ...(source.origin ? { origin: source.origin } : {}) },
     version: `r${revision}`, cover: '', background: '', ink: {}, clueVariables: Object.fromEntries(allClues.map((clue, i) => [clue, `clue_${i}`])),
-    adaptation: { scope: source.scope === 'original-seed' ? 'original-seed' : source.scope === 'zhihu-excerpt' ? 'based-on-api-excerpt' : 'based-on-imported-source', adultCast: true,
-      note: source.origin?.contentScope === 'search-excerpt' ? '根据知乎官方搜索返回的节选进行独立改编，并非完整原作。原作者、来源链接与返回文字逐字保留；新增情节和结局不代表原作者后续内容。' : source.scope === 'zhihu-excerpt' ? '根据知乎故事接口提供的原作节选改编。原作者署名和节选逐字保留，新增情节与结局不代表原作后续内容。' : '根据独立保存的导入文本进行 AI 互动改编。新增情节、对白、路线和结局均为改编创作，不属于提供的原文。' },
+    adaptation: { scope: source.origin?.contentScope === 'favorite-summary' ? 'based-on-favorite-summary' : source.scope === 'original-seed' ? 'original-seed' : source.scope === 'zhihu-excerpt' ? 'based-on-api-excerpt' : 'based-on-imported-source', adultCast: true,
+      note: source.origin?.contentScope === 'favorite-summary' ? '根据 OAuth 授权后读取的知乎收藏接口摘要改编，并非完整原文。原作者、来源链接与返回摘要逐字保留；新增情节和结局为 AI 创作，不代表原作者的经历或后续内容。' : source.origin?.contentScope === 'search-excerpt' ? '根据知乎官方搜索返回的节选进行独立改编，并非完整原作。原作者、来源链接与返回文字逐字保留；新增情节和结局不代表原作者后续内容。' : source.origin?.contentScope === 'webpage-selection' ? '根据你在知乎网页选取的可见正文改编，保存的文字可能只是原作的一部分。原作者、来源链接与选取文字逐字保留；新增情节与结局不代表原作后续内容。' : source.scope === 'zhihu-excerpt' ? '根据知乎故事接口提供的原作节选改编。原作者署名和节选逐字保留，新增情节与结局不代表原作后续内容。' : '根据独立保存的导入文本进行 AI 互动改编。新增情节、对白、路线和结局均为改编创作，不属于提供的原文。' },
     generated: { projectId: id, revision, artReady: false },
   };
   compileGenerated(world);

@@ -1,19 +1,12 @@
+import { requestZhihuJson as request } from './zhihu-request';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, ExternalLink, FilePlus2, Link2, LoaderCircle, Search } from 'lucide-react';
 import type { ZhihuCandidate, ZhihuDiscoveryResult } from '../shared/zhihu-discovery';
 import type { WorkshopProject } from '../shared/workshop';
 import { AuthorIdentity, ZhihuBadge } from './ZhihuSource';
-import { fetchJson } from './game';
 import { readZhihuPageSelection, zhihuPageFragment } from './zhihu-page-picker';
 import { defaultGenerationOptions, type WorkshopGenerationOptions } from './workshop-input';
 import './ZhihuDiscovery.css';
-
-async function post<T>(url: string, value: unknown): Promise<T> {
-  const response = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(value) });
-  const body = await response.json();
-  if (!response.ok) throw new Error(body.error?.message ?? `请求失败 ${response.status}`);
-  return body;
-}
 
 export function ZhihuDiscovery({ projects, onProject, generationOptions = defaultGenerationOptions }: { projects: WorkshopProject[]; onProject: (project: WorkshopProject) => void; generationOptions?: WorkshopGenerationOptions }) {
   const [query, setQuery] = useState('悬疑短篇小说 已完结');
@@ -26,20 +19,20 @@ export function ZhihuDiscovery({ projects, onProject, generationOptions = defaul
     let live = true;
     const receivePage = () => {
       if (!location.hash.startsWith(zhihuPageFragment)) return;
-      const request = ++pageRequest.current;
+      const requestId = ++pageRequest.current;
       try {
         const source = readZhihuPageSelection(location.hash);
         history.replaceState(null, '', `${location.pathname}${location.search}`);
         setError('');
-        void post<ZhihuCandidate>('/api/workshop/discovery/page', source).then(candidate => {
-          if (request !== pageRequest.current) return;
+        void request<ZhihuCandidate>('/api/workshop/discovery/page', source).then(candidate => {
+          if (requestId !== pageRequest.current) return;
           setSelected(candidate); setCandidates(previous => [candidate, ...previous.filter(row => row.id !== candidate.id)]);
-        }).catch(e => { if (request === pageRequest.current) setError((e as Error).message); });
+        }).catch(e => { if (requestId === pageRequest.current) setError((e as Error).message); });
       } catch (e) { setError((e as Error).message); }
     };
     receivePage();
     window.addEventListener('hashchange', receivePage);
-    void fetchJson<ZhihuDiscoveryResult>('/api/workshop/discovery').then(result => { if (live) setCandidates(previous => [...previous, ...result.candidates.filter(row => !previous.some(item => item.id === row.id))]); })
+    void request<ZhihuDiscoveryResult>('/api/workshop/discovery').then(result => { if (live) setCandidates(previous => [...previous, ...result.candidates.filter(row => !previous.some(item => item.id === row.id))]); })
       .catch(e => { if (live) setError((e as Error).message); }).finally(() => { if (live) setLoading(false); });
     return () => { live = false; window.removeEventListener('hashchange', receivePage); };
   }, []);
@@ -48,15 +41,15 @@ export function ZhihuDiscovery({ projects, onProject, generationOptions = defaul
     try { await operation(); } catch (e) { setError((e as Error).message); }
     finally { active.current = false; setBusy(false); }
   };
-  const search = () => act(async () => { const result = await post<ZhihuDiscoveryResult>('/api/workshop/discovery', { query }); setCandidates(result.candidates); setSelected(null); });
+  const search = () => act(async () => { const result = await request<ZhihuDiscoveryResult>('/api/workshop/discovery', { query }); setCandidates(result.candidates); setSelected(null); });
   const resolveUrl = () => act(async () => {
-    const candidate = await post<ZhihuCandidate>('/api/workshop/discovery/url', { sourceUrl: sourceUrl.trim() });
+    const candidate = await request<ZhihuCandidate>('/api/workshop/discovery/url', { sourceUrl: sourceUrl.trim() });
     setCandidates(previous => [candidate, ...previous.filter(item => item.origin.sourceUrl !== candidate.origin.sourceUrl)]);
     setSelected(candidate);
   });
   const save = (generate: boolean) => act(async () => {
     if (!selected) return;
-    const project = await post<WorkshopProject>('/api/workshop/discovery/import', { candidateId: selected.id, generate, generationOptions });
+    const project = await request<WorkshopProject>('/api/workshop/discovery/import', { candidateId: selected.id, generate, generationOptions });
     onProject(project);
   });
   const existing = selected && projects.find(project => selected.sourceHash ? project.sourceHash === selected.sourceHash : project.origin?.sourceUrl === selected.origin.sourceUrl);

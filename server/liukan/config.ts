@@ -2,7 +2,7 @@ import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import type { LiukanConfigInput, LiukanPublicConfig } from '../../shared/liukan-capabilities.ts';
-import { configuredRelay, normalizeRelayConfig, type RelayConfig } from '../workshop-relay-config.ts';
+import { configuredRelay, environmentRelay, normalizeRelayConfig, type RelayConfig } from '../workshop-relay-config.ts';
 import { LiukanError } from './zhida.ts';
 
 const models = ['zhida-fast-1p5', 'zhida-thinking-1p5', 'zhida-agent'];
@@ -11,17 +11,27 @@ const defaultConfig: LiukanStoredConfig = { transport: 'zhihu', model: 'zhida-fa
 export class LiukanConfigStore {
   private pending = Promise.resolve();
   constructor(private readonly path = resolve(process.env.LIUKAN_CONFIG_PATH || '.local/liukan/config.json')) {}
+  private runtime(config: LiukanStoredConfig): LiukanStoredConfig {
+    if (process.env.PUBLIC_MODE !== '1' || config.transport === 'relay' || process.env.ZHIHU_ACCESS_SECRET?.trim()) return config;
+    let relay: RelayConfig | null;
+    try { relay = config.relay ?? configuredRelay() ?? environmentRelay(); }
+    catch { throw new LiukanError('LIUKAN_CONFIG_INVALID', '看山的服务端对话配置读取失败。', 503); }
+    if (!relay) throw new LiukanError('LIUKAN_PROVIDER_NOT_CONFIGURED', '看山的服务端对话服务尚未配置。', 503);
+    return { transport: 'relay', model: config.model, relay };
+  }
   async read(): Promise<LiukanStoredConfig> {
+    let config: LiukanStoredConfig;
     try {
       const data = JSON.parse(await readFile(this.path, 'utf8'));
       if (!data || !['zhihu', 'relay'].includes(data.transport) || !models.includes(data.model)) throw new Error('invalid');
       const relay = data.relay ? normalizeRelayConfig(data.relay) : undefined;
       if (data.transport === 'relay' && !relay) throw new Error('invalid');
-      return { transport: data.transport, model: data.model, ...(relay ? { relay } : {}) };
+      config = { transport: data.transport, model: data.model, ...(relay ? { relay } : {}) };
     } catch (error) {
-      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return { ...defaultConfig };
-      throw new LiukanError('LIUKAN_CONFIG_INVALID', '看山的对话配置读取失败，请重新保存。', 409);
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') config = { ...defaultConfig };
+      else throw new LiukanError('LIUKAN_CONFIG_INVALID', '看山的对话配置读取失败，请重新保存。', 409);
     }
+    return this.runtime(config);
   }
   async status(): Promise<LiukanPublicConfig> {
     const config = await this.read();

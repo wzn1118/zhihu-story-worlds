@@ -91,7 +91,7 @@ export async function requestRelay(config: RelayConfig, schema: Schema, prompt: 
     if (typeof data.output_text === 'string') return data.output_text;
     return Array.isArray(data.output) ? data.output.flatMap(item => Array.isArray(item?.content) ? item.content : []).filter(part => part?.type === 'output_text' && typeof part.text === 'string').map(part => part.text).join('') : '';
   };
-  let content = '', final: Record<string, any> | undefined;
+  let content = '', final: Record<string, any> | undefined, activeSignal: AbortSignal | undefined;
   const updateContent = (next: string) => {
     content = next; diagnostics.characters = content.length;
     if (content.length > 2_000_000) fail('oversized');
@@ -109,15 +109,32 @@ export async function requestRelay(config: RelayConfig, schema: Schema, prompt: 
     if (!Number.isSafeInteger(timeoutMs) || timeoutMs <= 0) return fail('timeout');
     const timeout = AbortSignal.timeout(timeoutMs);
     const signal = options.signal ? AbortSignal.any([timeout, options.signal]) : timeout;
+    activeSignal = signal;
+    signal.throwIfAborted();
     const response = await fetch(`${config.endpoint}/${isResponses ? 'responses' : 'chat/completions'}`, { method: 'POST', redirect: 'error',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiKey}` }, body: JSON.stringify(body), signal });
     diagnostics.httpStatus = response.status;
     if (!response.ok) { await response.body?.cancel(); fail(classify({}, response.status)); }
     if (!response.body) return fail('empty');
     const reader = response.body.getReader(), decoder = new TextDecoder('utf-8', { fatal: true });
+    // Fetch's request signal alone can leave an already acquired response reader
+    // alive on some Node/Undici versions. Explicitly close its stream on abort.
+    // Keep this listener installed until all parsing and final checks finish.
+    const cancelReader = () => { void reader.cancel(signal.reason).catch(() => {}); };
+    signal.addEventListener('abort', cancelReader, { once: true });
+    if (signal.aborted) cancelReader();
+    const readNext = (): Promise<ReadableStreamReadResult<Uint8Array>> => {
+      signal.throwIfAborted();
+      return new Promise((resolveRead, reject) => {
+        const abortRead = () => { signal.removeEventListener('abort', abortRead); reject(signal.reason); };
+        signal.addEventListener('abort', abortRead, { once: true });
+        reader.read().then(value => { signal.removeEventListener('abort', abortRead); resolveRead(value); }, error => { signal.removeEventListener('abort', abortRead); reject(error); });
+      });
+    };
     const streaming = response.headers.get('content-type')?.toLowerCase().includes('text/event-stream');
     let pending = '', eventName = '', dataLines: string[] = [], chatStopped = false;
     const consume = (raw: string, namedEvent = '') => {
+      signal.throwIfAborted();
       if (!raw.trim()) return;
       if (raw.trim() === '[DONE]') {
         if (isResponses || !chatStopped) fail('incomplete');
@@ -165,7 +182,9 @@ export async function requestRelay(config: RelayConfig, schema: Schema, prompt: 
     };
     try {
       for (;;) {
-        const { done, value } = await reader.read(); if (done) break;
+        const { done, value } = await readNext();
+        signal.throwIfAborted();
+        if (done) break;
         diagnostics.wireBytes += value.length;
         if (diagnostics.wireBytes > 24 * 1024 * 1024) fail('oversized');
         pending += decoder.decode(value, { stream: true });
@@ -175,6 +194,7 @@ export async function requestRelay(config: RelayConfig, schema: Schema, prompt: 
           if (diagnostics.completed) break;
         }
       }
+      signal.throwIfAborted();
       pending += decoder.decode();
       if (streaming) {
         if (!diagnostics.completed) { if (pending) line(pending.replace(/\r$/, '')); dispatch(); }
@@ -185,11 +205,20 @@ export async function requestRelay(config: RelayConfig, schema: Schema, prompt: 
         if (!isResponses && final.choices?.[0]?.finish_reason !== 'stop') fail('incomplete');
         updateContent(extract(final)); diagnostics.completed = true; report();
       }
-    } finally { await reader.cancel().catch(() => {}); }
+      signal.throwIfAborted();
+    } finally {
+      signal.removeEventListener('abort', cancelReader);
+      // Cancellation already initiated stream shutdown; do not let a stalled
+      // underlying cancel promise keep an aborted request running indefinitely.
+      if (signal.aborted) cancelReader();
+      else await reader.cancel().catch(() => {});
+    }
+    signal.throwIfAborted();
     if (!content.trim()) fail('empty');
     return { content, usage: final?.usage, responseId: diagnostics.responseId, diagnostics: { ...diagnostics } };
   } catch (error) {
     if (error instanceof RelayRequestError) throw error;
+    if (activeSignal?.aborted) return fail('timeout');
     const data = object(error);
     if (data.name === 'TimeoutError' || data.name === 'AbortError') fail('timeout');
     return fail('connection');

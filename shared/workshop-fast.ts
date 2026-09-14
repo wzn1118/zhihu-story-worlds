@@ -14,11 +14,15 @@ export interface FastStoryScene {
   location: string;
   time: string;
   text: string[];
+  /** Author-only prerequisites. Every incoming path must have acquired these gains. */
+  requires?: string[];
   choices: FastStoryChoice[];
   ending: null | { title: string; resolution: string; tone: 'hopeful' | 'uneasy' | 'dark' };
 }
 
 export interface FastStoryDraft {
+  /** Written before scenes in the same request; never shown as character dialogue. */
+  narrative?: { desire: string; stakes: string; relationship: string; voice: string };
   title: string;
   subtitle: string;
   summary: string;

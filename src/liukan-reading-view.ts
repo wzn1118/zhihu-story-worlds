@@ -5,7 +5,7 @@ export function readingFingerprint(skill: LiukanReadingSkillId, postIds: string[
   return JSON.stringify({ skill, postIds: [...postIds].sort(), question: question.trim(), ...(parentNoteId ? { parentNoteId } : {}) });
 }
 
-export function sourceScope(value: string | undefined) { return value === 'webpage-selection' ? '知乎网页选取' : value === 'search-excerpt' ? '知乎搜索节选' : '已保存的原文节选'; }
+export function sourceScope(value: string | undefined) { return value === 'question-answer-excerpt' ? '知乎回答接口节选' : value === 'webpage-selection' ? '知乎网页选取' : value === 'search-excerpt' ? '知乎搜索节选' : '已保存的原文节选'; }
 
 export function readingNoteMarkdown(note: LiukanReadingNote, parent?: Pick<LiukanReadingNote, 'id' | 'title'>) {
   const lines = [`# ${note.title}`, '', `> ${note.invented ? '改编草稿：含新创作的情节或对白，不属于原文。' : '阅读手记：基于已保存的原文节选。'}`, '', note.summary, ''];

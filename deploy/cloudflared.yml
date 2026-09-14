@@ -1,0 +1,11 @@
+# Intended routes for tunnel 90c03910-c7c2-4b69-979e-e78f6552c5ee.
+# Active copy: /opt/ocean-intelligence/deploy/cloudflared.yml
+# The DNS target must be checked separately; local ingress does not update DNS.
+ingress:
+  - hostname: zhihu.hegelsalon.com
+    service: http://127.0.0.1:18080
+    originRequest:
+      httpHostHeader: zhihu.hegelsalon.com
+  - hostname: ocean.hegelsalon.com
+    service: http://192.168.16.10:8000
+  - service: http://192.168.16.10:8000

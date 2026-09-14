@@ -1,0 +1,148 @@
+{
+  "checkedAt": "2026-09-14T12:11:37.946243+00:00",
+  "release": "/data/zhihu-project/releases/browser-repair-20260914-final",
+  "unitTests": {
+    "passed": 62,
+    "failed": 0
+  },
+  "uiScenarios": 14,
+  "realZhihuChecks": [
+    {
+      "name": "actual_ui_opens_real_zhihu_login",
+      "pass": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "actual_zhihu_qr_canvas_loaded",
+      "pass": true
+    },
+    {
+      "name": "password_tab_click_forwarded",
+      "pass": true
+    },
+    {
+      "name": "sms_tab_click_forwarded",
+      "pass": true
+    },
+    {
+      "name": "desktop_direct_input_forwarded",
+      "pass": true
+    },
+    {
+      "name": "desktop_keyboard_clear_forwarded",
+      "pass": true
+    },
+    {
+      "name": "mobile_input_helper_and_clear_forwarded",
+      "pass": true
+    },
+    {
+      "name": "actual_remote_drag_gesture_forwarded_without_submit",
+      "pass": true
+    },
+    {
+      "name": "click_works_after_repeated_qr_refresh",
+      "pass": true
+    },
+    {
+      "name": "closed_browser_can_reconnect",
+      "pass": true
+    },
+    {
+      "name": "own_browser_cookies_persist_after_reconnect",
+      "pass": true
+    },
+    {
+      "name": "mobile_touch_direct_input_and_clear_forwarded",
+      "pass": true
+    },
+    {
+      "name": "mobile_vertical_touch_scroll_forwarded",
+      "pass": true
+    },
+    {
+      "name": "mobile_horizontal_touch_drag_forwarded",
+      "pass": true
+    },
+    {
+      "name": "mobile_zoom_controls_work",
+      "pass": true
+    },
+    {
+      "name": "second_account_uses_separate_browser_cookies",
+      "pass": true
+    },
+    {
+      "name": "no_ui_errors_or_unexpected_api_failures",
+      "pass": true
+    }
+  ],
+  "realZhihuUiErrors": [],
+  "realZhihuApiFailures": [],
+  "actualUserLoginSubmitted": false,
+  "runtimeFiles": {
+    "server/zhihu-browser-accounts.ts": "6c7345402d7fb473fba060f14d351cca3eefc09845c0bd6689c7fe789821a264",
+    "server/zhihu-browser.ts": "52ba4a477250e57e0b1ce0b5f07f3ccc5de67605ffa66dacb37cc0c8ea9cf863",
+    "shared/zhihu-browser.ts": "a78b21048097e7d77ddd1ef68fbe679ac25ab862d8a317f7a9abd99915c1ebd4",
+    "src/ZhihuWorkspace.css": "52ad1994f45eeb8164486ef2e29d71be8ac3bb42468398b339290fdbf3354cfd",
+    "src/ZhihuWorkspace.tsx": "2db251e1ad158a27f5c5e42030bbdf903f77b85eace5e99feca25e62b90ebaa3",
+    "src/zhihu-request.ts": "3eefc61ce5ac8309266a4092153e8fd02f48dc9d41f6bd36f859345632285894",
+    "server/index.ts": "7b0b3b77f8c681f25431ea88cbffcf745eb6f5f14565c80f92f5079f04d4c875"
+  },
+  "deployment": {
+    "status": "active",
+    "release": "/data/zhihu-project/releases/browser-repair-20260914-final",
+    "publicHomepageMatches": true,
+    "publicBundleMatches": true,
+    "publicHealth": "ok",
+    "publicBrowserAvailable": true,
+    "originVerification": "passed",
+    "verifiedAt": "2026-09-14T12:16:12.447452+00:00",
+    "service": [
+      "NRestarts=0",
+      "ExecMainStartTimestamp=Mon 2026-09-14 12:14:48 UTC"
+    ],
+    "publicBoundaryChecks": [
+      {
+        "path": "/api/auth/me",
+        "status": 200,
+        "passed": true
+      },
+      {
+        "path": "/api/oauth/start",
+        "status": 302,
+        "passed": true
+      },
+      {
+        "path": "/api/workshop/projects",
+        "status": 401,
+        "passed": true
+      },
+      {
+        "path": "/api/auth/login",
+        "status": 403,
+        "passed": true
+      }
+    ],
+    "automaticRestartsAfterDeployment": 0,
+    "finalCheckedAt": "2026-09-14T12:17:36.362953+00:00"
+  },
+  "preservedConcurrentLiveChanges": [
+    "src/styles.css",
+    "src/StoryWorkshop.tsx",
+    "src/live-published-art.ts",
+    "src/art-manifest-cache.ts",
+    "src/Artwork.tsx",
+    "src/scene-art-loading.ts",
+    "src/ZhihuSource.tsx",
+    "src/art-loader.ts",
+    "src/use-art-prefetch.ts",
+    "src/character-cutouts.ts",
+    "src/App.tsx",
+    "src/WorldArtOverview.tsx",
+    "src/published-art.ts"
+  ],
+  "readingUiScenarios": 6
+}

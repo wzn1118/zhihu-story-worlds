@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowRight, Check, X } from 'lucide-react';
 import { LiuKanShanAvatar } from './LiuKanShanAvatar';
@@ -16,6 +16,8 @@ export interface LiukanTourProps {
   onNavigate: (view: LiukanTourView, step: LiukanTourStep) => void | Promise<void>;
   onStepChange?: (step: LiukanTourStep) => void;
   reducedMotion?: boolean;
+  browserAvailable?: boolean;
+  allowServiceConfiguration?: boolean;
 }
 
 function visibleTarget(step: LiukanTourStep): HTMLElement | null {
@@ -29,7 +31,7 @@ function visibleTarget(step: LiukanTourStep): HTMLElement | null {
   return null;
 }
 
-function TourSession({ onClose, onNavigate, onStepChange, reducedMotion: requestedReducedMotion = false }: Omit<LiukanTourProps, 'open'>) {
+function TourSession({ onClose, onNavigate, onStepChange, reducedMotion: requestedReducedMotion = false, browserAvailable = true, allowServiceConfiguration = true }: Omit<LiukanTourProps, 'open'>) {
   const [index, setIndex] = useState(0);
   const [target, setTarget] = useState<TourRect | null>(null);
   const [matchedTarget, setMatchedTarget] = useState('');
@@ -43,8 +45,10 @@ function TourSession({ onClose, onNavigate, onStepChange, reducedMotion: request
   const readyRef = useRef(false); readyRef.current = Boolean(target);
   const onNavigateRef = useRef(onNavigate), onCloseRef = useRef(onClose), onStepChangeRef = useRef(onStepChange);
   onNavigateRef.current = onNavigate; onCloseRef.current = onClose; onStepChangeRef.current = onStepChange;
-  const step = liukanTourSteps[index];
-  const isLast = index === liukanTourSteps.length - 1;
+  const steps = useMemo(() => allowServiceConfiguration ? liukanTourSteps : liukanTourSteps.filter(step => step.id !== 'relay'), [allowServiceConfiguration]);
+  const originalStep = steps[index];
+  const step = useMemo(() => !browserAvailable && originalStep.id === 'zhihu' ? { ...originalStep, title: '在这里找到喜欢的知乎故事。', body: '选择故事并阅读内容。看到想读的回答，可以点“交给看山”；原文会在新的标签页打开。' } : originalStep, [browserAvailable, originalStep]);
+  const isLast = index === steps.length - 1;
   const motionOff = reducedMotion || requestedReducedMotion;
   const margin = viewport.width < 600 ? 12 : 24;
   const width = Math.min(384, viewport.width - margin * 2);
@@ -82,7 +86,7 @@ function TourSession({ onClose, onNavigate, onStepChange, reducedMotion: request
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         event.preventDefault(); event.stopImmediatePropagation();
         if (event.key === 'ArrowRight' && !readyRef.current) return;
-        setIndex(current => Math.max(0, Math.min(liukanTourSteps.length - 1, current + (event.key === 'ArrowRight' ? 1 : -1))));
+        setIndex(current => Math.max(0, Math.min(steps.length - 1, current + (event.key === 'ArrowRight' ? 1 : -1))));
         return;
       }
       if (event.key !== 'Tab') return;
@@ -173,7 +177,7 @@ function TourSession({ onClose, onNavigate, onStepChange, reducedMotion: request
       <div className="liukan-tour-stage" aria-hidden="true"><span className="liukan-tour-orbit" /><LiuKanShanAvatar action={step.action} playKey={step.id} size={136} reducedMotion={motionOff} showAccent /><span className="liukan-tour-chapter">{step.chapter}</span></div>
       <div className="liukan-tour-copy" key={step.id} aria-live="polite" aria-atomic="true"><h2 id="liukan-tour-title" ref={titleRef} tabIndex={-1}>{step.title}</h2><p id="liukan-tour-description">{step.body}</p><p className="liukan-tour-hint">{step.hint}</p></div>
       {!target && <p className="liukan-tour-loading" role="status">{navigationError || '正在打开这一页的对应模块…'}{navigationError && <button onClick={() => setAttempt(value => value + 1)}>重新打开</button>}</p>}
-      <div className="liukan-tour-progress" aria-label={`第 ${index + 1} 步，共 ${liukanTourSteps.length} 步`}><span>{String(index + 1).padStart(2, '0')} <i>/ {liukanTourSteps.length}</i></span><div aria-hidden="true"><span style={{ width: `${(index + 1) / liukanTourSteps.length * 100}%` }} /></div></div>
+      <div className="liukan-tour-progress" aria-label={`第 ${index + 1} 步，共 ${steps.length} 步`}><span>{String(index + 1).padStart(2, '0')} <i>/ {steps.length}</i></span><div aria-hidden="true"><span style={{ width: `${(index + 1) / steps.length * 100}%` }} /></div></div>
       <footer className="liukan-tour-footer"><button type="button" className="liukan-tour-previous" disabled={index === 0} onClick={() => setIndex(value => value - 1)}><ArrowLeft size={15} />上一步</button><button type="button" className="liukan-tour-next" disabled={!target} onClick={() => isLast ? close('complete') : setIndex(value => value + 1)}>{isLast ? '我知道怎么开始了' : index === 0 ? '带我看看' : '继续看看'}{isLast ? <Check size={16} /> : <ArrowRight size={16} />}</button></footer>
       <button type="button" className="liukan-tour-later" onClick={() => close('later')}>我先自己逛逛</button>
     </section>

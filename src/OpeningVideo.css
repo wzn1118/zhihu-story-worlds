@@ -1,0 +1,12 @@
+.opening-video { position: fixed; inset: 0; z-index: 20000; background: #080b10; color: #fff; height: 100dvh; overflow: hidden; font-family: 'Noto Sans SC', sans-serif; }
+.opening-video video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.opening-video-top, .opening-video-bottom { position: absolute; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px max(24px, env(safe-area-inset-right)) 24px max(24px, env(safe-area-inset-left)); }
+.opening-video-top { top: 0; padding-top: max(24px, env(safe-area-inset-top)); background: linear-gradient(#0009, transparent); }
+.opening-video-top > span { font-family: var(--serif); font-size: 24px; letter-spacing: 4px; }
+.opening-video-top small { font: 10px sans-serif; letter-spacing: 2px; margin-left: 12px; }
+.opening-video-bottom { bottom: 0; padding-bottom: max(24px, env(safe-area-inset-bottom)); background: linear-gradient(transparent, #0009); font-size: 12px; letter-spacing: 2px; }
+.opening-video-bottom > div { display: flex; gap: 8px; }
+.opening-video button { min-height: 44px; padding: 10px 16px; border: 1px solid #ffffff50; border-radius: 24px; background: #080b1099; color: #fff; font-size: 12px; letter-spacing: 1px; }
+.opening-video button:hover { background: #ffffff26; border-color: #ffffffaa; }
+.opening-video button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+@media (max-width: 600px) { .opening-video-top, .opening-video-bottom { padding-left: 16px; padding-right: 16px; } .opening-video-top small { display: none; } .opening-video-bottom > span { font-size: 10px; letter-spacing: 1px; } }

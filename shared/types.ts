@@ -2,7 +2,9 @@ export type SourceMode = 'live' | 'cache';
 
 export interface ZhihuOrigin {
   kind: 'zhihu-story' | 'zhihu-answer' | 'zhihu-article';
-  contentScope?: 'search-excerpt' | 'webpage-selection';
+  contentScope?: 'search-excerpt' | 'webpage-selection' | 'favorite-summary' | 'question-answer-excerpt';
+  /** Browser-observed page state; expanded does not claim the entire original work. */
+  webpageScope?: 'excerpt' | 'expanded';
   workId: string;
   sourceUrl: string;
   originalUrl?: string;
@@ -189,7 +191,7 @@ export interface GameWorld {
   summary: string;
   ink: Record<string, unknown>;
   clueVariables: Record<string, string>;
-  adaptation: { scope: 'based-on-api-excerpt' | 'based-on-imported-source' | 'original-seed'; adultCast: true; note: string };
+  adaptation: { scope: 'based-on-api-excerpt' | 'based-on-favorite-summary' | 'based-on-imported-source' | 'original-seed'; adultCast: true; note: string };
   generated?: { projectId: string; revision: number; artReady: boolean; mode?: 'fast' | 'full'; illustrationMode?: 'none' | 'image2' | 'gpt6'; editorial?: { draftHash: string; reviewedAt: string } };
 }
 
@@ -198,4 +200,3 @@ export type World = GameWorld;
 export interface ApiError {
   error: { code: string; message: string; status: number };
 }
-

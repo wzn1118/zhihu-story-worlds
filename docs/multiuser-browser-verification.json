@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-09-14T11:02:19.383272+00:00",
+  "release": "/data/zhihu-project/releases/oauth-multiuser-20260914",
+  "oauth": {
+    "appId": "580",
+    "registeredCallback": "https://zhihu.hegelsalon.com/auth/callback",
+    "platformSavedAndReadBack": true,
+    "actualLoginSucceededBeforeAndAfterDeployment": true
+  },
+  "browser": {
+    "publicEnabled": true,
+    "engine": "chromium",
+    "accountProfilesIsolated": true,
+    "liveTwoAccounts": {
+      "httpStatuses": [
+        200,
+        200
+      ],
+      "states": [
+        "login-required",
+        "login-required"
+      ],
+      "cookiesIsolated": true
+    },
+    "productionRuntimeVerified": true,
+    "authenticatedZhihuWebContent": "Requires the user to complete login in their own embedded browser"
+  },
+  "verification": {
+    "candidateBuild": "passed",
+    "candidateTests": {
+      "passed": 54,
+      "failed": 0
+    },
+    "publicBrowserUi": [
+      "desktop drag-to-Liukan",
+      "mobile feed button",
+      "native selectable page",
+      "account-bound requests"
+    ],
+    "accountBrowserUiScenarios": 10,
+    "secretScanHits": 0
+  },
+  "deploymentScope": "OAuth plus account isolation and restored embedded browser; parallel root changes to model discovery, favorites and product intro excluded from this release."
+}

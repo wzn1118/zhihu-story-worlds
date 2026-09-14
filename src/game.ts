@@ -1,3 +1,5 @@
+import { accountFetch } from './account-storage';
+import { accountLocalStorage } from './account-storage';
 import { Story as InkStory } from 'inkjs';
 import type { Choice, GameWorld, SceneNode } from '../shared/types';
 import { resourceVariable } from '../shared/choice-rules';
@@ -121,7 +123,7 @@ export const storageKeys = {
 
 export function readStorage<T>(key: string, fallback: T): T {
   try {
-    const raw = localStorage.getItem(key);
+    const raw = accountLocalStorage.getItem(key);
     if (!raw) return fallback;
     const parsed: unknown = JSON.parse(raw);
     const valid = key === storageKeys.saves ? Array.isArray(parsed) && parsed.length === 3 && parsed.every((entry) => entry === null || isSavedGame(entry))
@@ -207,7 +209,7 @@ export function parseSaveFile(text: string): SavedGame {
 
 export function writeStorage<T>(key: string, value: T): boolean {
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    accountLocalStorage.setItem(key, JSON.stringify(value));
     return true;
   } catch { return false; }
 }
@@ -412,13 +414,22 @@ export function restoreSession(world: GameWorld, saved: SavedGame): Session {
   };
 }
 
+export class ApiError extends Error {
+  constructor(message: string, public status: number, public code: string) { super(message); this.name = 'ApiError'; }
+}
+
 export async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 35_000);
   try {
-    const response = await fetch(url, { ...init, signal: controller.signal });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error?.message ?? `请求失败 (${response.status})`);
+    const response = await accountFetch(url, { ...init, signal: controller.signal });
+    const body = await response.text();
+    let data;
+    try { data = JSON.parse(body); }
+    catch {
+      throw new ApiError(response.ok ? '服务返回的数据暂时无法读取，请稍后重试。' : `请求失败 (${response.status})，请刷新页面后重试。`, response.status, response.ok ? 'INVALID_RESPONSE' : `HTTP_${response.status}`);
+    }
+    if (!response.ok) throw new ApiError(typeof data?.error?.message === 'string' ? data.error.message : `请求失败 (${response.status})`, response.status, typeof data?.error?.code === 'string' ? data.error.code : `HTTP_${response.status}`);
     return (data?.id && data?.storyId && data?.nodes && Array.isArray(data?.characters)
       ? await withPublishedArt(data as GameWorld) : data) as T;
   } catch (error) {

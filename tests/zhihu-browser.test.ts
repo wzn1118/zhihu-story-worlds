@@ -70,6 +70,7 @@ test('a second service leaves a live profile owner untouched', async () => {
 test('native frame readers keep the displayed document and control identities stable', async () => {
   const service = new ZhihuBrowserService();
   const frame = { status: 'ready', frameId: randomUUID(), posts: [{ id: 'selected-source' }], document: { id: randomUUID(), html: '<p>正文</p>' } };
+  Reflect.set(service, 'page', { isClosed: () => false, evaluate: async () => null });
   Reflect.set(service, 'latest', frame);
   Reflect.set(service, 'snapshot', () => { throw new Error('a passive read rebuilt the document'); });
   const [first, second] = await Promise.all([service.frame(), service.frame()]);
@@ -78,7 +79,7 @@ test('native frame readers keep the displayed document and control identities st
 
 test('an initial empty document can refresh after the live page finishes loading', async () => {
   const service = new ZhihuBrowserService();
-  Reflect.set(service, 'page', {});
+  Reflect.set(service, 'page', { isClosed: () => false });
   Reflect.set(service, 'latest', { document: { id: randomUUID() }, posts: [] });
   let refreshed = 0;
   Reflect.set(service, 'snapshot', async () => { refreshed++; return { posts: [{ id: 'loaded' }] }; });

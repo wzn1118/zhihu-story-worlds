@@ -1,0 +1,67 @@
+import assert from 'node:assert/strict';
+import { randomBytes } from 'node:crypto';
+import { chmod, mkdir, writeFile } from 'node:fs/promises';
+import { chromium } from 'playwright';
+
+const base = 'http://103.236.94.87:18080';
+const output = '/data/zhihu-project/shared/public-verification';
+await mkdir(output, { recursive: true });
+const credentials = { email: `public-smoke-${Date.now()}@example.invalid`, password: randomBytes(24).toString('hex'), name: '公网登录验收' };
+const browser = await chromium.launch({ executablePath: '/snap/bin/chromium', headless: true, args: ['--no-sandbox'] });
+const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+const page = await context.newPage();
+const errors = [], api = [];
+page.on('pageerror', error => errors.push(error.message));
+page.on('response', response => { if (response.url().startsWith(`${base}/api/`)) api.push({ path: new URL(response.url()).pathname, status: response.status() }); });
+try {
+  await page.goto(base, { waitUntil: 'networkidle' });
+  await page.getByRole('heading', { name: '登录赤页' }).waitFor();
+  assert.equal((await context.request.get(`${base}/api/stories`)).status(), 401);
+  await page.getByRole('button', { name: '创建新账号' }).click();
+  await page.getByPlaceholder('昵称', { exact: true }).fill(credentials.name);
+  await page.getByPlaceholder('邮箱', { exact: true }).fill(credentials.email);
+  await page.locator('input[type="password"]').fill(credentials.password);
+  const registered = page.waitForResponse(response => response.url() === `${base}/api/auth/register`);
+  await page.getByRole('button', { name: '注册', exact: true }).click();
+  const response = await registered;
+  assert.equal(response.status(), 201);
+  const { user } = await response.json();
+  await writeFile(`${output}/temporary-account.json`, JSON.stringify({ ...credentials, id: user.id }), { mode: 0o600 });
+  assert(!/;\s*Secure(?:;|$)/i.test(response.headers()['set-cookie'] ?? ''));
+  await page.locator('.library-shell').waitFor({ timeout: 60000 });
+  const cookie = (await context.cookies(base)).find(row => row.name === 'redleaf_session');
+  assert(cookie && !cookie.secure && cookie.httpOnly && cookie.sameSite === 'Lax');
+  const me = await (await context.request.get(`${base}/api/auth/me`)).json();
+  assert.equal(me.user?.id, user.id);
+  const libraryResponse = await context.request.get(`${base}/api/stories`);
+  assert.equal(libraryResponse.status(), 200);
+  const library = await libraryResponse.json();
+  assert(library.stories?.length > 0);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.locator('.library-shell').waitFor({ timeout: 60000 });
+  assert.equal(await page.locator('.auth-gate').count(), 0);
+  assert.equal(await page.locator('.library-notice').filter({ hasText: '请先登录' }).count(), 0);
+  await page.screenshot({ path: `${output}/registered-reloaded.png`, fullPage: true });
+  const logout = await context.request.post(`${base}/api/auth/logout`, { data: {} });
+  assert.equal(logout.status(), 204);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.getByRole('heading', { name: '登录赤页' }).waitFor();
+  await page.getByPlaceholder('邮箱', { exact: true }).fill(credentials.email);
+  await page.locator('input[type="password"]').fill(credentials.password);
+  await page.getByRole('button', { name: '登录', exact: true }).click();
+  await page.locator('.library-shell').waitFor({ timeout: 60000 });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.locator('.library-shell').waitFor({ timeout: 60000 });
+  await context.storageState({ path: `${output}/temporary-browser-state.json` });
+  await chmod(`${output}/temporary-browser-state.json`, 0o600);
+  const result = { at: new Date().toISOString(), base, checks: ['unauthenticated protection', 'browser registration', 'HTTP session cookie saved', 'authenticated library', 'reload keeps registration session', 'logout', 'browser password login', 'reload keeps login session'], stories: library.stories.length, playable: library.stories.filter(row => row.playable).length, errors, api };
+  await writeFile(`${output}/login-result.json`, JSON.stringify(result, null, 2));
+  console.log(JSON.stringify(result));
+  assert.equal(errors.length, 0);
+} catch (error) {
+  await page.screenshot({ path: `${output}/failure.png`, fullPage: true }).catch(() => {});
+  console.log(JSON.stringify({ errors, api, text: (await page.locator('body').innerText()).slice(0,1500) }));
+  throw error;
+} finally {
+  await browser.close();
+}

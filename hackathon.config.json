@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "projectName": "赤页",
+  "projectSlug": "redleaf",
+  "oauth": {
+    "enabled": true,
+    "appId": "580",
+    "redirectUri": "https://zhihu.hegelsalon.com/auth/callback"
+  },
+  "host": "127.0.0.1",
+  "port": 4173
+}

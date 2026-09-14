@@ -1,4 +1,4 @@
-import type { GameWorld } from './types';
+import type { GameWorld, ZhihuOrigin } from './types';
 import type { SourceScope } from './workshop';
 import { originalStoryLinks } from './original-links';
 
@@ -14,9 +14,9 @@ export function zhihuImage(value: unknown): string | undefined {
   return undefined;
 }
 
-export const sourceScopeLabel = (scope: SourceScope) => scope === 'zhihu-excerpt' ? '知乎原作节选' : scope === 'original-seed' ? '原创种子' : '用户导入';
-export const isZhihuWorld = (world: GameWorld) => Boolean(world.source.origin) || world.adaptation.scope === 'based-on-api-excerpt';
-export const worldSourceLabel = (world: GameWorld) => isZhihuWorld(world) ? '知乎原作' : world.adaptation.scope === 'original-seed' ? '原创种子' : '导入原文';
+export const sourceScopeLabel = (scope: SourceScope, origin?: Pick<ZhihuOrigin, 'contentScope'>) => origin?.contentScope === 'question-answer-excerpt' ? '知乎回答接口节选' : origin?.contentScope === 'favorite-summary' ? '知乎收藏摘要' : scope === 'zhihu-excerpt' ? '知乎原作节选' : scope === 'original-seed' ? '原创种子' : '用户导入';
+export const isZhihuWorld = (world: GameWorld) => Boolean(world.source.origin) || ['based-on-api-excerpt', 'based-on-favorite-summary'].includes(world.adaptation.scope);
+export const worldSourceLabel = (world: GameWorld) => world.source.origin?.contentScope === 'favorite-summary' || world.adaptation.scope === 'based-on-favorite-summary' ? '知乎收藏摘要' : isZhihuWorld(world) ? '知乎原作' : world.adaptation.scope === 'original-seed' ? '原创种子' : '导入原文';
 
 export interface OriginalSourceReference {
   id?: string;
@@ -25,7 +25,7 @@ export interface OriginalSourceReference {
   sourceUrl?: string;
   originalUrl?: string;
   url?: string;
-  origin?: { workId: string; sourceUrl: string; originalUrl?: string };
+  origin?: { workId: string; sourceUrl: string; originalUrl?: string; contentScope?: ZhihuOrigin['contentScope'] };
 }
 
 export function originalWorkUrl(value: unknown): string | undefined {

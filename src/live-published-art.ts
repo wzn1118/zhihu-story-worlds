@@ -1,9 +1,10 @@
 import type { GameWorld } from '../shared/types';
 import type { Session } from './game';
+import { ART_MANIFESTS, reconcileArtManifestRevision, type ArtManifestRevision } from './art-manifest-cache';
 
 export const ART_REFRESH_INTERVAL = 60_000;
-export const ART_MANIFESTS = ['/generated-art/production-manifest.json', '/generated-art/character-cutouts.json'] as const;
-export type ArtRevisions = Record<string, { etag: string | null; modified: string | null }>;
+export { ART_MANIFESTS };
+export type ArtRevisions = Record<string, ArtManifestRevision>;
 
 /** Revalidate small headers; artwork and world data are fetched only after a revision changes. */
 export async function checkArtRevisions(previous: ArtRevisions = {}): Promise<{ revisions: ArtRevisions; changed: boolean }> {
@@ -17,6 +18,7 @@ export async function checkArtRevisions(previous: ArtRevisions = {}): Promise<{ 
     return [url, { etag: response.headers.get('etag'), modified: response.headers.get('last-modified') }] as const;
   }));
   const revisions = Object.fromEntries(entries);
+  for (const [url, revision] of entries) reconcileArtManifestRevision(url, revision);
   return { revisions, changed: entries.some(([url, revision]) => !previous[url]
     || (!revision.etag && !revision.modified)
     || revision.etag !== previous[url].etag || revision.modified !== previous[url].modified) };

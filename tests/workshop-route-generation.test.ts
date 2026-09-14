@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { DraftScene, ImportedSource, RouteDraft, StoryOutline } from '../shared/workshop.ts';
 import { jsonFile, writeJson } from '../server/story-workshop.ts';
-import { assertSceneGroup, generateWorkshopRoute, routeGraphOf, routeSingleSceneSchema, routeSceneCatalog, assertSingleScene } from '../server/workshop-route-generation.ts';
+import { assertSceneGroup, generateWorkshopRoute, routeGraphOf, routeSingleSceneSchema, routeSceneCatalog, routeNarrativeContext, assertSingleScene } from '../server/workshop-route-generation.ts';
 import { validateSchema } from '../server/workshop-schema.ts';
 import type { runCreative } from '../server/workshop-creative.ts';
 
@@ -62,6 +62,18 @@ test('a relay route writes one complete scene per request from the real outline,
       const output = scene(f.draft, prompt);
       assert.equal(schema, routeSingleSceneSchema); assert.equal('scenes' in output, false);
       assert.ok(prompt.includes('SCENE_CATALOG_DATA='));
+      const context = JSON.parse(prompt.split('\nNARRATIVE_CONTEXT_DATA=')[1].split('\n')[0]) as ReturnType<typeof routeNarrativeContext>;
+      if (label === 'scene-2') {
+        assert.equal(context.entrancesComplete, false);
+        assert.deepEqual(context.unresolvedPredecessors, ['route_a_s0']);
+        assert.deepEqual(context.incomingChoices, []);
+      }
+      if (label === 'scene-3') {
+        assert.equal(context.entrancesComplete, true);
+        assert.deepEqual(context.incomingChoices.map(edge => edge.choice.feedback), [f.draft.scenes[1].choices[0].feedback]);
+        assert.deepEqual(context.recentRelatedProse.map(scene => scene.id), ['route_a_s0', 'route_a_s1']);
+        assert.ok(prompt.includes('DEFINED_CLUES_DATA=["cable_evidence"]'));
+      }
       validateSchema(schema, output); return output;
     } finally { active--; }
   });
@@ -70,6 +82,50 @@ test('a relay route writes one complete scene per request from the real outline,
   assertPairOrder(calls, expectedCalls); assert.equal(ceiling, 2);
   assert.equal(JSON.stringify(f.source), sourceBytes); assert.equal(await readFile(receipt, 'utf8'), receiptBytes);
   await generateWorkshopRoute(f.source, f.outline, f.route, { directory, attempt: 2, execute: executor(async () => { throw new Error('A completed route must be reused'); }) });
+});
+
+test('merge context keeps entrance effects and shared clues distinct from unrelated written branches', () => {
+  const f = fixture(), scenes = structuredClone(f.draft.scenes.slice(0, 4)), catalog = routeSceneCatalog(f.route);
+  const [start, left, right, unrelated] = scenes;
+  start.choices[0] = { ...start.choices[0], next: left.id, gains: ['common_record'] };
+  start.choices[1] = { ...start.choices[1], next: right.id, gains: ['common_record'] };
+  left.text = ['The witness folds the note. “You can read it. My name stays out.”', prose];
+  right.text = ['The operator opens the drawer without asking. The witness leaves.', prose];
+  left.choices = [{ ...left.choices[0], next: catalog[4].id, needs: ['common_record', 'battery>=1'], gains: ['private_note'], feedback: 'The witness lets you keep the note, then takes back the key.' }];
+  right.choices = [{ ...right.choices[0], next: catalog[4].id, needs: [], gains: ['drawer_record'], feedback: 'You carry out the drawer. The witness refuses to come with you.' }];
+  unrelated.text = ['UNRELATED BRANCH PROSE SHOULD NOT BECOME A MEMORY', prose];
+  unrelated.choices = [{ ...unrelated.choices[0], next: catalog.at(-1)!.id, needs: [], gains: ['unrelated_secret'] }];
+  const snapshot = JSON.stringify(scenes), context = routeNarrativeContext(scenes, catalog, 4, f.outline.resources);
+  assert.equal(context.entrancesComplete, true);
+  assert.deepEqual(context.sharedClues, ['common_record']);
+  assert.deepEqual(context.incomingChoices.map(edge => edge.choice), [left.choices[0], right.choices[0]]);
+  assert.deepEqual(context.incomingChoices.map(edge => edge.sharedCluesOnThisArrival), [['common_record', 'private_note'], ['common_record', 'drawer_record']]);
+  assert.deepEqual(context.recentRelatedProse.map(scene => scene.id), [left.id, right.id]);
+  assert.deepEqual(context.recentRelatedProse.map(scene => scene.text), [left.text, right.text]);
+  assert.equal(JSON.stringify(context).includes('unrelated_secret'), false);
+  assert.equal(JSON.stringify(context).includes('UNRELATED BRANCH PROSE'), false);
+  assert.equal(JSON.stringify(scenes), snapshot);
+
+  const incomplete = routeNarrativeContext(scenes.filter(scene => scene.id !== right.id), catalog, 4, f.outline.resources);
+  assert.equal(incomplete.entrancesComplete, false);
+  assert.deepEqual(incomplete.unresolvedPredecessors, [right.id]);
+  assert.deepEqual(incomplete.sharedClues, []);
+  assert.deepEqual(incomplete.incomingChoices[0].sharedCluesOnThisArrival, ['common_record', 'private_note']);
+});
+
+test('recent route prose has a fixed budget and preserves complete original paragraphs', () => {
+  const f = fixture(), scenes = structuredClone(f.draft.scenes.slice(0, 8));
+  for (const [index, scene] of scenes.entries()) scene.text = Array.from({ length: 3 }, (_, paragraph) => `${index}:${paragraph} ` + '原'.repeat(596));
+  const context = routeNarrativeContext(scenes, routeSceneCatalog(f.route), 8, f.outline.resources);
+  assert.equal(context.recentRelatedProse.length, 2);
+  assert.deepEqual(context.recentRelatedProse.map(scene => scene.id), ['route_a_s6', 'route_a_s7']);
+  assert.equal(context.recentRelatedProse.flatMap(scene => scene.text).reduce((length, text) => length + text.length, 0), 1800);
+  for (const excerpt of context.recentRelatedProse) {
+    const original = scenes.find(scene => scene.id === excerpt.id)!;
+    assert.ok(excerpt.text.every(paragraph => original.text.includes(paragraph)));
+    assert.equal(excerpt.text.length + excerpt.omittedParagraphs, original.text.length);
+  }
+  assert.deepEqual(context.recentRelatedProse[1].text, scenes[7].text);
 });
 
 test('an existing validated route or completed legacy output bypasses all small requests byte-for-byte', async t => {

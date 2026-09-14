@@ -3,13 +3,16 @@ import type { LiukanWorldLoader } from '../../shared/liukan.ts';
 import { LiukanError, LiukanZhidaService } from './zhida.ts';
 
 /** Mount after the app's JSON parser and local-origin guard at /api/liukan. */
-export function createLiukanRouter(loadWorld: LiukanWorldLoader, service = new LiukanZhidaService(loadWorld)): Router {
+export function createLiukanRouter(loadWorld: LiukanWorldLoader, service = new LiukanZhidaService(loadWorld), authenticatedPlayerId?: string): Router {
   const router = Router();
-  router.post('/chat', async (request, response) => response.json(await service.recall(request.body)));
-  router.post('/remember', async (request, response) => response.json({ memories: await service.remember(request.body) }));
+  // A public caller cannot select another account's persisted memory. Preserve
+  // the optional browser playerId only in the standalone local workbench.
+  const progress = (body: any) => authenticatedPlayerId && body && typeof body === 'object' && !Array.isArray(body) ? { ...body, playerId: authenticatedPlayerId } : body;
+  router.post('/chat', async (request, response) => response.json(await service.recall(progress(request.body))));
+  router.post('/remember', async (request, response) => response.json({ memories: await service.remember(progress(request.body)) }));
   router.get('/memories', async (request, response) => {
     if (request.query.playerId !== undefined && typeof request.query.playerId !== 'string') throw new LiukanError('INVALID_PLAYER', '玩家记录标识有误。');
-    const playerId = request.query.playerId;
+    const playerId = authenticatedPlayerId ?? request.query.playerId;
     const memories = await service.memories(playerId);
     response.json({ memories, profile: await service.memoryProfile(playerId) });
   });

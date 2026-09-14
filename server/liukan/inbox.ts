@@ -3,6 +3,7 @@ import { resolve, join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { Router, type ErrorRequestHandler, type Request } from 'express';
 import type { LiukanInboxPost, LiukanPostAnswer } from '../../shared/liukan-inbox.ts';
+import { sameAnswerKey, uniqueInboxPosts } from '../../shared/liukan-inbox-versions.ts';
 import { ZhihuDiscoveryService } from '../zhihu-discovery.ts';
 import { hashSource, StoryWorkshop, writeJson, jsonFile } from '../story-workshop.ts';
 import { LiukanError } from './zhida.ts';
@@ -31,6 +32,7 @@ export function postReadingContext(text: string, question: string, maxCharacters
 
 export class LiukanInboxService {
   private active = new Map<string, Promise<unknown>>();
+  private sourceWrites = new Map<string, Promise<unknown>>();
   private activeReplies = new Map<string, { fingerprint: string; task: Promise<LiukanPostAnswer> }>();
   private replies = new Map<string, { fingerprint: string; reply: LiukanPostAnswer; at: number }>();
   constructor(private discovery: ZhihuDiscoveryService, private workshop: StoryWorkshop, private root = resolve('.local/liukan-inbox'), private answerer: LiukanAnswerer = callConfiguredLiukan) {}
@@ -39,6 +41,12 @@ export class LiukanInboxService {
     const prior = this.active.get(key); if (prior) return prior as Promise<T>;
     const task = run(); this.active.set(key, task);
     try { return await task; } finally { this.active.delete(key); }
+  }
+  private async serialSource<T>(key: string, run: () => Promise<T>): Promise<T> {
+    const prior = this.sourceWrites.get(key);
+    const task = (prior ? prior.catch(() => undefined) : Promise.resolve()).then(run);
+    this.sourceWrites.set(key, task);
+    try { return await task; } finally { if (this.sourceWrites.get(key) === task) this.sourceWrites.delete(key); }
   }
   async get(id: unknown): Promise<LiukanInboxPost> {
     const key = this.id(id);
@@ -72,16 +80,22 @@ export class LiukanInboxService {
       // block every valid record from appearing in the companion panel.
       try { return await this.get(name.slice(0, -5)); } catch { return null; }
     }));
-    return rows.filter((row): row is LiukanInboxPost => Boolean(row)).sort((a, b) => b.learnedAt.localeCompare(a.learnedAt));
+    return uniqueInboxPosts(rows.filter((row): row is LiukanInboxPost => Boolean(row)));
   }
   async learn(candidateId: unknown): Promise<LiukanInboxPost> {
     const id = this.id(candidateId);
     return this.one(`learn:${id}`, async () => {
       const source = await this.discovery.source(id);
-      const existing = await this.get(id).catch((error: LiukanError) => { if (error.code !== 'POST_NOT_LEARNED') throw error; return null; });
-      if (existing) return existing;
       const post: LiukanInboxPost = { id, learnedAt: new Date().toISOString(), candidate: { id, title: source.title, author: source.author, excerpt: source.text, origin: source.origin!, characters: source.text.length, sourceHash: hashSource(source), query: '' } };
-      await mkdir(this.root, { recursive: true }); await writeJson(join(this.root, `${id}.json`), post); return post;
+      return this.serialSource(sameAnswerKey(post), async () => {
+        const existing = await this.get(id).catch((error: LiukanError) => { if (error.code !== 'POST_NOT_LEARNED') throw error; return null; });
+        const current = (await this.list()).find(row => sameAnswerKey(row) === sameAnswerKey(post));
+        const [best] = uniqueInboxPosts([...(current ? [current] : []), existing ?? post]);
+        if (best.id !== id || existing) return best;
+        // Each text snapshot retains its own content hash. Previous IDs remain
+        // readable for reading notes, chat history and already imported games.
+        await mkdir(this.root, { recursive: true }); await writeJson(join(this.root, `${id}.json`), post); return post;
+      });
     });
   }
   async chat(id: unknown, input: unknown): Promise<LiukanPostAnswer> {

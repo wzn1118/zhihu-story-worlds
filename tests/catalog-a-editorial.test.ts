@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { recordedStoryExcerpt } from './recorded-story-excerpt.ts';
+import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
 import type { AuthoredWorld } from '../content/worlds.ts';
@@ -160,8 +159,9 @@ for (const authored of catalogWorldsA) {
     context.diagnostic(JSON.stringify({ states: graph.states.length, edges: graph.edgePaths.size, exclusive: sets.map(s => s.size) }));
   });
 
-  test(`${world.id}: unchanged exact attribution is backed by the recorded API excerpt`, context => {
-    const data = recordedStoryExcerpt(world.storyId).data;
+  const cachePath = new URL(`../.local/zhihu-cache/story-${world.storyId}.json`, import.meta.url);
+  test(`${world.id}: unchanged exact attribution is backed by the real cached excerpt`, { skip: !existsSync(cachePath) }, context => {
+    const data = JSON.parse(readFileSync(cachePath, 'utf8')).data;
     assert.equal(world.source.title, data.chapter_name);
     assert.equal(world.source.author, data.author_name);
     assert.equal(world.storyId, data.work_id);

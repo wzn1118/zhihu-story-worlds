@@ -3,12 +3,14 @@ import { promises as fs } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import express, { type RequestHandler, type Response } from 'express';
+import { zhihuOAuth, isPublicOAuthMode } from './zhihu-oauth.ts';
 
 const scrypt = promisify(scryptCallback);
 const storePath = resolve(process.env.AUTH_STORE ?? '.local/auth/users.json');
 const sessionSecret = process.env.SESSION_SECRET ?? 'dev-only-change-this-session-secret';
 const cookieName = 'redleaf_session';
 export type User = { id: string; email: string; name: string; passwordHash: string; createdAt: string };
+export type SessionUser = { id: string; email?: string; name: string; createdAt?: string; avatarUrl?: string; provider?: 'zhihu' | 'local' };
 type Store = { users: User[] };
 let writeQueue = Promise.resolve();
 
@@ -28,20 +30,35 @@ async function verifyPassword(password: string, encoded: string) {
 function sign(value: string) { return createHmac('sha256', sessionSecret).update(value).digest('base64url'); }
 function issueSession(userId: string) { const value = `${userId}.${Date.now() + 1000 * 60 * 60 * 24 * 14}`; return `${value}.${sign(value)}`; }
 function sessionUserId(token?: string) { if (!token) return null; const [id, expiry, signature] = token.split('.'); const value = `${id}.${expiry}`; if (!id || !expiry || !signature || Number(expiry) < Date.now() || sign(value) !== signature) return null; return id; }
-function isSecureRequest(request: Pick<express.Request, 'secure' | 'headers'>) {
-  return request.secure === true || request.headers?.['x-forwarded-proto'] === 'https';
+function setSession(response: Response, userId: string) { response.cookie(cookieName, issueSession(userId), { httpOnly: true, sameSite: 'lax', secure: process.env.SESSION_COOKIE_SECURE !== '0' && process.env.NODE_ENV === 'production', maxAge: 1000 * 60 * 60 * 24 * 14, path: '/' }); }
+function publicUser(user: SessionUser) { return { id: user.id, email: user.email, name: user.name, createdAt: user.createdAt, avatarUrl: user.avatarUrl, provider: user.provider ?? 'local' }; }
+export async function currentUser(request: { headers: { cookie?: string } }): Promise<SessionUser | null> {
+  const oauthUser = zhihuOAuth.currentUser(request);
+  if (oauthUser || isPublicOAuthMode()) return oauthUser;
+  const token = request.headers.cookie?.split(';').map(part => part.trim()).find(part => part.startsWith(`${cookieName}=`))?.slice(cookieName.length + 1);
+  const id = sessionUserId(token);
+  if (!id) return null;
+  return (await readStore()).users.find(user => user.id === id) ?? null;
 }
-function setSession(response: Response, userId: string, secure: boolean) { response.cookie(cookieName, issueSession(userId), { httpOnly: true, sameSite: 'lax', secure, maxAge: 1000 * 60 * 60 * 24 * 14, path: '/' }); }
-function publicUser(user: User) { return { id: user.id, email: user.email, name: user.name, createdAt: user.createdAt }; }
-export async function currentUser(request: { headers: { cookie?: string } }) { const token = request.headers.cookie?.split(';').map(part => part.trim()).find(part => part.startsWith(`${cookieName}=`))?.slice(cookieName.length + 1); const id = sessionUserId(token); if (!id) return null; return (await readStore()).users.find(user => user.id === id) ?? null; }
-export function requestUser(request: express.Request): User | null { return (request as express.Request & { user?: User }).user ?? null; }
-export async function attachCurrentUser(request: express.Request, _response: express.Response, next: express.NextFunction) { const user = await currentUser(request); if (user) (request as express.Request & { user?: User }).user = user; next(); }
+export function requestUser(request: express.Request): SessionUser | null { return (request as express.Request & { user?: SessionUser }).user ?? null; }
+export async function attachCurrentUser(request: express.Request, _response: express.Response, next: express.NextFunction) { const user = await currentUser(request); if (user) (request as express.Request & { user?: SessionUser }).user = user; next(); }
 export function authRequired(): RequestHandler { return async (request, response, next) => { if (await currentUser(request)) return next(); response.status(401).json({ error: { code: 'AUTH_REQUIRED', message: '请先登录。', status: 401 } }); }; }
 export function authRouter() {
   const router = express.Router();
-  router.get('/me', async (request, response) => { const user = await currentUser(request); response.json({ user: user ? publicUser(user) : null }); });
-  router.post('/register', async (request, response) => { const email = String(request.body?.email ?? '').trim().toLowerCase(); const name = String(request.body?.name ?? '').trim(); const password = String(request.body?.password ?? ''); if (!/^\S+@\S+\.\S+$/.test(email) || name.length < 1 || name.length > 80 || password.length < 8 || password.length > 200) return response.status(400).json({ error: { code: 'INVALID_REGISTRATION', message: '请输入有效邮箱、昵称和至少8位密码。', status: 400 } }); const store = await readStore(); if (store.users.some(user => user.email === email)) return response.status(409).json({ error: { code: 'EMAIL_EXISTS', message: '该邮箱已注册。', status: 409 } }); const user: User = { id: randomBytes(16).toString('hex'), email, name, passwordHash: await hashPassword(password), createdAt: new Date().toISOString() }; store.users.push(user); await saveStore(store); setSession(response, user.id, isSecureRequest(request)); response.status(201).json({ user: publicUser(user) }); });
-  router.post('/login', async (request, response) => { const email = String(request.body?.email ?? '').trim().toLowerCase(); const password = String(request.body?.password ?? ''); const user = (await readStore()).users.find(candidate => candidate.email === email); if (!user || !(await verifyPassword(password, user.passwordHash))) return response.status(401).json({ error: { code: 'INVALID_CREDENTIALS', message: '邮箱或密码不正确。', status: 401 } }); setSession(response, user.id, isSecureRequest(request)); response.json({ user: publicUser(user) }); });
-  router.post('/logout', (request, response) => { response.clearCookie(cookieName, { httpOnly: true, sameSite: 'lax', secure: isSecureRequest(request), path: '/' }); response.status(204).end(); });
+  router.get('/me', async (request, response) => {
+    const user = await currentUser(request), oauth = zhihuOAuth.status(request);
+    response.json({ user: user ? publicUser(user) : null, authentication: {
+      required: process.env.PUBLIC_MODE === '1', provider: isPublicOAuthMode() ? 'zhihu' : 'local',
+      configured: isPublicOAuthMode() ? oauth.configured : true, loginUrl: '/api/oauth/start',
+      browserAvailable: true,
+    }, ...(isPublicOAuthMode() && oauth.error ? { error: oauth.error } : {}) });
+  });
+  router.use(['/register', '/login'], (_request, response, next) => {
+    if (isPublicOAuthMode()) return response.status(403).json({ error: { code: 'OAUTH_REQUIRED', message: '请使用知乎账号登录。', status: 403 } });
+    next();
+  });
+  router.post('/register', async (request, response) => { const email = String(request.body?.email ?? '').trim().toLowerCase(); const name = String(request.body?.name ?? '').trim(); const password = String(request.body?.password ?? ''); if (!/^\S+@\S+\.\S+$/.test(email) || name.length < 1 || name.length > 80 || password.length < 8 || password.length > 200) return response.status(400).json({ error: { code: 'INVALID_REGISTRATION', message: '请输入有效邮箱、昵称和至少8位密码。', status: 400 } }); const store = await readStore(); if (store.users.some(user => user.email === email)) return response.status(409).json({ error: { code: 'EMAIL_EXISTS', message: '该邮箱已注册。', status: 409 } }); const user: User = { id: randomBytes(16).toString('hex'), email, name, passwordHash: await hashPassword(password), createdAt: new Date().toISOString() }; store.users.push(user); await saveStore(store); setSession(response, user.id); response.status(201).json({ user: publicUser(user) }); });
+  router.post('/login', async (request, response) => { const email = String(request.body?.email ?? '').trim().toLowerCase(); const password = String(request.body?.password ?? ''); const user = (await readStore()).users.find(candidate => candidate.email === email); if (!user || !(await verifyPassword(password, user.passwordHash))) return response.status(401).json({ error: { code: 'INVALID_CREDENTIALS', message: '邮箱或密码不正确。', status: 401 } }); setSession(response, user.id); response.json({ user: publicUser(user) }); });
+  router.post('/logout', (request, response) => { zhihuOAuth.logout(request, response); response.clearCookie(cookieName, { httpOnly: true, sameSite: 'lax', secure: process.env.SESSION_COOKIE_SECURE !== '0' && process.env.NODE_ENV === 'production', path: '/' }); response.status(204).end(); });
   return router;
 }

@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, open, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { DraftChoice, DraftScene, ImportedSource, PlotRoute, RouteDraft, StoryOutline } from '../shared/workshop.ts';
-import { workshopReferencedClues } from '../shared/workshop-conditions.ts';
+import { parseWorkshopNeeds, workshopReferencedClues } from '../shared/workshop-conditions.ts';
 import { jsonFile, writeJson } from './story-workshop.ts';
 import { playerChoiceStyle, runCreative, wholeStoryStyle } from './workshop-creative.ts';
 import { workshopArtDirection, workshopSceneArtBriefInstruction } from './workshop-art-direction.ts';
@@ -85,6 +85,56 @@ export function routeSceneCatalog(route: PlotRoute): RouteSceneSlot[] {
   }));
   return slots.concat(route.endings.map(ending => ({ id: ending.id.startsWith(route.id + '_') ? ending.id : route.id + '_' + ending.id, beats: [ending.cause], ending })));
 }
+/** Context describes possible entrances, never a playthrough of all generated scenes. */
+export function routeNarrativeContext(scenes: DraftScene[], catalog: RouteSceneSlot[], index: number, resources: StoryOutline['resources']) {
+  const selected = catalog[index], byId = new Map(scenes.map(scene => [scene.id, scene]));
+  const earlier = catalog.slice(0, index);
+  const unresolvedPredecessors = earlier.filter(slot => !slot.ending && !byId.has(slot.id)).map(slot => slot.id);
+  const incoming = (id: string) => scenes.flatMap(scene => scene.choices.filter(choice => choice.next === id).map(choice => ({ scene, choice })));
+  const sharedAtScene = new Map<string, Set<string>>();
+  const arrivalClues = (scene: DraftScene, choice: DraftChoice) => new Set([
+    ...sharedAtScene.get(scene.id) ?? [],
+    ...parseWorkshopNeeds(choice.needs, resources).allClues ?? [],
+    ...choice.gains,
+  ]);
+  const intersection = (sets: Set<string>[]) => new Set(sets.length ? [...sets[0]].filter(clue => sets.every(set => set.has(clue))) : []);
+  let missingEarlierDecision = false;
+  // A missing parallel predecessor can still introduce a new entrance. Treat its
+  // state as unknown; definitions from other branches are not player inventory.
+  for (const slot of catalog.slice(0, index + 1)) {
+    sharedAtScene.set(slot.id, missingEarlierDecision ? new Set() : intersection(incoming(slot.id).map(({ scene, choice }) => arrivalClues(scene, choice))));
+    if (!slot.ending && !byId.has(slot.id)) missingEarlierDecision = true;
+  }
+  const incomingChoices = incoming(selected.id).map(({ scene, choice }) => ({
+    fromSceneId: scene.id, fromTitle: scene.title, choice,
+    sharedCluesOnThisArrival: [...arrivalClues(scene, choice)],
+  }));
+  const ancestors = new Set<string>(), pending = incomingChoices.map(edge => edge.fromSceneId);
+  while (pending.length) {
+    const id = pending.pop()!;
+    if (ancestors.has(id)) continue;
+    ancestors.add(id); pending.push(...incoming(id).map(edge => edge.scene.id));
+  }
+  // Keep original complete paragraphs, with a fixed budget independent of route
+  // length. Other branches cannot become the player's recent memories by recency.
+  let proseBudget = 1800;
+  const recentRelatedProse = earlier.filter(slot => ancestors.has(slot.id)).slice(-2).reverse().map(slot => {
+    const scene = byId.get(slot.id)!;
+    const text: string[] = [];
+    for (const paragraph of [...scene.text].reverse()) {
+      if (paragraph.length > proseBudget) break;
+      text.unshift(paragraph); proseBudget -= paragraph.length;
+    }
+    return { id: scene.id, location: scene.location, time: scene.time, speaker: scene.speaker, text, omittedParagraphs: scene.text.length - text.length };
+  }).reverse();
+  return {
+    entrancesComplete: unresolvedPredecessors.length === 0,
+    unresolvedPredecessors,
+    incomingChoices,
+    sharedClues: [...sharedAtScene.get(selected.id) ?? []],
+    recentRelatedProse,
+  };
+}
 export function assertSingleScene(scene: DraftScene, index: number, catalog: RouteSceneSlot[], outline: StoryOutline, knownClues: Set<string>): void {
   validateSchema(routeSingleSceneSchema, scene);
   const slot = catalog[index];
@@ -100,7 +150,7 @@ export function assertSingleScene(scene: DraftScene, index: number, catalog: Rou
   if (new Set(scene.choices.map(choice => choice.next)).size < 2) throw new Error(slot.id + ': 选项必须至少有两个不同去向。');
   if (!scene.choices.some(choice => !choice.needs.length && choice.costs.every(cost => cost.delta >= 0))) throw new Error(slot.id + ': 缺少免费出口；至少一个选项必须 needs=[]，且 costs 中不得含负数 delta，保证资源耗尽时仍可行动并承担明确后果。');
   for (const choice of scene.choices) {
-    if (!future.has(choice.next) || choice.costs.some(cost => !outline.resources.some(resource => resource.id === cost.resource)) || workshopReferencedClues(choice.needs, outline.resources).some(clue => !knownClues.has(clue))) throw new Error(slot.id + ': 使用了未知去向、资源或尚未取得的线索。');
+    if (!future.has(choice.next) || choice.costs.some(cost => !outline.resources.some(resource => resource.id === cost.resource)) || workshopReferencedClues(choice.needs, outline.resources).some(clue => !knownClues.has(clue))) throw new Error(slot.id + ': 使用了未知去向、资源或尚未定义的线索。');
   }
 }
 
@@ -119,7 +169,7 @@ export async function generateWorkshopRoute(source: ImportedSource, outline: Sto
   const legacyOutput = await jsonFile<RouteDraft>(join(options.directory, 'creative', `route-${route.id}.output.json`)).catch(() => null);
   if (legacyOutput) { try { assertFull(legacyOutput); await writeJson(fullFile, legacyOutput); return legacyOutput; } catch { /* incomplete old route stays preserved */ } }
   const context = { source, title: outline.title, summary: outline.summary, opening: outline.opening, player: outline.player, characters: outline.characters, resources: outline.resources, route };
-  const inputHash = createHash('sha256').update(canonical({ protocol: 'route-single-scene-v2', context, routeSingleSceneSchema, instruction, workshopArtDirection, workshopSceneArtBriefInstruction })).digest('hex');
+  const inputHash = createHash('sha256').update(canonical({ protocol: 'route-single-scene-v3-narrative', context, routeSingleSceneSchema, instruction, workshopArtDirection, workshopSceneArtBriefInstruction })).digest('hex');
   const directory = join(options.directory, 'route-parts', route.id, inputHash), creativeDirectory = join(directory, 'creative');
   await mkdir(directory, { recursive: true });
   const execute = options.execute ?? runCreative;
@@ -166,14 +216,17 @@ export async function generateWorkshopRoute(source: ImportedSource, outline: Sto
     const knownClues = new Set(scenes.flatMap(scene => scene.choices.flatMap(choice => choice.gains)));
     const results = await Promise.allSettled(catalog.slice(offset, offset + 2).map((slot, local) => {
       const index = offset + local;
+      const narrativeContext = routeNarrativeContext(scenes, catalog, index, outline.resources);
       const prompt = common + '\n' + workshopArtDirection +
         '\n本次只生成 SELECTED_SCENE_DATA 指定的一场完整小说场景，直接返回单个场景JSON。全部路线事件和结局已有真实大纲，本次不重新规划整条路线、不输出整条路线。其余场景仅供连贯性参考。' +
         '\n场景id必须等于所选id；决策场必须有2至3个选项、至少两个不同next，其中至少一个到 requiredNext 以保持主线完整；其他next只能取 SCENE_CATALOG_DATA 中排在自己后面的ID。选项按当前事件写具体动作，不提前完成未来事件；跳过中间场景须由选项动作与反馈明确交代同等事件或代价，不能跳过后文必需的认识、证据或获救过程。' +
-        '\n每场至少一个 needs=[] 且 costs 没有负数的出口；可以有明确失败代价。资源只用大纲ID，成本要与动作对应并控制主线总消耗在初始资源以内；全路线至少3次有意义的资源消耗、2次线索门槛。needs只能引用 AVAILABLE_CLUES_DATA 中已在前面场景取得的线索，禁止使用当前或未来选项才发放的线索；gains可在具体调查或救助后给出新的线索名。' +
+        '\n每场至少一个 needs=[] 且 costs 没有负数的出口；可以有明确失败代价。资源只用大纲ID，成本要与动作对应并控制主线总消耗在初始资源以内；全路线至少3次有意义的资源消耗、2次线索门槛。needs只能引用 DEFINED_CLUES_DATA 中已在前面场景定义的线索，禁止使用当前或未来选项才发放的线索；gains可在具体调查或救助后给出新的线索名。DEFINED_CLUES_DATA是可能取得的线索名称，绝非玩家已持有清单。' +
+        '\nNARRATIVE_CONTEXT_DATA.incomingChoices是真正指向本场的已写选项：衔接其动作和feedback，尊重各入口的needs、gains、costs。COMPLETED_SCENES_DATA表示已写稿，不代表玩家全部经历；recentRelatedProse仅是相关入口的原文参考，也可能来自不同支路，不得串成同一次经历。汇合正文只承接各入口共有事实和sharedClues；仅某条入口成立的结果留在该选项feedback，使用独有线索的后续选项须有needs，不在共用正文替玩家获取它。若entrancesComplete=false，前面的场景正并发创作，具体过渡尚未确定：依SCENE_CATALOG_DATA保守衔接，不捏造上一次对白、所选动作、伤势、关系变化或资源余额。角色说话与行为承接characters.motive中的私心及关系，不照读大纲。' +
         '\n每场text写2至3段，总计约180至300汉字，用动作、对白和环境推进所选事件；不要复述整条故事。purpose写清这一场具体改变。结局按大纲kind和title原样填写，choices=[]，text写当场结果，resolution另写120至220汉字交代人物、谜底与善后；普通场景ending=null。' + workshopSceneArtBriefInstruction +
         '\nSCENE_CATALOG_DATA=' + JSON.stringify(catalogData) +
         '\nCOMPLETED_SCENES_DATA=' + JSON.stringify(previous) +
-        '\nAVAILABLE_CLUES_DATA=' + JSON.stringify([...knownClues]) +
+        '\nNARRATIVE_CONTEXT_DATA=' + JSON.stringify(narrativeContext) +
+        '\nDEFINED_CLUES_DATA=' + JSON.stringify([...knownClues]) +
         '\nSELECTED_SCENE_DATA=' + JSON.stringify(catalogData[index]);
       return checkpoint<DraftScene>('scene-' + (index + 1), routeSingleSceneSchema, prompt,
         value => assertSingleScene(value, index, catalog, outline, knownClues), 'scenes', [slot.id]);

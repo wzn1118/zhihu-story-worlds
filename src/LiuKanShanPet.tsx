@@ -1,6 +1,9 @@
+import { accountFetch } from './account-storage';
+import { accountLocalStorage } from './account-storage';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { BookOpen, ChevronDown, ExternalLink, Grip, Inbox, LoaderCircle, MessageCircle, Send, Sparkles, X } from 'lucide-react';
 import type { LiukanMemoryRecord, LiukanProgressRequest, LiukanRecallResponse } from '../shared/liukan';
+import { uniqueInboxPosts } from '../shared/liukan-inbox-versions';
 import type { LiukanInboxPost, LiukanPostAnswer } from '../shared/liukan-inbox';
 import type { WorkshopProject } from '../shared/workshop';
 import { isLiukanDrag, LIUKAN_FEED_EVENT, parseLiukanDrop, parseLiukanFeed, type LiukanDrop } from './liukan-drop';
@@ -30,6 +33,7 @@ export interface LiuKanShanPetProps {
   worldTitle?: string;
   isEnding?: boolean;
   reducedMotion?: boolean;
+  browserAvailable?: boolean;
   onProject?: (project: WorkshopProject) => void;
   onReadPost?: (post: LiukanInboxPost) => void;
 }
@@ -38,7 +42,7 @@ export { clampPetPosition, LIU_KAN_SHAN_OPEN_KEY, LIU_KAN_SHAN_POSITION_KEY, typ
 
 function readPosition(): PetPosition | null {
   try {
-    const raw = localStorage.getItem(LIU_KAN_SHAN_POSITION_KEY);
+    const raw = accountLocalStorage.getItem(LIU_KAN_SHAN_POSITION_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<PetPosition>;
     if (typeof parsed.x !== 'number' || typeof parsed.y !== 'number') return null;
@@ -48,7 +52,7 @@ function readPosition(): PetPosition | null {
 
 function readOpen(defaultValue: boolean) {
   try {
-    const value = localStorage.getItem(LIU_KAN_SHAN_OPEN_KEY);
+    const value = accountLocalStorage.getItem(LIU_KAN_SHAN_OPEN_KEY);
     return value === null ? defaultValue : value === '1';
   } catch { return defaultValue; }
 }
@@ -57,7 +61,7 @@ function defaultPosition(): PetPosition {
   return clampPetPosition({ x: window.innerWidth - 112, y: window.innerHeight - 140 }, { width: window.innerWidth, height: window.innerHeight });
 }
 
-export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, busy = false, children, progress, worldTitle, isEnding = false, reducedMotion: userReducedMotion = false, onProject, onReadPost, onStartGuide, onCapabilities, onReadingDesk, onActivityDesk }: LiuKanShanPetProps) {
+export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, busy = false, children, progress, worldTitle, isEnding = false, reducedMotion: userReducedMotion = false, browserAvailable = false, onProject, onReadPost, onStartGuide, onCapabilities, onReadingDesk, onActivityDesk }: LiuKanShanPetProps) {
   const [position, setPosition] = useState<PetPosition>(() => clampPetPosition(readPosition() ?? defaultPosition(), { width: window.innerWidth, height: window.innerHeight }));
   const [open, setOpen] = useState(() => readOpen(initialOpen));
   const [galleryOpen, setGalleryOpen] = useState(false);
@@ -73,9 +77,11 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
   const [memoryRetry, setMemoryRetry] = useState(0);
   const [showMemories, setShowMemories] = useState(false);
   const [posts, setPosts] = useState<LiukanInboxPost[]>([]);
+  const inboxRevision = useRef(0);
   const [selectedPostId, setSelectedPostId] = useState('');
   const [view, setView] = useState<'reading' | 'journey'>(progress ? 'journey' : 'reading');
   const [feedBusy, setFeedBusy] = useState(false);
+  const [feedStage, setFeedStage] = useState<'capture' | 'save'>('save');
   const [feedError, setFeedError] = useState('');
   const [failedFeed, setFailedFeed] = useState<LiukanDrop | null>(null);
   const [dropAvailable, setDropAvailable] = useState(false);
@@ -110,17 +116,17 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
   useEffect(() => { const cue = (event: Event) => { const action = (event as CustomEvent).detail?.action; if (isLiukanActionId(action)) performLiukanAction(action); }; window.addEventListener('redleaf:liukan-tour-step', cue); return () => window.removeEventListener('redleaf:liukan-tour-step', cue); }, []);
 
   async function inboxRequest<T>(url: string, body?: unknown, signal?: AbortSignal): Promise<T> {
-    const response = await fetch(url, { ...(body === undefined ? {} : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }), signal });
+    const response = await accountFetch(url, { ...(body === undefined ? {} : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }), signal });
     const data = await response.json() as T & { error?: { message?: string } | string };
     if (!response.ok) throw new Error(typeof data.error === 'string' ? data.error : data.error?.message ?? '这次没有接上，请再试一次。');
     return data;
   }
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController(), revision = inboxRevision.current;
     const timeout = window.setTimeout(() => controller.abort(), 5000);
     inboxRequest<{ posts: LiukanInboxPost[] }>('/api/liukan/inbox', undefined, controller.signal).then(data => {
-      if (Array.isArray(data.posts)) { setPosts(data.posts); setSelectedPostId(previous => previous || data.posts[0]?.id || ''); }
+      if (Array.isArray(data.posts) && revision === inboxRevision.current) { const rows = uniqueInboxPosts(data.posts); setPosts(rows); setSelectedPostId(previous => rows.some(row => row.id === previous) ? previous : rows[0]?.id || ''); }
     }).catch(error => { if (!controller.signal.aborted) setFeedError(error instanceof Error ? error.message : '已读回答暂时没有读取成功。'); })
       .finally(() => { setInboxReady(true); window.clearTimeout(timeout); });
     return () => { window.clearTimeout(timeout); controller.abort(); };
@@ -131,14 +137,28 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
     if (feedRunning.current) return;
     performLiukanAction('receive-answer');
     feedRunning.current = true; setFeedBusy(true); setFeedError(''); setFailedFeed(null);
+    const captureFullAnswer = payload.kind === 'browser' || browserAvailable;
+    setFeedStage(captureFullAnswer ? 'capture' : 'save');
+    if (captureFullAnswer) window.dispatchEvent(new CustomEvent('redleaf:browser-capture-state', { detail: { pending: true } }));
     try {
-      const candidateId = payload.kind === 'candidate' ? payload.candidateId : (await inboxRequest<{ id: string }>('/api/zhihu-browser/capture', { postId: payload.postId, frameId: payload.frameId })).id;
+      const candidateId = payload.kind === 'browser'
+        ? (await inboxRequest<{ id: string }>('/api/zhihu-browser/capture', { postId: payload.postId, frameId: payload.frameId })).id
+        : browserAvailable
+          ? (await inboxRequest<{ id: string }>('/api/zhihu-browser/capture-candidate', { candidateId: payload.candidateId })).id
+          : payload.candidateId;
+      setFeedStage('save');
       const result = await inboxRequest<LiukanInboxPost | { post: LiukanInboxPost }>('/api/liukan/inbox', { candidateId });
       const post = 'post' in result ? result.post : result;
       if (!post?.id || !post.candidate?.excerpt) throw new Error('这篇回答没有带回可读的正文。');
-      setPosts(previous => [post, ...previous.filter(item => item.id !== post.id)]); setSelectedPostId(post.id); performLiukanAction('remember');
+      inboxRevision.current++; setPosts(previous => uniqueInboxPosts([post, ...previous])); setSelectedPostId(post.id); performLiukanAction('remember');
     } catch (error) { setFailedFeed(payload); setFeedError(error instanceof Error ? error.message : '这篇回答暂时没有保存成功。'); }
-    finally { feedRunning.current = false; setFeedBusy(false); }
+    finally {
+      feedRunning.current = false; setFeedBusy(false);
+      if (captureFullAnswer) {
+        window.dispatchEvent(new CustomEvent('redleaf:browser-capture-state', { detail: { pending: false } }));
+        window.dispatchEvent(new Event('redleaf:browser-capture-updated'));
+      }
+    }
   }
   feedHandler.current = payload => void receivePost(payload);
 
@@ -210,7 +230,7 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`/api/liukan/memories${progress?.playerId ? `?playerId=${encodeURIComponent(progress.playerId)}` : ''}`, { signal: controller.signal }).then(async response => {
+    accountFetch(`/api/liukan/memories${progress?.playerId ? `?playerId=${encodeURIComponent(progress.playerId)}` : ''}`, { signal: controller.signal }).then(async response => {
       if (!response.ok) return;
       const data = await response.json() as { memories?: LiukanMemoryRecord[] };
       if (Array.isArray(data.memories)) setMemories(data.memories);
@@ -227,7 +247,7 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
     if (rememberKey.current === key) return;
     rememberKey.current = key;
     const controller = new AbortController();
-    fetch('/api/liukan/remember', { method: 'POST', headers: { 'content-type': 'application/json' }, body: key, signal: controller.signal }).then(async response => {
+    accountFetch('/api/liukan/remember', { method: 'POST', headers: { 'content-type': 'application/json' }, body: key, signal: controller.signal }).then(async response => {
       const data = await response.json() as { memories?: LiukanMemoryRecord[]; error?: { message?: string } };
       if (!response.ok) throw new Error(data.error?.message ?? '这次结局还没记下来。');
       if (Array.isArray(data.memories)) setMemories(data.memories);
@@ -245,7 +265,7 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
     setMessages(previous => [...previous, { role: 'user', content: currentQuestion }]);
     const timer = window.setTimeout(() => controller.abort(), 65000);
     try {
-      const response = await fetch('/api/liukan/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...progress, question: currentQuestion, requestId: crypto.randomUUID(), conversation }), signal: controller.signal });
+      const response = await accountFetch('/api/liukan/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...progress, question: currentQuestion, requestId: crypto.randomUUID(), conversation }), signal: controller.signal });
       const data = await response.json() as LiukanRecallResponse & { error?: { message?: string } };
       if (!response.ok) throw new Error(data.error?.message ?? '直答暂时没接上，请稍后再试。');
       if (typeof data.answer !== 'string' || !data.answer.trim() || !['zhihu-zhida', 'relay'].includes(data.source)) throw new Error('看山这次没有收到完整回复。');
@@ -258,7 +278,7 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
   }
 
   useEffect(() => {
-    try { localStorage.setItem(LIU_KAN_SHAN_POSITION_KEY, JSON.stringify(position)); } catch { /* storage can be unavailable in private browsing */ }
+    try { accountLocalStorage.setItem(LIU_KAN_SHAN_POSITION_KEY, JSON.stringify(position)); } catch { /* storage can be unavailable in private browsing */ }
   }, [position]);
   useEffect(() => {
     const onResize = () => { const next = { width: window.innerWidth, height: window.innerHeight }; setViewport(next); setPosition(previous => clampPetPosition(previous, next)); };
@@ -270,7 +290,7 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
   }, []);
   useEffect(() => { const media = window.matchMedia('(prefers-reduced-motion: reduce)'); const update = () => setReducedMotion(media.matches); media.addEventListener('change', update); return () => media.removeEventListener('change', update); }, []);
   useEffect(() => {
-    try { localStorage.setItem(LIU_KAN_SHAN_OPEN_KEY, open ? '1' : '0'); } catch { /* optional preference */ }
+    try { accountLocalStorage.setItem(LIU_KAN_SHAN_OPEN_KEY, open ? '1' : '0'); } catch { /* optional preference */ }
   }, [open]);
 
   useLayoutEffect(() => {
@@ -325,12 +345,12 @@ export function LiuKanShanPet({ memory, onAsk, onRecall, initialOpen = false, bu
       <nav className="liukan-tabs" aria-label="看山的记录"><button type="button" aria-pressed={view === 'reading'} onClick={() => setView('reading')}><Inbox size={13} />一起读</button><button type="button" aria-pressed={view === 'journey'} onClick={() => setView('journey')}><BookOpen size={13} />关卡回忆</button></nav>
       <div className="liukan-panel-body">
       {view === 'reading' ? <div className="liukan-inbox">
-        {feedBusy && <p className="liukan-thinking" role="status"><LoaderCircle size={13} />我把这篇回答收进书袋……</p>}
+        {feedBusy && <p className="liukan-thinking" role="status"><LoaderCircle size={13} />{feedStage === 'capture' ? '正在获取回答全文…' : '正在保存回答…'}</p>}
         {feedError && <p className="liukan-error" role="alert">{feedError}{failedFeed && <button type="button" disabled={feedBusy} onClick={() => void receivePost(failedFeed)}>再交一次</button>}</p>}
         {!inboxReady && !feedError && <p className="liukan-thinking" role="status"><LoaderCircle size={13} />正在打开书袋……</p>}
         {posts.length > 0 && <label className="liukan-post-select"><span>看山的书袋</span><select aria-label="选择已读回答" value={selectedPostId} onChange={event => setSelectedPostId(event.target.value)} disabled={generating}>{posts.map(post => <option key={post.id} value={post.id}>{post.candidate.title}</option>)}</select><ChevronDown size={12} /></label>}
         {selectedPost ? <>
-          <article className="liukan-post"><span className="liukan-post-kicker">{selectedPost.candidate.origin.contentScope === 'webpage-selection' ? '知乎网页选取 · 已保存' : '知乎搜索节选 · 已保存'}</span><h3>{selectedPost.candidate.title}</h3><p className="liukan-post-author">{selectedPost.candidate.author} · {selectedPost.candidate.characters.toLocaleString()} 字</p>
+          <article className="liukan-post"><span className="liukan-post-kicker">{selectedPost.candidate.origin.contentScope === 'question-answer-excerpt' ? '知乎回答接口节选 · 已保存' : selectedPost.candidate.origin.contentScope === 'webpage-selection' ? '知乎网页选取 · 已保存' : '知乎搜索节选 · 已保存'}</span><h3>{selectedPost.candidate.title}</h3><p className="liukan-post-author">{selectedPost.candidate.author} · {selectedPost.candidate.characters.toLocaleString()} 字</p>
             <details className="liukan-source-preview"><summary>看看原文<ChevronDown size={12} /></summary><div>{selectedPost.candidate.excerpt}</div></details>
             {onReadPost ? <button type="button" className="liukan-source-link" onClick={() => onReadPost(selectedPost)}><ExternalLink size={12} />打开原文</button> : null}
           </article>

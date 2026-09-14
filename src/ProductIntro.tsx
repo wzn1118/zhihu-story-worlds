@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './ProductIntro.css';
-import IntroGallery from './IntroGallery';
 
 const modules = [
   { id: 'zhihu', kicker: '01 / 知乎来源', title: '从知乎回答开始', copy: '在原页面里挑中一段回答，拖到刘看山身边。标题、作者、原文地址和选中文本会一起留下。', image: '/assets/liukan/computer.png', screenshot: '/assets/intro/zhihu-source.png', tag: '网页选取 · 原文可追溯' },
@@ -20,17 +19,6 @@ const detailGroups = [
   { label: '偏好 · 阅读体验', title: '把阅读调整成舒服的样子', desc: '调整文字大小、文字速度、交互音效和动态效果。深色主题也能随时切换。', items: ['文字大小', '文字速度', '交互音效', '减少动态效果', '赤页深色主题', '新手导览重播'], art: '/assets/liukan/greeting.png', screenshot: '/assets/intro/reading-desk.png' },
 ];
 
-const detailShots = [
-  ['/assets/intro/reading-desk.png', '/assets/intro/reader-live.png', '/assets/intro/liukan-panel.png'],
-  ['/assets/intro/liukan-live.png', '/assets/intro/workshop.png', '/assets/intro/game-generation.png'],
-  ['/assets/intro/reader-live.png', '/assets/intro/zhihu-source.png', '/assets/intro/reading-desk.png'],
-  ['/assets/intro/workshop.png', '/assets/intro/game-generation.png', '/assets/intro/drag-answer.png'],
-  ['/assets/intro/library.png', '/assets/intro/workshop.png', '/assets/intro/verified-play.png'],
-  ['/assets/intro/verified-play.png', '/assets/intro/reader-live.png', '/assets/intro/liukan-live.png'],
-  ['/assets/intro/drag-answer.png', '/assets/intro/library.png', '/assets/intro/verified-play.png'],
-  ['/assets/intro/reading-desk.png', '/assets/intro/library.png', '/assets/intro/liukan-panel.png'],
-];
-
 export default function ProductIntro() {
   const [active, setActive] = useState(0);
   const [ready, setReady] = useState(false);
@@ -38,14 +26,10 @@ export default function ProductIntro() {
   const item = modules[active];
   return <main className={`product-intro ${ready ? 'is-ready' : ''}`}>
     <nav className="intro-nav"><span className="intro-brand"><i />赤页 <small>RED LEAF</small></span><span className="intro-nav-note">知乎故事 · 刘看山陪伴创作</span><a href="/" className="intro-enter">进入工作台 <span>↗</span></a></nav>
-    <section className="intro-hero"><div className="hero-grid" /><div className="hero-copy"><p className="eyebrow">产品说明计划书 · ZHIHU STORIES</p><h1>赤页：把知乎回答<br /><em>变成可玩的故事。</em></h1><p className="hero-lead">赤页是一款面向知乎社区的内容再创作工具。用户从真实回答出发，在刘看山陪伴下完成阅读、改编、生成与游玩，让有价值的内容从“被看见”走向“被体验、被讨论、被继续创作”。</p><div className="hero-actions"><a className="intro-primary" href="#modules">查看完整方案 <span>↓</span></a><a className="intro-secondary" href="/#library">进入可玩样例 <span>↗</span></a></div></div><div className="hero-pet"><span className="pet-ring" /><img src="/assets/liukan/greeting.gif" alt="刘看山" /><span className="pet-caption">知乎内容陪伴创作</span></div><div className="hero-scroll">SCROLL TO EXPLORE <span>↓</span></div></section>
-    <section className="intro-proof"><span><b>真实</b> 知乎来源</span><span><b>4</b> 个核心世界</span><span><b>71</b> 个剧情节点</span><span className="proof-line" /></section>
-    <section className="plan-overview"><div><p className="eyebrow">01 · 项目定位</p><h2>让知乎内容拥有第二种生命</h2><p>知乎擅长沉淀经验、观点与故事，赤页负责把这些内容转译成可进入的情境。我们不替代原文，而是在保留作者、标题、来源链接和节选依据的前提下，增加人物关系、行动资源、线索与多结局，让用户以参与者身份理解内容。</p></div><dl><div><dt>目标用户</dt><dd>喜欢知乎故事、愿意参与表达和共创的读者</dd></div><div><dt>核心产出</dt><dd>可追溯的互动故事、阅读手记与改编项目</dd></div><div><dt>社区价值</dt><dd>提升优质内容的停留、复读、讨论与再创作率</dd></div></dl></section>
+    <section className="intro-hero"><div className="hero-grid" /><div className="hero-copy"><p className="eyebrow">ZHIHU STORIES / RED LEAF EDITION</p><h1>看见好故事，<br /><em>交给刘看山。</em></h1><p className="hero-lead">从一段真实回答出发，读进去，聊起来，再亲手走出一条只属于你的故事路线。</p><div className="hero-actions"><a className="intro-primary" href="#modules">看看怎么发生 <span>↓</span></a><a className="intro-secondary" href="/#library">打开故事书库 <span>↗</span></a></div></div><div className="hero-pet"><span className="pet-ring" /><img src="/assets/liukan/greeting.gif" alt="刘看山" /><span className="pet-caption">把回答交给我</span></div><div className="hero-scroll">SCROLL TO EXPLORE <span>↓</span></div></section>
+    <section className="intro-proof"><span><b>33</b> 篇知乎原作</span><span><b>04</b> 个核心模块</span><span><b>∞</b> 条分支路线</span><span className="proof-line" /></section>
     <section id="modules" className="intro-modules"><div className="section-heading"><p className="eyebrow">THE FULL LOOP</p><h2>从阅读到游玩，<br />每一步都看得见。</h2><p>四个模块连成一条顺手的创作路线。先找到打动你的回答，再让刘看山陪你把它变成可以亲自走进去的故事。</p></div><div className="module-tabs">{modules.map((mod, i) => <button key={mod.id} className={i === active ? 'is-active' : ''} onClick={() => setActive(i)}><span>0{i + 1}</span>{mod.kicker.slice(5)}</button>)}</div><article className="module-stage"><div className="stage-copy"><p className="eyebrow">{item.kicker}</p><h3>{item.title}</h3><p>{item.copy}</p><span className="module-tag">{item.tag}</span><div className="stage-dots">{modules.map((_, i) => <i key={i} className={i === active ? 'is-active' : ''} />)}</div></div><div className="stage-visual"><div className="visual-window"><div className="window-bar"><i /><i /><i /><span>赤页 · {item.id === 'zhihu' ? '知乎网页' : item.id === 'liukan' ? '刘看山陪伴面板' : item.id === 'game' ? '生成游戏' : '故事档案'}</span></div><div className="visual-content"><div className="fake-lines"><i /><i /><i /><i /></div><img className={item.screenshot ? 'module-screenshot' : 'liukan-art'} src={item.screenshot || item.image} alt="刘看山功能演示" /><span className="visual-chip">{item.tag.split(' · ')[0]}</span></div></div></div></article></section>
-    <section className="plan-architecture"><div className="section-heading"><p className="eyebrow">02 · 技术方案</p><h2>内容、智能与游戏状态<br />在同一条链路里闭环。</h2><p>采用前后端分层设计：前端负责阅读与游玩体验，服务端负责来源获取、内容校验、故事编译和存档；所有改编节点都保留来源映射，便于复核与后续编辑。</p></div><div className="architecture-flow"><div><b>知乎来源层</b><span>网页选取 · 故事 API · 作者与链接</span></div><i>→</i><div><b>理解与创作层</b><span>摘要 · 人物 · 时间线 · 分支设计</span></div><i>→</i><div><b>可玩体验层</b><span>Ink 剧情 · 资源状态 · 线索 · 多结局</span></div></div></section>
-    <section className="intro-details"><div className="section-heading"><p className="eyebrow">03 · 产品流程与证据</p><h2>每一个入口，都服务于一次真实创作。</h2><p>下方截图来自当前工作台，用于展示从来源选择到生成、阅读和游玩的完整路径。</p></div><div className="detail-grid">{detailGroups.map((group, index) => <article className="detail-card" key={group.label}><IntroGallery shots={detailShots[index]} label={group.label} /><div className="detail-body"><p className="eyebrow">{String(index + 1).padStart(2, '0')} · {group.label}</p><h3>{group.title}</h3><p>{group.desc}</p><div className="detail-items">{group.items.map(entry => <span key={entry}>{entry}</span>)}</div></div></article>)}</div></section>
-    <section className="plan-value"><div><p className="eyebrow">04 · 知乎社区适配价值</p><h2>把“回答”变成社区可参与的事件</h2></div><div className="value-grid"><article><strong>内容尊重</strong><p>原文节选、作者与链接始终可见，改编内容明确标注，不混淆事实与创作。</p></article><article><strong>讨论前置</strong><p>用户在关键节点做判断并看到后果，天然形成“你会怎么选”的讨论入口。</p></article><article><strong>知识迁移</strong><p>经验类回答可转为模拟决策，读者通过行动理解因果，而不只是快速划过。</p></article><article><strong>创作者共创</strong><p>读者可以从一篇回答继续写分支、对白和结局，形成可回看的二次创作档案。</p></article></div></section>
-    <section className="plan-roadmap"><p className="eyebrow">05 · 实施计划</p><h2>从四个验证世界，扩展到知乎内容生态</h2><div className="roadmap"><div><b>已完成</b><span>真实来源接入、四个可玩世界、分支与存档、移动端适配</span></div><div><b>当前</b><span>补齐各世界角色与场景美术，完善来源复核和编辑工具</span></div><div><b>下一步</b><span>开放作者共创模板、作品发布与社区反馈指标</span></div></div></section>
+    <section className="intro-details"><div className="section-heading"><p className="eyebrow">EVERY DOOR, EXPLAINED</p><h2>每一个入口，都有自己的用处。</h2><p>按实际工作台结构展开，打开一张卡片，就能快速知道它解决什么问题、会留下什么结果。</p></div><div className="detail-grid">{detailGroups.map((group, index) => <article className="detail-card" key={group.label}><div className="detail-art"><img className={group.screenshot ? 'detail-screenshot' : ''} src={group.screenshot || group.art} alt="功能模块截图" /></div><div className="detail-body"><p className="eyebrow">{String(index + 1).padStart(2, '0')} · {group.label}</p><h3>{group.title}</h3><p>{group.desc}</p><div className="detail-items">{group.items.map(entry => <span key={entry}>{entry}</span>)}</div></div></article>)}</div></section>
     <section className="intro-cta"><div><p className="eyebrow">YOUR NEXT STORY</p><h2>准备好把一篇回答<br />走成一场冒险了吗？</h2></div><a className="intro-primary" href="/">进入赤页工作台 <span>↗</span></a></section><footer className="intro-footer"><span>赤页 RED LEAF</span><span>知乎 · 刘看山</span><span>故事从这里继续</span></footer>
   </main>;
 }

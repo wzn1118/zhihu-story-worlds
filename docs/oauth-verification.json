@@ -1,0 +1,48 @@
+{
+  "verifiedAt": "2026-09-14T09:14:51.456534+00:00",
+  "release": "/data/zhihu-project/releases/oauth-20260914",
+  "publicUrl": "https://zhihu.hegelsalon.com/",
+  "appId": "580",
+  "callback": "https://zhihu.hegelsalon.com/auth/callback",
+  "loginConfigured": true,
+  "userDataConfigured": false,
+  "platformCallbackRegistrationVerified": false,
+  "realUserAuthorization": "pending-user-confirmation",
+  "build": "passed",
+  "authTests": {
+    "passed": 29,
+    "failed": 0
+  },
+  "relatedRegressionTests": {
+    "passed": 58,
+    "failed": 0
+  },
+  "fullSuite": {
+    "passed": 1084,
+    "failed": 60,
+    "skipped": 8
+  },
+  "browser": {
+    "widths": [
+      1280,
+      390
+    ],
+    "scenarios": [
+      "oauth-login",
+      "configuration-error",
+      "authorization-error",
+      "session-error",
+      "reader-without-local-browser",
+      "logout"
+    ],
+    "runtimeErrors": []
+  },
+  "liveSmoke": {
+    "health": 200,
+    "authorizationStart": 302,
+    "protectedApi": 401,
+    "localBrowserAvailable": false
+  },
+  "secretScanHits": [],
+  "screenshot": "output/oauth-ui/live-login.png"
+}

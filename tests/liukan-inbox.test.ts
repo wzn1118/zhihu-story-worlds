@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, writeFile, readFile, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createServer } from 'node:http';
@@ -41,6 +41,85 @@ test('feeding verifies a persisted candidate, preserves exact source and survive
   assert.equal(refreshed.id, candidate.id);
   assert.deepEqual(await reloaded.learn(refreshed.id), copies[0]);
   assert.equal((await reloaded.list()).length, 1); assert.equal((await workshop.list()).length, 0);
+});
+
+test('expanded and collapsed captures of one answer become one reading without changing saved snapshots', async t => {
+  const { discovery, inbox, inboxRoot } = await fixture(t);
+  const preview = { ...selection, text: '测试作者：叶子把红色钥匙塞进信封…' };
+  const collapsed = await discovery.capturePage(preview, { visibleScope: 'excerpt' });
+  const first = await inbox.learn(collapsed.id);
+  const firstBytes = await readFile(join(inboxRoot, `${first.id}.json`), 'utf8');
+  const expanded = await discovery.capturePage(selection, { visibleScope: 'expanded' });
+  const complete = await inbox.learn(expanded.id);
+  assert.notEqual(complete.id, first.id);
+  assert.equal(complete.candidate.excerpt, exact);
+  assert.equal(complete.candidate.origin.webpageScope, 'expanded');
+  assert.deepEqual(await inbox.list(), [complete]);
+  assert.deepEqual(await inbox.learn(collapsed.id), complete, 'an old drag returns the best saved text and ID');
+  const refreshedPreview = await discovery.capturePage({ ...preview, text: '更短的列表节选…' }, { visibleScope: 'excerpt' });
+  assert.deepEqual(await inbox.learn(refreshedPreview.id), complete, 'different collapsed text cannot downgrade expanded content');
+  assert.equal((await inbox.get(first.id)).candidate.excerpt, preview.text);
+  assert.equal(await readFile(join(inboxRoot, `${first.id}.json`), 'utf8'), firstBytes, 'prior source IDs and references remain immutable');
+  assert.equal((await readdir(inboxRoot)).length, 2, 'inferior repeated captures do not create new inbox records');
+});
+
+test('older 77/166 character duplicates fold on read while both original records remain available', async t => {
+  const { discovery, inbox, inboxRoot } = await fixture(t);
+  const author = '测试作者';
+  const fullText = '船员回到甲板，看见远处灯塔的红光。' + '后续原文'.repeat(40);
+  const longText = fullText.slice(0, 166);
+  const shortText = `${author}：${longText.slice(0, 71)}…`;
+  assert.equal(shortText.length, 77); assert.equal(longText.length, 166);
+  const short = await discovery.capturePage({ ...selection, author, text: shortText });
+  const long = await discovery.capturePage({ ...selection, author, text: longText });
+  short.origin.fetchedAt = '2026-09-14T12:01:00.000Z'; long.origin.fetchedAt = '2026-09-14T12:00:00.000Z';
+  const legacyShort: LiukanInboxPost = { id: short.id, candidate: short, learnedAt: '2026-09-14T12:01:00.000Z', projectId: 'legacy-project-reference' };
+  const legacyLong: LiukanInboxPost = { id: long.id, candidate: long, learnedAt: '2026-09-14T12:00:00.000Z' };
+  await mkdir(inboxRoot, { recursive: true });
+  for (const post of [legacyShort, legacyLong]) await writeJson(join(inboxRoot, `${post.id}.json`), post);
+  const before = await Promise.all([legacyShort, legacyLong].map(post => readFile(join(inboxRoot, `${post.id}.json`), 'utf8')));
+  assert.deepEqual(await inbox.list(), [legacyLong], 'newer collapsed card cannot hide its continuation');
+  assert.equal((await inbox.learn(short.id)).id, long.id);
+  assert.equal((await inbox.get(short.id)).projectId, 'legacy-project-reference');
+  assert.equal((await inbox.get(long.id)).candidate.excerpt, longText);
+  const after = await Promise.all([legacyShort, legacyLong].map(post => readFile(join(inboxRoot, `${post.id}.json`), 'utf8')));
+  assert.deepEqual(after, before, 'startup grouping does not rewrite or delete legacy records');
+});
+
+test('same-answer writes serialize, distinct answers under one question and distinct users stay separate', async t => {
+  const accountA = await fixture(t), accountB = await fixture(t);
+  const options = { visibleScope: 'expanded' as const };
+  const [short, full, other] = await Promise.all([
+    accountA.discovery.capturePage({ ...selection, text: '叶子把红色钥匙…' }, { visibleScope: 'excerpt' }),
+    accountA.discovery.capturePage(selection, options),
+    accountA.discovery.capturePage({ ...selection, author: '另一位作者', sourceUrl: 'https://www.zhihu.com/question/12345678/answer/87654322' }, options),
+  ]);
+  await Promise.all([accountA.inbox.learn(full.id), accountA.inbox.learn(short.id), accountA.inbox.learn(other.id), accountA.inbox.learn(full.id)]);
+  const aRows = await accountA.inbox.list();
+  assert.equal(aRows.length, 2); assert.ok(aRows.some(row => row.id === full.id)); assert.ok(aRows.some(row => row.id === other.id));
+  assert.equal((await accountA.inbox.learn(short.id)).id, full.id);
+  assert.deepEqual(await accountB.inbox.list(), []);
+  await assert.rejects(accountB.inbox.learn(full.id), { code: 'CANDIDATE_NOT_FOUND' });
+  const bShort = await accountB.discovery.capturePage({ ...selection, text: '账户 B 自己保存的节选…' }, { visibleScope: 'excerpt' });
+  const bPost = await accountB.inbox.learn(bShort.id);
+  assert.equal(bPost.candidate.excerpt, bShort.excerpt); assert.equal((await accountB.inbox.list()).length, 1);
+  assert.equal((await accountA.inbox.learn(short.id)).candidate.excerpt, exact);
+});
+
+test('browser-observed scope is hashed, untrusted body scope is ignored, newer expanded revisions can be shorter', async t => {
+  const { discovery, inbox } = await fixture(t);
+  const bodyOnly = await discovery.capturePage({ ...selection, visibleScope: 'expanded', webpageScope: 'expanded' });
+  assert.equal(bodyOnly.origin.webpageScope, undefined);
+  const observed = await discovery.capturePage(selection, { visibleScope: 'expanded' });
+  assert.equal(observed.origin.webpageScope, 'expanded'); assert.notEqual(observed.id, bodyOnly.id);
+  assert.equal(observed.sourceHash, hashSource(await discovery.source(observed.id)));
+  await inbox.learn(observed.id);
+  // A later fully expanded page can be a real shorter edit, not a collapsed card.
+  await new Promise(yes => setTimeout(yes, 5));
+  const revised = await discovery.capturePage({ ...selection, text: '作者已将回答修订为这段短文字。' }, { visibleScope: 'expanded' });
+  assert.equal((await inbox.learn(revised.id)).id, revised.id);
+  assert.equal((await inbox.list())[0].candidate.excerpt, revised.excerpt);
+  assert.equal((await inbox.get(observed.id)).candidate.excerpt, exact);
 });
 
 test('altered title, origin, identity and corrupt local JSON are rejected before answering or generation', async t => {

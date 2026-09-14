@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -27,6 +27,42 @@ test('source parser rejects foreign hosts, credentials, traversal and malformed 
   for (const url of ['http://www.zhihu.com/question/12345678/answer/87654321', 'https://www.zhihu.com.evil.test/p/12345678', 'https://x@zhuanlan.zhihu.com/p/12345678', 'https://zhuanlan.zhihu.com:999/p/12345678', 'https://www.zhihu.com/api/v4/answers/87654321']) assert.throws(() => canonicalZhihuSource(url));
   assert.throws(() => parseZhihuCandidates({ Code: 401 }, '测试', new Date().toISOString()));
   assert.equal(parseZhihuCandidates({ Code: 0, Data: { Items: [{ ...raw.Data.Items[0], Url: 'https://evil.test' }] } }, '测试', new Date().toISOString()).length, 0);
+});
+test('search errors distinguish provider credentials and quota without exposing upstream messages', () => {
+  for (const [response, code, status] of [
+    [{ ok: false, error: { code: 'KEYCHAIN_UNAVAILABLE', message: 'private-upstream-value' } }, 'ZHIHU_SEARCH_NOT_CONFIGURED', 503],
+    [{ ok: false, error: { code: 'AUTH_REQUIRED' } }, 'ZHIHU_SEARCH_NOT_CONFIGURED', 503],
+    [{ ok: false, error: { code: 'AUTH_INVALID' } }, 'ZHIHU_SEARCH_AUTH_FAILED', 503],
+    [{ Code: 20001, Message: 'private-upstream-value' }, 'ZHIHU_SEARCH_AUTH_FAILED', 503],
+    [{ Code: 30001 }, 'ZHIHU_SEARCH_RATE_LIMITED', 429],
+    [{ Code: 30002 }, 'ZHIHU_SEARCH_QUOTA_EXCEEDED', 429],
+  ] as const) {
+    assert.throws(() => parseZhihuCandidates(response, '测试故事', new Date().toISOString()), (error: any) => {
+      assert.equal(error.code, code); assert.equal(error.status, status);
+      assert.doesNotMatch(error.message, /private-upstream-value/); return true;
+    });
+  }
+});
+test('nonzero CLI JSON failures reach HTTP as actionable errors and retain saved results', { skip: process.platform === 'win32' }, async t => {
+  const root = await fixture(t), binary = join(root, 'test search cli');
+  // Exercise the real spawn/exit path with a local executable, never the provider.
+  await writeFile(binary, `#!${process.execPath}\nconst query = process.argv[process.argv.indexOf('--query') + 1];\nconst missing = query === '缺少凭据';\nconsole.log(JSON.stringify(missing ? { ok: false, error: { code: 'KEYCHAIN_UNAVAILABLE', message: 'private-upstream-value' } } : { Code: 20001, Message: 'private-upstream-value' }));\nprocess.exit(missing ? 7 : 3);\n`, { mode: 0o700 });
+  const previous = process.env.ZHIHU_CLI_BIN; process.env.ZHIHU_CLI_BIN = binary;
+  t.after(() => { if (previous === undefined) delete process.env.ZHIHU_CLI_BIN; else process.env.ZHIHU_CLI_BIN = previous; });
+  const discovery = new ZhihuDiscoveryService(join(root, 'search'));
+  const saved = await discovery.capturePage({ title: '已保存的故事', author: '测试作者', text: exact, sourceUrl: raw.Data.Items[0].Url });
+  const server = createServer(createApp(undefined, new StoryWorkshop(join(root, 'workshop')), discovery));
+  await new Promise<void>(yes => server.listen(0, '127.0.0.1', yes));
+  t.after(() => new Promise<void>(yes => { server.closeAllConnections(); server.close(() => yes()); }));
+  const url = `http://127.0.0.1:${(server.address() as { port: number }).port}/api/workshop/discovery`;
+  for (const [query, code] of [['缺少凭据', 'ZHIHU_SEARCH_NOT_CONFIGURED'], ['凭据失效', 'ZHIHU_SEARCH_AUTH_FAILED']]) {
+    const response = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ query }) });
+    assert.equal(response.status, 503); assert.match(response.headers.get('content-type')!, /application\/json/);
+    const data = await response.json(); assert.equal(data.error.code, code);
+    assert.doesNotMatch(JSON.stringify(data), /private-upstream-value/);
+    assert.equal((await discovery.list()).candidates[0].id, saved.id);
+    assert.equal((await discovery.source(saved.id)).text, exact);
+  }
 });
 test('a pasted canonical Zhihu URL resolves through the official search result and preserves the URL', async t => {
   const root = await fixture(t), service = new ZhihuDiscoveryService(root, async () => raw);

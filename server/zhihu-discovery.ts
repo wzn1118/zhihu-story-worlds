@@ -12,7 +12,19 @@ function candidateSource(candidate: ZhihuCandidate): ImportedSource {
 }
 function withSourceHash(candidate: ZhihuCandidate): ZhihuCandidate { return { ...candidate, sourceHash: hashSource(candidateSource(candidate)) }; }
 
+function searchFailure(raw: unknown): WorkshopError | undefined {
+  const payload = raw as { Code?: unknown; ok?: unknown; error?: { code?: unknown } } | null;
+  const code = payload?.Code ?? payload?.error?.code;
+  if (['AUTH_REQUIRED', 'KEYCHAIN_UNAVAILABLE'].includes(String(code))) return new WorkshopError('ZHIHU_SEARCH_NOT_CONFIGURED', '知乎搜索服务尚未配置，请联系站点管理员开通。', 503);
+  if (['AUTH_INVALID', 'ENV_SHADOWS_KEYCHAIN', '20001'].includes(String(code))) return new WorkshopError('ZHIHU_SEARCH_AUTH_FAILED', '知乎搜索服务认证失败，请联系站点管理员更新搜索凭据。', 503);
+  if (String(code) === '30001') return new WorkshopError('ZHIHU_SEARCH_RATE_LIMITED', '知乎搜索请求过于频繁，请稍后再试。', 429);
+  if (String(code) === '30002') return new WorkshopError('ZHIHU_SEARCH_QUOTA_EXCEEDED', '知乎搜索额度已用完，请等待额度恢复。', 429);
+  if (code === 'TIMEOUT') return new WorkshopError('ZHIHU_SEARCH_TIMEOUT', '知乎搜索超时，请稍后再试。', 504);
+  if (payload?.ok === false || (payload?.Code !== undefined && payload.Code !== 0)) return new WorkshopError('ZHIHU_SEARCH_FAILED', '知乎搜索暂时不可用，请稍后再试。', 502);
+}
+
 export function parseZhihuCandidates(raw: unknown, query: string, fetchedAt: string): ZhihuCandidate[] {
+  const failure = searchFailure(raw); if (failure) throw failure;
   const envelope = raw as { Code?: number; Data?: { Items?: unknown[] } };
   if (envelope?.Code !== 0 || !Array.isArray(envelope.Data?.Items)) throw new WorkshopError('ZHIHU_SEARCH_FAILED', '知乎搜索未返回有效结果，请查看连接或额度状态。', 502);
   const seen = new Set<string>(), candidates: ZhihuCandidate[] = [];
@@ -45,8 +57,16 @@ async function searchCli(query: string): Promise<unknown> {
     child.stderr.resume();
     child.once('error', () => finish(new WorkshopError('ZHIHU_CLI_UNAVAILABLE', '知乎官方 CLI 未能启动，请检查本机安装状态。', 503)));
     child.once('close', code => {
-      if (code !== 0) return finish(new WorkshopError('ZHIHU_SEARCH_FAILED', '知乎搜索请求失败，请检查已配置账号的认证或额度；原有书库保留。', 502));
-      try { finish(undefined, JSON.parse(Buffer.concat(chunks).toString('utf8'))); } catch { finish(new WorkshopError('ZHIHU_SEARCH_INVALID', '知乎搜索返回的 JSON 不完整。', 502)); }
+      if (finished) return;
+      let raw: unknown;
+      try { raw = JSON.parse(Buffer.concat(chunks).toString('utf8')); }
+      catch { return finish(new WorkshopError(code === 0 ? 'ZHIHU_SEARCH_INVALID' : 'ZHIHU_SEARCH_FAILED', '知乎搜索返回异常，请稍后再试。', 502)); }
+      // CLI authentication and quota failures also use JSON on stdout. Read
+      // their codes before the exit status, and never expose upstream messages.
+      const failure = searchFailure(raw);
+      if (failure) return finish(failure);
+      if (code !== 0) return finish(new WorkshopError('ZHIHU_SEARCH_FAILED', '知乎搜索暂时不可用，请稍后再试。', 502));
+      finish(undefined, raw);
     });
   });
 }
@@ -55,6 +75,8 @@ export class ZhihuDiscoveryService {
   readonly root: string;
   private readonly active = new Map<string, Promise<ZhihuDiscoveryResult>>();
   constructor(root = resolve('.local/zhihu-discovery'), private readonly searcher = searchCli) { this.root = resolve(root); }
+  /** Keep captured/private selections and search history inside one account. */
+  scoped(root: string) { return new ZhihuDiscoveryService(root, this.searcher); }
   async list(): Promise<ZhihuDiscoveryResult> {
     await mkdir(join(this.root, 'candidates'), { recursive: true });
     const files = (await readdir(join(this.root, 'candidates'))).filter(name => /^[a-f0-9]{32}\.json$/.test(name));
@@ -89,7 +111,7 @@ export class ZhihuDiscoveryService {
     const origin = canonicalZhihuSource(candidate.origin.sourceUrl);
     const source = candidateSource(candidate), sourceHash = hashSource(source);
     const legacyId = !candidate.sourceHash && createHash('sha256').update(origin.sourceUrl).digest('hex').slice(0, 32) === id;
-    if ((!legacyId && (candidate.sourceHash !== sourceHash || sourceHash.slice(0, 32) !== id)) || candidate.origin.workId !== origin.workId || candidate.origin.kind !== origin.kind || !['search-excerpt', 'webpage-selection'].includes(candidate.origin.contentScope ?? '')) throw new WorkshopError('CANDIDATE_INVALID', '本地来源记录校验失败。', 503);
+    if ((!legacyId && (candidate.sourceHash !== sourceHash || sourceHash.slice(0, 32) !== id)) || candidate.origin.workId !== origin.workId || candidate.origin.kind !== origin.kind || !['search-excerpt', 'webpage-selection', 'question-answer-excerpt'].includes(candidate.origin.contentScope ?? '')) throw new WorkshopError('CANDIDATE_INVALID', '本地来源记录校验失败。', 503);
     return source;
   }
 
@@ -112,13 +134,25 @@ export class ZhihuDiscoveryService {
     return candidate;
   }
 
-  async capturePage(value: unknown): Promise<ZhihuCandidate> {
+  /** Only the official question service calls this; clients cannot choose provenance. */
+  async captureOfficialQuestionAnswer(data: { sourceUrl: string; title: string; text: string; fetchedAt: string }): Promise<ZhihuCandidate> {
+    const identity = canonicalZhihuSource(data.sourceUrl);
+    if (identity.kind !== 'zhihu-answer' || !data.title.trim() || data.title.length > 120 || !data.text.trim() || data.text.length > 120000 || data.text.includes('\u0000') || !Number.isFinite(Date.parse(data.fetchedAt))) throw new WorkshopError('INVALID_QUESTION_ANSWER', '知乎回答内容不完整。', 502);
+    const candidate = withSourceHash({ id: '', title: data.title, author: '知乎回答（接口未提供作者）', excerpt: data.text,
+      origin: { ...identity, contentScope: 'question-answer-excerpt', fetchedAt: data.fetchedAt }, query: '', characters: data.text.length });
+    candidate.id = candidate.sourceHash!.slice(0, 32);
+    await mkdir(join(this.root, 'candidates'), { recursive: true });
+    await writeJson(join(this.root, 'candidates', `${candidate.id}.json`), candidate);
+    return candidate;
+  }
+
+  async capturePage(value: unknown, observed: { visibleScope?: 'excerpt' | 'expanded' } = {}): Promise<ZhihuCandidate> {
     const data = value as Record<string, unknown> | null;
     let identity: ReturnType<typeof canonicalZhihuSource>;
     try { identity = canonicalZhihuSource(data?.sourceUrl); } catch { throw new WorkshopError('INVALID_ZHIHU_URL', '页面选择只支持知乎回答和文章链接。'); }
     if (!data || typeof data.title !== 'string' || !data.title.trim() || data.title.length > 120 || typeof data.author !== 'string' || !data.author.trim() || data.author.length > 120 || typeof data.text !== 'string' || !data.text.trim() || data.text.length > 120000 || data.text.includes('\u0000')) throw new WorkshopError('INVALID_PAGE_SELECTION', '网页选文需要标题、作者和1–120000字正文；请先展开原页面正文再选择。');
     const candidate = withSourceHash({ id: '', title: data.title, author: data.author, excerpt: data.text,
-      origin: { ...identity, contentScope: 'webpage-selection', fetchedAt: new Date().toISOString() }, query: '', characters: data.text.length });
+      origin: { ...identity, contentScope: 'webpage-selection', ...(observed.visibleScope === 'excerpt' || observed.visibleScope === 'expanded' ? { webpageScope: observed.visibleScope } : {}), fetchedAt: new Date().toISOString() }, query: '', characters: data.text.length });
     candidate.id = candidate.sourceHash!.slice(0, 32);
     await mkdir(join(this.root, 'candidates'), { recursive: true });
     await writeJson(join(this.root, 'candidates', `${candidate.id}.json`), candidate);

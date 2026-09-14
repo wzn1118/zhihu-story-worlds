@@ -40,7 +40,7 @@ export async function jsonFile<T>(file: string): Promise<T> {
     }
   }
 }
-export function hashSource(source: ImportedSource) { return createHash('sha256').update(JSON.stringify({ title: source.title, author: source.author, text: source.text, scope: source.scope, ...(source.referenceUrl ? { referenceUrl: source.referenceUrl } : {}), ...(source.origin ? source.origin.kind === 'zhihu-story' ? { zhihuWorkId: source.origin.workId } : { zhihuSearchUrl: source.origin.sourceUrl, ...(source.origin.contentScope === 'webpage-selection' ? { zhihuContentScope: 'webpage-selection' } : {}) } : {}) })).digest('hex'); }
+export function hashSource(source: ImportedSource) { return createHash('sha256').update(JSON.stringify({ title: source.title, author: source.author, text: source.text, scope: source.scope, ...(source.referenceUrl ? { referenceUrl: source.referenceUrl } : {}), ...(source.origin ? source.origin.kind === 'zhihu-story' ? { zhihuWorkId: source.origin.workId } : { zhihuSearchUrl: source.origin.sourceUrl, ...(source.origin.contentScope === 'webpage-selection' || source.origin.contentScope === 'favorite-summary' || source.origin.contentScope === 'question-answer-excerpt' ? { zhihuContentScope: source.origin.contentScope } : {}), ...(source.origin.contentScope === 'webpage-selection' && source.origin.webpageScope ? { zhihuWebpageScope: source.origin.webpageScope } : {}) } : {}) })).digest('hex'); }
 export function alive(pid: number) { if (!Number.isInteger(pid) || pid <= 0) return false; try { process.kill(pid, 0); return true; } catch { return false; } }
 export interface LockOwner { token: string; pid: number; childPid?: number; heartbeat: string }
 export const jobAlive = (owner: LockOwner) => alive(owner.pid) || Boolean(owner.childPid && alive(owner.childPid));
@@ -124,22 +124,23 @@ export class StoryWorkshop {
     const options = generationOptions(requestedOptions);
     const { canonicalZhihuSource } = await import('../shared/zhihu-discovery.ts');
     const identity = canonicalZhihuSource(source.origin?.sourceUrl);
-    if (source.scope !== 'zhihu-excerpt' || !['search-excerpt', 'webpage-selection'].includes(source.origin?.contentScope ?? '') || source.origin?.kind !== identity.kind || source.origin.workId !== identity.workId || !Number.isFinite(Date.parse(source.origin.fetchedAt))) throw new WorkshopError('INVALID_ORIGIN', '需要已保存的知乎来源节选记录。');
-    if (typeof source.title !== 'string' || !source.title.trim() || source.title.length > 120 || typeof source.author !== 'string' || !source.author.trim() || source.author.length > 120 || typeof source.text !== 'string' || !source.text.trim() || source.text.length > 120000 || source.text.includes('\u0000')) throw new WorkshopError('INVALID_SOURCE', '这份搜索节选暂不符合导入要求，原文不会被截断或改写。');
+    if (source.scope !== 'zhihu-excerpt' || !['search-excerpt', 'webpage-selection', 'favorite-summary', 'question-answer-excerpt'].includes(source.origin?.contentScope ?? '') || source.origin?.kind !== identity.kind || source.origin.workId !== identity.workId || !Number.isFinite(Date.parse(source.origin.fetchedAt))) throw new WorkshopError('INVALID_ORIGIN', '需要经服务器核对的知乎来源记录。');
+    if (typeof source.title !== 'string' || !source.title.trim() || source.title.length > 120 || typeof source.author !== 'string' || !source.author.trim() || source.author.length > 120 || typeof source.text !== 'string' || source.text.trim().length < 80 || source.text.length > 120000 || source.text.includes('\u0000')) throw new WorkshopError('INVALID_SOURCE', '标题/作者各1–120字；来源文字80–120000字。返回内容不会被截断或改写。');
     return this.persistImport(source, options, ownerId);
   }
   private async persistImport(source: ImportedSource, options: GenerationOptions = { ...defaultGenerationOptions }, ownerId?: string): Promise<WorkshopProject> {
     const hash = hashSource(source);
     // Stable import idempotency, including simultaneous POSTs across processes.
-    await mkdir(join(this.root, 'imports'), { recursive: true });
-    const indexFile = join(this.root, 'imports', `${hash}.json`);
+    const importRoot = ownerId ? join(this.root, 'imports', 'accounts', createHash('sha256').update(ownerId).digest('hex')) : join(this.root, 'imports');
+    await mkdir(importRoot, { recursive: true });
+    const indexFile = join(importRoot, `${hash}.json`);
     const proposedId = `import-${randomUUID()}`;
     if (!await publishImportRecord(indexFile, { id: proposedId, pid: process.pid })) {
       for (let attempt = 0; attempt < 30; attempt++) {
         const index = await jsonFile<{ id?: string; pid?: number }>(indexFile).catch(() => null);
         if (index?.id && isImportedId(index.id)) {
           const existing = await this.get(index.id).catch(error => { if (error instanceof WorkshopError && error.code === 'PROJECT_NOT_FOUND') return null; throw error; });
-          if (existing && (!ownerId || !existing.ownerId || existing.ownerId === ownerId)) return existing;
+          if (existing && (!ownerId || existing.ownerId === ownerId)) return existing;
         }
         const abandoned = index?.pid !== undefined ? !alive(index.pid) : Date.now() - (await stat(indexFile)).mtimeMs > 120_000;
         if (abandoned) {
@@ -151,12 +152,14 @@ export class StoryWorkshop {
             let id = current?.id && isImportedId(current.id) ? current.id : undefined;
             if (id) {
               const existing = await this.get(id).catch(error => { if (error instanceof WorkshopError && error.code === 'PROJECT_NOT_FOUND') return null; throw error; });
-              if (existing && (!ownerId || !existing.ownerId || existing.ownerId === ownerId)) return existing;
+              if (existing && (!ownerId || existing.ownerId === ownerId)) return existing;
+              if (existing && ownerId && existing.ownerId !== ownerId) throw new WorkshopError('IMPORT_OWNER_MISMATCH', '这份导入记录不属于当前账号。', 409);
             }
             if (current?.pid !== undefined && alive(current.pid)) throw new WorkshopError('IMPORT_BUSY', '同一原文正在入库，请稍后刷新。', 409);
             if (!id) {
               const dirs = await readdir(join(this.root, 'projects')).catch(() => []);
               for (const candidate of dirs.filter(isImportedId)) {
+                if (ownerId && (await this.get(candidate).catch(() => null))?.ownerId !== ownerId) continue;
                 const stored = await jsonFile<ImportedSource>(join(this.dir(candidate), 'source.json')).catch(() => null);
                 if (stored && hashSource(stored) === hash) { id = candidate; break; }
               }
@@ -190,7 +193,7 @@ export class StoryWorkshop {
     const now = new Date().toISOString();
     await mkdir(this.dir(id), { recursive: true });
     await writeJson(join(this.dir(id), 'source.json'), source);
-    const project: WorkshopProject = { id, title: source.title, author: source.author, scope: source.scope, ...(source.origin ? { origin: source.origin } : {}), sourceHash: hash, createdAt: now, updatedAt: now, revision: 0, status: 'idle', stage: 'imported', completedRoutes: 0, playable: false, attempts: 0, art: { status: 'pending', approved: 0, total: 0 }, events: [{ at: now, stage: 'imported', message: '原文已逐字保存；尚未生成。' }] };
+    const project: WorkshopProject = { id, title: source.title, author: source.author, scope: source.scope, ...(source.origin ? { origin: source.origin } : {}), sourceHash: hash, createdAt: now, updatedAt: now, revision: 0, status: 'idle', stage: 'imported', completedRoutes: 0, playable: false, attempts: 0, art: { status: 'pending', approved: 0, total: 0 }, events: [{ at: now, stage: 'imported', message: source.origin?.contentScope === 'favorite-summary' ? '收藏接口摘要已逐字保存；尚未生成。' : '原文已逐字保存；尚未生成。' }] };
     project.generationOptions = { ...options };
     if (options.images === 'none') project.art = { status: 'disabled', provider: 'none', approved: 0, total: 0, message: '纯文字模式，可在文本发布后另外制作插图。' };
     await this.save(project); return project;

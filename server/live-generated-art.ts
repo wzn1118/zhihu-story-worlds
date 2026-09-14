@@ -10,6 +10,11 @@ export function liveGeneratedArt(root = process.cwd()) {
     immutable: true,
     maxAge: '1y',
     setHeaders: (response, filePath) => {
+      if ((response as express.Response).locals.privateGeneratedArt) {
+        response.setHeader('Cache-Control', 'private, no-store');
+        response.setHeader('Vary', 'Cookie');
+        return;
+      }
       if (filePath.endsWith('.json')) {
         response.setHeader('Cache-Control', 'no-cache, must-revalidate');
       } else {

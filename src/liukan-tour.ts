@@ -1,3 +1,4 @@
+import { accountLocalStorage } from './account-storage';
 import type { LiukanActionId } from './liukan-actions';
 
 export type LiukanTourView = 'library' | 'story-intro' | 'source' | 'workshop' | 'saves' | 'settings' | 'endings' | 'zhihu';
@@ -25,7 +26,7 @@ export const liukanTourSteps: readonly LiukanTourStep[] = [
   { id: 'workshop', chapter: '做自己的游戏', title: '现在，来写你的另一种结局。', body: '故事改编工作台把原文、生成中的稿件、可玩版本和插图放在一起。你带来故事，后面的制作进展都在这里看。', hint: '每个新故事都有自己的项目和美术清单。', target: 'workshop-heading', view: 'workshop', action: 'show-workshop' },
   { id: 'zhihu', chapter: '做自己的游戏', title: '这里可以直接逛知乎。', body: '这就是工作台里的知乎子页面，仍在当前标签里。上面可以切换真实网页和内容阅读；看到想读的回答，可以拖给我，也可以点“交给看山”。', hint: '我会保存实际读到的正文和来源，你还可以继续问我这篇写了什么。', target: 'zhihu-reader', view: 'zhihu', action: 'receive-answer' },
   { id: 'import', chapter: '做自己的游戏', title: '自己的故事，也能带进来。', body: '切到“粘贴或上传”，填好标题、作者和正文，也可以导入文本文件。原文会逐字保存；先保存素材，或者准备好后开始改编。', hint: '不用先写完所有分支，把你已经写好的内容交进来就行。', target: 'workshop-source-input', view: 'workshop', action: 'read-carefully' },
-  { id: 'relay', chapter: '做自己的游戏', title: '先接好你想用的模型。', body: '这里填写文字中转地址、模型和密钥，再保存配置。故事生成和生图各用各的服务；看山聊天也有自己的连接设置。', hint: '连接状态要看实际返回结果，保存配置本身不会开始制作。', target: 'workshop-relay', view: 'workshop', action: 'show-settings' },
+  { id: 'relay', chapter: '做自己的游戏', title: '先接好你想用的模型。', body: '这里填写文字中转地址和密钥，会自动获取模型并检测连接，通过后就能保存配置。故事生成和生图各用各的服务；看山聊天也有自己的连接设置。', hint: '模型从检测结果中选择，推理强度使用模型默认设置；保存配置后，再开始制作。', target: 'workshop-relay', view: 'workshop', action: 'show-settings' },
   { id: 'generate', chapter: '做自己的游戏', title: '准备好了，再按开始。', body: '选好原文后点生成，工作台会写出路线、场景和结局，再检查选择能不能走通。交给我读过的回答，也能在我的面板里发起改编。', hint: '这一段介绍只带你认按钮，正式生成由你点击开始。', target: 'workshop-generate', view: 'workshop', action: 'make-game' },
   { id: 'progress', chapter: '做自己的游戏', title: '写到哪一步，这里都有记录。', body: '选中项目，就能看到当前阶段和实际进展。中断的任务可以续跑，失败原因也会留下；出现“开始游戏”后就可以进入已发布版本。', hint: '正在生成时不用反复点开始，已有稿件会继续保留。', target: 'workshop-progress', view: 'workshop', action: 'check-story' },
   { id: 'art', chapter: '做自己的游戏', title: '插图也有自己的进度。', body: '文本能玩以后，插图可能还在制作。到美术区域查看完成数和图片，再决定是否补图；每篇故事只显示自己的那一份清单。', hint: '有图、有审核结果、能在游戏里显示，是分开记录的。', target: 'workshop-art', view: 'workshop', action: 'draw-scene' },
@@ -38,7 +39,7 @@ interface TourStorage { getItem(key: string): string | null; setItem(key: string
 
 export function shouldShowLiukanTour(storage?: Pick<TourStorage, 'getItem'>): boolean {
   try {
-    const source = storage ?? (typeof localStorage === 'undefined' ? undefined : localStorage);
+    const source = storage ?? accountLocalStorage;
     if (!source) return false;
     const value = source.getItem(LIUKAN_TOUR_STORAGE_KEY);
     if (!value) return true;
@@ -48,7 +49,7 @@ export function shouldShowLiukanTour(storage?: Pick<TourStorage, 'getItem'>): bo
 }
 
 export function rememberLiukanTour(reason: LiukanTourDismissal, storage?: Pick<TourStorage, 'setItem'>): void {
-  try { (storage ?? localStorage).setItem(LIUKAN_TOUR_STORAGE_KEY, JSON.stringify({ seen: true, reason, at: new Date().toISOString() })); }
+  try { (storage ?? accountLocalStorage).setItem(LIUKAN_TOUR_STORAGE_KEY, JSON.stringify({ seen: true, reason, at: new Date().toISOString() })); }
   catch { /* Explicit replay remains available when storage is disabled. */ }
 }
 

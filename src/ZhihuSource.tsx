@@ -1,3 +1,4 @@
+import { Artwork } from './Artwork';
 import { useEffect, useState } from 'react';
 import { ArrowRight, BookOpen, Check, FilePlus2, LoaderCircle, Search, X } from 'lucide-react';
 import type { GameWorld, StoryDetail, StorySummary } from '../shared/types';
@@ -36,13 +37,13 @@ export function ZhihuSourcePicker({ stories, selected, onSelect, onRead, onImpor
       <div className="picker-heading"><ZhihuBadge label="故事书库" /><span>{stories.length} 篇原作</span></div>
       <label className="picker-search"><Search size={17} /><input aria-label="查找要改编的知乎故事" placeholder="找一本故事，或一位作者" value={query} onChange={e => setQuery(e.target.value)} />{query && <button type="button" aria-label="清除书库搜索" title="清除搜索" onClick={() => setQuery('')}><X size={15} /></button>}</label>
       <div className="picker-books">{filtered.map(story => <button type="button" key={story.id} className="picker-book" onClick={() => onSelect(story)}>
-        <span className="picker-book-cover">{(story.sourceCover || story.cover) && <img src={story.sourceCover || story.cover} alt="" loading="lazy" referrerPolicy="no-referrer" />}</span>
+        <span className="picker-book-cover">{(story.sourceCover || story.cover) && <Artwork src={story.sourceCover || story.cover} alt="" />}</span>
         <span className="picker-book-copy"><b>{story.title}</b><small>{story.author ?? '作者署名待读取'}</small><span>{story.labels.slice(0, 2).join(' / ')}</span></span><ArrowRight size={16} />
       </button>)}</div>
       {!filtered.length && <p className="picker-empty">{stories.length ? '没有找到这篇故事，换个关键词试试。' : '故事书库还在连接中。'}</p>}
     </> : <div className="selected-source" data-testid="selected-zhihu-source">
       <div className="picker-heading"><ZhihuBadge label="原作节选" /><button type="button" className="text-button" onClick={() => onSelect(null)} disabled={busy}>换一篇 <X size={14} /></button></div>
-      <div className="selected-source-heading"><div className="selected-source-cover">{(selected.sourceCover || selected.cover) && <img src={selected.sourceCover || selected.cover} alt={`${selected.title}原作封面`} referrerPolicy="no-referrer" />}</div><div><span className="source-edition">原作 / SOURCE</span><h3>{detail?.title ?? selected.title}</h3><AuthorIdentity name={detail?.author ?? selected.author} avatar={detail?.authorAvatar ?? selected.authorAvatar} /></div></div>
+      <div className="selected-source-heading"><div className="selected-source-cover">{(selected.sourceCover || selected.cover) && <Artwork src={selected.sourceCover || selected.cover} alt={`${selected.title}原作封面`} />}</div><div><span className="source-edition">原作 / SOURCE</span><h3>{detail?.title ?? selected.title}</h3><AuthorIdentity name={detail?.author ?? selected.author} avatar={detail?.authorAvatar ?? selected.authorAvatar} /></div></div>
       {error ? <div className="workshop-error" role="alert"><p>{error}</p><button className="text-button" type="button" onClick={() => setAttempt(a => a + 1)}>重新读取</button></div> : !detail ? <p className="picker-loading" role="status"><LoaderCircle className="spin" size={16} /> 正在读取知乎原文</p> : <>
         <div className="selected-source-excerpt"><span className="source-edition">节选预览</span><p>{detail.content.slice(0, 460)}{detail.content.length > 460 ? '…' : ''}</p></div>
         <div className="selected-source-meta"><span><Check size={13} /> 保留原作者与原文</span><span>{detail.content.length.toLocaleString()} 字符 · 公开节选</span></div>

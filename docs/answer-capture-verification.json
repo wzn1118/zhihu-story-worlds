@@ -1,0 +1,64 @@
+{
+  "release": "answer-capture-20260914",
+  "previousRelease": "narrative-quality-final-20260914",
+  "verifiedAt": "2026-09-14T13:55:17.369825+00:00",
+  "changes": [
+    "回答正文选择排除作者简介；保留段落和引用块前后的全部文本",
+    "折叠拖动自动展开选中的同一回答，并等待正文完成；失败不保存摘要",
+    "同一回答合并展示，优先已展开正文；不同回答独立保存",
+    "捕获期间暂停页面操作和轮询，完成后刷新当前页面"
+  ],
+  "verification": {
+    "serviceTests": {
+      "passed": 74,
+      "failed": 0
+    },
+    "releaseBrowserTests": {
+      "passed": 12,
+      "failed": 0
+    },
+    "desktopAndMobile": {
+      "passed": true,
+      "scope": "Real Workspace and LiuKanShan UI, real persisted discovery/inbox records, deterministic browser fixture. No live Zhihu or model requests.",
+      "checks": [
+        "desktop: collapsed and manually expanded native drag both show 166 exact characters and one answer; refreshed frame can be operated immediately",
+        "desktop: other answer of same question remains distinct; reload preserves the full answer and deduplicated count",
+        "mobile: collapsed and manually expanded native drag both show 166 exact characters and one answer; refreshed frame can be operated immediately",
+        "mobile: other answer of same question remains distinct; reload preserves the full answer and deduplicated count"
+      ]
+    },
+    "typescript": "passed",
+    "viteBuild": "passed",
+    "originDeploymentChecks": "passed",
+    "publicDeploymentChecks": {
+      "health": {
+        "status": "ok",
+        "service": "zhihu-story-worlds",
+        "release": "answer-capture-20260914"
+      },
+      "publicAssetsMatchBuild": true,
+      "assets": [
+        "/assets/index-Dg5gO0Wo.js",
+        "/assets/icons-DZv_NVdb.js",
+        "/assets/react-DJNdI_yy.js",
+        "/assets/ink-THPtW3_R.js",
+        "/assets/index-CyrX0xkH.css"
+      ],
+      "activeReleaseMatches": true,
+      "workspaceAssetMatchesBuild": true
+    }
+  },
+  "scope": "浏览器及 UI 回归运行真实 Chromium 和应用代码，知乎网页响应使用隔离测试夹具；未使用真实用户 Cookie，也未声称已实测用户截图对应的登录页面。",
+  "existingData": "旧记录及其 ID 保持可读取；列表按回答身份去重。已经只保存简介且没有正文版本的回答，需要更新页面后重新拖入一次。",
+  "files": {
+    "server/zhihu-browser.ts": "4c55b84afa3032764c797619dbfbdc191a9a721790d32acf3f701dfc3277c300",
+    "server/zhihu-post-dom.ts": "f2929a9cfe87f5f8fee140eeadbb27e41f28d5058067af511f42c2622d042c37",
+    "server/liukan/inbox.ts": "9c693a7a4cb3920d9a34240157ec70f74582b6ec1f4a53b1f7f214e115ec9f8e",
+    "server/zhihu-discovery.ts": "718f64fd50df54420842bf1fdff3ef5d843e84b960709e55151a4ee2b0d75bad",
+    "shared/types.ts": "15711ceefb7e7c4b4a6b08eac77b2138d9cc4c8d12e061727cd5e3ce2d96a469",
+    "server/story-workshop.ts": "5793d05eeedfa4ab7bdaf777739b94a6ec833d21cac02dad452ea0c8e8d457ff",
+    "shared/liukan-inbox-versions.ts": "695cd5aec2303e4177da09b986fbd2b290300e8c1f70aa5df12bf256cbc08550",
+    "src/LiuKanShanPet.tsx": "756b480170ddbee0644e3a22fa151eef10f4ba1a69142b3a780e120dd12beb9b",
+    "src/ZhihuWorkspace.tsx": "5a51aed1c6030c740718b9be65eeb9f76f81a99ab93e6f3024799467eca8729d"
+  }
+}

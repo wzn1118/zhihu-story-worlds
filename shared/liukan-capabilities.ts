@@ -4,6 +4,7 @@ export interface LiukanPublicConfig {
   transport: LiukanTransport;
   model: string;
   configured: boolean;
+  editable?: boolean;
   relay?: { endpoint: string; model: string; protocol: 'responses' | 'chat-completions'; reasoning?: string; hasKey: boolean };
 }
 export interface LiukanConfigInput {

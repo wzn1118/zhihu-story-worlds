@@ -2,7 +2,8 @@ import type { GameWorld } from '../shared/types';
 import { artBindingSource } from '../shared/art-binding-source';
 import { hasSceneArtHold } from './scene-art-holds';
 import { verifiedEnvironmentNodeIds } from './verified-environment-placements';
-import { approvedStagePortrait, clearStagePortraits, loadCharacterCutouts, type CutoutSource } from './character-cutouts';
+import { approvedStagePortrait, bindCharacterCutouts, clearStagePortraits, type CutoutManifest, type CutoutSource } from './character-cutouts';
+import { ART_MANIFESTS, readArtManifest } from './art-manifest-cache';
 
 type PublishedAsset = CutoutSource;
 type PublishedWorld = { worldId: string; storyId: string; version: string; bindingSourceHash: string; assets: PublishedAsset[];
@@ -37,19 +38,20 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
   // Imported worlds carry current, hash-checked images from their own API.
   // The authored publication manifest must not erase this separate namespace.
   if (world.storyId.startsWith('import-')) return world;
-  const clean = clearStagePortraits(world);
   try {
-    const response = await fetch('/generated-art/production-manifest.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
-    if (!response.ok) return clean;
-    const manifest = await response.json() as { bindingPolicy?: string; worlds: PublishedWorld[] };
-    if (!['style-first-approved-current-v1', 'native-4k-current-evidence-v1', 'direct-delivery-current-v1'].includes(manifest.bindingPolicy ?? '')) return clean;
+    // The independent manifests travel together; a missing cutout approval still
+    // permits complete scenes and source references from the validated release.
+    const manifestRequest = readArtManifest<{ bindingPolicy?: string; worlds: PublishedWorld[] }>(ART_MANIFESTS[0]);
+    const cutoutsRequest = readArtManifest<CutoutManifest>(ART_MANIFESTS[1]).catch(() => undefined);
+    const manifest = await manifestRequest;
+    if (!['style-first-approved-current-v1', 'native-4k-current-evidence-v1', 'direct-delivery-current-v1'].includes(manifest.bindingPolicy ?? '')) return world;
     const entry = manifest.worlds.find(row => row.worldId === world.id && row.storyId === world.storyId && row.version === world.version);
-    if (!entry) return clean;
+    if (!entry) return world;
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(artBindingSource(world)));
-    if (Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('') !== entry.bindingSourceHash) return clean;
+    if (Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('') !== entry.bindingSourceHash) return world;
 
     // Only a successfully validated manifest may revoke the last accepted art snapshot.
-    const result = structuredClone(clean);
+    const result = structuredClone(clearStagePortraits(world));
     delete result.artCharacters;
     result.background = '';
     result.cover = '';
@@ -71,7 +73,7 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
     const sceneVariants = new Map<string, PublishedSceneVariant[]>();
     const priority = (row: PublishedAsset) => row.assetKind === 'character-anchor' ? 0 : row.assetKind === 'scene' ? 1 : 2;
     for (const row of [...entry.assets].sort((a, b) => priority(a) - priority(b))) {
-      if (row.review !== 'approved' || !row.bindingReady || !/^\/generated-art\/scene_[a-f0-9]+\.png$/.test(row.asset.url)
+      if (!row.bindingReady || !/^\/generated-art\/scene_[a-f0-9]+\.png$/.test(row.asset.url)
         || !/^[a-f0-9]{64}$/.test(row.asset.sha256) || hashes.has(row.asset.sha256)) continue;
       if (row.assetKind === 'scene' && row.gameReady && Object.hasOwn(result.nodes, row.nodeId)
         && !hasSceneArtHold(result.id, row.nodeId, row.asset.url)) {
@@ -109,15 +111,16 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
       result.nodes[id].artSceneVariants = variants.filter((variant, index, all) =>
         !hasSceneArtHold(result.id, id, variant.url) && all.findIndex(item => item.sha256 === variant.sha256) === index);
     }
-    await loadCharacterCutouts(result, entry.assets, entry.sceneCharacters, scenes);
+    const cutouts = await cutoutsRequest;
+    if (cutouts) bindCharacterCutouts(result, entry.assets, cutouts, entry.sceneCharacters, scenes);
     // A supporting actor can have an independently approved reaction cutout before its main pose.
     if (result.artCharacters) result.artCharacters = result.artCharacters.filter(character => generated(character.portraits?.main)
       || generated(character.portraits?.reaction)
       || approvedStagePortrait(character.stagePortraits?.main) || approvedStagePortrait(character.stagePortraits?.reaction));
     return result;
   } catch {
-    // Keep the accepted scene illustration, but stage approvals need fresh evidence.
-    return clean;
+    // A transient manifest failure must not revoke the last validated snapshot.
+    return world;
   }
 }
 

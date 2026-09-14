@@ -1,3 +1,5 @@
+import { accountFetch } from './account-storage';
+import { accountSessionStorage } from './account-storage';
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowUpRight, BookOpen, Check, ChevronRight, Clapperboard, Clock3, Copy, Download, FileText, Flag, GitBranch, HelpCircle, History, Lightbulb, ListTree, LoaderCircle, MessageCircle, PenLine, Search, Send, Sparkles, Users, X } from 'lucide-react';
@@ -23,7 +25,7 @@ class ReadingRequestError extends Error {
 }
 
 async function request<T>(path: string, body?: unknown, signal?: AbortSignal): Promise<T> {
-  const response = await fetch(path, { signal, ...(body === undefined ? {} : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }) });
+  const response = await accountFetch(path, { signal, ...(body === undefined ? {} : { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }) });
   const data = await response.json().catch(() => null) as T & { error?: { message?: string; code?: string } } | null;
   if (!response.ok) throw new ReadingRequestError(data?.error?.message ?? '这次没有接上，稍后可以查看这次结果。', data?.error?.code);
   if (!data) throw new ReadingRequestError('这次收到的内容不完整，稍后可以查看这次结果。');
@@ -33,12 +35,12 @@ async function request<T>(path: string, body?: unknown, signal?: AbortSignal): P
 function requestIdFor(key: string, memory: Map<string, string>) {
   if (memory.has(key)) return memory.get(key)!;
   try {
-    const saved = JSON.parse(sessionStorage.getItem(REQUEST_STORE) ?? '[]') as Array<[string, string]>;
+    const saved = JSON.parse(accountSessionStorage.getItem(REQUEST_STORE) ?? '[]') as Array<[string, string]>;
     if (Array.isArray(saved)) for (const item of saved.slice(-30)) if (Array.isArray(item) && typeof item[0] === 'string' && typeof item[1] === 'string') memory.set(item[0], item[1]);
   } catch { /* An in-memory ID still protects retries when browser storage is unavailable. */ }
   const id = memory.get(key) ?? crypto.randomUUID();
   memory.set(key, id);
-  try { sessionStorage.setItem(REQUEST_STORE, JSON.stringify([...memory].slice(-30))); } catch { /* Session storage is optional. */ }
+  try { accountSessionStorage.setItem(REQUEST_STORE, JSON.stringify([...memory].slice(-30))); } catch { /* Session storage is optional. */ }
   return id;
 }
 

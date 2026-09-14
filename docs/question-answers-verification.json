@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-09-14T13:24:12.742352+00:00",
+  "release": "/data/zhihu-project/releases/question-answers-20260914",
+  "publicUrl": "https://zhihu.hegelsalon.com/",
+  "realOfficialAnswers": {
+    "questionUrl": "https://www.zhihu.com/question/2081163395638760993",
+    "offsets": [
+      0,
+      20
+    ],
+    "distinctAnswers": 40,
+    "nextOffset": 40,
+    "scope": "question-answer-excerpt",
+    "persistedExactly": true
+  },
+  "testEvidence": [
+    "output/question-flow/integration.json",
+    "output/official-question-ui/results.json",
+    "output/question-reader-ui/results.json",
+    "output/question-answer-ui/results.json"
+  ],
+  "limits": [
+    "Official API returns excerpts, not complete answer text or author names.",
+    "Current credential quota: hot_list 2/day, question_answers 10/day; service caches public responses across users/restarts.",
+    "Full app tests replay real same-day responses and fixture OAuth identities; no real user session or website cookies used.",
+    "Question browser 40362 itself is not removed; question links open official answer reader."
+  ]
+}

@@ -148,6 +148,14 @@ test('compiled Zhihu adaptations keep platform provenance distinct from personal
   assert.equal(worldSourceLabel(world), '知乎原作');
   assert.equal(worldSourceLabel(buildGeneratedWorld(id, 1, originalSeed, mechanicalDraft()).world), '原创种子');
   assert.equal(worldSourceLabel(buildGeneratedWorld(id, 1, { ...originalSeed, scope: 'user-import' }, mechanicalDraft()).world), '导入原文');
+  const favoriteOrigin = { kind: 'zhihu-answer' as const, contentScope: 'favorite-summary' as const, workId: '87654321', sourceUrl: 'https://www.zhihu.com/question/12345678/answer/87654321', fetchedAt: origin.fetchedAt };
+  const favorite = buildGeneratedWorld(id, 1, { ...source, origin: favoriteOrigin }, mechanicalDraft()).world;
+  assert.deepEqual(favorite.source.origin, favoriteOrigin);
+  assert.equal(favorite.adaptation.scope, 'based-on-favorite-summary');
+  assert.equal(worldSourceLabel(favorite), '知乎收藏摘要');
+  assert.match(favorite.adaptation.note, /知乎收藏接口摘要/);
+  assert.match(favorite.adaptation.note, /并非完整原文/);
+  assert.doesNotMatch(favorite.adaptation.note, /搜索返回|故事接口/);
 });
 test('strict schema rejects unknown properties and unsafe identifiers', () => {
   const draft = mechanicalDraft(); validateSchema(outlineSchema, draft.outline);
