@@ -8,6 +8,7 @@ output/
 *.recovery.json
 *.log
 test-results/
+public/games/redrain
 
 # Local browser/tool caches and generated verification output
 .npm-playwright-cache/
