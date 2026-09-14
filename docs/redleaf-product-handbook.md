@@ -9,7 +9,7 @@
 > **完整图文产品手册：88 页 · 80 张真实产品截图及讲解**  
 > [预览 PDF](https://github.com/wzn1118/zhihu-story-worlds/blob/main/docs/redleaf-product-handbook.pdf) · [下载 PDF（约 13 MB）](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/main/docs/redleaf-product-handbook.pdf) · [查看 / 复制 Markdown](https://github.com/wzn1118/zhihu-story-worlds/blob/main/docs/redleaf-product-handbook.md)
 
-![赤页真实蓝白界面：故事书库与刘看山陪伴入口](docs/readme-assets/liukan-01-companion.webp)
+![赤页真实蓝白界面：故事书库与刘看山陪伴入口](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-01-companion.webp)
 
 赤页是一款基于知乎内容的阅读与互动创作工作台。你可以从真实回答出发，查看原作与作者，用刘看山手记梳理人物、时间线和线索，再把理解转化为可以编辑、选择和继续创作的故事。
 
@@ -30,7 +30,7 @@
 
 每个故事保留原作标题、作者、链接和可追溯的原文节选。你可以先读原作，也可以带着具体问题去理解人物与事件，再决定如何改编。
 
-![知乎原文选取与赤页内容入口的真实截图](docs/readme-assets/product-source-selection.webp)
+![知乎原文选取与赤页内容入口的真实截图](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/product-source-selection.webp)
 
 **来源始终可回看。** 原文、作者观点与后续互动改编保持区分；游戏对白、分支、结局与视觉表现不替代原作的完整内容。
 
@@ -56,13 +56,13 @@
 
 **围绕原文提问与继续制作**
 
-![围绕原文提问与继续制作](docs/readme-assets/liukan-14-source-chat-create.webp)
+![围绕原文提问与继续制作](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-14-source-chat-create.webp)
 
 在“一起读”里针对当前保存的文章提问，或把它交给工作台改编。截图中的项目已有记录，所以按钮显示“继续制作游戏”；生成进度和美术状态仍分别保留。
 
 **关卡回忆与陪伴**
 
-![关卡回忆与陪伴](docs/readme-assets/liukan-02-journey.webp)
+![关卡回忆与陪伴](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-02-journey.webp)
 
 “关卡回忆”关注当前旅程与已经完成的经历。新的浏览器会话可能还没有当前游玩进度；历史记录可从“同行记录”查看。
 
@@ -70,9 +70,9 @@
 
 进入“阅读手记”，左边是看山的书袋与已经写好的手记，右边选择这次要怎样读。可以按标题、作者或原文内容搜索资料，然后选择一篇；比较阅读支持同时选择 2—3 篇。
 
-![阅读手记全景：原文书袋、读法分类与提问区](docs/readme-assets/liukan-03-reading.webp)
+![阅读手记全景：原文书袋、读法分类与提问区](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-03-reading.webp)
 
-![从阅读手记直接翻开保存的原文](docs/readme-assets/liukan-04-source-preview.webp)
+![从阅读手记直接翻开保存的原文](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-04-source-preview.webp)
 
 **原文随时可核对。** “翻开原文”显示实际保存的正文与字数。搜索节选、网页选取和完整原作的边界会保留，读到一段内容不会被描述成读完了整篇作品。
 
@@ -82,73 +82,73 @@
 
 **陪我捋一遍**
 
-![陪我捋一遍](docs/readme-assets/liukan-read-01.webp)
+![陪我捋一遍](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-01.webp)
 
 把已经发生的事整理成清楚的梗概。适合刚读完一段、想确认自己有没有漏掉关键信息时使用。
 
 **谁和谁什么关系**
 
-![谁和谁什么关系](docs/readme-assets/liukan-read-02.webp)
+![谁和谁什么关系](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-02.webp)
 
 列出人物、身份、彼此关系与各自知道的信息，帮助理解对话背后的立场。
 
 **事情的先后顺序**
 
-![事情的先后顺序](docs/readme-assets/liukan-read-03.webp)
+![事情的先后顺序](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-03.webp)
 
 分开叙述顺序与事件顺序，理清倒叙、插叙和关键时间点。
 
 **捡一捡线索**
 
-![捡一捡线索](docs/readme-assets/liukan-read-04.webp)
+![捡一捡线索](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-04.webp)
 
 找出可疑细节并附上原文依据；已经出现的线索和待验证的猜测分别说明。
 
 **他为什么这样做**
 
-![他为什么这样做](docs/readme-assets/liukan-read-05.webp)
+![他为什么这样做](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-05.webp)
 
 结合人物言行分析动机，区分原文明确交代的理由与可能的解释。
 
 **哪里还说不通**
 
-![哪里还说不通](docs/readme-assets/liukan-read-06.webp)
+![哪里还说不通](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-06.webp)
 
 列出缺失信息、表面矛盾和未回答的问题，为下一次细读留出追问方向。
 
 **放在一起看看**
 
-![放在一起看看](docs/readme-assets/liukan-read-07.webp)
+![放在一起看看](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-07.webp)
 
 同时选择 2—3 篇回答，比较观点、叙述和证据；每篇保留各自出处。
 
 **这里有什么规矩**
 
-![这里有什么规矩](docs/readme-assets/liukan-read-08.webp)
+![这里有什么规矩](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-08.webp)
 
 整理故事世界里的限制、代价与例外，为理解人物选择或后续改编建立依据。
 
 **接着问看山**
 
-![接着问看山](docs/readme-assets/liukan-read-09.webp)
+![接着问看山](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-09.webp)
 
 带着原文提出具体问题，也能从已有手记接着追问。前页讨论作为背景，引用仍回到原文。
 
 **人物关系网**
 
-![人物关系网](docs/readme-assets/liukan-read-10.webp)
+![人物关系网](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-10.webp)
 
 进一步分析人物间的利用、隐瞒、依赖和关系转折，把关系变化和情节联系起来。
 
 **伏笔有没有回响**
 
-![伏笔有没有回响](docs/readme-assets/liukan-read-11.webp)
+![伏笔有没有回响](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-11.webp)
 
 对照前面的细节与后续发展，区分已回收的伏笔和仍待验证的暗示。
 
 **先替我试玩审稿**
 
-![先替我试玩审稿](docs/readme-assets/liukan-read-12.webp)
+![先替我试玩审稿](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-read-12.webp)
 
 从玩家视角检查目标、选择、线索与失败后果是否交代清楚，给出可继续修改的阅读意见。
 
@@ -158,43 +158,43 @@
 
 **想一个游戏开头**
 
-![想一个游戏开头](docs/readme-assets/liukan-write-01.webp)
+![想一个游戏开头](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-01.webp)
 
 从原文中的冲突出发，构思玩家身份、核心玩法、路线和收束方式。
 
 **试写一段对话**
 
-![试写一段对话](docs/readme-assets/liukan-write-02.webp)
+![试写一段对话](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-02.webp)
 
 围绕人物关系试写具体对白，保留原文对照，并把新创作内容标为改编草稿。
 
 **设计几个选择**
 
-![设计几个选择](docs/readme-assets/liukan-write-03.webp)
+![设计几个选择](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-03.webp)
 
 设计有代价和后果的行动，让已有线索影响可选的道路。
 
 **把结局写完整**
 
-![把结局写完整](docs/readme-assets/liukan-write-04.webp)
+![把结局写完整](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-04.webp)
 
 让不同人物决定落到不同结果，交代行动的后果与故事的收束。
 
 **安排场景节奏**
 
-![安排场景节奏](docs/readme-assets/liukan-write-05.webp)
+![安排场景节奏](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-05.webp)
 
 把改编点子排成场景，写清地点、动作、转折和推进节奏。
 
 **整理制作提纲**
 
-![整理制作提纲](docs/readme-assets/liukan-write-06.webp)
+![整理制作提纲](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-06.webp)
 
 把主角、玩法、路线和需要的美术场景整理成下一步可用的制作提纲。
 
 **让这段更好读**
 
-![让这段更好读](docs/readme-assets/liukan-write-07.webp)
+![让这段更好读](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-write-07.webp)
 
 试写更自然的叙述与对白。改写另存，原文仍可随时回看。
 
@@ -204,55 +204,55 @@
 
 **线索分析：五处值得盯住的线索**
 
-![线索分析：五处值得盯住的线索](docs/readme-assets/liukan-note-01.webp)
+![线索分析：五处值得盯住的线索](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-01.webp)
 
 以账号、动作与时间等细节组织分析，在判断下方保留对应原话。
 
 **时间线：从确诊到第七天的微信**
 
-![时间线：从确诊到第七天的微信](docs/readme-assets/liukan-note-02.webp)
+![时间线：从确诊到第七天的微信](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-02.webp)
 
 整理实际发生与叙述呈现的先后关系，保留尚未证实的信息边界。
 
 **人物分析：一家三口，和账号另一端**
 
-![人物分析：一家三口，和账号另一端](docs/readme-assets/liukan-note-03.webp)
+![人物分析：一家三口，和账号另一端](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-03.webp)
 
 从人物所知与相互关系出发，说明节选已经交代什么、还没有回答什么。
 
 **比较阅读：亲属身份，凭什么让人相信**
 
-![比较阅读：亲属身份，凭什么让人相信](docs/readme-assets/liukan-note-04.webp)
+![比较阅读：亲属身份，凭什么让人相信](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-04.webp)
 
 对照两篇内容对“身份可信度”的不同处理，各自引用对应的原文。
 
 **继续追问：林铮删好友的明确动机**
 
-![继续追问：林铮删好友的明确动机](docs/readme-assets/liukan-note-05.webp)
+![继续追问：林铮删好友的明确动机](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-05.webp)
 
 围绕一个具体行为深挖理由，把明确证据与可能存在的隐情分开。
 
 **对白草稿：叫我一声**
 
-![对白草稿：叫我一声](docs/readme-assets/liukan-note-06.webp)
+![对白草稿：叫我一声](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-06.webp)
 
 试写人物对话，页面明确标记新增对白属于改编，不冒充原文后续。
 
 **游戏构思：第八天，先吃饭**
 
-![游戏构思：第八天，先吃饭](docs/readme-assets/liukan-note-07.webp)
+![游戏构思：第八天，先吃饭](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-note-07.webp)
 
 把阅读中的冲突发展成玩家目标、日常行动和不同结局的游戏构思。
 
 **复制、下载与 Markdown**
 
-![复制、下载与 Markdown](docs/readme-assets/liukan-05-note-export.webp)
+![复制、下载与 Markdown](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-05-note-export.webp)
 
 页尾列出本页读过的原文、模型与来源，可复制或下载手记，也可以展开 Markdown 全文。
 
 **沿着这一页继续聊**
 
-![沿着这一页继续聊](docs/readme-assets/liukan-06-follow-up.webp)
+![沿着这一页继续聊](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-06-follow-up.webp)
 
 点击“继续聊这一页”带入前页讨论，再提出具体问题；新的引用仍然核对原文。
 
@@ -260,17 +260,17 @@
 
 “聊天与连接”把通用对话、资料查找和对话设置放在同一个面板。聊天页也保留阅读手记与同行记录的直接入口，提问后可以顺着当前任务继续做事。
 
-![刘看山通用聊天与阅读、活动入口](docs/readme-assets/liukan-07-chat.webp)
+![刘看山通用聊天与阅读、活动入口](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-07-chat.webp)
 
 **知乎直答**
 
-![知乎直答](docs/readme-assets/liukan-08-zhida-settings.webp)
+![知乎直答](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-08-zhida-settings.webp)
 
 可选择快速回答、深度思考或智能检索。保存配置后，后续对话按选定方式发出。
 
 **自定义中转**
 
-![自定义中转](docs/readme-assets/liukan-09-relay-settings.webp)
+![自定义中转](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-09-relay-settings.webp)
 
 支持中转地址、协议、模型与推理强度，也可复制工作台配置。截图中地址与密钥输入为空，未提交新的配置。
 
@@ -280,79 +280,79 @@
 
 **找知乎回答**
 
-![找知乎回答](docs/readme-assets/liukan-tool-search-zhihu.webp)
+![找知乎回答](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-search-zhihu.webp)
 
 输入关键词检索社区内容，结果保留作者与原文链接，可以继续阅读来源。
 
 **查外部资料**
 
-![查外部资料](docs/readme-assets/liukan-tool-search-global.webp)
+![查外部资料](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-search-global.webp)
 
 查找全网资料与出处。外部来源显示网址，便于复制、核对和补充背景。
 
 **看看热榜**
 
-![看看热榜](docs/readme-assets/liukan-tool-hot.webp)
+![看看热榜](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-hot.webp)
 
 查看当前热点议题，从正在被讨论的问题中寻找阅读与创作方向。
 
 **请直答查一查**
 
-![请直答查一查](docs/readme-assets/liukan-tool-answer.webp)
+![请直答查一查](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-answer.webp)
 
 把问题交给知乎直答整理，适合需要围绕一个问题继续查资料的场景。
 
 **我的创作**
 
-![我的创作](docs/readme-assets/liukan-tool-my-contents.webp)
+![我的创作](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-my-contents.webp)
 
 读取本机已配置账号的创作标题和摘要，回到自己写过的内容。
 
 **我的关注**
 
-![我的关注](docs/readme-assets/liukan-tool-my-followees.webp)
+![我的关注](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-my-followees.webp)
 
 读取账号关注列表，从自己关注的人继续寻找内容。
 
 **近期收藏**
 
-![近期收藏](docs/readme-assets/liukan-tool-favorites-recent.webp)
+![近期收藏](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-favorites-recent.webp)
 
 查看最近收藏的内容，把此前存下的阅读兴趣接回工作台。
 
 **我的收藏夹**
 
-![我的收藏夹](docs/readme-assets/liukan-tool-favorites-lists.webp)
+![我的收藏夹](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-favorites-lists.webp)
 
 先列出收藏夹，再选择要翻阅的那一本。
 
 **翻一翻收藏夹**
 
-![翻一翻收藏夹](docs/readme-assets/liukan-tool-favorites-items.webp)
+![翻一翻收藏夹](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-favorites-items.webp)
 
 根据所选收藏夹编号读取一页内容；有后续结果时可以继续翻页。
 
 **我的知识库**
 
-![我的知识库](docs/readme-assets/liukan-tool-knowledge-bases.webp)
+![我的知识库](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-knowledge-bases.webp)
 
 列出账号可访问的知识库，为目录浏览和检索选择范围。
 
 **知识库目录**
 
-![知识库目录](docs/readme-assets/liukan-tool-knowledge-items.webp)
+![知识库目录](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-knowledge-items.webp)
 
 根据知识库编号读取目录，定位已经整理好的资料。
 
 **在知识库里找**
 
-![在知识库里找](docs/readme-assets/liukan-tool-knowledge-search.webp)
+![在知识库里找](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-knowledge-search.webp)
 
 用关键词检索相关段落；可以指定知识库，也可以按界面提示检索个人库。
 
 **查看 API 额度**
 
-![查看 API 额度](docs/readme-assets/liukan-tool-quota.webp)
+![查看 API 额度](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tool-quota.webp)
 
 按需查询当日用量，帮助了解当前接口使用情况。
 
@@ -360,21 +360,21 @@
 
 制作任务、实际美术状态与玩家走过的路各自有记录。可以按标题搜索、按制作状态筛选，再进入已有可玩版本。截图使用页面自带的“可以开始玩”筛选，只展示符合该条件的已保存项目。
 
-![同行记录：可以开始玩的项目与各自文字、美术进度](docs/readme-assets/liukan-10-projects.webp)
+![同行记录：可以开始玩的项目与各自文字、美术进度](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-10-projects.webp)
 
 **开工检查把下一步说清楚。** 选择一个项目，核对原文、文字、分支检查、美术和真实游玩记录。截图显示当前项目 **4/5 项可确认**，页面按实际记录给出下一步建议。
 
-![开工检查：所选项目的五项记录核对](docs/readme-assets/liukan-11-preflight.webp)
+![开工检查：所选项目的五项记录核对](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-11-preflight.webp)
 
 **走过的关卡**
 
-![走过的关卡](docs/readme-assets/liukan-12-memories.webp)
+![走过的关卡](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-12-memories.webp)
 
 按结局、场景或选择查找已经保存的回忆。截图来自本机现有的 7 条关卡记录。
 
 **展开当时的场景与选择**
 
-![展开当时的场景与选择](docs/readme-assets/liukan-13-memory-detail.webp)
+![展开当时的场景与选择](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-13-memory-detail.webp)
 
 打开一条回忆，查看实际经历的片段和当时所选行动，也可以下载这段回忆。
 
@@ -384,43 +384,43 @@
 
 **见面**
 
-![见面](docs/readme-assets/liukan-action-01.webp)
+![见面](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-01.webp)
 
 打招呼、点头、眨眼、挥别等日常回应，让刘看山在进入和离开时都有自己的表达。
 
 **带路**
 
-![带路](docs/readme-assets/liukan-action-02.webp)
+![带路](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-02.webp)
 
 介绍书库、原文、工作台、存档等入口，配合用户正在进行的步骤带路。
 
 **指向**
 
-![指向](docs/readme-assets/liukan-action-03.webp)
+![指向](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-03.webp)
 
 通过不同方向与位置的提示，把注意力带到当前要看的界面区域。
 
 **读故事**
 
-![读故事](docs/readme-assets/liukan-action-04.webp)
+![读故事](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-04.webp)
 
 倾听、阅读、记住内容和回应细节，配合一起读与原文问答。
 
 **想一想**
 
-![想一想](docs/readme-assets/liukan-action-05.webp)
+![想一想](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-05.webp)
 
 等待、思考、发现线索与整理思路，在阅读和推理时给出可见反馈。
 
 **做游戏**
 
-![做游戏](docs/readme-assets/liukan-action-06.webp)
+![做游戏](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-06.webp)
 
 开始写作、安排路线、检查剧情、准备配图和重试制作，呼应创作流程。
 
 **一起冒险**
 
-![一起冒险](docs/readme-assets/liukan-action-07.webp)
+![一起冒险](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-action-07.webp)
 
 出发、陪伴、鼓励和回忆旅程，让角色跟随故事进度作出回应。
 
@@ -430,85 +430,85 @@
 
 **01 · 认识刘看山**
 
-![01 · 认识刘看山](docs/readme-assets/liukan-tour-01.webp)
+![01 · 认识刘看山](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-01.webp)
 
 找到随时可打开的陪伴入口，了解书库与工作台两条起步路径。
 
 **02 · 挑选故事**
 
-![02 · 挑选故事](docs/readme-assets/liukan-tour-02.webp)
+![02 · 挑选故事](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-02.webp)
 
 定位真实书库卡片，认识标题、作者、来源与改编入口。
 
 **03 · 了解玩法**
 
-![03 · 了解玩法](docs/readme-assets/liukan-tour-03.webp)
+![03 · 了解玩法](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-03.webp)
 
 打开故事开场说明，先看身份、目标、资源与规则。
 
 **04 · 核对原文**
 
-![04 · 核对原文](docs/readme-assets/liukan-tour-04.webp)
+![04 · 核对原文](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-04.webp)
 
 打开来源阅读器，认识原文搜索、作者与来源信息。
 
 **05 · 进入工作台**
 
-![05 · 进入工作台](docs/readme-assets/liukan-tour-05.webp)
+![05 · 进入工作台](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-05.webp)
 
 定位故事改编工作台，认识原文、项目和制作进度的关系。
 
 **06 · 在当前页逛知乎**
 
-![06 · 在当前页逛知乎](docs/readme-assets/liukan-tour-06.webp)
+![06 · 在当前页逛知乎](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-06.webp)
 
 进入知乎子页面，认识真实网页与内容阅读的切换入口。
 
 **07 · 粘贴或上传**
 
-![07 · 粘贴或上传](docs/readme-assets/liukan-tour-07.webp)
+![07 · 粘贴或上传](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-07.webp)
 
 切到自己的文本导入区，填写标题、作者和正文。
 
 **08 · 连接文字模型**
 
-![08 · 连接文字模型](docs/readme-assets/liukan-tour-08.webp)
+![08 · 连接文字模型](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-08.webp)
 
 定位文字中转配置区；保存连接后再决定是否开始制作。
 
 **09 · 开始生成**
 
-![09 · 开始生成](docs/readme-assets/liukan-tour-09.webp)
+![09 · 开始生成](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-09.webp)
 
 找到实际生成按钮，理解从原文到路线、场景和结局的制作过程。
 
 **10 · 查看制作进度**
 
-![10 · 查看制作进度](docs/readme-assets/liukan-tour-10.webp)
+![10 · 查看制作进度](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-10.webp)
 
 定位所选项目的阶段、日志与可玩状态，了解中断后从哪里继续。
 
 **11 · 查看美术进度**
 
-![11 · 查看美术进度](docs/readme-assets/liukan-tour-11.webp)
+![11 · 查看美术进度](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-11.webp)
 
 找到项目的插图区，区分文本可玩、图片制作与审核状态。
 
 **12 · 保存旅程**
 
-![12 · 保存旅程](docs/readme-assets/liukan-tour-12.webp)
+![12 · 保存旅程](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-12.webp)
 
 打开存档管理，了解继续、备份和导入导出。
 
 **13 · 回看结局**
 
-![13 · 回看结局](docs/readme-assets/liukan-tour-13.webp)
+![13 · 回看结局](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-13.webp)
 
 进入结局档案，查看已经解锁的结果和后续复玩方向。
 
 **14 · 调整阅读体验**
 
-![14 · 调整阅读体验](docs/readme-assets/liukan-tour-14.webp)
+![14 · 调整阅读体验](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-tour-14.webp)
 
 打开字体、节奏和动效设置；完成后随时可以重新播放引导。
 
@@ -516,19 +516,19 @@
 
 窄屏把阅读手记拆成“一起细读”和“书袋与手记”两个视图，阅读能力、原文搜索和聊天入口仍然保留。以下是 **390 × 844** 的实际手机视口截图。
 
-![手机上的 12 种读法](docs/readme-assets/liukan-mobile-reading.webp)
+![手机上的 12 种读法](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-mobile-reading.webp)
 
-![手机上的原文书袋与搜索](docs/readme-assets/liukan-mobile-library.webp)
+![手机上的原文书袋与搜索](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-mobile-library.webp)
 
-![手机上的刘看山聊天](docs/readme-assets/liukan-mobile-chat.webp)
+![手机上的刘看山聊天](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-mobile-chat.webp)
 
-截图覆盖：**19/19 阅读与改编工具、13/13 知乎能力、7/7 动作分类（56/56 动作）、14/14 引导步骤**，另含陪伴、原文、手记成果、导出、追问、聊天设置、活动记录与手机视图。截图文件与哈希见 [截图清单](docs/readme-assets/liukan-screenshots.json)。
+截图覆盖：**19/19 阅读与改编工具、13/13 知乎能力、7/7 动作分类（56/56 动作）、14/14 引导步骤**，另含陪伴、原文、手记成果、导出、追问、聊天设置、活动记录与手机视图。截图文件与哈希见 [截图清单](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/liukan-screenshots.json)。
 
 ## 把阅读所得带进创作
 
 新故事工作台汇集知乎内容入口、原文导入、改编任务与项目列表。可以选择“灵感改编”或“沿原作扩展”，让一篇回答成为有身份、目标、地点、人物、行动与结局的互动世界。
 
-![赤页真实蓝白界面：新故事工作台、原文导入与项目列表](docs/readme-assets/product-workshop.webp)
+![赤页真实蓝白界面：新故事工作台、原文导入与项目列表](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/product-workshop.webp)
 
 1. **选内容：** 从知乎来源或已收录作品开始，保留原文信息。
 2. **理思路：** 梳理人物、时间线、线索和世界规则。
@@ -540,7 +540,7 @@
 
 从构思剧情、写作场景到检查分支，工作台展示当前阶段与制作日志，并保留返回导入原文的入口。
 
-![赤页真实界面细节：故事制作阶段、原文入口与生成日志](docs/readme-assets/product-generation.webp)
+![赤页真实界面细节：故事制作阶段、原文入口与生成日志](https://raw.githubusercontent.com/wzn1118/zhihu-story-worlds/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/readme-assets/product-generation.webp)
 
 ## 阅读、选择与记录可以持续下去
 
@@ -565,7 +565,7 @@
 
 仓库包含 **3,608 个公开资源文件，约 8.75 GiB**。页面使用真实产品截图的展示版本，原始游戏美术仍完整保留。
 
-[生成美术](public/generated-art/) · [基础资源](public/assets/) · [游戏资源](public/games/) · [资源校验清单](docs/public-assets-manifest.json)
+[生成美术](https://github.com/wzn1118/zhihu-story-worlds/tree/79fa6c46f06e607886e93ba601b8d2c5835e54d8/public/generated-art/) · [基础资源](https://github.com/wzn1118/zhihu-story-worlds/tree/79fa6c46f06e607886e93ba601b8d2c5835e54d8/public/assets/) · [游戏资源](https://github.com/wzn1118/zhihu-story-worlds/tree/79fa6c46f06e607886e93ba601b8d2c5835e54d8/public/games/) · [资源校验清单](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/public-assets-manifest.json)
 
 ## 开始使用
 
@@ -614,14 +614,14 @@ npm run build
 
 GitHub Actions 在推送和 PR 中运行 Node.js 22 全量测试、TypeScript 检查及生产构建。测试使用仓库内记录的故事节选和美术设定，无需本机账号、故事缓存或制作输出目录。CI 仅下载测试读取的刘看山素材，构建用于编译验证。
 
-接口结果保留来源、作者、获取时间及缓存状态。上游服务不可用时显示真实错误或缓存状态。发布时的验证记录见 [GitHub 发布说明](docs/github-publication.md)。
+接口结果保留来源、作者、获取时间及缓存状态。上游服务不可用时显示真实错误或缓存状态。发布时的验证记录见 [GitHub 发布说明](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/github-publication.md)。
 
 ## 进一步了解
 
-- [赤页整体产品说明](docs/product-overview.md)
-- [故事与剧情引擎契约](content/CONTRACT.md)
-- [行动反馈与回溯说明](docs/choice-outcomes-and-rewind.md)
-- [美术方向](docs/art-direction.md)
-- [开发进展](progress.md)
+- [赤页整体产品说明](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/product-overview.md)
+- [故事与剧情引擎契约](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/content/CONTRACT.md)
+- [行动反馈与回溯说明](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/choice-outcomes-and-rewind.md)
+- [美术方向](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/docs/art-direction.md)
+- [开发进展](https://github.com/wzn1118/zhihu-story-worlds/blob/79fa6c46f06e607886e93ba601b8d2c5835e54d8/progress.md)
 
 **回答提供知识与故事，读者提供判断与行动，创作让内容继续生长。**

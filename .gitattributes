@@ -14,3 +14,6 @@ docs/产品说明计划书-可直接提交.md filter=lfs diff=lfs merge=lfs -tex
 
 # Small README previews render directly from Git; original art remains in LFS.
 docs/readme-assets/*.webp -filter -diff -merge -text
+
+# Keep the downloadable product handbook available without Git LFS.
+docs/redleaf-product-handbook.pdf -filter -diff -merge -text
