@@ -29,7 +29,7 @@ __pycache__/
 
 # Runtime credentials, browser state and deployment verification artifacts
 .codex/
-tools/
+tools/zhihu-oauth-demo/.codex/
 var/
 shared/.private/
 shared/browsers/

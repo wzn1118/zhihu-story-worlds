@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "projectName": "赤页 OAuth 联调",
+  "projectSlug": "赤页-oauth-联调",
+  "oauth": {
+    "enabled": true,
+    "appId": "580",
+    "redirectUri": "https://zhihu.hegelsalon.com/auth/callback",
+    "credentialService": "zhihu-hackathon:赤页-oauth-联调:a62f25dd5e",
+    "credentialAccount": "oauth-app-key"
+  },
+  "host": "127.0.0.1",
+  "port": 4179
+}
