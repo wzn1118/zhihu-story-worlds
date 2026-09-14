@@ -20701,7 +20701,7 @@
       "path": "public/generated-art/workshop/wscene_0295887d69e9dad930f1f13442e5.png",
       "bytes": 1778019,
       "sha256": "56d8a7994914b22ae4bea6cc6ab9f9ece2c7fa64967946c920c4a7332cf85525",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_051bceb81efe0fa824a4c1097650.png",
@@ -20719,13 +20719,13 @@
       "path": "public/generated-art/workshop/wscene_06ac53c49eb004134c49f4534d7d.png",
       "bytes": 1839548,
       "sha256": "870e208b4ce064c30cd1cac9f727eb1981d9465dc829f46a93424aabb60cecdf",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_07cf5697587aecde3410deb1e11a.png",
       "bytes": 1892645,
       "sha256": "a7d9709ec04efb53f143a3b924bd71d7f2e5b708d95760f45bb83b25f569bda8",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_08415d62e3b465748233ea8a3259.png",
@@ -20737,7 +20737,7 @@
       "path": "public/generated-art/workshop/wscene_08f770cf941a049f6299d940a0bb.png",
       "bytes": 2049434,
       "sha256": "abc1219b739b3d66f9b40d308a11cf4b1fb08c64b96eac3223c1c6dc19f049db",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_0c06df92de14c08f590669d30a76.png",
@@ -20749,7 +20749,7 @@
       "path": "public/generated-art/workshop/wscene_0cd4d57e23bdf30f69828cb8a0d3.png",
       "bytes": 2084578,
       "sha256": "c3b235a6214aa8019110864b0030bcb9f17a64d59ff40329c672b0cb199f18eb",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_0cf60190c80afb2721107dd8dbcf.png",
@@ -20779,7 +20779,7 @@
       "path": "public/generated-art/workshop/wscene_111be0444894cb90458cc3599baa.png",
       "bytes": 1842592,
       "sha256": "8ea7d9daee789e100106e6783f43d7d49ea728c10e100be65e7869a102628947",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_112c3c0ecf8182f3e34a1eeb95f5.png",
@@ -20815,7 +20815,7 @@
       "path": "public/generated-art/workshop/wscene_18f3563ce54a7732eaa45ee01852.png",
       "bytes": 1977606,
       "sha256": "03921e145c3932e111f4dfec9395da5a2031a5a37987586247ae7fa6c6f8d1c5",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_1b3340e7daec30dd473a8705261c.png",
@@ -20839,7 +20839,7 @@
       "path": "public/generated-art/workshop/wscene_2094a093ce36c270960c9654f374.png",
       "bytes": 1985225,
       "sha256": "c45081b884ecb9ae833317063f9533644581136a8434b4fe03ba082aa38bfb84",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_290eb473d24ed28423221f782666.png",
@@ -20887,7 +20887,7 @@
       "path": "public/generated-art/workshop/wscene_2fcfb0896131eb33023b3c94b455.png",
       "bytes": 2016221,
       "sha256": "ad1502f06305db53d1c3e58efd90e08df7258018492f3c9e576e06b517260b90",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_316a1d37e6c1f873f741cb5ddb70.png",
@@ -20899,7 +20899,7 @@
       "path": "public/generated-art/workshop/wscene_31aa81edaf0c2b01609b6738707f.png",
       "bytes": 1839090,
       "sha256": "72f581020742600a520e443131bbb2ce758e84393c6803c6ae6986669afdf42f",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_334bda9b3ccaae2989f1bd3844a6.png",
@@ -20911,7 +20911,7 @@
       "path": "public/generated-art/workshop/wscene_335ea28c7e84c02ab5e06eede955.png",
       "bytes": 2076366,
       "sha256": "257d06a98bcdea1171f8db3867ef7304f84ee494499f800de09f3f5184c0067f",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_33b2108d778dac47683c97b45456.png",
@@ -20941,7 +20941,7 @@
       "path": "public/generated-art/workshop/wscene_3cc01e03b3654eebc5f6f23b863b.png",
       "bytes": 1741314,
       "sha256": "af1703165c115e59f9c8441d825a18c87c12582fc89202f9bb78599949dc8076",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_3cec7b5bb2cef9c30846df88413e.png",
@@ -20953,7 +20953,7 @@
       "path": "public/generated-art/workshop/wscene_3d851708d43c9263cd308b728a9f.png",
       "bytes": 1950124,
       "sha256": "3e007dbba5c0c291836a9bd3b0abf416a619986d8cbbbeb868294502c0612f6e",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_3ed2f641781abddb52d981ce6f96.png",
@@ -20989,7 +20989,7 @@
       "path": "public/generated-art/workshop/wscene_469bfe8fc5e3141a5ddb2074878e.png",
       "bytes": 1962600,
       "sha256": "e3da0aae67b85cca7723ec7a303159068c5fc103bff80c49ed6cad5c0df47482",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_46d07fdb3ac1a689b66e7d56a9d9.png",
@@ -21001,7 +21001,7 @@
       "path": "public/generated-art/workshop/wscene_4866c426440de62eab12001fc88a.png",
       "bytes": 1842317,
       "sha256": "3612150780c7149d92393ba53a2047709b407735c2d1fe4040867e95895558c3",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_497ff0645a1560ae0a2d87b81a27.png",
@@ -21043,7 +21043,7 @@
       "path": "public/generated-art/workshop/wscene_5a3ec4ce812893eebd1191d7074e.png",
       "bytes": 1768743,
       "sha256": "70667905b6900e6770498dbfb9f579aa34565360f01842f68e9e1e7ff04e88a3",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_5a7816c4c4e43178580404f47f02.png",
@@ -21055,7 +21055,7 @@
       "path": "public/generated-art/workshop/wscene_5b45128007c8e3a07297a6d74855.png",
       "bytes": 1942757,
       "sha256": "375f8baad609d10554f16d722d161f2dd49bbe7ab124d0cf93d756a4b505f3a1",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_5b4a66c7c69e7c752eadc72b1403.png",
@@ -21097,7 +21097,7 @@
       "path": "public/generated-art/workshop/wscene_5f0a1e889e7788737a3aa862d41c.png",
       "bytes": 2102783,
       "sha256": "9d57b372612ae88e52fc9a945a7a67aad4808d7a0f1fba8f8f4aa769e6002476",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_6141c544f805ea83951109eb93fd.png",
@@ -21121,7 +21121,7 @@
       "path": "public/generated-art/workshop/wscene_6d2f4975bf41ea7fab34989e4733.png",
       "bytes": 1963357,
       "sha256": "87879a6660172727741a7afced96154ad70a605d3d62e25b783e17cbc611bc70",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_6f3ef90641cb61718c9a74e4f741.png",
@@ -21145,7 +21145,7 @@
       "path": "public/generated-art/workshop/wscene_782f59f80543cffbc7028f2fbba2.png",
       "bytes": 1794835,
       "sha256": "88442f2332403aa6883925391b1aa92ed7416c8c4f35f18bbed33c216eb510ec",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_78da6f79868bd63f272fc12fd181.png",
@@ -21181,7 +21181,7 @@
       "path": "public/generated-art/workshop/wscene_7d2b65756bc153b93fc5314064ed.png",
       "bytes": 2077302,
       "sha256": "7a794b01f4e96d593b03039856d9a3afbcfd4c8f17f3646fa5fa6831d64516ca",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_7e23a48414b038753f7a39fb2310.png",
@@ -21205,7 +21205,7 @@
       "path": "public/generated-art/workshop/wscene_87692ab6cb9da2934fbf7b58fb4d.png",
       "bytes": 2002592,
       "sha256": "5492e34bf7896b2f61408f0b13a4826bb7ab76cbfeae3b227e927e7b94b8dc6f",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_8d3cfe51daed69e4f7187796a9a1.png",
@@ -21217,7 +21217,7 @@
       "path": "public/generated-art/workshop/wscene_8fbf9f6b69f75f4aaf50033f4d3a.png",
       "bytes": 1932188,
       "sha256": "1ac4d03fe483e43abcc79a761eae0f0cd0dffb4483737e3f2c8260f83c629b8b",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_90c3854c802870c331caf67172f0.png",
@@ -21229,7 +21229,7 @@
       "path": "public/generated-art/workshop/wscene_95591ae6133f9406e89ad57156c1.png",
       "bytes": 1777445,
       "sha256": "f87bc0a2a103a53f0c50b89dc83c9f6f37db83e527d5cf84efaabf9b04a17070",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_96f32d6611ef8026b8b7aa5c2773.png",
@@ -21241,7 +21241,7 @@
       "path": "public/generated-art/workshop/wscene_9734f004b75b77b5754196ae3e16.png",
       "bytes": 1879355,
       "sha256": "b76a091a6f8203513be0d84c42f3c511271c0694835c43a79bd1aff0246cab78",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_97dfa59f594ff6c7bdce3ab85ce1.png",
@@ -21265,13 +21265,13 @@
       "path": "public/generated-art/workshop/wscene_9aaac7bbc7a9eb6f28bb0b21d250.png",
       "bytes": 1553643,
       "sha256": "eb74ae33a127c2df98310f8a96c9694cfbb7812182967bffbd81b1f1b2529a4d",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_9abd6b393d416225a58c64df74b6.png",
       "bytes": 1884505,
       "sha256": "87a29caeb5ba059c81e2fc7c38692505f6597532bcb2879f7e5319a66c53deb2",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_9b8ac11ee732dc73d5ae3278f7e9.png",
@@ -21283,7 +21283,7 @@
       "path": "public/generated-art/workshop/wscene_9db76daf6a6b9af8061c08e499d3.png",
       "bytes": 1895016,
       "sha256": "104364e6b7af1f806ae8d942174bc59e15080fa15ba346c83fdc843113be4cbc",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_9ea509c421940a7808770c5e9849.png",
@@ -21295,7 +21295,7 @@
       "path": "public/generated-art/workshop/wscene_a0389fc994c78b7889a2209e295d.png",
       "bytes": 2119469,
       "sha256": "35fa32e7749da35df1d0a761cfb255d878fe54ad899bcf28bfa64a8b2bf503a8",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_a05b0400766527e0cad014805b25.png",
@@ -21313,19 +21313,19 @@
       "path": "public/generated-art/workshop/wscene_a374efa94952da8f6f469dd93551.png",
       "bytes": 1794163,
       "sha256": "e50bf3c2dfcd30b891e7cd76e7c5946f46cdebd5e7d11b77f5e1a179eff287b6",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_a5ebe3808feb9df3888947fe1589.png",
       "bytes": 2308472,
       "sha256": "79aa49360afa32b3218c0baa1f91fa0054be913c227ab586766f98a4803100ef",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_a7efe15198cfc4af9d0d142d5db3.png",
       "bytes": 1844186,
       "sha256": "de857d42c566063b5227d9e65208abef062c1b79737c6cb66d84516ddd9f297a",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_a8e24c885a9c63844b52004d2558.png",
@@ -21349,7 +21349,7 @@
       "path": "public/generated-art/workshop/wscene_aa880f51d7d66e4c814fc1f73c38.png",
       "bytes": 1870321,
       "sha256": "3a80311dbab41cb1a98639ba2bff8902658ec4c7acc8f1dd693038ea2e97e86e",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_ab27cc28e47a85f579bcdf9ecc30.png",
@@ -21367,13 +21367,13 @@
       "path": "public/generated-art/workshop/wscene_b1e0038836509bd54b5337e70ee0.png",
       "bytes": 1762388,
       "sha256": "20b3af79d5de10436a2e59b657d902f0847ea2778010ad8caac17f9fc592c563",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_b247bc865f1653ab96f9adb63397.png",
       "bytes": 2119446,
       "sha256": "e10eca7064f0a00fffe83b6f8e08247fbf8862ce5c7378304743428278981891",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_b325670cfeffb175cd8e4e7910af.png",
@@ -21391,7 +21391,7 @@
       "path": "public/generated-art/workshop/wscene_b6bfd875b28e152455c87243e0d3.png",
       "bytes": 1854240,
       "sha256": "70e27e88e4c3307af050fad6e0a5e832b6f76c851fd5f430f5edeaed917ef450",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_b8a9e0e08b810d0e4a98ff7c01ea.png",
@@ -21409,13 +21409,13 @@
       "path": "public/generated-art/workshop/wscene_ca010d70a88ac63c898e36f94a5d.png",
       "bytes": 1810428,
       "sha256": "24661e67598b0c4d24cd4ac21638b763df8d610c505147c6f09be4e53aca5eda",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_cc57f61e7c5c22ac0bb0fdc8ec4d.png",
       "bytes": 2096462,
       "sha256": "67d59da13098ce200fecfc7eb2101888c4fbed26fb550f05175c11a7e15b2621",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_cc94e0de131cc7df3a6c1066566d.png",
@@ -21433,7 +21433,7 @@
       "path": "public/generated-art/workshop/wscene_cd0d5d9cde48e52157ecb2e981e4.png",
       "bytes": 1969411,
       "sha256": "11e396df18bb3ce2453741df0d816c1729713d08ed2df93e284d49fc04756183",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_cf56169f553ecfd3c06419edfef2.png",
@@ -21445,7 +21445,7 @@
       "path": "public/generated-art/workshop/wscene_d0b81a40972d8e4bc5f9fa1a2a50.png",
       "bytes": 1623617,
       "sha256": "c7d068c85e11fb6ce74ceea1e6ce3e79804934efd5e1b9d79bcf5e12c5fcdd5a",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_d1da347aaddeacb181b10917cbfa.png",
@@ -21457,13 +21457,13 @@
       "path": "public/generated-art/workshop/wscene_d40757e2b9b93083da0c2ed0a6c0.png",
       "bytes": 1840937,
       "sha256": "83f4f0148268389bee4098d44dfdfcd91b1d95da5ac6570c0121af36e6eecd4c",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_d429b5504a84b655993feb3a40b3.png",
       "bytes": 2452285,
       "sha256": "5239117b8c8d19823df5e9f123cad55835b38e9c137c70f9c447dfefe6cc80ed",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_d4bfbd1444b64c34c91977ea4143.png",
@@ -21487,13 +21487,13 @@
       "path": "public/generated-art/workshop/wscene_d80ab1ba274b702507fcc3266cc7.png",
       "bytes": 2007561,
       "sha256": "6c474bcec009ab4112dee820fdb0393d2779a0de5747d4c7d85631a64bb19f5c",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_e0cc0bc7b2de8e0d55c45f967258.png",
       "bytes": 1902027,
       "sha256": "654d7181cfae188c1ebde79748e4df8322b2052d3eba021b5b3db9f279b97c39",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_e3f965c6509bb2283ec5e0a86cac.png",
@@ -21505,13 +21505,13 @@
       "path": "public/generated-art/workshop/wscene_e51e43fb9ec43d37e5441191ee71.png",
       "bytes": 2154737,
       "sha256": "a895bee33aabda98495fd76a7b8f447eb3d540906e976cc6670b38bcf34d768f",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_e57a99a9999bde9233d0fa445130.png",
       "bytes": 1665293,
       "sha256": "e707db12862153262739a28040e07e8aab1644d20ba1c42d4b05fafb4e0905fc",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_e57cf7400579d21f91d6cb1bd53a.png",
@@ -21583,7 +21583,7 @@
       "path": "public/generated-art/workshop/wscene_fe1112da82c69a8067ba12a7a4f2.png",
       "bytes": 2034890,
       "sha256": "0b6027679578391dac2ae04a2934c8d2cf888e1ecd77420745b1e675b9933700",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/generated-art/workshop/wscene_ff4a212b4c7730f5a7caedd42177.png",
@@ -21607,19 +21607,19 @@
       "path": "public/intro/game-generation.png",
       "bytes": 80173,
       "sha256": "048ac9985892072bb02a3c328ff2e403f6e213a989bc091c0e6028759e3e0990",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/intro/liukan-panel.png",
       "bytes": 349969,
       "sha256": "7a5593e0c7b48692e97c4f9105cc8e6fb2bb3962cd0cbdf7e0aa0d9343e343a5",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/intro/zhihu-source.png",
       "bytes": 384028,
       "sha256": "2b2f11f82139897dc5d3a008ef7e13706115961f2814c5951e54e69c02957b9c",
-      "storage": "git"
+      "storage": "lfs"
     },
     {
       "path": "public/zhihu-liukan-extension/README.md",
