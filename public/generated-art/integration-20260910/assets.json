@@ -1,0 +1,298 @@
+{
+  "at": "2026-09-10T05:35:34.772Z",
+  "policy": "native-4k-complete-evidence",
+  "assets": [
+    {
+      "worldId": "blue-blood",
+      "characterId": "trainer",
+      "expression": "main",
+      "url": "/generated-art/scene_c39fa80b7eb8765978194897fde5.png",
+      "sha256": "e0943d8b5cd528aa9900bdeae477d3940de5806c7ff034eb24449a766688961a",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "training",
+      "path": []
+    },
+    {
+      "worldId": "blue-blood",
+      "characterId": "trainer",
+      "expression": "reaction",
+      "url": "/generated-art/scene_c9ac0e8a5768dfa38a7059846be3.png",
+      "sha256": "06afbbf5501f7fccc9424904842887394f9b36dccaf98a2f95e52a8d6d6d814b",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "test",
+      "path": [
+        "accept_exam"
+      ]
+    },
+    {
+      "worldId": "blue-blood",
+      "characterId": "staff",
+      "expression": "main",
+      "url": "/generated-art/scene_ce9cadbb28171d37ae74c75293d0.png",
+      "sha256": "637f533001ea3e25c017bd9d0248263a4e72a392fc40b6c5460f10ba7ba68c0d",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "station",
+      "path": [
+        "accept_exam",
+        "record_test",
+        "search_landmarks",
+        "hide_search",
+        "use_station"
+      ]
+    },
+    {
+      "worldId": "double-pursuit",
+      "characterId": "scene",
+      "expression": "scene",
+      "url": "/generated-art/scene_34881d9ae2671767398735cf60e4.png",
+      "sha256": "887b4c5eb41d70d13950a3b94ca28cd9767efae6f290b2eb31b3f2577019af5d",
+      "width": 4096,
+      "height": 2304,
+      "nodeId": "window",
+      "path": [
+        "keep_call",
+        "keep_distance"
+      ]
+    },
+    {
+      "worldId": "velvet-alibi",
+      "characterId": "host",
+      "expression": "main",
+      "url": "/generated-art/scene_a694b6aa8f9c853dfa9129bf926d.png",
+      "sha256": "f63cdd4d58f918a7036e167b9a4561726e80fbcc0b970232d01ba6a924358ae7",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "v_mic",
+      "path": [
+        "plan_truth",
+        "return_early",
+        "read_ribbon_invite",
+        "v_call_factory",
+        "v_check_payroll",
+        "v_route_stage",
+        "v_stage_alone"
+      ]
+    },
+    {
+      "worldId": "velvet-alibi",
+      "characterId": "clerk",
+      "expression": "main",
+      "url": "/generated-art/scene_f9f9dd358d4f140ebd634638c410.png",
+      "sha256": "c99e9ac3c2e85a2d70bcc92f2684bdd41e9a8ecd0e04d4954dbf0b153dec48d9",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "v_room",
+      "path": [
+        "plan_truth",
+        "return_early",
+        "read_ribbon_invite",
+        "v_call_factory",
+        "v_check_payroll",
+        "v_route_room"
+      ]
+    },
+    {
+      "worldId": "happy-home",
+      "characterId": "player",
+      "expression": "main",
+      "url": "/generated-art/scene_4d1fae9f8b8f56e65d0debf41ad6.png",
+      "sha256": "97897b33a1d0821e6af566df9a562ec40c030364b48e1ccb73bedd551705e4d3",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "door",
+      "path": [
+        "ask_rules"
+      ]
+    },
+    {
+      "worldId": "happy-home",
+      "characterId": "hong",
+      "expression": "main",
+      "url": "/generated-art/scene_b8960526edc70a8d3e9e65064a62.png",
+      "sha256": "c6508a8dc593af98e1b6e2743eb9a39fe550d57bba734b26cfc7c03c1d9cdb35",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "arrival",
+      "path": []
+    },
+    {
+      "worldId": "ming-whisper",
+      "characterId": "queen",
+      "expression": "main",
+      "url": "/generated-art/scene_cbff72e041c1f885fe6eaa2a166f.png",
+      "sha256": "eb30a1aee27f699c608449a47dd7d28735315ef08f89ef1f29ddbbcc6e175d5b",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "summons",
+      "path": []
+    },
+    {
+      "worldId": "score-room",
+      "characterId": "li",
+      "expression": "main",
+      "url": "/generated-art/scene_5d86ff2a4d83157b74727c054255.png",
+      "sha256": "fdd18b095e95bf0e21bf894a7283ea3009e5e82b47621e081fd29f2035317647",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "wish",
+      "path": []
+    },
+    {
+      "worldId": "online-heir",
+      "characterId": "vendor",
+      "expression": "main",
+      "url": "/generated-art/scene_01a982447998f750ee7bbffa1b6c.png",
+      "sha256": "6c9c308827ee63d27f452fa346826be7eaa8dab20314a348393b0171c29807c5",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "dinner_stall",
+      "path": [
+        "route_dinner",
+        "dinner_open",
+        "dinner_truth",
+        "dinner_return",
+        "dinner_accept_host"
+      ]
+    },
+    {
+      "worldId": "black-flood",
+      "characterId": "changying",
+      "expression": "main",
+      "url": "/generated-art/scene_e6fea677e35f651220d946aa954d.png",
+      "sha256": "aef89e5639ef4b69ca3d691abaa19f52dc265e20a0b3000819fa060a90588f19",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "selection",
+      "path": []
+    },
+    {
+      "worldId": "black-flood",
+      "characterId": "steward",
+      "expression": "main",
+      "url": "/generated-art/scene_c69f161def0fb81e2c6a782b55c4.png",
+      "sha256": "68ce943ef3f0ae521ba7246bdf7662eacdca01bdfed52e22d1920a7d5494060a",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "arena_newclass",
+      "path": [
+        "route_arena",
+        "arena_register",
+        "arena_shield",
+        "arena_disarm",
+        "arena_lastward",
+        "arena_teach"
+      ]
+    },
+    {
+      "worldId": "radish-court",
+      "characterId": "convoy_leader",
+      "expression": "main",
+      "url": "/generated-art/scene_1e7f874da46568b712c02ba467ed.png",
+      "sha256": "a014545a192999087234fcf8c188a58888e726be6e0b2cf8c4e951913d783190",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "frontier_fog",
+      "path": [
+        "route_frontier",
+        "frontier_chart",
+        "frontier_permission",
+        "frontier_ford",
+        "frontier_join"
+      ]
+    },
+    {
+      "worldId": "harvest-box",
+      "characterId": "chen",
+      "expression": "main",
+      "url": "/generated-art/scene_da9007f4c3d36b1d9d73d3421350.png",
+      "sha256": "f07ea3ba5473f71c7bd99bda856e13167c44b3cc38532d53bb80a2d752db9980",
+      "width": 2735,
+      "height": 4096,
+      "nodeId": "separation",
+      "path": []
+    },
+    {
+      "worldId": "tiger-shelter",
+      "characterId": "cat",
+      "expression": "main",
+      "url": "/generated-art/scene_871eefa49bf57d10c748e850c3ef.png",
+      "sha256": "352c1c8eee08ba1662bae9e0c22cf39511227231278374d18e51d944a3947d5a",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "rain",
+      "path": []
+    },
+    {
+      "worldId": "tiger-shelter",
+      "characterId": "pond_worker",
+      "expression": "main",
+      "url": "/generated-art/scene_d7a50f46c21ee210f059fba78071.png",
+      "sha256": "6229d6f6c78b3ce7960886c9df18cbd642957e3514a2356e30959a927594f4cd",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "b_water",
+      "path": [
+        "b_enter_court",
+        "walk",
+        "meal",
+        "ask_gate",
+        "turn_water"
+      ]
+    },
+    {
+      "worldId": "palace-ledger",
+      "characterId": "delivery",
+      "expression": "main",
+      "url": "/generated-art/scene_2065c5e2f08e11a56a767f47cb46.png",
+      "sha256": "a2ce2126b58827a1c7416bf1b35b449f475818a5f85a425f4575ab31073451fb",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "b_supply_palace",
+      "path": [
+        "b_enter_palace",
+        "take_ying",
+        "buy_food",
+        "wages",
+        "match",
+        "terms",
+        "fill"
+      ]
+    },
+    {
+      "worldId": "red-plum",
+      "characterId": "zhang",
+      "expression": "main",
+      "url": "/generated-art/scene_d4b54b1f86e27e3fb45e50616436.png",
+      "sha256": "0d0a35b324f56099636b72c37ab11a8194618356cdf4ece5a5e66646c79968d8",
+      "width": 2730,
+      "height": 4096,
+      "nodeId": "puzzle_0",
+      "path": [
+        "prepare",
+        "inspect_0"
+      ]
+    },
+    {
+      "worldId": "island-broadcast",
+      "characterId": "zhou",
+      "expression": "main",
+      "url": "/generated-art/scene_23f5b5cd3231695633cd68e5ae1b.png",
+      "sha256": "2480c79a48c2cc2fa3a9f7c56b0fca8ff63a46e4fd04c39cc3554ba2381e6feb",
+      "width": 2731,
+      "height": 4096,
+      "nodeId": "b_roof_leak",
+      "path": [
+        "b_enter_camp",
+        "marked",
+        "carry",
+        "high",
+        "share",
+        "stove",
+        "cook"
+      ]
+    }
+  ]
+}

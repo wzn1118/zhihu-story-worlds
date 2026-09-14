@@ -1,0 +1,127 @@
+.liukan-pet { position: fixed; z-index: 30; width: 88px; height: 88px; user-select: none; }
+.liukan-bubble { position: relative; width: 88px; height: 88px; touch-action: none; cursor: grab; border-radius: 28px; background: radial-gradient(ellipse at 50% 90%,rgba(20,28,35,.7),transparent 70%); outline-offset: 4px; animation: liukan-float 4.8s ease-in-out infinite; }
+.liukan-bubble:focus-visible { outline: 2px solid #7fadd0; }
+.liukan-pet.is-dragging .liukan-bubble { cursor: grabbing; }
+.liukan-mark { position: absolute; inset: -14px -6px; width: 100px; height: 100px; max-width: none; z-index: 2; object-fit: contain; filter: drop-shadow(0 5px 5px rgba(0,0,0,.45)); pointer-events: none; }
+.liukan-halo { position: absolute; left: 14px; right: 14px; bottom: 1px; height: 20px; border-radius: 50%; background: rgba(7,12,18,.52); filter: blur(5px); animation: liukan-breathe 3.2s ease-in-out infinite; }
+.liukan-status { position: absolute; right: 2px; bottom: 8px; width: 6px; height: 6px; border-radius: 50%; background: #8cbbae; box-shadow: 0 0 0 3px rgba(20,28,35,.8); z-index: 3; }
+.liukan-grip { position: absolute; left: 2px; bottom: 2px; width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; color: #9dabb8; background: rgba(18,24,32,.9); z-index: 3; opacity: 0; transition: opacity .2s; }
+.liukan-bubble:hover .liukan-grip,.liukan-bubble:focus-visible .liukan-grip,.liukan-pet.is-dragging .liukan-grip { opacity: 1; }
+.liukan-panel { position: fixed; display: flex; flex-direction: column; padding: 0; overflow: hidden; touch-action: pan-y; user-select: text; color: #e1e8ec; background: linear-gradient(155deg,rgba(29,42,55,.97),rgba(15,24,33,.99)); border: 1px solid rgba(164,196,218,.23); border-radius: 20px 20px 5px 20px; box-shadow: 0 20px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(218,236,252,.07); backdrop-filter: blur(16px); }
+.liukan-panel header { display: flex; flex: 0 0 auto; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid rgba(216,231,241,.11); padding: 18px 20px 14px; }
+.liukan-panel-body { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 0 20px 18px; }
+.liukan-tabs { display: flex; flex: 0 0 auto; gap: 18px; padding: 0 20px; border-bottom: 1px solid rgba(216,231,241,.08); }
+.liukan-tabs button { display: flex; align-items: center; gap: 6px; padding: 11px 0; color: #7694a9; font-size: 11px; border-bottom: 2px solid transparent; }
+.liukan-tabs button[aria-pressed=true] { color: #d6e7f1; border-bottom-color: #83b7d5; }
+.liukan-drop-hint { position: fixed; width: 140px; padding: 10px; color: #f0f9ff; background: #244b62; border: 1px solid #83b7d5; border-radius: 12px; text-align: center; font-size: 12px; pointer-events: none; box-shadow: 0 10px 30px #0006; }
+.liukan-pet.is-drop-available .liukan-bubble { outline: 2px dashed #84c3e7; outline-offset: 9px; background-color: #28526c55; }
+.liukan-pet.is-drop-hover .liukan-bubble { outline-style: solid; background-color: #387ca288; }
+.liukan-inbox { padding-top: 14px; }
+.liukan-inbox-empty { padding: 17px 0 10px; }
+.liukan-inbox-empty>svg { color: #7bafcd; margin-bottom: 13px; }
+.liukan-inbox-empty h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: #dfebf2; }
+.liukan-inbox-empty p { font-size: 12px; line-height: 1.85; color: #91afc2; margin-top: 10px; }
+.liukan-post-select { position: relative; display: block; margin-bottom: 14px; }
+.liukan-post-select>span { display: block; margin-bottom: 6px; color: #7899af; font-size: 9px; }
+.liukan-post-select select { appearance: none; width: 100%; min-width: 0; padding: 9px 29px 9px 10px; color: #c8dce9; border: 1px solid #9bc6e12b; background: #112532; border-radius: 7px; font-size: 11px; }
+.liukan-post-select>svg { position: absolute; right: 11px; bottom: 12px; pointer-events: none; color: #8db0c6; }
+.liukan-post { padding: 14px; border: 1px solid #8ab5d124; border-radius: 10px; background: #779eb609; }
+.liukan-post-kicker { display: block; font-size: 9px; letter-spacing: .08em; color: #80a9c0; }
+.liukan-post h3 { font-family: var(--serif); font-size: 17px; line-height: 1.6; margin-top: 7px; font-weight: 500; color: #e1eaf1; overflow-wrap: anywhere; }
+.liukan-post-author { color: #83a3b9; font-size: 10px; line-height: 1.7; margin-top: 6px; }
+.liukan-source-preview { margin-top: 11px; border-top: 1px solid #94b8ce1f; }
+.liukan-source-preview summary { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; font-size: 11px; color: #b1cbdc; cursor: pointer; list-style: none; }
+.liukan-source-preview summary::-webkit-details-marker { display: none; }
+.liukan-source-preview>div { max-height: 210px; overflow: auto; white-space: pre-wrap; font-size: 12px; line-height: 1.9; color: #c4d4df; margin-top: 10px; padding-right: 5px; }
+.liukan-source-link { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #8db9d3; padding: 10px 0 0; }
+.liukan-reading-note { margin: 11px 0 13px; font-size: 10px; line-height: 1.7; color: #779aaf; }
+.liukan-post-form { position: relative; }
+.liukan-post-form textarea { min-height: 100px; padding-bottom: 38px; resize: vertical; }
+.liukan-create-game { margin-top: 17px; padding: 14px; border: 1px solid #b58f5c44; border-radius: 10px; background: linear-gradient(140deg,#ad895712,#ad895703); }
+.liukan-create-game b { font-size: 12px; font-weight: 500; color: #ddccae; }
+.liukan-create-game p { font-size: 10px; line-height: 1.75; color: #a29d92; margin-top: 6px; }
+.liukan-generate { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 13px; border-radius: 7px; padding: 11px; color: #f1dfc0; background: #65503a; border: 1px solid #b99765; font-size: 11px; }
+.liukan-generate:hover { background: #7b6040; }
+.liukan-project-progress { display: flex; gap: 8px; align-items: center; padding: 10px 0 3px; }
+.liukan-project-progress svg { animation: liukan-spin 1.4s linear infinite; }
+.liukan-create-game .liukan-error { color: #dfa59a; }
+.liukan-panel header span { display: flex; flex-direction: column; gap: 4px; }
+.liukan-panel header b { font-family: var(--serif); font-size: 20px; letter-spacing: .05em; font-weight: 600; color: #f1f1e9; }
+.liukan-panel header small { color: #849dac; font-size: 10px; letter-spacing: .12em; }
+.liukan-panel header button { display: grid; place-items: center; width: 28px; height: 28px; color: #9fb6c5; border-radius: 50%; }
+.liukan-panel header button:hover { background: rgba(210,230,247,.08); }
+.liukan-memory { margin-top: 15px; font-size: 13px; line-height: 1.8; color: #cddae3; }
+.liukan-empty { margin-top: 9px; color: #819aaa; font-size: 11px; line-height: 1.75; }
+.liukan-recent { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.liukan-recent li { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; border-left: 2px solid #77a7c6; padding: 2px 0 2px 10px; color: #a9c1d0; font-size: 11px; }
+.liukan-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 17px; }
+.liukan-actions button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid rgba(179,211,233,.23); border-radius: 8px; color: #c5dbe9; font-size: 11px; }
+.liukan-actions button:hover { border-color: #77a7c6; background: rgba(156,204,235,.08); }
+.liukan-provenance { display: flex; justify-content: space-between; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(216,231,241,.1); color: #7290a4; font-size: 9px; line-height: 1.5; }
+.liukan-pet textarea,.liukan-pet input { width: 100%; color: #e2edf4; background: rgba(3,12,20,.35); border: 1px solid rgba(164,196,218,.2); border-radius: 10px; padding: 10px 12px; font-size: 12px; line-height: 1.7; }
+.liukan-pet textarea::placeholder,.liukan-pet input::placeholder { color: #68869a; }
+.liukan-current { display: flex; align-items: center; gap: 6px; color: #aec2cf; margin: 14px 0 10px; font-size: 10px; }
+.liukan-current span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.liukan-current small { font-size: 9px; color: #7493a8; white-space: nowrap; }
+.liukan-messages { display: grid; gap: 12px; max-height: 240px; overflow: auto; overscroll-behavior: contain; }
+.liukan-message { padding: 10px 12px; font-size: 12px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; border-radius: 10px; background: rgba(178,205,226,.05); }
+.liukan-message small { display: block; margin-bottom: 5px; font-size: 9px; color: #80abc4; }
+.liukan-message.is-user { margin-left: 22px; background: rgba(58,129,169,.13); color: #bdcfdc; }
+.liukan-message.is-assistant { margin-right: 8px; }
+.liukan-thinking { display: flex; align-items: center; gap: 8px; color: #8db0c7; font-size: 11px; padding: 10px 0; }
+.liukan-thinking svg,.liukan-send:disabled svg { animation: liukan-spin 1.4s linear infinite; }
+.liukan-prompts { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.liukan-prompts button { border: 1px solid rgba(148,188,216,.15); background: rgba(148,188,216,.04); border-radius: 15px; padding: 6px 9px; font-size: 10px; color: #9fbdcf; }
+.liukan-prompts button:hover { background: rgba(148,188,216,.1); }
+.liukan-input-label { display: block; font-size: 10px; color: #94aebe; margin: 12px 0 7px; }
+.liukan-conversation form { position: relative; }
+.liukan-conversation textarea { resize: vertical; min-height: 90px; padding-bottom: 38px; }
+.liukan-send { position: absolute; right: 8px; bottom: 10px; display: flex; gap: 6px; align-items: center; padding: 6px 10px; border: 1px solid rgba(124,180,216,.3); border-radius: 7px; color: #badbec; background: #203d52; font-size: 10px; }
+.liukan-send:disabled { cursor: default; opacity: .45; }
+.liukan-error { color: #dfa59a; font-size: 11px; line-height: 1.6; margin-top: 9px; }
+.liukan-error button { display: inline; padding: 0 0 0 6px; color: #b7d7e9; text-decoration: underline; font-size: inherit; }
+.liukan-memory-toggle { display: flex; align-items: center; gap: 7px; margin-top: 14px; font-size: 10px; color: #8dafc7; padding: 4px 0; }
+.liukan-memories { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; max-height: 220px; overflow: auto; }
+.liukan-memories li { padding: 10px; border-left: 2px solid #698da4; background: rgba(130,164,188,.04); }
+.liukan-memories b { font-size: 12px; font-weight: 500; display: block; color: #cddde7; }
+.liukan-memories span { display: block; color: #7293a9; font-size: 10px; margin-top: 4px; }
+.liukan-memories p { font-size: 10px; line-height: 1.6; color: #94aebd; margin-top: 6px; }
+@keyframes liukan-spin { to { transform: rotate(360deg); } }
+@keyframes liukan-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes liukan-breathe { 0%,100% { opacity: .7; transform: scaleX(.92); } 50% { opacity: 1; transform: scaleX(1.08); } }
+@media (prefers-reduced-motion: reduce) { .liukan-pet * { transition: none !important; animation: none !important; } }
+@media (max-width: 600px) { .liukan-panel { border-radius: 16px; } .liukan-panel header { padding: 15px 17px 12px; } .liukan-panel-body { padding: 0 17px 15px; } .liukan-grip { opacity: .8; } }
+
+/* Pet tools stay above the full Zhihu workspace; only our overlay owns its scroll. */
+.liukan-bubble > .liukan-avatar { position:absolute; left:-6px; top:-14px; pointer-events:none; }
+.liukan-quick-tools { display:flex; gap:6px; flex-wrap:wrap; padding:12px 18px 3px; }
+.liukan-quick-tools button { border:1px solid #a4c6d52b; border-radius:14px; padding:6px 9px; color:#bcd5e3; font-size:11px; background:#7397ac0d; }
+.liukan-quick-tools button:hover { background:#7397ac25; color:#fff; }
+.liukan-gallery-overlay { position:fixed; inset:0; overflow:auto; overscroll-behavior:contain; padding:36px 24px; background:#050e17db; backdrop-filter:blur(12px); z-index:50; user-select:text; }
+.liukan-help-entry { border:1px solid #91b2c337; padding:7px 13px; border-radius:18px; color:#9fbed2; white-space:nowrap; }
+@media(max-width:600px) { .liukan-gallery-overlay { padding:12px; } .liukan-help-entry { font-size:11px; padding:6px 9px; } }
+
+.liukan-capabilities-overlay { position:fixed; inset:0; z-index:70; background:#030d18db; backdrop-filter:blur(14px); overflow:auto; overscroll-behavior:contain; padding:40px 20px; display:grid; place-items:start center; }
+.liukan-capabilities-overlay .liukan-capabilities { width:min(640px,100%); border:1px solid #9fbcd831; border-radius:22px; box-shadow:0 30px 100px #0007; overflow:hidden; }
+@media(max-width:600px) { .liukan-capabilities-overlay { padding:12px; } }
+
+/* Keep the floating shell clear of native rails without disabling scrolling. */
+html:has(.liukan-capabilities-overlay, .liukan-gallery-overlay) { overflow: hidden; }
+@media (forced-colors: none) {
+.liukan-panel-body, .liukan-gallery-overlay, .liukan-capabilities-overlay { scrollbar-width: none; }
+.liukan-panel-body::-webkit-scrollbar, .liukan-gallery-overlay::-webkit-scrollbar, .liukan-capabilities-overlay::-webkit-scrollbar { display: none; }
+.liukan-panel { color-scheme: dark; }
+.liukan-panel-body { overflow-x: hidden; }
+.liukan-panel :is(.liukan-source-preview > div, .liukan-messages, .liukan-memories, textarea) { overflow-wrap: anywhere; scrollbar-width: thin; scrollbar-color: #8db9d34d transparent; }
+.liukan-panel :is(.liukan-source-preview > div, .liukan-messages, .liukan-memories) { overflow-x: hidden; }
+.liukan-memories li { min-width: 0; }
+@supports selector(::-webkit-scrollbar) {
+  .liukan-panel :is(.liukan-source-preview > div, .liukan-messages, .liukan-memories, textarea) { scrollbar-width: auto; scrollbar-color: auto; }
+  .liukan-panel ::-webkit-scrollbar { width: 4px; height: 4px; }
+  .liukan-panel ::-webkit-scrollbar-track, .liukan-panel ::-webkit-scrollbar-corner { background: transparent; }
+  .liukan-panel ::-webkit-scrollbar-thumb { min-height: 28px; border-radius: 999px; background: #8db9d34d; }
+  .liukan-panel ::-webkit-scrollbar-thumb:hover { background: #8db9d38c; }
+  .liukan-panel ::-webkit-scrollbar-button { display: none; }
+}
+}
+.liukan-reading-desk-entry{display:flex;align-items:center;gap:10px;width:100%;margin:10px 0 16px;padding:12px;text-align:left;border:1px solid #6f9db94d;border-radius:10px;background:#729eb517;color:#d5e7ef;cursor:pointer}.liukan-reading-desk-entry span{display:grid;gap:4px}.liukan-reading-desk-entry b{font-size:12px;font-weight:500}.liukan-reading-desk-entry small{font-size:10px;color:#8eacbd}.liukan-reading-desk-entry:hover{background:#729eb52e}

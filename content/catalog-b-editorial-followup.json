@@ -1,0 +1,122 @@
+[
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_signal.text.1",
+    "before": "你爬上石头叫她，君寻秋的耳朵转了一下，前爪仍向坡下刨。白衣人举起火折，手抖得落下几点火星。君潮挤到你身旁：“叫娘。让她看见你站在哪儿。”你咽下催她扑人的话，朝她举起两只前爪。",
+    "after": "你爬上石头叫她，君寻秋的耳朵转了一下，前爪仍向坡下刨。白衣人举起火折，手抖得落下几点火星。君潮挤到你身旁：“叫娘。让她看见你站在哪儿。”君寻秋盯着坡下的火光，肩背越绷越紧。",
+    "reason": "charge 仍允许催母亲冲营，选项前不能先写玩家咽下这句话、举爪劝阻。",
+    "anchors": ["b-tiger-fish", "b-tiger-name"]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_mountain_bad.text.0",
+    "before": "你把君寻秋的名字喊向山下，催着冲营。头狼不肯替你开路，怒声却已传到守火人耳里。营中有人吹哨，君寻秋扑向举火的白衣人，第一把火落进枯草，风将火带回了旧洞。",
+    "after": "你的喊声传到营地，紧接着是一声哨响。白衣人慌忙举火，君寻秋扑了过去。火把落进营地外的枯草，风将火星一路送向旧洞；君潮刚把你扯回身边，烟就压上了山脊。",
+    "reason": "charge 可绕过狼群交涉，不能共享头狼刚拒绝开路的事实；两种催战均从喊声、哨声与扑击引出失火。浸湿烟笼草料不等于营外枯草也被浸湿。",
+    "anchors": ["b-tiger-fish", "b-tiger-name"]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_mountain_bad.text.1",
+    "before": "北坡整夜落灰，君寻秋将你圈在腹下。天亮后，她朝旧洞走了几步，又折回来。头狼堵住界石，任你叫了多久也让族群横在那里。你们只好再往高处搬，新的草垫还带着湿气，母亲仍把最厚的一层拨给你。",
+    "after": "北坡整夜落灰，君寻秋将你圈在腹下。天亮后，她朝旧洞走了几步，被扑面的热气逼了回来。君潮领你们再往高处找落脚处，直到日暮才找到一道能挡风的石缝。新的草垫还带着湿气，母亲仍把最厚的一层拨给你。",
+    "reason": "不让已换到背风路的玩家在结局中无故被头狼毁约；失去旧洞、继续搬迁与湿冷之夜仍是实际损失。",
+    "anchors": ["b-tiger-fish", "b-tiger-name"]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_stretcher.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "先把宋沐送进药棚，请师父安排往后照料",
+    "reason": "才背人下台，尚无村塾或招牌；明确零资源出口的送医与照料。",
+    "anchors": ["b-six-arithmetic", "b-six-save"]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_cart_school.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "先把宋沐送进药棚，请师父安排往后照料",
+    "reason": "还在找送伤者的车，并没有招牌可以收起。",
+    "anchors": ["b-six-arithmetic", "b-six-save"]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_medicine.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "请师父留下安排照料，暂不外出找活",
+    "reason": "人已在药棚，此时决定是否出去筹食宿，不是从村塾搬回药棚。",
+    "anchors": ["b-six-arithmetic", "b-six-save"]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_watch.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "请师父安排接班，留在药棚照看宋沐",
+    "reason": "尚未开课，退出的是守炉后的找活计划；说明接班，区别于独自弃炉追名额的失败选择。",
+    "anchors": ["b-six-arithmetic", "b-six-save"]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_school_return.choices.slow.text",
+    "before": "先让宋沐好好休养，等来年再开课",
+    "after": "陪宋沐回药棚复诊，等来年再开课",
+    "reason": "宋沐已离药棚来到村塾，共享休养结局再去药棚需在选择中明示。",
+    "anchors": ["b-six-arithmetic", "b-six-save"]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_school_return.choices.b_withdraw.text",
+    "before": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "after": "陪宋沐回药棚复诊，暂停后续授课和帮工",
+    "reason": "承接伤者已经来到村塾的状态，不将他留在村里而主角独自回药棚。",
+    "anchors": ["b-six-arithmetic", "b-six-save"]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_bridge.text.0",
+    "before": "木桥在风里拧，杂役抱着一只断腿的木凳，陆木匠若还走得动，便由同伴扶着。没人有力气回头。",
+    "after": "木桥在风里拧，杂役抱着一只断腿木凳，站在桥头等你。丹房那边传来拖沓的脚步，你隔着树影看不清来了几个人。桥板窄，只够一个人走。",
+    "reason": "leave 路径没有带人撤离，不能在桥头凭空出现获救的陆木匠；去掉若还走得动的分支解说，把是否接人成为真实待选行动。",
+    "anchors": ["b-hollow-village", "b-hollow-window"]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_foot.text.1",
+    "before": "你告诉他们白鹤村的事，讲到村长时停了很久。没人劝你放下，姓陆的人只是把水递过来。",
+    "after": "你讲起白鹤村，讲到村长时停了很久。一个男人把水递过来，杂役扶住他的肩：“陆木匠在镇上还有同伴，我去找他们。”你接过水，等喉咙不再发紧，才说到村口那口井。",
+    "reason": "到此已有真实救人门槛，但 locate 可跳过陆木匠自报家门；在共同抵达后的对话中交代身份和下一幕去木器铺的来由。",
+    "anchors": ["b-hollow-village", "b-hollow-window"]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_names_home.text.1",
+    "before": "你写到白鹤村时停笔，半晌才把那一行轻轻折进去。旁边的人把墨磨浓一些，问自己这封该交给谁。",
+    "after": "你写到白鹤村时停笔，将那一行折进纸里。在背面画出邻镇外的荒地，和众人说好：接到家眷，就去那儿碰面。",
+    "reason": "无论派人送信还是各自回家，都先交代下一节点会合的地点，不让分散的人下一幕无故又随主角同行。",
+    "anchors": ["b-hollow-village", "b-hollow-window"]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_names_home.choices.move.text",
+    "before": "立即各自带信离开，不留大名单",
+    "after": "各自带信接家眷，不留合写的名单，约在荒地再碰面",
+    "reason": "明确各自离开的目的及后续会合，不暗含临时改变行动；原有余刻扣减与各家自行避走线索保留。",
+    "anchors": ["b-hollow-village", "b-hollow-window"]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_return_water.text.0",
+    "before": "新徒没敢回去讨车钱，卖掉的田也回不来了。他跟你来到一片没人肯种的地，你蹲下贴着地面，听见很深的水声。",
+    "after": "你先到约好的荒地等。卖田的新徒赶来时，鞋底沾满了泥；他没敢回去讨车钱，田也赎不回。你贴着地面听了一会儿，地下很深处有水声。",
+    "reason": "保留损失，补上分路送信之后实际再会合的经过，不写成众人一直同行。",
+    "anchors": ["b-hollow-village", "b-hollow-window"]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_camp_good.text.1",
+    "before": "李姐要来了当晚从取食物到洗锅的完整片段，剪辑里那场争吵没有发生。下一期合约送到，你先翻伙食安排，拿笔划掉临时加演一栏；谢骁在旁边把洗干净的饭盒递给你。",
+    "after": "李姐陪你看完播出的那一段：秦白擦桌，苏苏切菜，八个人在镜头里吃空了一锅饭。下一期合约送到，你先翻伙食安排，拿笔划掉临时加演一栏；谢骁发来饭盒的照片，说已经洗好，问你下回想带什么菜。",
+    "reason": "此路线拒演指控，争吵并未发生；用已经执行的做饭行动收束，不让玩家猜是否发生过另一场被剪掉的争执。",
+    "anchors": ["b-island-radio", "b-island-name"]
+  }
+]

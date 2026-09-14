@@ -1,0 +1,64 @@
+Create one original adult male character sprite for the Chinese suspense visual
+novel Blue Blood. This is the unidentified gray-jacket observer, approximately
+42 years old. His age and detailed design are adaptation choices. The source
+establishes his gray jacket and repeated appearances, not a confirmed identity.
+
+ACTUAL IMAGE REFERENCES, IN ORDER:
+1. docs/references/user-character-full-crop.png: 1998-2003 Japanese animation
+   drawing language, grouped hair, practical winter clothing and clear silhouette.
+2. docs/references/user-character-face.png: angular skull/nose construction,
+   economical cleanup lines, matte opaque cel colors. Do not copy this person.
+3. output/imagegen/fang-nuo-face-shadow-v3/fang-nuo-face-shadow-v3-01.png:
+   connected anatomical hard-edge facial shadow, for rendering only. The observer
+   must have a distinct face, age, hair, jaw and silhouette from Fang Nuo.
+
+FIXED IDENTITY ANCHORS:
+- Broad high forehead with a slightly receding squared hairline. Short dark ash
+  hair, six large backward-combed groups, one small broken temple lock.
+- Thick, nearly horizontal brows with a small gap at the outer left brow.
+- Narrow deep-set horizontal eyes, normal spacing, readable sclera and small flat
+  gray-brown irises. The upper lid is heavier than the lower, no large doll eyes.
+- Long straight nose with a broad, clearly constructed base and one angular
+  nostril plane; the three-quarter nose must project convincingly from the face.
+- Wide low cheekbones, broad rectangular jaw, blunt chin. Two restrained lines
+  around the eye corners and a slight nasolabial crease indicate adult age.
+- Everyday matte medium-gray winter jacket, straight charcoal trousers, a small
+  dark burgundy inner collar, simple old-silver zipper, no belt pouches or armor.
+- Signature narrow square old-silver wristwatch on the left wrist. No jewelry
+  elsewhere. Clothing folds originate from elbows, seams and gravitational load.
+
+EXPRESSION AND POSE:
+Calm, observant, guarded. Mouth closed with a slightly uneven resting corner;
+he is listening to a question at the daylight convenience-store meeting. Stand
+almost still in a relaxed three-quarter orientation facing image-left. Shoulders
+level, neck at ease, both hands visible resting loosely in front near the jacket
+hem. No weapon, pointing, seductive pose, floating coat tails or action effects.
+
+DRAWING AND LIGHT:
+Late cel/early digital Japanese OVA and visual novel character drawing, grounded
+adult anatomy, clean douga-style brown-black variable-pressure contours. Outer
+contour 2.3-3.6L, structural lines 1.5-2.2L, smallest interior marks 1L. Closed
+shapes, flat opaque local colors, one principal HARD-EDGED shadow per material
+with at most one deeper overlap. No softly airbrushed face or gradient modeling.
+
+A strong upper-left key light makes a clear lit forehead/nose plane, then a
+CONNECTED shadow from the brow/eye socket through the far nose side and broad
+cheek turn to the jaw. Preserve a clean nose cast shadow and a separate deep
+jaw-to-neck cast shadow. Show the skull with these shapes, not with darker global
+exposure. Both eyes remain readable. No glossy lip highlight, plastic skin,
+makeup rendering, polished webtoon face, hair-strand glitter or photographic skin.
+
+Charcoal #120D0E and #211719 support the medium/cool gray #9AA0A2 jacket. Restrained
+wine-red #8F1620 collar, paper-white #D8D2C8 small accents, aged silver hardware.
+The source-grounded GRAY outer jacket is the identity exception to the broader
+red/black cast palette. No cyan/green glow; no neon red trim. Rich readable value
+separation between hair, collar, face shadow and coat without bloom.
+
+OUTPUT COMPOSITION:
+One figure, knee-up, portrait 3:4, requested 4K. Head, full hair, elbows, both
+hands and jacket hem fully inside the frame with clean margins. Uniform pale
+neutral gray background with no room, furniture, floor horizon, cast-ground
+shadow or background texture. Flat background supports subsequent inspected
+alpha extraction. No text, watermark, UI, collage, alternate angles or split
+panel. No photograph, 3D render, modern gacha rendering, Korean webtoon finish,
+VHS lines, scratches, heavy grain, bloom, vignette or lens blur.

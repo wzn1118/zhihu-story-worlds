@@ -1,0 +1,4723 @@
+{
+  "auditedAt": "2026-09-05T23:23:20.131Z",
+  "scope": "Authored worlds and public files; existence does not establish matching scene art or user approval.",
+  "generatorState": "Paused after terminal OpenQI HTTP 402; no replenishment reported and no new requests submitted.",
+  "counts": {
+    "worlds": 20,
+    "nodes": 379,
+    "reviewedSceneNodes": 2,
+    "legacyBackgroundNodes": 19,
+    "missingBackgroundNodes": 358,
+    "cast": 53,
+    "castWithReviewedMainAndReaction": 1,
+    "missingWorldCovers": 19
+  },
+  "allArtComplete": false,
+  "referencedFiles": [
+    {
+      "url": "/assets/black-flood.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/blue-blood-cover.webp",
+      "status": "root-reviewed",
+      "bytes": 631082
+    },
+    {
+      "url": "/assets/blue-blood.webp",
+      "status": "legacy-unreviewed-for-current-style",
+      "bytes": 1244696
+    },
+    {
+      "url": "/assets/blue-case-desk.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/blue-training-room.webp",
+      "status": "root-reviewed",
+      "bytes": 657438
+    },
+    {
+      "url": "/assets/double-life.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/fang-nuo-main.webp",
+      "status": "root-reviewed",
+      "bytes": 314854
+    },
+    {
+      "url": "/assets/fang-nuo-reaction.webp",
+      "status": "root-reviewed",
+      "bytes": 307242
+    },
+    {
+      "url": "/assets/future-island.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/happy-home.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/harvest-box.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/hollow-immortals.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/island-broadcast.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/ming-whisper.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/night-pursuit.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/online-heir.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/palace-ledger.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/radish-court.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/red-plum.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/rotten-pilgrimage.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/score-room.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/six-roots.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/temple-heart.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/tiger-shelter.webp",
+      "status": "missing"
+    },
+    {
+      "url": "/assets/wrong-realm.webp",
+      "status": "missing"
+    }
+  ],
+  "worlds": [
+    {
+      "id": "blue-blood",
+      "title": "蓝血",
+      "storyId": "2025684191967294692",
+      "cover": {
+        "url": "/assets/blue-blood-cover.webp",
+        "status": "root-reviewed",
+        "bytes": 631082
+      },
+      "nodes": [
+        {
+          "id": "training",
+          "location": "公司 · 培训室",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-training-room.webp",
+            "status": "root-reviewed",
+            "bytes": 657438
+          },
+          "currentSceneReviewed": true
+        },
+        {
+          "id": "test",
+          "location": "公司 · 培训室",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-training-room.webp",
+            "status": "root-reviewed",
+            "bytes": 657438
+          },
+          "currentSceneReviewed": true
+        },
+        {
+          "id": "mirror",
+          "location": "公司 · 洗手间",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "desk",
+          "location": "公司 · 工位",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "browser",
+          "location": "公司 · 搜索页面",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "zhang",
+          "location": "公司 · 茶水间",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "transit",
+          "location": "写字楼外",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "diner",
+          "location": "旧街 · 便利店",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "alley",
+          "location": "旧街 · 巷口",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "station",
+          "location": "地铁站 · 服务台",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "home",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "forum",
+          "location": "匿名问答页面",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "observer",
+          "location": "便利店 · 临街座位",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "coordinate",
+          "location": "旧街 · 便利店门前",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_return",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_witness",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_blend",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_review",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_check",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_release",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_verified",
+          "location": "方诺的住处",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-blood.webp",
+            "status": "legacy-unreviewed-for-current-style",
+            "bytes": 1244696
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_desk",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_paper",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_map",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_witness",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_inference",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_reconsider",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_channel",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "case_handoff",
+          "location": "方诺的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_case_network",
+          "location": "方诺的住处",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_case_record",
+          "location": "方诺的住处",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_case_pause",
+          "location": "方诺的住处",
+          "ending": true,
+          "background": {
+            "url": "/assets/blue-case-desk.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "fangnuo",
+          "name": "方诺",
+          "main": {
+            "url": "/assets/fang-nuo-main.webp",
+            "status": "root-reviewed",
+            "bytes": 314854
+          },
+          "reaction": {
+            "url": "/assets/fang-nuo-reaction.webp",
+            "status": "root-reviewed",
+            "bytes": 307242
+          }
+        },
+        {
+          "id": "zhangwei",
+          "name": "张薇",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "observer",
+          "name": "灰夹克",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "double-pursuit",
+      "title": "双重追踪",
+      "storyId": "2025333783608537435",
+      "cover": {
+        "url": "/assets/night-pursuit.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "landing",
+          "location": "老公寓 · 楼梯平台",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "neighbor",
+          "location": "李宇的房间",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "window",
+          "location": "李宇家 · 窗边",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "phone",
+          "location": "李宇家 · 洗手间门边",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "photographs",
+          "location": "李宇家 · 客厅",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "kitchen",
+          "location": "李宇家 · 厨房外",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "hallway",
+          "location": "公寓 · 客厅门边",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "elder",
+          "location": "公寓 · 走廊内侧",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "utility",
+          "location": "公寓 · 水表间外",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "stairwell",
+          "location": "公寓 · 门后",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "policecheck",
+          "location": "公寓 · 安全房间",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "rescue",
+          "location": "公寓楼外",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence",
+          "location": "临时接待处",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_evidence",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_collective",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_safe",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_review",
+          "location": "公寓楼外",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_check",
+          "location": "公寓楼外",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_release",
+          "location": "公寓楼外",
+          "ending": false,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_verified",
+          "location": "公寓楼外",
+          "ending": true,
+          "background": {
+            "url": "/assets/night-pursuit.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "dongdong",
+          "name": "张冬冬",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "liyu",
+          "name": "李宇",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "elder",
+          "name": "老住户",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "operator",
+          "name": "接警员",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "velvet-alibi",
+      "title": "史密斯装穷夫妇",
+      "storyId": "2068540656734180439",
+      "cover": {
+        "url": "/assets/double-life.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "dinner",
+          "location": "出租屋 · 餐桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "club",
+          "location": "会所 · 走廊",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "friend",
+          "location": "会所外 · 车边",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "cake",
+          "location": "出租屋 · 门口",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "breakfast",
+          "location": "出租屋 · 厨房",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "call",
+          "location": "出租屋 · 窗边",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "confession",
+          "location": "出租屋 · 餐桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "invitation",
+          "location": "杜家 · 会客厅",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "agreement",
+          "location": "出租屋 · 餐桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "distance",
+          "location": "自己的住处",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "family",
+          "location": "杜家 · 书房",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "boundary",
+          "location": "杜家门外",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "rebuild",
+          "location": "街边小餐馆",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_equal",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_restart",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_independent",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_review",
+          "location": "杜家门外",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_check",
+          "location": "杜家门外",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_release",
+          "location": "杜家门外",
+          "ending": false,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_verified",
+          "location": "杜家门外",
+          "ending": true,
+          "background": {
+            "url": "/assets/double-life.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "mansheng",
+          "name": "杜曼笙",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "wanglu",
+          "name": "林望鹿",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "friend",
+          "name": "闺蜜",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "chengmo",
+          "name": "程墨",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "future-island",
+      "title": "未来岛",
+      "storyId": "1831621186162937856",
+      "cover": {
+        "url": "/assets/future-island.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "coin",
+          "location": "末世游戏 · 初始货架",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "island_plan",
+          "location": "未来岛 · 临时观测棚",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "depot",
+          "location": "未来岛 · 地下分仓",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ledger",
+          "location": "未来岛 · 竣工办公室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "storm",
+          "location": "未来岛 · 观测室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "outage",
+          "location": "未来岛 · 设备观察廊",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "triage",
+          "location": "未来岛 · 物流终端",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "stranger_signal",
+          "location": "未来岛 · 观测室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "relay",
+          "location": "未来岛 · 中继终端",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "audit",
+          "location": "未来岛 · 项目档案室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "control_offer",
+          "location": "未来岛 · 私人通信",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "dock",
+          "location": "未来岛 · 遮蔽船坞",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evac",
+          "location": "未来岛海域 · 通信频道",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "council",
+          "location": "未来岛 · 远程议事频道",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "vault",
+          "location": "未来岛 · 封存库门前",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "archive",
+          "location": "未来岛 · 档案终端",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "redistribution",
+          "location": "未来岛 · 配给工作台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "last_decision",
+          "location": "未来岛 · 观测室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_commons",
+          "location": "未来岛海域",
+          "ending": true,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_ark",
+          "location": "未来岛海域",
+          "ending": true,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_witness",
+          "location": "未来岛海域",
+          "ending": true,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_solitude",
+          "location": "未来岛海域",
+          "ending": true,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_review",
+          "location": "未来岛 · 观测室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_check",
+          "location": "未来岛 · 观测室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "evidence_release",
+          "location": "未来岛 · 观测室",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_verified",
+          "location": "未来岛 · 观测室",
+          "ending": true,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_intake",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_table",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_inventory",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_contacts",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_water_contact",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_spare_contact",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_rescue_contact",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_terms",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_cargo",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_loaded_spares",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_loaded_water",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_loaded_rescue",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_rest",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_manifest",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_crossing",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_missed_tide",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_receipts",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_water_delivery",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_spare_delivery",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_pump_trial",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_rescue_delivery",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_return",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_aborted",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "logistics_failed_return",
+          "location": "未来岛 · 船坞调度台",
+          "ending": false,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_maintenance_pact",
+          "location": "未来岛 · 维护联络桌",
+          "ending": true,
+          "background": {
+            "url": "/assets/future-island.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "xiwei",
+          "name": "郗未",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "cuiyingrui",
+          "name": "崔英睿",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "zhulingling",
+          "name": "朱玲玲",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "duanduo",
+          "name": "段铎",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "wencheng",
+          "name": "闻澄",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "happy-home",
+      "title": "近视眼勇闯恐怖游戏",
+      "storyId": "1747681485547843585",
+      "cover": {
+        "url": "/assets/happy-home.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "楼前分房处",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "door",
+          "location": "三十层玄关",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "sisi",
+          "location": "思思的房间",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "cleaning",
+          "location": "客厅",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "host",
+          "location": "客厅门边",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "table",
+          "location": "厨房",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "group",
+          "location": "卧室窗边",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ledger",
+          "location": "餐桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "visit",
+          "location": "玄关",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "sixth",
+          "location": "沙发边",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "packing",
+          "location": "衣柜旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "threshold",
+          "location": "玄关地砖",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "settlement",
+          "location": "电梯前",
+          "ending": false,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_family",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_clear",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_stay",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/happy-home.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "player",
+          "name": "近视玩家",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "sisi",
+          "name": "思思",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "host",
+          "name": "男主人",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "hong",
+          "name": "红姐",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "jun",
+          "name": "俊哥",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rotten-pilgrimage",
+      "title": "西游之众佛腐烂",
+      "storyId": "1617220591035113472",
+      "cover": {
+        "url": "/assets/rotten-pilgrimage.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "escape",
+          "location": "灵山外",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "heaven_gate",
+          "location": "南天门",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "old_master",
+          "location": "老君殿外",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "sea_approach",
+          "location": "南海石阶",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "laughter",
+          "location": "南海殿门",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "west_sea",
+          "location": "西海水域",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "palace",
+          "location": "水晶宫外廊",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "comparison",
+          "location": "水晶宫图室",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "old_road",
+          "location": "旧西行渡口",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "companion",
+          "location": "渡口灯棚",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "rescue_plan",
+          "location": "灵山外安全云台",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "rope_test",
+          "location": "云台边缘",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "white_edge",
+          "location": "白色覆盖物边缘",
+          "ending": false,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_beacon",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_witness",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_bargain",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/rotten-pilgrimage.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "dragon",
+          "name": "小白龙",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "bajie",
+          "name": "猪八戒",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "guardian",
+          "name": "巨灵神",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "laojun",
+          "name": "太上老君",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "false_guanyin",
+          "name": "假观音",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ming-whisper",
+      "title": "穿越大明，我被崇祯偷听心声",
+      "storyId": "1654134122145320960",
+      "cover": {
+        "url": "/assets/ming-whisper.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "summons",
+          "location": "宫中偏殿",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "war_report",
+          "location": "朝会大殿",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "corridor",
+          "location": "殿外长廊",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "home_ledger",
+          "location": "周家账房",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "granary",
+          "location": "城内粮仓",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "route_map",
+          "location": "驿站图房",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "palace_test",
+          "location": "暖阁",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "queen_aid",
+          "location": "皇后寝殿外",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "draft_order",
+          "location": "宫中文书房",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "council",
+          "location": "夜议大殿",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "dispatch",
+          "location": "驿门",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "cart_check",
+          "location": "城门秤台",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "receipt",
+          "location": "周家窗前",
+          "ending": false,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_supply",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_relief",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_record",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/ming-whisper.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "zhou",
+          "name": "周鉴",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "emperor",
+          "name": "崇祯",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "queen",
+          "name": "周皇后",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "father",
+          "name": "周父",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "wang",
+          "name": "王承恩",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "score-room",
+      "title": "不提分就出不去的房间",
+      "storyId": "2050600604976803918",
+      "cover": {
+        "url": "/assets/score-room.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "wish",
+          "location": "梦中自习室",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "diagnosis",
+          "location": "第一张课桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "framework",
+          "location": "共用草稿区",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "practice",
+          "location": "白板前",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "morning",
+          "location": "家中书桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "zhou_meeting",
+          "location": "备考班走廊",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "library",
+          "location": "备考班资料室",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "score_audit",
+          "location": "批改后的试卷旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "second_night",
+          "location": "第二夜自习室",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "model_problem",
+          "location": "练习白板",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "correction",
+          "location": "白板侧面",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "real_exam",
+          "location": "现实考场",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "exit_review",
+          "location": "最后一夜自习室",
+          "ending": false,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_independent",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_schedule",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_real",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/score-room.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "ning",
+          "name": "宋柠柠",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "li",
+          "name": "李迟游",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "zhou",
+          "name": "周希",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "wen",
+          "name": "温简",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "online-heir",
+      "title": "网恋对象真是霸总",
+      "storyId": "1981680284933063553",
+      "cover": {
+        "url": "/assets/online-heir.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "group_ping",
+          "location": "营销部工位",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "identity",
+          "location": "公司新闻页面",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "old_chat",
+          "location": "手机聊天记录",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "inspection",
+          "location": "营销部外廊",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "work_packet",
+          "location": "共享文档",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "yang",
+          "location": "公司茶水间",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "private_message",
+          "location": "办公楼楼梯平台",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "meeting_plan",
+          "location": "下班后的街边",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "boundaries",
+          "location": "餐馆窗边或视频通话",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "fu_response",
+          "location": "同一张桌边",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "budget_talk",
+          "location": "结账台旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "decision",
+          "location": "回家路上",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "message_draft",
+          "location": "回程消息草稿",
+          "ending": false,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_equal",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_pause",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_separate",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/online-heir.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "jiran",
+          "name": "季然",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "fuyan",
+          "name": "傅琰",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "cheng",
+          "name": "程谦",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "yang",
+          "name": "小杨",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "black-flood",
+      "title": "重生后，我抢了师妹的灵兽",
+      "storyId": "1775834953454288896",
+      "cover": {
+        "url": "/assets/black-flood.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "selection",
+          "location": "御兽宗结契台",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "contract",
+          "location": "结契阵边",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "spring",
+          "location": "山腰旧院",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "night_guest",
+          "location": "旧院卧房门边",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "medicine_ledger",
+          "location": "旧院药柜",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "fang_request",
+          "location": "旧院门口",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "training",
+          "location": "院中练习台",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "seal_records",
+          "location": "后山巡检房",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "handover",
+          "location": "换班廊道",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ridge",
+          "location": "后山外岭",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "council",
+          "location": "宗门议事厅",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "watch",
+          "location": "后山巡检台",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "final_pact",
+          "location": "旧院灵泉边",
+          "ending": false,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_partner",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_steward",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_free",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/black-flood.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "changying",
+          "name": "洛长缨",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "black",
+          "name": "黑蛟",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "fang",
+          "name": "方霓笙",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "qing",
+          "name": "青鸾",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "elder",
+          "name": "执事长老",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "radish-court",
+      "title": "端妃黑又壮",
+      "storyId": "1985108790006277782",
+      "cover": {
+        "url": "/assets/radish-court.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "景华宫门口",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "survey",
+          "location": "景华宫菜地",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "planting",
+          "location": "翻好的土垄",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "household",
+          "location": "宫院小厨房",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "de_visit",
+          "location": "菜地边",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "emperor_arrival",
+          "location": "景华宫石桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "chess",
+          "location": "石桌棋盘",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "granary_audit",
+          "location": "景华宫库房",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "harvest",
+          "location": "成熟后的菜地",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "deduction",
+          "location": "账房",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "proposal",
+          "location": "景华宫长凳",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "public_terms",
+          "location": "景华宫库门",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "emperor_reply",
+          "location": "景华宫石桌",
+          "ending": false,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_supply",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_garden",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_favor",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/radish-court.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "mingzhu",
+          "name": "谢明珠",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "xiao",
+          "name": "萧寻",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "fushun",
+          "name": "福顺",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "qingxing",
+          "name": "青杏",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "de",
+          "name": "德妃",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "harvest-box",
+      "title": "山回路转不见鸡",
+      "storyId": "1986486345988851330",
+      "cover": {
+        "url": "/assets/harvest-box.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "separation",
+          "location": "农院堂屋",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "yard",
+          "location": "散乱的院子",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "open_box",
+          "location": "堂屋门口",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "meal",
+          "location": "厨房桌边",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "wound",
+          "location": "廊下灯边",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "box_inquiry",
+          "location": "空箱旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "night_plan",
+          "location": "堂屋与厢房",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field",
+          "location": "自家麦田",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "neighbors",
+          "location": "两块田的交界",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "rain",
+          "location": "晾晒场",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "letter_return",
+          "location": "院门石阶",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "final_harvest",
+          "location": "粮仓外",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "relationship",
+          "location": "雨后的院子",
+          "ending": false,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_partner",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_coop",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_space",
+          "location": "故事的下一页",
+          "ending": true,
+          "background": {
+            "url": "/assets/harvest-box.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": [
+        {
+          "id": "chen",
+          "name": "陈姑娘",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "li",
+          "name": "李仙昀",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "shen",
+          "name": "沈凶",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        },
+        {
+          "id": "neighbor",
+          "name": "邻田老伯",
+          "main": {
+            "status": "not-prepared"
+          },
+          "reaction": {
+            "status": "not-prepared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "temple-heart",
+      "title": "吃人心的小妖怪",
+      "storyId": "2025954672918163637",
+      "cover": {
+        "url": "/assets/temple-heart.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "temple",
+          "location": "山顶土庙",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "breath",
+          "location": "庙外火堆",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "promise",
+          "location": "石阶",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "rest",
+          "location": "土庙",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "visit",
+          "location": "毓娘家",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "check",
+          "location": "竹床旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "meal",
+          "location": "灶间",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "woods",
+          "location": "山路",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "stalled",
+          "location": "毓娘家门口",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "collapse",
+          "location": "院门",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "talk",
+          "location": "灶台旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "plan",
+          "location": "小院",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "review",
+          "location": "屋檐下",
+          "ending": false,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_care",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_village",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_boundary",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/temple-heart.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "tiger-shelter",
+      "title": "咪假虎威",
+      "storyId": "1962166083206242442",
+      "cover": {
+        "url": "/assets/tiger-shelter.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "rain",
+          "location": "山洞口",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "den",
+          "location": "洞内",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "identity",
+          "location": "洞内火旁",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "border",
+          "location": "洞外",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "pack",
+          "location": "林间",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "return_path",
+          "location": "林间岔口",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "fish",
+          "location": "林间对峙",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "terms",
+          "location": "山道",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "escape",
+          "location": "山缝",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "mother",
+          "location": "山道风口",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "proof",
+          "location": "临时谈判处",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "decision",
+          "location": "山道",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "review",
+          "location": "洞口",
+          "ending": false,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_home",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_terms",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_wander",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/tiger-shelter.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "six-roots",
+      "title": "学科修仙",
+      "storyId": "1760265980192886784",
+      "cover": {
+        "url": "/assets/six-roots.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "青云宗擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_0",
+          "location": "青云宗擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_0",
+          "location": "青云宗擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_0",
+          "location": "青云宗擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_1",
+          "location": "第二轮擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_1",
+          "location": "第二轮擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_1",
+          "location": "第二轮擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_2",
+          "location": "第三轮擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_2",
+          "location": "第三轮擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_2",
+          "location": "第三轮擂台",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_3",
+          "location": "擂台边",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_3",
+          "location": "擂台边",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_3",
+          "location": "擂台边",
+          "ending": false,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_team",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_notes",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_leave",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/six-roots.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "palace-ledger",
+      "title": "00后整顿后宫",
+      "storyId": "1793742089336532992",
+      "cover": {
+        "url": "/assets/palace-ledger.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "皇后寝宫",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_0",
+          "location": "皇后寝宫",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_0",
+          "location": "皇后寝宫",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_0",
+          "location": "皇后寝宫",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_1",
+          "location": "宫中账房",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_1",
+          "location": "宫中账房",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_1",
+          "location": "宫中账房",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_2",
+          "location": "太后宫外",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_2",
+          "location": "太后宫外",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_2",
+          "location": "太后宫外",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_3",
+          "location": "宫门",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_3",
+          "location": "宫门",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_3",
+          "location": "宫门",
+          "ending": false,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_budget",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_receipts",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_pause",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/palace-ledger.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "red-plum",
+      "title": "俺妈和她的丧尸闺女",
+      "storyId": "1930445234262750503",
+      "cover": {
+        "url": "/assets/red-plum.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "菜棚",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_0",
+          "location": "菜棚",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_0",
+          "location": "菜棚",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_0",
+          "location": "菜棚",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_1",
+          "location": "院门",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_1",
+          "location": "院门",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_1",
+          "location": "院门",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_2",
+          "location": "屋檐下",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_2",
+          "location": "屋檐下",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_2",
+          "location": "屋檐下",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_3",
+          "location": "夜间村道",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_3",
+          "location": "夜间村道",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_3",
+          "location": "夜间村道",
+          "ending": false,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_village",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_watch",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_depart",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/red-plum.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "hollow-immortals",
+      "title": "杀仙成道",
+      "storyId": "1558118587956662272",
+      "cover": {
+        "url": "/assets/hollow-immortals.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "弟子卧房",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_0",
+          "location": "弟子卧房",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_0",
+          "location": "弟子卧房",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_0",
+          "location": "弟子卧房",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_1",
+          "location": "练功处",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_1",
+          "location": "练功处",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_1",
+          "location": "练功处",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_2",
+          "location": "灌木后",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_2",
+          "location": "灌木后",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_2",
+          "location": "灌木后",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_3",
+          "location": "长老洞府外",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_3",
+          "location": "长老洞府外",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_3",
+          "location": "长老洞府外",
+          "ending": false,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_witness",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_fragment",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_escape",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/hollow-immortals.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "island-broadcast",
+      "title": "穿成十八线女星我坐鳄鱼全网爆火",
+      "storyId": "1783485301039054849",
+      "cover": {
+        "url": "/assets/island-broadcast.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "临时茅屋",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_0",
+          "location": "临时茅屋",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_0",
+          "location": "临时茅屋",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_0",
+          "location": "临时茅屋",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_1",
+          "location": "林地入口",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_1",
+          "location": "林地入口",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_1",
+          "location": "林地入口",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_2",
+          "location": "树林",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_2",
+          "location": "树林",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_2",
+          "location": "树林",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_3",
+          "location": "集合点",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_3",
+          "location": "集合点",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_3",
+          "location": "集合点",
+          "ending": false,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_team",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_record",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_rest",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/island-broadcast.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    },
+    {
+      "id": "wrong-realm",
+      "title": "我在修真界掏出了AK47",
+      "storyId": "1716453753710972928",
+      "cover": {
+        "url": "/assets/wrong-realm.webp",
+        "status": "missing"
+      },
+      "nodes": [
+        {
+          "id": "arrival",
+          "location": "擂台屏障内",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_0",
+          "location": "擂台屏障内",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_0",
+          "location": "擂台屏障内",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_0",
+          "location": "擂台屏障内",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_1",
+          "location": "擂台边",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_1",
+          "location": "擂台边",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_1",
+          "location": "擂台边",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_2",
+          "location": "擂台记录处",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_2",
+          "location": "擂台记录处",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_2",
+          "location": "擂台记录处",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "field_3",
+          "location": "比武台",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "puzzle_3",
+          "location": "比武台",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "aftermath_3",
+          "location": "比武台",
+          "ending": false,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_departure",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_claim",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        },
+        {
+          "id": "ending_shield",
+          "location": "余页",
+          "ending": true,
+          "background": {
+            "url": "/assets/wrong-realm.webp",
+            "status": "missing"
+          },
+          "currentSceneReviewed": false
+        }
+      ],
+      "cast": []
+    }
+  ]
+}

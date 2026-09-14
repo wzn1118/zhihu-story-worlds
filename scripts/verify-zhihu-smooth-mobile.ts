@@ -1,0 +1,50 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+
+const output = resolve('output/playwright/zhihu-smooth');
+await mkdir(output, { recursive: true });
+const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
+const context = await browser.newContext({ baseURL: 'http://127.0.0.1:4178', viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
+const page = await context.newPage(); page.setDefaultTimeout(15000);
+const errors: string[] = []; let step = 'open';
+page.on('pageerror', error => errors.push(error.message));
+try {
+  await page.goto('http://127.0.0.1:4178/', { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.getByRole('button', { name: /新故事工作台/ }).waitFor();
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: /新故事工作台/ }).tap();
+  await page.getByRole('button', { name: /去知乎选故事/ }).tap();
+  const embedded = page.frameLocator('.zhw-live-page iframe');
+  const handle = embedded.locator('[data-redleaf-feed]').first();
+  await handle.waitFor({ timeout: 20000 });
+  step = 'viewport and native text';
+  const fit = await embedded.locator('body').evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth }));
+  assert.ok(fit.scrollWidth <= fit.width + 1, JSON.stringify(fit));
+  await page.screenshot({ path: resolve(output, 'mobile.png'), scale: 'css' });
+  await page.screenshot({ path: resolve(output, 'mobile-native-3x.png') });
+  step = 'touch drag';
+  await handle.scrollIntoViewIfNeeded();
+  const source = (await handle.boundingBox())!, target = (await page.locator('.liukan-bubble').boundingBox())!;
+  const cdp = await context.newCDPSession(page);
+  const sx = source.x + source.width / 2, sy = source.y + source.height / 2;
+  const tx = target.x + target.width / 2, ty = target.y + target.height / 2;
+  const response = page.waitForResponse(row => /\/api\/liukan\/inbox$/.test(row.url()) && row.request().method() === 'POST');
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: sx, y: sy }] });
+  for (let i = 1; i <= 20; i++) await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: sx + (tx - sx) * i / 20, y: sy + (ty - sy) * i / 20 }] });
+  await page.screenshot({ path: resolve(output, 'mobile-dragging.png'), scale: 'css' });
+  const started = performance.now();
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  assert.equal((await response).status(), 201);
+  const elapsedMs = Math.round(performance.now() - started);
+  await page.locator('.liukan-post-kicker').waitFor();
+  await page.screenshot({ path: resolve(output, 'mobile-fed.png'), scale: 'css' });
+  assert.equal(context.pages().length, 1); assert.deepEqual(errors, []);
+  await writeFile(resolve(output, 'mobile-verification.json'), JSON.stringify({ status: 'passed', viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, fit, touchDrag: 201, dropToSavedMs: elapsedMs, pages: context.pages().length, errors }, null, 2));
+  console.log(JSON.stringify({ status: 'passed', output, dropToSavedMs: elapsedMs }));
+} catch (error) {
+  await page.screenshot({ path: resolve(output, 'mobile-failure.png'), scale: 'css' }).catch(() => {});
+  await writeFile(resolve(output, 'mobile-failure.json'), JSON.stringify({ step, error: String(error), errors, text: (await page.locator('body').innerText().catch(() => '')).slice(-2000) }, null, 2));
+  console.error(JSON.stringify({ step, error: String(error), errors })); process.exitCode = 1;
+} finally { await context.close(); await browser.close(); }

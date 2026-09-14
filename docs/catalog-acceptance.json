@@ -1,0 +1,395 @@
+{
+  "generatedAt": "2026-09-05T23:24:02.381Z",
+  "counts": {
+    "worlds": 20,
+    "nodes": 379,
+    "choices": 805,
+    "endings": 69,
+    "originalChars": 59630
+  },
+  "sourceScope": "Exact API excerpts, not full novels; original branches and endings clearly marked.",
+  "verification": {
+    "automatedTests": 118,
+    "allRoutingEquivalentStatesHaveExits": true,
+    "stateReduction": "Only clues observable at reachable gates or ending assertions remain in each node key. Resource balances and gated stats remain exact. Unused display stats are merged.",
+    "eachAuthoredChoiceReplayedInInk": true,
+    "eachWorldSaveRoundTrip": true,
+    "originalCoreSaveMigration": true,
+    "blueAndIslandV11Migration": true,
+    "visualGameplayReview": [
+      "output/playwright/catalog-gameplay/report.json",
+      "output/playwright/investigation-logistics/report.json"
+    ]
+  },
+  "artRequirement": {
+    "minimumIndependentDesigns": 30,
+    "rootReviewedIndependentDesigns": 2,
+    "remainingAtLeast": 28,
+    "complete": false,
+    "blocker": "Last OpenQI image request at 2026-09-06 06:34:52 +0800 ended HTTP 402 insufficient credits. No replenishment reported; no new image request in the investigation/logistics iteration.",
+    "counting": "Count independent background compositions and character identities; exclude crops, format conversions, recolors, expressions of the same identity and composites of counted work."
+  },
+  "entries": [
+    {
+      "storyId": "2025684191967294692",
+      "worldId": "blue-blood",
+      "title": "蓝血",
+      "author": "桃花先生",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/2025684191967294692",
+      "sourceChars": 3000,
+      "sourceSha256": "4a6faadedd592d2ca88798c652c8cec134182d4772a769b6eaca4220c4ff86e3",
+      "sourceFetchedAt": "2026-09-05T23:17:25.574Z",
+      "nodes": 32,
+      "choices": 69,
+      "endings": 7,
+      "resources": [
+        "注意力",
+        "联络余量"
+      ],
+      "adaptation": "基于知乎赛事接口提供的节选改编。分支、角色年龄设定与结局为本游戏原创，不代表原作后续。所有登场角色均为成年人。深夜复核、匿名交接与新增结局为原创支线；试探目的只作为待验证假说，不宣称揭晓原作真相。"
+    },
+    {
+      "storyId": "2025333783608537435",
+      "worldId": "double-pursuit",
+      "title": "双重追踪",
+      "author": "写小说的秃头老张",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/2025333783608537435",
+      "sourceChars": 3000,
+      "sourceSha256": "b8f5bf82b371cc12a84bc20c7d6596af5d7dba32b8ce5b7bd629b8afaeca5d51",
+      "sourceFetchedAt": "2026-09-05T23:17:28.357Z",
+      "nodes": 20,
+      "choices": 37,
+      "endings": 4,
+      "resources": [
+        "体力",
+        "电量"
+      ],
+      "adaptation": "基于知乎赛事接口提供的节选改编。分支、角色年龄设定与结局为本游戏原创，不代表原作后续。所有登场角色均为成年人。"
+    },
+    {
+      "storyId": "2068540656734180439",
+      "worldId": "velvet-alibi",
+      "title": "史密斯装穷夫妇",
+      "author": "年年",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/2068540656734180439",
+      "sourceChars": 3000,
+      "sourceSha256": "089ad99a9c3bd265a9f183b86097fa7f785429e145fcf4e3e4bc352b43a290d6",
+      "sourceFetchedAt": "2026-09-05T23:17:29.456Z",
+      "nodes": 20,
+      "choices": 39,
+      "endings": 4,
+      "resources": [
+        "精力",
+        "独处时间"
+      ],
+      "adaptation": "基于知乎赛事接口提供的节选改编。分支、角色年龄设定与结局为本游戏原创，不代表原作后续。所有登场角色均为成年人。"
+    },
+    {
+      "storyId": "1831621186162937856",
+      "worldId": "future-island",
+      "title": "未来岛",
+      "author": "苏青瓷",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1831621186162937856",
+      "sourceChars": 3000,
+      "sourceSha256": "fd017e2a0e8ea724c1ad1dc34b1f45ef6d9565dc5fb7772206ee521ee57888ec",
+      "sourceFetchedAt": "2026-09-05T23:17:30.756Z",
+      "nodes": 51,
+      "choices": 108,
+      "endings": 6,
+      "resources": [
+        "值守精力",
+        "应急配额",
+        "本班剩余货位"
+      ],
+      "adaptation": "基于知乎赛事接口提供的截断节选改编。四个结局、资源调度事件、两名 NPC、所有年龄与外貌均为游戏原创设定，不代表原作后续；旧同学在本作中均已成年毕业。四格配载支线、保留受限工作艇的分歧、具体站点与机组、库存批次、航次事件及维护合作结局均为游戏原创；原文节选写到销毁远程交通工具，并未提供这些灾后转运情节。"
+    },
+    {
+      "storyId": "1747681485547843585",
+      "worldId": "happy-home",
+      "title": "近视眼勇闯恐怖游戏",
+      "author": "沈南因",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1747681485547843585",
+      "sourceChars": 3000,
+      "sourceSha256": "1246b3195bf94e22a4ce42ec53030db83909fe0746a68713f725531b24c88dae",
+      "sourceFetchedAt": "2026-09-05T23:17:31.836Z",
+      "nodes": 16,
+      "choices": 38,
+      "endings": 3,
+      "resources": [
+        "心力",
+        "惊悚值"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。思思由原作儿童形态公开改为 22 岁成年养女角色；长辈为成年住户角色。游戏不呈现原作中对儿童的攻击。"
+    },
+    {
+      "storyId": "1617220591035113472",
+      "worldId": "rotten-pilgrimage",
+      "title": "西游之众佛腐烂",
+      "author": "杀不死的林海仙",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1617220591035113472",
+      "sourceChars": 3000,
+      "sourceSha256": "2a9e22b5343b038469a1354d63c26775f2866f4dbb02557361a865759e180827",
+      "sourceFetchedAt": "2026-09-05T23:17:33.059Z",
+      "nodes": 16,
+      "choices": 38,
+      "endings": 3,
+      "resources": [
+        "龙息",
+        "定心锚"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。神佛与龙族均设定为成年角色；没有宣称假观音关于沙僧的指控是真相。西海之后的调查和结局全部原创。"
+    },
+    {
+      "storyId": "1654134122145320960",
+      "worldId": "ming-whisper",
+      "title": "穿越大明，我被崇祯偷听心声",
+      "author": "凉风有信",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1654134122145320960",
+      "sourceChars": 2630,
+      "sourceSha256": "42b7adf7e042eb3c75f8decbc285eadddbaec90cb031e4673c1daa340e7dc64e",
+      "sourceFetchedAt": "2026-09-05T23:17:34.003Z",
+      "nodes": 16,
+      "choices": 38,
+      "endings": 3,
+      "resources": [
+        "可兑现粮额",
+        "进言余地"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。历史背景按节选中角色的认知呈现，不作为现实史实考证。宫中筹粮、驿站文书与三种政策结局为原创，不保证逆转王朝命运。"
+    },
+    {
+      "storyId": "2050600604976803918",
+      "worldId": "score-room",
+      "title": "不提分就出不去的房间",
+      "author": "灯灯",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/2050600604976803918",
+      "sourceChars": 3000,
+      "sourceSha256": "10bf691ab5d52029894c5ffff102a6cc311ced26d4a0c75b9783a69a8f4bef44",
+      "sourceFetchedAt": "2026-09-05T23:17:35.122Z",
+      "nodes": 16,
+      "choices": 37,
+      "endings": 3,
+      "resources": [
+        "专注",
+        "迁移能力"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。原文高中场景和全部同学公开改为 21 岁及以上的成人升学班；系统惩罚改为非亲密、可停止的追加复习。数学题及结局为原创。"
+    },
+    {
+      "storyId": "1981680284933063553",
+      "worldId": "online-heir",
+      "title": "网恋对象真是霸总",
+      "author": "北瓜",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1981680284933063553",
+      "sourceChars": 3000,
+      "sourceSha256": "ec7fd80627497aa8519ac36b7ca22bac8b0815a67142b02457f700c2728a14b8",
+      "sourceFetchedAt": "2026-09-05T23:17:36.119Z",
+      "nodes": 16,
+      "choices": 38,
+      "endings": 3,
+      "resources": [
+        "可支配时段",
+        "已澄清事项"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。身份与工作处境截至节选均有依据；会面、公私边界与关系选择为原创，未把原作未显示的后续当作已知。"
+    },
+    {
+      "storyId": "1775834953454288896",
+      "worldId": "black-flood",
+      "title": "重生后，我抢了师妹的灵兽",
+      "author": "花花在画画",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1775834953454288896",
+      "sourceChars": 3000,
+      "sourceSha256": "878513f25ac5f8b10003e1eed6f2e6d310fe5709159f531c61a7bdcc2e7c5e82",
+      "sourceFetchedAt": "2026-09-05T23:17:37.080Z",
+      "nodes": 16,
+      "choices": 38,
+      "endings": 3,
+      "resources": [
+        "灵药",
+        "契合"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。黑蛟在节选明确已成年；成人形态核验、平等契约、巡检制度与三个结局为原创。元数据简介另有后续梗概，本局没有冒称已读该后续正文。"
+    },
+    {
+      "storyId": "1985108790006277782",
+      "worldId": "radish-court",
+      "title": "端妃黑又壮",
+      "author": "重十八",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1985108790006277782",
+      "sourceChars": 3000,
+      "sourceSha256": "24462422e36103830f6243f835f4d785d0422c9455db1cfc9d6eabded8b02970",
+      "sourceFetchedAt": "2026-09-05T23:17:38.170Z",
+      "nodes": 16,
+      "choices": 40,
+      "endings": 3,
+      "resources": [
+        "可用劳力",
+        "粮蔬储备"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。年龄为明确成人化补定。原文正文止于萧寻谈御史；配粮核查、有限试运与制度结局原创，未把简介里的北境将军通信冒充已读正文。"
+    },
+    {
+      "storyId": "1986486345988851330",
+      "worldId": "harvest-box",
+      "title": "山回路转不见鸡",
+      "author": "旺旺大队长",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1986486345988851330",
+      "sourceChars": 3000,
+      "sourceSha256": "6b63be956e1f7b6c79139584120d3e4256c1419202a50874c6b9707324fd52c4",
+      "sourceFetchedAt": "2026-09-05T23:17:39.100Z",
+      "nodes": 16,
+      "choices": 39,
+      "endings": 3,
+      "resources": [
+        "存粮",
+        "保收进度"
+      ],
+      "adaptation": "基于接口提供的真实节选，非原作全文。以下行动分支、物资数值与结局为游戏原创。所有登场角色均为成年人。全体登场角色明确成年。宝箱人权、分房与劳动同意为本游戏改编；不复现节选中的非自愿亲密或窒息桥段。秋收协作与结局为原创。"
+    },
+    {
+      "storyId": "2025954672918163637",
+      "worldId": "temple-heart",
+      "title": "吃人心的小妖怪",
+      "author": "女巫",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/2025954672918163637",
+      "sourceChars": 3000,
+      "sourceSha256": "11e02bb6d56881af6175bf1682a7590dad9f610910359d85064afdcbcfbd9b9b",
+      "sourceFetchedAt": "2026-09-05T23:17:40.169Z",
+      "nodes": 16,
+      "choices": 30,
+      "endings": 3,
+      "resources": [
+        "灵力",
+        "余日"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。原文念念为七岁；本局明确改为二十二岁。诊疗均为幻想叙事，游戏没有补写原作未提供的成仙真相。"
+    },
+    {
+      "storyId": "1962166083206242442",
+      "worldId": "tiger-shelter",
+      "title": "咪假虎威",
+      "author": "反骨",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1962166083206242442",
+      "sourceChars": 3000,
+      "sourceSha256": "72851c9d28369faf8225bc7e5221ef861e3655a7c6a403b4ace88a14e2a6499d",
+      "sourceFetchedAt": "2026-09-05T23:17:41.156Z",
+      "nodes": 16,
+      "choices": 30,
+      "endings": 3,
+      "resources": [
+        "体力",
+        "庇护"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。原文明确小橘成年；本局君洲、君潮改为成年虎妖，删去幼崽哺育桥段，保留误认亲属与追捕冲突。"
+    },
+    {
+      "storyId": "1760265980192886784",
+      "worldId": "six-roots",
+      "title": "学科修仙",
+      "author": "六酒",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1760265980192886784",
+      "sourceChars": 3000,
+      "sourceSha256": "9756a809e43e8e13504f179b1bb069e5dd8b9b0e1e8f47bd9612907fd29aa8f4",
+      "sourceFetchedAt": "2026-09-05T23:17:42.070Z",
+      "nodes": 16,
+      "choices": 31,
+      "endings": 3,
+      "resources": [
+        "专注",
+        "支援"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。开头摘要与正文的算式分别为减三、减九；本局采用正文擂台的减九，不将两式混为一题。"
+    },
+    {
+      "storyId": "1793742089336532992",
+      "worldId": "palace-ledger",
+      "title": "00后整顿后宫",
+      "author": "苏荔",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1793742089336532992",
+      "sourceChars": 3000,
+      "sourceSha256": "a7e6929a6b4dbee3f0312e88fc3c25d3d8ebc1deb9711030951228b386602795",
+      "sourceFetchedAt": "2026-09-05T23:17:43.132Z",
+      "nodes": 16,
+      "choices": 31,
+      "endings": 3,
+      "resources": [
+        "精力",
+        "银票份额"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。保留皇后、朱家资助、分红、太后索取与小英；新增账目核验和宫务谈判。"
+    },
+    {
+      "storyId": "1930445234262750503",
+      "worldId": "red-plum",
+      "title": "俺妈和她的丧尸闺女",
+      "author": "归像",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1930445234262750503",
+      "sourceChars": 3000,
+      "sourceSha256": "175715829253a6320cfcaf8f99d8cd15b04e04706361a3b936b9fb5801f72a35",
+      "sourceFetchedAt": "2026-09-05T23:17:44.125Z",
+      "nodes": 16,
+      "choices": 31,
+      "endings": 3,
+      "resources": [
+        "体力",
+        "菜粮"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。本局不将幻想针灸改写成现实疗效，不提供针法或药方；照料公约和撤离路线为原创。"
+    },
+    {
+      "storyId": "1558118587956662272",
+      "worldId": "hollow-immortals",
+      "title": "杀仙成道",
+      "author": "满目山河依旧",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1558118587956662272",
+      "sourceChars": 3000,
+      "sourceSha256": "bc20820c96c0c2e4da2716c043de51f60477626872f5ee2bd1d7b078adad139e",
+      "sourceFetchedAt": "2026-09-05T23:17:45.050Z",
+      "nodes": 16,
+      "choices": 31,
+      "endings": 3,
+      "resources": [
+        "心神",
+        "掩护"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。保留魏旻、祁莫、璇玑仙尊及白鹤村事件。不将村民死讯改为可被游戏轻易撤销的假象。"
+    },
+    {
+      "storyId": "1783485301039054849",
+      "worldId": "island-broadcast",
+      "title": "穿成十八线女星我坐鳄鱼全网爆火",
+      "author": "不吃鱼的喵",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1783485301039054849",
+      "sourceChars": 3000,
+      "sourceSha256": "a4177c9f441b133bf5afe59ca3e53dad901da42d88d6fff46017c640d924be12",
+      "sourceFetchedAt": "2026-09-05T23:17:45.980Z",
+      "nodes": 16,
+      "choices": 31,
+      "endings": 3,
+      "resources": [
+        "精力",
+        "补给"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。所有嘉宾为成年人。本局不虚构已读到坐鳄鱼的正文，也不把节目中的动物亲近描写当作现实接近野生动物的建议。"
+    },
+    {
+      "storyId": "1716453753710972928",
+      "worldId": "wrong-realm",
+      "title": "我在修真界掏出了AK47",
+      "author": "风吹过你的心窝",
+      "sourceUrl": "https://api.zhihu.com/km-indep-home/hackathon/v2/story/1716453753710972928",
+      "sourceChars": 3000,
+      "sourceSha256": "689a20ea8554aa01151bd6e39a879a3d8d638717afdb1dae44fd82879892261f",
+      "sourceFetchedAt": "2026-09-05T23:17:46.870Z",
+      "nodes": 16,
+      "choices": 31,
+      "endings": 3,
+      "resources": [
+        "护屏能量",
+        "仓储配额"
+      ],
+      "adaptation": "基于知乎接口真实节选。行动分支、数值和结局为游戏原创，不代表原作后续。所有登场角色均为成年人。保留受损灵根、玉灵芝、偏袒规则、系统错投与护身屏。不提供现实武器制作或操作细节。"
+    }
+  ]
+}

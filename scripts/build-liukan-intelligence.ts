@@ -1,0 +1,1 @@
+import { build } from 'vite'; await build({ build:{outDir:'output/liukan-intelligence/build', emptyOutDir:false, copyPublicDir:false} });

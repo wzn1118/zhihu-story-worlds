@@ -1,0 +1,3 @@
+# Reading timeout follow-up
+Root performed real frontend MAIA recap on 4180; fixed shared 60s relay timeout expired. The unknown attempt remains, do not replay or delete it.
+Backend agent: implement internal optional timeout in answer.ts/requestLiukanRelay and callConfiguredLiukan; normal chat default stays 60s, reading defaults to 180s using exactly same stored provider/model/reasoning. Compact reading prompt to 3-5 sections and roughly 400-900 Chinese body chars (adaptation up to 1200) while keeping strict evidence and validator. Add focused adapter regression test. Own answer.ts, reading.ts and focused tests. No server restart/model calls. Root handles build/live browser.

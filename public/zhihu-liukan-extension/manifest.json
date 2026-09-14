@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "看山 · 知乎选读",
+  "version": "0.1.0",
+  "description": "在知乎回答页快速把当前回答交给看山。",
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.zhihu.com/*", "https://zhihu.com/*", "https://zhuanlan.zhihu.com/*", "http://127.0.0.1/*", "http://localhost/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "看山 · 知乎选读" },
+  "content_scripts": [{
+    "matches": ["https://www.zhihu.com/*", "https://zhihu.com/*", "https://zhuanlan.zhihu.com/*"],
+    "js": ["content.js"],
+    "css": ["content.css"],
+    "run_at": "document_idle"
+  }]
+}

@@ -1,0 +1,72 @@
+.liukan-capabilities { --cap-ink: #193440; --cap-blue: #086bcb; color: var(--cap-ink); background: #f9fcfe; font: 13px/1.65 "Microsoft YaHei", sans-serif; border-radius: 18px; overflow: hidden; min-width: 0; }
+.liukan-capabilities * { box-sizing: border-box; }
+.liukan-cap-header { display: flex; justify-content: space-between; align-items: center; padding: 19px 20px 14px; background: linear-gradient(120deg, #eaf4fb, #f9fcfe 85%); }
+.liukan-cap-header span { display: block; font-size: 10px; letter-spacing: .17em; color: #567889; margin-bottom: 3px; }
+.liukan-cap-header strong { font: 600 19px/1.4 "Noto Serif SC", "Songti SC", serif; }
+.liukan-capabilities button { cursor: pointer; font: inherit; }
+.liukan-cap-header button { border: 1px solid #d3e1e7; border-radius: 50%; width: 32px; height: 32px; background: #fff9; display: grid; place-items: center; color: #385567; }
+.liukan-cap-tabs { display: flex; margin: 0 17px; gap: 18px; border-bottom: 1px solid #dce7eb; }
+.liukan-cap-tabs button { flex: 1; border: 0; border-bottom: 2px solid transparent; background: none; padding: 11px 0 9px; color: #617d8c; white-space: nowrap; }
+.liukan-cap-tabs button[aria-pressed=true] { color: #0b568f; border-bottom-color: var(--cap-blue); font-weight: 600; }
+.liukan-cap-chat, .liukan-cap-tools, .liukan-cap-settings { padding: 17px; }
+.liukan-capabilities label { display: block; margin-bottom: 12px; font-size: 12px; font-weight: 600; }
+.liukan-capabilities input:not([type=checkbox]), .liukan-capabilities select, .liukan-capabilities textarea { display: block; width: 100%; min-width: 0; margin-top: 5px; padding: 10px 11px; border: 1px solid #cbdce6; border-radius: 9px; background: #fff; color: #243c48; font: 12px/1.5 "Microsoft YaHei", sans-serif; }
+.liukan-capabilities :is(input, select, textarea, button):focus-visible { outline: 2px solid #1675bd; outline-offset: 2px; }
+.liukan-capabilities textarea { resize: vertical; }
+.liukan-capabilities button:disabled { opacity: .5; cursor: wait; }
+.liukan-capabilities .liukan-cap-primary { width: 100%; display: flex; justify-content: center; align-items: center; gap: 7px; border: 0; border-radius: 9px; background: #126dad; color: #fff; padding: 10px 12px; }
+.liukan-cap-secondary { border: 0; background: none; color: #2f6588; padding: 10px 0 0; text-align: left; font-size: 11px !important; }
+.liukan-cap-hint { color: #69818d; margin: 0 0 12px; font-size: 11px; line-height: 1.7; }
+.liukan-cap-consent { display: flex !important; align-items: flex-start; gap: 7px; font-size: 11px !important; font-weight: 400 !important; line-height: 1.5; padding: 10px; border: 1px solid #d9e4eb; border-radius: 8px; background: #eff5f8; }
+.liukan-cap-consent input { flex: 0 0 auto; margin: 2px 0 0; }
+.liukan-cap-results { margin-top: 17px; max-height: 360px; overflow: auto; }
+.liukan-cap-results article { display: flex; gap: 10px; padding: 14px 0; border-top: 1px solid #dce6eb; }
+.liukan-cap-result-number { color: #91a8b4; font-family: Georgia, serif; font-size: 18px; padding-top: 1px; }
+.liukan-cap-results article > div { min-width: 0; }
+.liukan-cap-results h4 { margin: 0 0 6px; font-size: 13px; line-height: 1.65; color: #263f4c; }
+.liukan-cap-results article p { font-size: 12px; margin: 7px 0; color: #596e79; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 180px; overflow: auto; }
+.liukan-cap-results button { display: inline-flex; gap: 3px; align-items: center; border: 0; background: none; color: #126dad; padding: 4px 0; font-size: 11px; }
+.liukan-cap-settings-title { display: flex; gap: 9px; align-items: center; margin: 0 0 16px; }
+.liukan-cap-settings-title p { margin: 0; font-size: 13px; }
+.liukan-cap-settings-title small { display: block; color: #69818d; font-size: 10px; }
+.liukan-cap-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.liukan-cap-fields label { min-width: 0; }
+.liukan-cap-chatlog { max-height: 300px; overflow: auto; overscroll-behavior: contain; }
+.liukan-cap-welcome { display: flex; align-items: center; gap: 2px; min-height: 146px; }
+.liukan-cap-welcome img { flex: 0 0 80px; object-fit: contain; }
+.liukan-cap-welcome p { color: #536d7b; font-size: 12px; }
+.liukan-cap-message { margin: 10px 0; padding: 11px 13px; border-radius: 12px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.8; }
+.liukan-cap-message.is-user { background: #e2eff9; margin-left: 25px; }
+.liukan-cap-message.is-assistant { background: #fff; border: 1px solid #e0e9ef; margin-right: 12px; }
+.liukan-cap-compose { display: flex; align-items: flex-end; gap: 7px; margin-top: 12px; }
+.liukan-cap-compose textarea { margin: 0; }
+.liukan-cap-compose button { display: grid; place-items: center; border: 0; background: #126dad; color: #fff; width: 37px; height: 37px; flex: 0 0 37px; border-radius: 10px; margin-bottom: 2px; }
+.liukan-cap-provider { display: block; color: #7a909c; margin-top: 8px; font-size: 10px; overflow-wrap: anywhere; }
+.liukan-cap-error, .liukan-cap-notice { padding: 9px 12px; margin: 0 17px 14px; border-radius: 8px; font-size: 12px; }
+.liukan-cap-error { color: #87462c; background: #fff0e8; }
+.liukan-cap-notice { display: flex; gap: 6px; align-items: center; color: #266b52; background: #e8f5ef; }
+.liukan-cap-thinking { color: #748c98; display: flex; align-items: center; gap: 6px; }
+.liukan-cap-thinking svg, .liukan-cap-primary:disabled svg { animation: liukan-cap-spin 1.2s linear infinite; }
+.liukan-cap-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@keyframes liukan-cap-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .liukan-capabilities svg { animation: none !important; } }
+@media (max-width: 420px) { .liukan-cap-header { padding: 15px 15px 10px; } .liukan-cap-chat, .liukan-cap-tools, .liukan-cap-settings { padding: 13px; } .liukan-cap-fields { grid-template-columns: 1fr; gap: 0; } }
+
+.liukan-external-source { display:grid; gap:6px; margin-top:10px; }
+.liukan-external-source input { width:100%; min-width:0; font-size:11px; }
+
+@media (forced-colors: none) {
+.liukan-capabilities { color-scheme: light; }
+.liukan-capabilities :is(.liukan-cap-results, .liukan-cap-results article p, .liukan-cap-chatlog, textarea) { scrollbar-width: thin; scrollbar-color: #698d9f55 transparent; }
+.liukan-capabilities :is(.liukan-cap-results, .liukan-cap-results article p, .liukan-cap-chatlog) { overflow-x: hidden; }
+.liukan-cap-results h4 { overflow-wrap: anywhere; }
+@supports selector(::-webkit-scrollbar) {
+  .liukan-capabilities :is(.liukan-cap-results, .liukan-cap-results article p, .liukan-cap-chatlog, textarea) { scrollbar-width: auto; scrollbar-color: auto; }
+  .liukan-capabilities ::-webkit-scrollbar { width: 4px; height: 4px; }
+  .liukan-capabilities ::-webkit-scrollbar-track, .liukan-capabilities ::-webkit-scrollbar-corner { background: transparent; }
+  .liukan-capabilities ::-webkit-scrollbar-thumb { min-height: 28px; border-radius: 999px; background: #698d9f55; }
+  .liukan-capabilities ::-webkit-scrollbar-thumb:hover { background: #698d9f99; }
+  .liukan-capabilities ::-webkit-scrollbar-button { display: none; }
+}
+}
+.liukan-cap-reading-entry{display:block;width:100%;padding:15px 17px!important;text-align:left;border:1px solid #c6dce8;border-radius:13px;background:linear-gradient(120deg,#e9f4fa,#fff);color:#264c63;margin-bottom:14px}.liukan-cap-reading-entry>span{font-size:10px;letter-spacing:.1em;color:#487b98}.liukan-cap-reading-entry strong{display:flex;align-items:center;justify-content:space-between;margin:4px 0;font:600 18px/1.5 "Noto Serif SC","Songti SC",serif}.liukan-cap-reading-entry small{font-size:11px;color:#66808e}.liukan-cap-reading-entry:hover{border-color:#6dabc9;background:#e5f3fa}

@@ -1,0 +1,20 @@
+[Unit]
+Description=Zhihu project production service on data disk
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/data
+
+[Service]
+Type=simple
+WorkingDirectory=/data/zhihu-project/releases/20260914-1300
+ExecStart=/usr/bin/python3 /data/zhihu-project/releases/20260914-1300/deployment-20260914/control.py supervise
+Restart=on-failure
+RestartSec=5
+UMask=0077
+KillMode=control-group
+TimeoutStopSec=30
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target

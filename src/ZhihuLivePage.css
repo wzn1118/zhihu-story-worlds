@@ -1,0 +1,18 @@
+.zhw-live-page{display:flex;flex-direction:column;min-height:540px;height:calc(100dvh - 215px);background:white;border:1px solid #dce6f2;border-radius:12px;overflow:hidden;box-shadow:0 12px 35px #16396008}.zhw-live-page iframe{display:block;flex:1;width:100%;min-height:0;border:0;background:white}.zhw-selection-bar{min-height:45px;display:flex;align-items:center;gap:14px;padding:9px 16px;box-sizing:border-box;color:#667f9b;border-bottom:1px solid #e6edf5;font:12px/1.5 system-ui;background:#fff}.zhw-selection-bar>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:52%;color:#29476a}.zhw-selection-bar button{white-space:nowrap;border-radius:7px;background:#1476ef;color:white;padding:6px 12px;cursor:grab}.zhw-selection-bar small{margin-left:auto;white-space:nowrap;color:#8397ad;font-size:11px}@media(max-width:760px){.zhw-live-page{min-height:440px;height:calc(100dvh - 240px);border-radius:7px}.zhw-selection-bar{padding:8px 10px;gap:7px;flex-wrap:wrap}.zhw-selection-bar>span{max-width:100%;font-size:11px}.zhw-selection-bar small{display:none}.zhw-selection-bar button{font-size:11px}}
+.zhw-answer-drag-preview{position:fixed;z-index:24000;pointer-events:none;width:220px;box-sizing:border-box;padding:10px 14px;border:1px solid #c6e0ff;border-radius:12px;background:#f4f9ffff;box-shadow:0 8px 28px #12478233;color:#284f78;font:12px/1.5 system-ui}.zhw-answer-drag-preview b{display:block;color:#0666d6;font-size:13px}.zhw-answer-drag-preview span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.zhw-selection-bar{height:52px;min-height:52px;flex-shrink:0}.zhw-selection-bar>span{min-width:0}.zhw-selection-bar button{flex-shrink:0}
+@media(max-width:760px){.zhw-selection-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;height:64px;min-height:64px;gap:8px}.zhw-selection-bar>span{max-width:none;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.zhw-selection-bar button{padding:8px 10px;min-height:38px}}
+
+/* Keep drag feedback on its own compositor layer so pointer movement stays calm. */
+.zhw-live-page{contain:layout paint}
+.zhw-live-page iframe{contain:strict}
+.zhw-answer-drag-preview{will-change:transform;backface-visibility:hidden}
+
+/* Keep the two primary actions easy to hit without covering the article. */
+.zhw-selection-bar button{min-height:36px;padding-inline:14px;font-weight:600;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.zhw-selection-bar button:focus-visible{outline:3px solid #8fc3ff;outline-offset:2px}
+.zhw-selection-bar button{transition:background-color .16s ease,transform .16s ease,box-shadow .16s ease}
+.zhw-selection-bar button:hover{background:#0f68d8;box-shadow:0 3px 10px #1476ef33}
+.zhw-selection-bar button:active{transform:translateY(1px);box-shadow:none}
+.zhw-selection-bar small{max-width:28ch;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:760px){.zhw-selection-bar{padding-inline:12px}.zhw-selection-bar button{min-width:112px}.zhw-selection-bar>span{line-height:1.45}.zhw-live-page{height:calc(100dvh - 226px)}.zhw-live-page iframe{overscroll-behavior:contain}}

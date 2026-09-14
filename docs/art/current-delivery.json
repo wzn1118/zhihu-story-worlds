@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "status": "root-reviewed-for-user-review",
+  "userIndividuallyApproved": false,
+  "worldId": "blue-blood",
+  "sourceStoryId": "2025684191967294692",
+  "characterReferences": ["docs/references/user-character-full-crop.png", "docs/references/user-character-face.png"],
+  "backgroundReference": "docs/references/user-anime-reference.png",
+  "assets": [
+    {
+      "role": "main",
+      "source": "output/imagegen/fang-nuo-main-integrated-v3/fang-nuo-main.png",
+      "publicPath": "/assets/fang-nuo-main.webp",
+      "width": 2833,
+      "height": 3777,
+      "alpha": true,
+      "sourceSha256": "4352946c0c67c8f5aacbd3329355744f577bfc4c1e5264a6cd480e33adb830ee",
+      "deliverySha256": "14e51e334f99a6411e4ccd6aeb4de1c0acf054470020cfc6c5e0d9293eeaee11"
+    },
+    {
+      "role": "reaction",
+      "source": "output/imagegen/fang-nuo-reaction-integrated-v3/fang-nuo-reaction.png",
+      "publicPath": "/assets/fang-nuo-reaction.webp",
+      "width": 2833,
+      "height": 3777,
+      "alpha": true,
+      "sourceSha256": "39da21847495c1f2b5e2b5a58fee0d2c6e95e05f8fbaf0fa1022499694ca2fe1",
+      "deliverySha256": "f9268f72584000ea8af9ee8037857a46ad668387fa9ee6297d01212c6f91b8a5"
+    },
+    {
+      "role": "training-background",
+      "source": "output/imagegen/blue-training-room/blue-training-room-01.png",
+      "publicPath": "/assets/blue-training-room.webp",
+      "width": 4096,
+      "height": 2304,
+      "alpha": false,
+      "sourceSha256": "535f95017f4745fdadabf7472c1ad560c488bc565acb47606cc3a3ebfeaaa155",
+      "deliverySha256": "ca5c42f9f80607e8579a6a9861727b8a12398f4d4fa1879563e9f91779597532"
+    },
+    {
+      "role": "story-cover",
+      "source": "output/imagegen/blue-blood-cover-v3/blue-blood-cover-v3.png",
+      "publicPath": "/assets/blue-blood-cover.webp",
+      "width": 4096,
+      "height": 2304,
+      "alpha": false,
+      "sourceSha256": "2a0851f782e3b72bfeecc5f0e766a5ecad959b7c5879f06fe930e07e69d5d23a",
+      "deliverySha256": "6bc9aa5b4fc8ddd38efd726de7d70fa83a397ac1c6b9bf2935408f644b559b1e"
+    }
+  ],
+  "generationRecords": [
+    "output/imagegen/fang-nuo-main/manifest.json",
+    "output/imagegen/fang-nuo-main-light-v2/manifest.json",
+    "output/imagegen/fang-nuo-face-shadow-v3/manifest.json",
+    "output/imagegen/fang-nuo-reaction-face/manifest.json",
+    "output/imagegen/blue-training-room/manifest.json"
+  ],
+  "processing": "Facial edits retained at 1254 square and composited onto downsampled bodies; connected neutral backdrop removed with inspected interior seeds; WebP preserves alpha; cover combines the reviewed layers. No upscaling.",
+  "implementedScenes": ["training", "test"],
+  "remaining": "Other locations and casts still need matching art. Earlier gothic station imagery is legacy scene art, not the current character identity."
+}

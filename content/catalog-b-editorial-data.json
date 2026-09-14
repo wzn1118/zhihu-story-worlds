@@ -1,0 +1,2774 @@
+[
+  {
+    "worldId": "temple-heart",
+    "path": "resources.spirit.description",
+    "before": "施法与查验消耗，回山休养恢复。",
+    "after": "渡气、托物和灵火都用灵力。回山休养能恢复灵力，但要占用余日。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "resources.days.description",
+    "before": "往返与休养占用约定期限。",
+    "after": "余日是还能留下照料、往返做工的日子；提早下山可省出一日，久留休养或背米会占去一日。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "resources.b_time.description",
+    "before": "渡口今晚封船，山上的收契钟也只等六刻。灵力和余日沿用旧版；新线的余刻只减不增。",
+    "after": "余刻是今晚还能花在赶路与等候上的工夫。封渡、收契都赶在今夜；用完后仍能请邻人接手或退到山脚，但赶不及的事得舍下。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "mechanics.description",
+    "before": "渡口今晚封船，山上的收契钟也只等六刻。灵力和余日沿用旧版；新线的余刻只减不增。",
+    "after": "灵力用在托粮、渡气和拦钟；余日用在休养、做工与后续照料。今晚赶路另计余刻，白等和绕行都会扣减，到了次日也不重置这趟行程的余量。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.breath.text.0",
+    "before": "你把手移开，念念胸口终于有了起伏。毓娘立刻叫她的名字，没等到回答，又把你往床边拉。",
+    "after": "你把手移开，念念胸口终于有了起伏。毓娘立刻叫她的名字，没等到回答，又把你往火堆旁拉。",
+    "reason": "旧线此时仍在庙外，无床可拉到床边。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_grain.text.1",
+    "before": "远处的灯忽明忽暗。要是为了多带一点把自己也丢在河里，毓娘等来的就会是第三个需要救的人。",
+    "after": "高埂贴着两岸绕出很远，天黑后还得分次背米。河面上有一点灯光；若船家肯接这一趟，便能省下明日再来取米的工夫。",
+    "reason": "交代两种回程为何分别花余刻或余日、灵力；替换预判玩家冒险的道德旁白。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_grain_small.text.0",
+    "before": "你在最近的人家门口坐下，承认今晚独自撑不住。主人先端来半锅粥，随后叫了两户人，把母女接进漏雨较少的厢房。",
+    "after": "你回村敲开邻家的门，请人接过今晚的照料。几户人凑齐米柴，帮毓娘把漏雨处盖住；你带到家的东西也一并留在灶边。",
+    "reason": "早退未运米与晚退已运米同入此处，不把已有米写没，不无故搬走竹床。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_grain_small.text.1",
+    "before": "这趟求粮停在了村里。念念仍需人搀扶，毓娘替大伙补衣抵饭，你每逢山雨后送一篮供果。她们没有等来神仙，总算也不再单独熬夜。",
+    "after": "此后毓娘替大伙补衣抵饭，念念慢慢练着扶墙走。你不再包下每日的饭，只在采到供果时送一篮来；隔壁的炊烟升起，毓娘便知道今晚有人来搭手。",
+    "reason": "共享收束不宣称求粮未成功，也不用神仙对照作结论。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_home.choices.b_withdraw.text",
+    "before": "敲邻家的门，请他们接手今晚，放弃赶渡口",
+    "after": "请邻人接手后续照料，把送到的东西留给母女",
+    "reason": "米已经到家或已到次晨，不再宣称放弃尚未赶过的渡口。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_night.choices.b_withdraw.text",
+    "before": "敲邻家的门，请他们接手今晚，放弃赶渡口",
+    "after": "请邻人接手后续照料，把送到的东西留给母女",
+    "reason": "米已经到家或已到次晨，不再宣称放弃尚未赶过的渡口。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_breakfast.choices.b_withdraw.text",
+    "before": "敲邻家的门，请他们接手今晚，放弃赶渡口",
+    "after": "请邻人接手后续照料，把送到的东西留给母女",
+    "reason": "米已经到家或已到次晨，不再宣称放弃尚未赶过的渡口。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_grain_good.text.1",
+    "before": "那袋米吃完前，毓娘接到了邻家的缝补活。她第一次留下你吃自己花钱买的米，给每只碗都添得满满的。你没有成仙；桌上却一直给你留着第三只碗。",
+    "after": "那袋米吃完前，毓娘接到了邻家的缝补活。第一次用工钱买米，她往你碗里添了两勺，自己也坐下吃；念念在桌下碰了碰你的脚，把藏在手里的锅巴递过来。",
+    "reason": "结尾保留饭与谋生结果，不再重复没成仙却有第三碗的判语。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_grain_debt.text.1",
+    "before": "她托邻人带念念去远亲家，没留住址。你下回来的时候，第三只碗倒扣在桌上。你救过她们，却没有让她们敢在你面前安心活下去。",
+    "after": "毓娘带念念去了远亲家，托邻人把剩米送去，没留住址。你下回来的时候，第三只碗倒扣在桌上。碗下压着一截缝到半途的线，你等到天黑，也没人回来续那一针。",
+    "reason": "原文只说送女儿却院子全空，补明母亲同行；保留已送米，删除裁判式总结。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shrine_steps.text.1",
+    "before": "你拦在路中：“是我救的。”话出口才觉不对。你争的还是那颗心，毓娘倒成了谁都能签收的东西。",
+    "after": "你拦在路中：“是我救的。”庙祝立刻把红纸往你手里塞：“那你来收。”你没接，先问他，毓娘什么时候答应把女儿的名字也交给庙里。",
+    "reason": "让人物通过索契冲突推进，不由旁白判定把人签收。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_bell.text.0",
+    "before": "钟响了两下，山下有灯笼动起来。庙祝说第三下会招来收契的山影，纸上的名字一个也躲不掉。",
+    "after": "钟响了两下，殿门外聚起几盏灯。庙祝说第三下会招来收契的山影，纸上的名字一个也躲不掉。门边的香客攥着衣襟，不肯再近前。",
+    "reason": "help 路已把香客扶出殿；明确他在门边，照样能听见问话。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_name.text.0",
+    "before": "红纸展开，毓娘的名字下面还添着念念。庙祝摁住纸角：“一家人，当然算一道。”",
+    "after": "你从供桌暗槽抽出的红纸还没展开，庙祝就扑来夺。退到钟楼楼梯时，你看见毓娘的名字下面还添着念念。他摁住纸角：“一家人，当然算一道。”",
+    "reason": "此前纸一直在供桌，补明确取纸动作和从供桌退向楼梯的位置。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shadow.text.1",
+    "before": "它每学你一句，便朝胸口靠近一寸。庙祝退开时绊倒蒲团，连鞋也顾不上捡。你抵住供桌，掌下压着毓娘的名字；黑影贴着红纸追来，等你再提一次成仙。通往空殿的门还敞着，纸在你手里簌簌地响。",
+    "after": "它每学你一句，便朝胸口靠近一寸。庙祝退开时绊倒蒲团，连鞋也顾不上捡。你退回钟楼门内，手里的红纸簌簌作响；通向空殿的门还敞着，黑影贴着纸追来，等你再提一次成仙。",
+    "reason": "上一幕钟楼阶梯，不凭空抵到供桌；保留续写层黑影逼近的张力。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shadow.choices.renounce.text",
+    "before": "直呼毓娘的名字，撤回索心的话",
+    "after": "直呼毓娘的名字撤回索心话，把红纸送进香炉",
+    "reason": "下一幕纸在火中，此选项需宣布焚契这个第二动作。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_empty.choices.burn_words.text",
+    "before": "烧掉蒲团和自己的神位念头",
+    "after": "当面撤回索心的话，把红纸连同蒲团烧掉",
+    "reason": "烧神位念头不会自动烧掉纸；把已存在的撤契线索落实为话与物。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_ash.text.1",
+    "before": "庙祝扔下钥匙逃进雨里。你扶住香炉，膝盖发软，才明白撤一句话比说它费力得多。",
+    "after": "庙祝扔下钥匙逃进雨里。你扶住香炉，膝盖发软，等掌心那点火稳下来，才弯腰去看落在地上的钥匙。",
+    "reason": "移去撤话比说话更费力的寓意句；拾钥匙仍留给下一选择。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_lantern.text.0",
+    "before": "毓娘提着灯等在山脚。听见你，她先把灯举高，又放低，照你踩在泥里的脚。",
+    "after": "到了山脚，你循着灯光走到毓娘家门前，先敲了两下门。她提灯出来，举高看你的脸，又放低，照你踩在泥里的脚。",
+    "reason": "收到留家信的母亲不再擅自上山等候；未送信路径同样成立。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_lantern.choices.soup.text",
+    "before": "交出钥匙，下山喝汤",
+    "after": "交出庙门钥匙，进屋喝汤",
+    "reason": "现已在山脚家门，不再下山一次。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shrine_good.text.0",
+    "before": "庙祝再没回来。你把供桌下的暗槽堵上，给来避雨的人腾出一块干地；毓娘偶尔带念念上山，走累了就在这里吃饭。",
+    "after": "庙祝再没回来。清理供桌时，你摸到背后的暗槽，把剩下的木片一并拆掉，又给来避雨的人腾出一块干地；毓娘偶尔带念念上山，走累了就在这里吃饭。",
+    "reason": "help 支线没看过机关，结局应写此时发现并处理，不能冒领旧发现。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shrine_good.text.1",
+    "before": "你用一片碎瓦垫平摇晃的桌脚，留住来避雨的人吃饭。念念长高以后，够得着门闩了；她问敲门的赶路人要一碗还是两碗，回头让你添柴。神像在火光后静坐，你蹲下把最后一截干柴推进炉里，听屋外的雨落到天明。",
+    "after": "你用碎瓦垫平摇晃的桌脚。念念养回了力气，能自己抬起沉重的门闩；她问赶路人要一碗还是两碗，回头让你添柴。你蹲下把最后一截干柴推进炉里，听屋外的雨落到天明。",
+    "reason": "本局念念二十二岁，恢复力气而非长高，保留原续写的门闩和添柴实景。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shrine_small.text.0",
+    "before": "你放弃争庙里那把钥匙，在山脚的空茶棚住下，亲口告诉毓娘，先前的索偿作废。她把念念的竹床搬到离邻人更近的地方。",
+    "after": "你下到山脚，在旧茶棚歇住，亲口告诉毓娘，往后不再索她的心。庙里的事你不再接管，母女也不再上去求告；你帮她们把竹床挪到邻家腾出的干屋里。",
+    "reason": "已得钥匙、已焚契均可退来，结局不把钥匙写成从未得到。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shrine_small.text.1",
+    "before": "庙里仍有人敲钟，来往的香客却先在茶棚喝一口水。你不再被叫作神仙，救人的事也得慢慢来。这间矮棚没有许过谁一条命。",
+    "after": "后来路过的香客会在茶棚歇脚，问起山上的事，你只说今晚住这里。毓娘拿缝衣的钱添米，念念能走动时帮着洗碗。雨大的夜里，你仍得起身挪凳子，接住从棚顶漏下来的水。",
+    "reason": "不在已烧尽黑影后重新敲收契钟；保留退居艰辛，删除训诫句。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shrine_steps.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_messenger.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_incense.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_table.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_bell.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_name.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_shadow.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_empty.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_ash.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "temple-heart",
+    "path": "nodes.b_lantern.choices.b_withdraw.text",
+    "before": "留在山脚等毓娘，舍去庙位与收契之争",
+    "after": "退出庙里的争执，下山找毓娘，把索心的约定说清",
+    "reason": "母亲已可能收到留家信，退路不再要求她违信上山等候。",
+    "anchors": [
+      "b-temple-bargain",
+      "b-temple-hesitation"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "resources.stamina.description",
+    "before": "跑动与交涉的消耗。",
+    "after": "步行进城、攀石梁和搬东西都耗体力；旧线睡足一晚可以恢复。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "resources.shelter.description",
+    "before": "坦诚与共同应对积累；单独冒险消耗。",
+    "after": "庇护是君家愿意替你出面的人情。坦白身份能加深信任；请人陪同、拦场或替你垫付时会用掉它。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "mechanics.description",
+    "before": "入城车队和封山人马都在天亮时行动。六刻只够走一条路线；跑动耗体力，借山君的名义办事耗庇护。",
+    "after": "车队赶城门，封山人马等天亮。赶路与等回话占用余刻；步行、攀岩花体力，请君家出面花庇护。谈不下去仍可退到驿舍，或随一家人迁山。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_keeper.text.1",
+    "before": "“你偷吃得不对。”他用布擦手，“可他们把鱼养死，再拿一只活猫顶数，更不对。”",
+    "after": "“池子断水以后，送进去的几批鱼都死了。”他用布擦手，“你吃的那对，出事前搬到了城外木盆。他们要找东西补这笔药账，就把猫也写进去了。”",
+    "reason": "不是同两条鱼既被吃又养死；区分其他批次死鱼与原文那对文鳐。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_gate.text.1",
+    "before": "君洲一把合上簿子。内侍按住剑柄，说过了此门，山里的规矩就管不着。",
+    "after": "君洲把手压到那行字上，不让内侍再合簿。内侍按住剑柄，说过了此门，山里的规矩就管不着。",
+    "reason": "上一句青年摁住册页，君洲却合上；统一动作目标。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_repay.choices.borrow.text",
+    "before": "借山中人情先赔一部分，立下归还日期",
+    "after": "借山中人情先赔一部分，余款仍按做工抵还",
+    "reason": "效果同获赔鱼劳约，下幕明日做工需要此选项事先承诺。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_court_good.text.1",
+    "before": "君寻秋起初仍叫你孩子，后来也学会叫小橘。你不必长成老虎才能回洞睡觉，偷来的两条鱼也终于有了还清的一天。",
+    "after": "最后一笔鱼价扣清那天，老池丁给你留了碗饭。你吃完回山，君寻秋在洞口喊小橘，君洲替你掀开挡雨的草帘；你钻进干草里，明早总算不用再赶城门。",
+    "reason": "写清偿还结束后的行动，不以猫不必长虎作总结。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_court_small.text.1",
+    "before": "最终双方约定以劳作抵鱼价，不再把你送作药材。你暂住山脚，每月报到，失去了随意远游的自在，却保住了身体和名字。",
+    "after": "君寻秋接着谈下劳作抵鱼价的安排，把囚车退了回去。你暂住山脚，每月去报到，雨大也得赶路；君洲常在驿舍等你，一起吃完饭才各自睡下。",
+    "reason": "谈成是母亲接手后的新事件，早晚退路均成立，不抹掉已达成的约定。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.review.choices.wander.text",
+    "before": "保留记录，暂离这座山",
+    "after": "告诉君家去向，暂离这座山",
+    "reason": "此旧线并非每条路都有书面记录，去除凭空保留记录。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_mountain_good.text.0",
+    "before": "监天司撤了烟笼，收下君洲送去的第一批山货。小橘成了有住处、有欠账，也有人等回家的猫。",
+    "after": "监天司撤了烟笼，收下君洲送去的第一批山货。还债的日子定在每月初三，来收货的人只走山口，不再进洞。",
+    "reason": "将有住处有欠账的概括变成可执行后续。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_mountain_bad.text.0",
+    "before": "你拿君寻秋的怒气当自己的爪牙。第一声虎啸逼出了第一把火，风把它送进狼窝，又送回旧洞。",
+    "after": "你把君寻秋的名字喊向山下，催着冲营。头狼不肯替你开路，怒声却已传到守火人耳里。营中有人吹哨，君寻秋扑向举火的白衣人，第一把火落进枯草，风将火带回了旧洞。",
+    "reason": "threaten 只逼狼冲山却原结局直接虎啸起火；补出狼拒绝、喊声、母虎反应的共同因果。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_mountain_small.text.0",
+    "before": "你们舍掉旧洞，在追兵合围前搬上北坡。后来又走了一程，才找到离官道足够远的住处。",
+    "after": "你们离开旧洞，先上北坡，再沿远离官道的山路搬了一程。君潮找到能避雨的石窝，回身招呼大家把行李放进去。",
+    "reason": "边界已经谈成后退走，不再回写追兵尚在合围。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "path": "nodes.b_mountain_small.text.1",
+    "before": "君寻秋带着那块旧垫草，君洲轮流背你。鱼债没有凭空消失，你托行脚妖每月送些山货回去；代价是这一家再没回过住熟的山。",
+    "after": "君寻秋衔着旧垫草，君洲和君潮轮换着背你走最陡的一段。你托行脚妖每月送山货抵鱼债；一听说山口又有白袍人，一家人仍得收拾东西，连晒到一半的草也带走。",
+    "reason": "一个君洲无法轮流；去掉代价是的宣判，保留迁居不安稳。",
+    "anchors": [
+      "b-tiger-fish",
+      "b-tiger-name"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "resources.focus.description",
+    "before": "核题消耗，可用宗门支援恢复。",
+    "after": "盯算式、接字锁、卸拳风都耗专注；请同门接班照料，能让你歇一口气。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "resources.support.description",
+    "before": "用于休整与最后的护场行动。",
+    "after": "支援包括护符、药钱和同门的人手。护场与药棚照料会用掉它；旧线预留护符可增加支援。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "resources.b_time.description",
+    "before": "宋沐的伤与擂台的锣都在催人，六刻之内必须决定去留。专注用在拆招，支援用来护住场边的人。",
+    "after": "余刻记录还能投入的赶路、等候与帮工工夫。擂台有落锣时刻，药棚要按时换班；后续的休养日不补回已用掉的工夫。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "mechanics.description",
+    "before": "宋沐的伤与擂台的锣都在催人，六刻之内必须决定去留。专注用在拆招，支援用来护住场边的人。",
+    "after": "替战时，专注用来拆招，支援用来守铃和护伤者。退赛后，同样的支援要付药棚与修屋，专注要留给帮工授课；余刻用尽，还能停下这些安排，先养伤。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.aftermath_0.text.0",
+    "before": "剑气散了，大师兄退到台边，把受伤的手藏进袖里。你把刚才的解法递过去，他没有推，说回去再教我一次。",
+    "after": "这一轮剑气终于散去，大师兄退到台边，把受伤的手藏进袖里。他请你把算式留下，等回山以后再从头教他，刚才台上已来不及细听。",
+    "reason": "答错或没有报解法，也会进入同一节点，不再假称已递正确解法。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.puzzle_1.text.1",
+    "before": "你伸出手指比向自己，慢慢说出名字，再指给她看亮着的 name。",
+    "after": "你指向自己，想把回答示范给她。她盯着你的嘴，等你把整句说出来。",
+    "reason": "旧线未选答名前，不先成功说出姓名。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.puzzle_1.choices.answer_1.text",
+    "before": "回答 My name is Su Yanqing.",
+    "after": "示范 My name is Su Yanqing，让师姐换成她的名字",
+    "reason": "原选项容易读成让二师姐自称苏砚青。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_arena_math.choices.thirteen.text",
+    "before": "照简介里记得的减三回答：13",
+    "after": "仍按先前记混的减三来算，回答 13",
+    "reason": "玩家角色不在擂台上读网站简介，保留真实两式区别但去除穿帮。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_arena_bell.text.0",
+    "before": "周阳跌坐下去，又偷偷抬手。台边的人都看见了，没人再替他叫好。",
+    "after": "周阳跌坐下去，又抬起手。台边有人抢先喊停，他那道迟出的拳风擦过台沿，撞在已经裂开的栏木上。",
+    "reason": "好结局惩罚追加攻击需实际发生；下一句铃响接在攻击之后，不再倒置先后。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_arena_good.text.0",
+    "before": "逍遥宗凭这一场保住了名册，周阳因响铃后仍出手被停赛。宋沐养了两个月，终于能坐在檐下听你给大师兄讲乘除次序。",
+    "after": "逍遥宗凭这一场保住了名册，周阳因倒地后仍追加攻击被停赛。宋沐养了两个月，终于能坐在檐下听你给大师兄讲乘除次序。",
+    "reason": "共同前文是倒地后出手、随后响铃，不能写响铃后攻击。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_arena_bad.text.0",
+    "before": "你把已经给出的退路当成怯场，硬要把这一招打完。护场的人被你拖回台上，停赛铃响过也没能拦住下一阵风。",
+    "after": "这一招没有停在台内。你先被风压掀倒，伸来接你的手也没接住；同门喊停，执事敲铃，直到两边都被拉开，台上才安静下来。",
+    "reason": "四种入口并非都有主动拖回护场者或已响铃；用可接续的失控和新增摔倒收束。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_arena_bad.text.1",
+    "before": "两副担架从台门抬出去，获胜栏被整个抹掉。宋沐活了下来，逍遥宗却再无参赛资格；师父收起你的名牌，此后很久没有提过“大选”二字。",
+    "after": "你和宋沐各占一副担架，被抬出会场。这场替战记作落败，逍遥宗失了大选资格。师父将两人的药钱凑在一起，拆下名牌的绳去扎药包；很久以后，你仍得坐着听完大师兄讲那道算式。",
+    "reason": "坚持错答不应莫名永久禁赛；明确另一伤者是主角，资格损失来自此场落败。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_watch.choices.hurry.text",
+    "before": "不等退热，就想背宋沐去追回名额",
+    "after": "丢下最后一班药炉，独自回会场追名额",
+    "reason": "旧选项背着宋沐，结局却独自离开；保留离岗失败与既有图，不改成伤者突然被搬回会场。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_village_road.text.0",
+    "before": "车夫带你们回村，说宋沐能走时就来这里住。村民记得他挡在药田前，却没几个人知道逍遥宗是什么名次。",
+    "after": "替掌柜算完货单，你打听哪里还缺识字的人。他叫来一名回村的车夫；听到宋沐还在药棚，对方问是不是拦过无极谷取药的那位。你点头，他便说村里有空屋，愿意领你们去问问。二师姐这日留下照看宋沐。",
+    "reason": "直去药棚路线未遇车夫；在此由掌柜引见，病者继续留棚。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_grain_class.text.1",
+    "before": "大师兄在地上摆石子，一堆堆移过去。等他抬头，最后一排的人也跟着算出了结果。",
+    "after": "大师兄在地上摆开石子，一堆堆移到秤边。最后一排的人探着头，还没看清为何要分这几堆，等你往下讲。",
+    "reason": "只有 stones 才教会复算；选项前不让所有人已经会算。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_rain_class.text.1",
+    "before": "村民抱着谷袋来了。他们没等你吩咐就垫起桌脚，用刚学会的算法分出修屋的钱。",
+    "after": "村民抱着谷袋来了，没等你吩咐就先垫起桌脚。修屋要多少瓦、各家能出多少，他们还围在漏雨处争着报数；大师兄把石子铺到干地上，等有人过来帮着分。",
+    "reason": "sell_answer 没教复算，也能到此，不能提前宣称村民掌握算法。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_notice_school.choices.argue.text",
+    "before": "耗一刻向来人说明这里只教算粮",
+    "after": "花一刻说明这里只教算粮，送走来人后挂起夜学牌",
+    "reason": "原选项只解释却获夜学开门，后文还有新牌；明示第二动作。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_school_good.text.0",
+    "before": "除名书没有撤回。村塾却开满一年，秋收时谷商再没能重复扣秤，二师姐教会了往来货郎常用的异乡话。",
+    "after": "除名书没有撤回。秋收时，村民在谷商落笔前就算清了损耗；二师姐给往来货郎教常用的异乡话，课桌旁总搁着没卖完的货担。",
+    "reason": "同一结局下一段已写开满一年，删重复时间概述而保留产出。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_school_small.text.0",
+    "before": "你停止追逐名额，也暂缓了开塾。师父以佩剑抵了欠账，大师兄替药棚做工，换来五个人留下的地方。",
+    "after": "你把接下来的课和外出帮工停下来，回药棚商量宋沐的照料。已经付过的药钱照旧抵用，后面的食宿仍接不上，师父只好押下佩剑，大师兄留下替人守炉。",
+    "reason": "晚退已付床位/已教课不归零；交代新欠账而不是否定先前付款。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_school_small.text.1",
+    "before": "宋沐熬过了最难的一季，后来能自己走回旧山门。招牌已经撤下，你们没有再挂，先把漏雨的屋顶补好，过完一个不用赴赛的年。",
+    "after": "宋沐养到能走山路时，五个人才一起回旧山门。师父随后收到除名书，收起赴会名牌，没有再报名。你们先补屋顶，腾出干地方晾药；前来问课的人被约到开春以后。",
+    "reason": "早退没见除名书，需写后来收到；晚退不再称尚未开过课。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_inn_school.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "reason": "后半线早已离开赛场甚至开课，不再重复尚未争完名额。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_village_road.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "reason": "后半线早已离开赛场甚至开课，不再重复尚未争完名额。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_grain_class.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "reason": "后半线早已离开赛场甚至开课，不再重复尚未争完名额。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_notice_school.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "reason": "后半线早已离开赛场甚至开课，不再重复尚未争完名额。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_rain_class.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "reason": "后半线早已离开赛场甚至开课，不再重复尚未争完名额。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_school_return.choices.b_withdraw.text",
+    "before": "收起招牌，到山下药棚休养，不再争这次名额",
+    "after": "暂停后续授课和帮工，回药棚商量休养的日子",
+    "reason": "后半线早已离开赛场甚至开课，不再重复尚未争完名额。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "resources.energy.description",
+    "before": "核账与取证消耗。",
+    "after": "翻旧册、核收条、搬货与接手账房都耗精力。花钱请人分担杂务，可以歇一阵。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "resources.silver.description",
+    "before": "整备和维持独立宫务需要资金。",
+    "after": "手头可调的银票份额，用来付米炭、工钱、跑腿和船费；下一笔分红不自动补回本次行程的周转款。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "resources.b_time.description",
+    "before": "宫门六刻后落锁，娘家商船也在同一晚离港。查账费精力，安排人手与车船花银票；拖延会失去正常出门的机会。",
+    "after": "余刻是今晚赶宫门、等批复和赶商船的工夫。晚一步就要多等或另付船费；出门后的日子另有交代，不把它当整篇故事的钟点。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "mechanics.description",
+    "before": "宫门六刻后落锁，娘家商船也在同一晚离港。查账费精力，安排人手与车船花银票；拖延会失去正常出门的机会。",
+    "after": "核账、搬货花精力，米炭、人手和车船花银票。余刻花在宫门落锁前的交涉与赶船上；银票和工夫不够时，留下已办妥的事，先缩减宫务或请朱家安排住处。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.puzzle_1.text.1",
+    "before": "你拿笔分开几列，将日期、数量和收讫都对得上的钱圈出。余下的数另列一页，等经手人来答。",
+    "after": "你拿笔在空纸上划出几列，准备把日期、数量和收讫逐项对上。小英抱着厚册等你报数，笔尖却还没有落到总额那一栏。",
+    "reason": "选择前只搭核账工作，不提前完成 answer_1。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.puzzle_3.text.1",
+    "before": "你把用度交给小英，只认写清的那几项，不再往空盒里填讨好的钱。",
+    "after": "小英摊开用度簿，问先付哪几项。你摸着空盒的边，米炭、工钱和太后那边要的数都还挤在同一页上。",
+    "reason": "不要选择前先完成独立宫务方案。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_pay_servants.text.1",
+    "before": "值房里的人听见了，却都低着头。你把赏字划掉，改成这一宫当月的工钱，谁做了活谁领。",
+    "after": "值房里的人听见了，都抬头等你答。你把写着“赏”的纸推开，另外摊出当月工钱单；银票还在手里，先付多少、余款何时给，都没落定。",
+    "reason": "付工资的动作和两份扣款在下一选项，不提前发放。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_cook.choices.ask_amount.text",
+    "before": "让掌勺说清欠了几个月，带他去见管事",
+    "after": "问清欠了几个月，请掌勺随后到值房找管事",
+    "reason": "该选项去值房而非已经见管事，补清会合地点。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_audience_palace.choices.threat.text",
+    "before": "以停掉朱家下笔资助逼他立刻答应",
+    "after": "付脚钱急送停资口信，催皇帝当场答复",
+    "reason": "威胁本身不花银票；补出原有银票扣减对应的急脚费。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_seal_palace.choices.fill.text",
+    "before": "填明限本月、限本宫，不准追补孝敬",
+    "after": "填清本宫月度限额，注明私产另管、不补缴孝敬",
+    "reason": "原来限本月的旨纸在下月继续使用矛盾；不改限额线索与实际门槛。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_palace_good.text.1",
+    "before": "皇帝仍不喜欢你。你坐在灶边等新出锅的饼，小英把自己的那份先拿走了；你觉得这比她再夸一遍皇后英明更好。",
+    "after": "皇帝仍不喜欢你。小英领过工钱，在灶边掰走自己的那张饼，说今夜换别人值房，她要早睡。你把余下一张拿到手里，催厨娘也坐下吃，门外那声传报等了好一会儿。",
+    "reason": "不要替读者评皇后英明是否更好，给宫人自己的后续行动。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_family_letter.text.0",
+    "before": "家里回信极短：人回来就好。信封里却夹着商船的开航时刻，显然怕你出宫以后再被接回去。",
+    "after": "父亲回信只有“人回来就好”，另附老太君病中求见的请帖和商船开航时刻。你将请帖叠在出门要递的文书里，手指还按着那四个字。",
+    "reason": "下幕突然出现老太君家信；明确此时已有附件。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_family_letter.text.1",
+    "before": "你还有半卷嫁妆副册。带它走会耽误一刻，不带，日后谈钱只能从零开始。",
+    "after": "半卷嫁妆副册还留在匣里，夹着当年押运分号的收讫和经手人名。整理好带走要一刻；不带就先赶宫门，日后再托家里找。",
+    "reason": "税单门槛依赖嫁妆副册，说明分号凭单关联；未带不是所有旧账从零消失。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_dock.choices.charter.text",
+    "before": "另付两份银票雇小船，不误商船",
+    "after": "付两份雇小船先走，行李舱位的费用另结",
+    "reason": "明确包船费用未含行李舱位，避免下一节点重复收费。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_ship_hold.text.0",
+    "before": "船舱低，你撞了一下额头，才知道一只行李箱能挤掉多少货。掌柜说船上算的都是格子，不算尊荣。",
+    "after": "上船安顿行李时，你在低舱口撞了一下额头。船工指着划好格子的舱板，说行李占的地方另算钱，连雇小船的客人也不例外。",
+    "reason": "两条入口分别商船/客船，不强行同为皇后箱子挤掉商货。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_ship_hold.text.1",
+    "before": "你把累赘首饰箱打开。留下体面，还是腾出空间，这回得拿自己的东西作答。",
+    "after": "你打开随身的小包。几件常戴的首饰裹在换洗衣裳里，够抵这笔舱位费；若还想留着它们，就得再拿现银。",
+    "reason": "light 路只带必要衣物，无凭空累赘首饰箱；交首饰抵钱不再谎称腾空间。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_toll.choices.family.text",
+    "before": "请当地分号送来旧纳税凭单",
+    "after": "照副册上的分号与经手人，请人送来对应税单",
+    "reason": "把已冻结线索门槛与索取税单的因果连接明示。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_return_letter.choices.return_visit.text",
+    "before": "先守三日之约回宫，再安排家业",
+    "after": "先回宫销三日牌，再请朱家续办探亲、安排旧宅",
+    "reason": "原选项答应回宫，结局却直接住旧宅；显式回宫销牌后才续居。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_shop_morning.text.1",
+    "before": "门外等开铺的人已经敲了两次。小英若在，早就催过；独自来的这条路上，你也已经学会自己开门。",
+    "after": "伙计已在门外敲了两次，等你取私印开门。你把回信压在匣底，拿起钥匙；小英的工钱已经按约结清，她留下或另找差事都不再由宫里调派。",
+    "reason": "去除对玩家分支直呼独自来的这条路；交代小英而不强称一定同行。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_merchant_good.text.0",
+    "before": "后位交还，朱家不再以你的名义向宫里输银。旧嫁妆没有悉数追回，你却保住了之后每月的分红，开始靠分号的活挣一份工钱。",
+    "after": "退居获准，朱家不再以你的名义向宫里输银。旧嫁妆没能悉数追回，之后的分红仍归你；你接下的那份生意开始有了进出账，赚不赚钱都得自己算。",
+    "reason": "分号任职与自营小灶共用结局，不将开灶铺改写成领分号工资。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_merchant_good.text.1",
+    "before": "初一结账，你将分红留出修屋的钱，柜上的工钱另装一包。客人叫皇后时，你请他换个称呼，继续问刚才少算的是哪匹布。日暮落闩，最后那笔价已经算清。你拿起钥匙回旧宅，明早开门的时辰由自己定。",
+    "after": "初一结账，你将分红和生意往来分开放。有人还叫娘娘，你请他叫朱东家，接着问刚才少付的是哪一笔。日暮落闩，伙计报完明早要备的东西，你拿钥匙回旧宅，在饭桌边算好下一日的用钱。",
+    "reason": "小灶铺没有哪匹布；以两种生意均有的账与备货收束，不作道德总结。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_merchant_small.text.0",
+    "before": "你回朱家旧宅住下。父亲把宫里的往来交给管事，嘱咐按已经办妥的手续行事，剩下的慢慢谈，先别催你上船。",
+    "after": "朱家替你留了旧宅的一间房。父亲叫管事接手宫里往来：探亲还缺批复的继续递请帖，三日牌到期的先销牌，已有退居回信的便收好。你照约办完眼前那一趟，才住进旧宅，没有再去追船。",
+    "reason": "早退尚无出宫牌、到期回宫与已请辞三种入口，不让含混的已办妥手续遮住出入宫。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_merchant_small.text.1",
+    "before": "往后三个月，你留在城里帮分号核账，只领做工的钱，不急着另开铺子。旧宅的门每天按时关上，晚饭也不用等宫里来人。",
+    "after": "接下来三个月，你只接短日的核账活，不再催着另开新铺。宫里偶尔仍有来人，管事在前院答复，你在后院吃饭；要回去办手续的日子先空出来，其余时候夜里都能睡在这张床上。",
+    "reason": "不是无条件永久住外；保留需往返的代价，也不否认已退居者。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_ship_hold.choices.b_withdraw.text",
+    "before": "先住朱家城中旧宅，舍去这一班商船",
+    "after": "等船靠岸便折返旧宅，余下出宫手续请朱家接办",
+    "reason": "水上退路明确靠岸再折返，不直接从船舱到旧宅。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_toll.choices.b_withdraw.text",
+    "before": "先住朱家城中旧宅，舍去这一班商船",
+    "after": "等船靠岸便折返旧宅，余下出宫手续请朱家接办",
+    "reason": "水上退路明确靠岸再折返，不直接从船舱到旧宅。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_city_shop.choices.b_withdraw.text",
+    "before": "先住朱家城中旧宅，舍去这一班商船",
+    "after": "暂停这边的生意，回旧宅歇下并办完余下手续",
+    "reason": "已坐过船不再声称舍去这一班未坐的船。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_return_letter.choices.b_withdraw.text",
+    "before": "先住朱家城中旧宅，舍去这一班商船",
+    "after": "暂停这边的生意，回旧宅歇下并办完余下手续",
+    "reason": "已坐过船不再声称舍去这一班未坐的船。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_shop_morning.choices.b_withdraw.text",
+    "before": "先住朱家城中旧宅，舍去这一班商船",
+    "after": "暂停这边的生意，回旧宅歇下并办完余下手续",
+    "reason": "已坐过船不再声称舍去这一班未坐的船。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.b_merchant_bad.text.1",
+    "before": "父亲把你接回旧宅，变卖一处分号填上损失。你总算离了宫，却仍拿宫里的身份替别人作担保，亲手压坏了原本能载你走远的船。",
+    "after": "父亲请人将你接回旧宅，卖掉一处分号赔误期的货款。商船解扣时已赶不上那季水路，掌柜遣散了半船人。你在旧宅替他核最后一笔工钱，名册上有个船工正是那晚替你搬箱子的。",
+    "reason": "具体后果代替亲手压坏船的寓言；船是被扣而非实物毁坏。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "resources.strength.description",
+    "before": "菜棚、记录与走访消耗。",
+    "after": "搬粮、挪柜、探路和扶闹闹都耗体力。用菜粮请人接班，能让你歇一会儿。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "resources.food.description",
+    "before": "支撑整备、交换与共同值守。",
+    "after": "菜粮要留给母女吃，也能换守棚、抬人和船位。答应多送出去的部分会从存粮里扣，不能拿未熟的菜充数。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "mechanics.description",
+    "before": "尸群天亮前会穿过村口，渡船也将撤走。六刻只够一条行程；体力搬人开路，菜粮用来换值守与船位。",
+    "after": "天亮前要接人回院或赶上渡船。搬人开路花体力，守棚、帮工和船位花菜粮，绕路等待扣余刻；走不下去就请胡医生安排就近安置，不必把闹闹往前推。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.puzzle_0.choices.error_0.text",
+    "before": "把还没熟的菜也答应出去，先补眼前缺口",
+    "after": "连未熟的菜也应下，先拿一份存粮垫给等着的人",
+    "reason": "只许诺不会即时减菜粮，说明代垫的实际扣减。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.puzzle_2.text.1",
+    "before": "他说先从这些小事看，别把偶尔清醒的一声妈押成全村人的保证。你把本子推给他，叫他记得写清她也会害怕。",
+    "after": "胡医生问：“今天那个伸手的人，她还龇牙了没有？”你点头，又说她听见妈会回头。他把两件事并排写下，等你决定要怎样告诉院外的人。",
+    "reason": "原角色不以全村保证讲原则；用已发生反应提问，选择未提前决定。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.puzzle_3.choices.error_3.text",
+    "before": "收下肉就让她独自出门",
+    "after": "让她独自出门，再拿一份菜粮求人追上照看",
+    "reason": "原收肉反而扣粮且下幕又回袖边；提前宣布额外求援，与代价相符。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.aftermath_3.text.0",
+    "before": "灯提到门外，腊肉留在灶上。答应的路和回来的门都得有人守，你看看还剩的菜粮，先算这趟能换几双愿意出力的手。",
+    "after": "胡医生走到门槛外，又回身让老王媳妇先别催。腊肉还搁在灶边，接人的办法没说定，这趟便只好暂缓。你让闹闹回到灯下，攥住她磨破的护袖。",
+    "reason": "error/defer/answer 共用：早去者由已叫出的胡医生带回，未去者也可暂缓；不假称皆已有同行方案。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.aftermath_3.text.1",
+    "before": "闹闹抓着你的袖口，你说走就一起走，回也一起回。",
+    "after": "老王媳妇等你最后一句话。胡医生说他能另外叫人去接老王，闹闹这边，得由你决定还要不要继续应下。",
+    "reason": "把出发或停止留给末次决定，补上拒绝借人后的他人接应。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.ending_depart.title",
+    "before": "推车上的菜苗",
+    "after": "关门后的几个整觉",
+    "reason": "实际留家种菜，没有推车离开；标题应匹配事件。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.aftermath_3.choices.withdraw_ending.text",
+    "before": "推车上的菜苗",
+    "after": "不再外借闹闹，关门照看自家的菜棚",
+    "reason": "旧按钮推车菜苗与实际留家结局不符。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_window.choices.backdoor.text",
+    "before": "去后门挪柜子，趁空当接人",
+    "after": "从小窗进屋，去正门后挪开柜子",
+    "reason": "柜子堵的是正门，旧选择突然去后门。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_window.choices.call.text",
+    "before": "让胡医生带老王爬小窗，你守闹闹身旁",
+    "after": "拿一份菜粮请人搭手，让胡医生接老王爬小窗",
+    "reason": "粮扣在抬人援手，而不是吹一声便消失。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_shed_return.text.0",
+    "before": "几个人趁你离家进来搬菜。一个被闹闹抓伤的小伙子也在，见你回来便缩到旁人身后。",
+    "after": "棚后有片压倒的篱笆，几个人趁乱从那里钻进来搬菜。一个先前被闹闹抓伤的小伙子也在，见你回来便缩到旁人身后。侧门关着，挡不住这处新豁口。",
+    "reason": "张婶确在守侧门的路径，不应无声否定守门成果；明确另一破口。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_village_bad.text.0",
+    "before": "你以为闹闹还能替大伙再撑一次。她离开你的视线后没再循着名字回来，尸群散开时，只剩破护袖挂在门钩上。",
+    "after": "你仍叫闹闹在外头撑着，自己慢了一步。她被响声引出你的视线，没再循着名字回来。尸群散开后，你沿她走过的巷子找，只在一只门钩上找到扯破的护袖。",
+    "reason": "greed 是搬粮不是主动把女儿推进南门；采用实际共同点迟留与失联，不把所有入口定在村南。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_village_bad.text.1",
+    "before": "老王把腊肉放在你门前，你没有开门。菜棚后来由旁人照管，你每日沿南巷找同一个身影，终于不再向谁保证，她肯定会好。",
+    "after": "胡医生后来和邻人接出了老王，老王媳妇把答应的腊肉放到你门前。你没开门。张婶接手了菜棚，你每日沿巷找人；肉放干了，娃娃剩下的布还摊在针线筐里。",
+    "reason": "早期失败没救出老王，补明他由别的救援接出；删终于不再保证的训诫。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_cart_plum.text.1",
+    "before": "你把旧柜子抬下，手指沿着柜角的牙印摸了一遍。闹闹啃坏它那天，你还追着她骂过。现在她抱着娃娃等在车旁，你收回手，过去扶她。",
+    "after": "你扶着还没卸下的旧柜子，手指摸到柜角的牙印。闹闹啃坏它那天，你追着她骂了半条巷。现在她抱着娃娃等在车旁，你得决定这柜子究竟卸不卸。",
+    "reason": "前文已卸柜，下一项却仍可连柜拖走；把卸物动作还给选择。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_shed_key.choices.give.text",
+    "before": "留一份菜粮给张婶接手，换堤路的消息",
+    "after": "交钥匙并留一份菜粮，请张婶接手、指明堤路",
+    "reason": "门钥匙移交不能只藏在接手一词中。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_midriver.text.1",
+    "before": "船家骂着把货挪开，空驳或隔位终于派上了用处，旁边没有人被挤下水。你从板缝里拽出那只脏布腿。",
+    "after": "船家骂着挪开挡路的货，把你们坐的那一小片船板腾宽。旁边没人被挤下水，你稳住闹闹，从板缝里拽出那只脏布腿。",
+    "reason": "不用空驳或隔位这种对玩家列分支的旁白；任一路的具体船板均成立。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_other_bank.text.0",
+    "before": "对岸的人给你指一处空屋，离聚居处隔着篱笆，土还能种。胡医生说每隔几日来一趟，话没说得很满。",
+    "after": "靠岸前，胡医生托船家传话，说会隔几日来一趟。对岸接应的人给你指了处空屋，离聚居处隔着篱笆，屋后土还能种。你先记住回渡口的路，免得下次他来找不到人。",
+    "reason": "胡医生可能仍在处理上岸伤者，不能未交代就同时站到对岸。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_midriver.choices.b_withdraw.text",
+    "before": "请胡医生安排就近的堤仓，暂缓搬家",
+    "after": "等船靠岸，请接应的人替母女联系就近堤仓",
+    "reason": "河心退让要先完成靠岸，不瞬移到陆地或要求岸上医生同船。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.b_ferry_small.text.0",
+    "before": "你请胡医生联系就近的堤仓，带闹闹在那里暂住，不再追着下一段行程走。他找到轮班的人送水，你帮人打理仓后的菜地，抵最先几日的食宿。",
+    "after": "你托接应的人联系胡医生，等到了能下船、落脚的地方，再带闹闹住进就近的堤仓。有人轮班送水，你帮着打理仓后的菜地，抵最先几日的食宿。",
+    "reason": "河心与陆地入口均补清靠岸过程，胡医生远程安排不必在场。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "resources.attention.description",
+    "before": "透视与取证消耗。",
+    "after": "心神用在透视细槽、虫身和退路上。躲开盯梢独处一阵能缓过来，但会耗去掩护。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "resources.cover.description",
+    "before": "维持伪装与最终撤离的条件。",
+    "after": "掩护是尚能借用的弟子身份、人情与藏身机会。请人遮掩、撒谎过关或引开追索都会消耗它。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "resources.b_time.description",
+    "before": "长老赐丹与山下招徒同在今夜。六刻后通道封闭；观察消耗定力，走动与撒谎消耗掩护。",
+    "after": "今晚赐丹和招徒都等着开场。绕路、盯梢与叫人等候会扣余刻；用完后不再追这一批车，仍可避走远镇。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "mechanics.description",
+    "before": "长老赐丹与山下招徒同在今夜。六刻后通道封闭；观察消耗定力，走动与撒谎消耗掩护。",
+    "after": "透视消耗心神，潜入和引开追索消耗掩护，等候绕路占余刻。能断的是眼前丹房，能拦的是这一批招徒车；退走时带上已看清的事，未做成的事仍留在山上。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.field_0.choices.rush_0.text",
+    "before": "把丹先处理掉，擦净门边痕迹",
+    "after": "先盖住丹丸，擦净门边痕迹",
+    "reason": "下一题丹丸仍在掌上，不能此时已销毁。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.arrival.choices.coordinate.text",
+    "before": "重走此前经过：把丹先处理掉，擦净门边痕迹",
+    "after": "重走此前经过：藏好丹丸，擦净门边痕迹",
+    "reason": "到 field_0 还要吐出、观察丹，入口不提前销毁。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.ending_witness.text.1",
+    "before": "你为死者逐户立名，也劝退了第一批来问仙路的人。仙宫未倒，白鹤村却没有被你的沉默再埋一次。",
+    "after": "你为死者逐户立名。有人带着拜师包袱来问路，你领他走过井边，一户户指给他看原来住的是谁。那辆招徒车离镇时空了几个位子，你留在村外补最后一块木牌。",
+    "reason": "保留成功局部成果，删沉默再埋一次的评语。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.ending_fragment.text.1",
+    "before": "你不再说自己看穿全部仙门。每当有车进山，你只讲自己能讲清的那一段，总有人因此多等一天。",
+    "after": "茶摊有人问仙药时，你讲自己见过的那一枚。摊主把原本要付的车钱收回袖里，另留了一碗茶给你。你喝完去找下一处井眼，包里的村中旧物没再拿出来示人。",
+    "reason": "以一个可见回应替换泛论不说看穿全部仙门。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.ending_escape.text.1",
+    "before": "白鹤村的死者仍在梦里，你没拿逃生当成报仇。第二年回去时，你把那枚白玉牌埋在村外，没再带上山。",
+    "after": "白鹤村的死者仍来入梦。第二年你独自回去，补好井沿松动的石头，把白玉牌埋在村外。天黑前你离开，没有进屋过夜，手上的泥一直留到邻镇才洗掉。",
+    "reason": "不用没拿逃生当报仇给逃生者下判语。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_rows.text.1",
+    "before": "他们腹中的细线一直通进供液槽。上方传来吞咽声，槽内液面随之下降，躺着的人同时抽动了一下。你握着门框，慢慢往后退。",
+    "after": "他们腹中的细线连进槽壁。铜柱送下的液体流过榻旁，另一道回槽伸向楼上；吞咽声响起时，回槽液面下降，躺着的人也同时抽动。你握着门框，慢慢往后退。",
+    "reason": "上段向下供液、此处上方吸走不冲突需说明两道管槽。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_awake.text.0",
+    "before": "那人费力说自己姓陆，山下开过木器铺。嘴角忽然向两边抬起，璇玑的声调从他喉咙里响出来：“师弟，你怎么来了？”",
+    "after": "那人费力说自己姓陆，山下开过木器铺。嘴角忽然向两边抬起，师兄魏旻的声调从他喉咙里响出来：“师弟，你怎么来了？”",
+    "reason": "称师弟应为师兄的声音，不是师父璇玑。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_stairs.text.1",
+    "before": "你低头看白玉牌，突然明白这东西只负责让你进来，从没答应送你出去。",
+    "after": "你把白玉牌扣在掌心，边角硌进肉里。璇玑朝牌伸手，你退下一级台阶，背后已能听见山涧的水声。",
+    "reason": "删除牌只负责进不负责出的警句；为扔牌留具体动机与动作空间。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_small.text.0",
+    "before": "你沿眼前还能走通的路退下山，把弟子牌丢进山脚的深沟，没再回头找别的出口。璇玑再也没等到你吃第二枚丹。",
+    "after": "你沿眼前还能走通的路退下山，没有再折回丹房。到了集镇，客舍老板问你会做什么，你只说会找井。他指了指院外的干地，让你明早去看；璇玑没等到你吃第二枚丹。",
+    "reason": "drop 后牌已在阶上、divert 后外袍也已舍掉，不再处理同一物件两次；不宣称早退已救人，也不否定晚退成果。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_bad.text.0",
+    "before": "你赌错了自己能碰的东西。警铃先于你的退路响起，璇玑把你带回那扇紫檀窗前，仍说是为你好。",
+    "after": "你的动静惊动了守门的人。上层传下璇玑的口令，外门随即合拢；他亲自将你带回紫檀窗前，手一直扣着你的肩，连谢恩都不再让你自己开口。",
+    "reason": "主动投靠和扳闸/拔线不是同一种赌错；以共同的暴露、封门、押回描写，不训诫。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_window.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_servant.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_door.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_rows.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_awake.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_sluice.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_blackout.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_stairs.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_bridge.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_foot.choices.b_withdraw.text",
+    "before": "放弃丹房，从杂役水道退到山下",
+    "after": "不再深入或折返接人，沿眼前尚通的路离山",
+    "reason": "早期未知道水道、晚期已过桥，不能所有位置都强走杂役水道。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_tea_stall.text.0",
+    "before": "摊主说今日又有招徒车，喝茶的人里好几个已卖了田。你看见一只新缝的布包，针脚像村里婶子惯用的那种。",
+    "after": "摊主说今日又有招徒车，喝茶的人里好几个已卖了田。他从小住在这条街，哪处后巷通镇外都认得。你看见一只新缝的布包，针脚像村里婶子惯用的那种。",
+    "reason": "后续可请茶摊主领路，其熟镇路需要在初见交代。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_tea_stall.choices.ask_list.text",
+    "before": "问清车从哪里接人、几点走",
+    "after": "向摊主问清接人时刻，请他留意镇后能走的路",
+    "reason": "冻结招徒车时刻门槛还解锁摊主引路，需要提前说出约定。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_broken_cart.text.0",
+    "before": "管事要关车门，新徒抱住车辕，问那东西进了肚子怎样取出来。管事催他上车，他又问一遍，抱得更紧。",
+    "after": "管事要把新徒拖上车。新徒反抱住车辕：“先把药说清，吃下去的究竟是什么？”管事不答，只催他松手，他便抱得更紧。",
+    "reason": "snatch 没给看虫卵，不能已经知道腹中怪物怎么取出；保留疑问。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_names_home.text.0",
+    "before": "新徒写下自己的村名，请你别替他们寄信，怕信被截回仙门。你们当夜请行脚人分路送口信，叫家里先离开招徒的眼线。",
+    "after": "新徒写下自己的村名，又赶紧用手遮住，怕名单落回仙门。有人提议托行脚人分路捎信，也有人想自己回去叫家眷。两边都望着你，还没人出门。",
+    "reason": "send 与 move 之前不能已经统一托人分路。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_names_home.text.1",
+    "before": "你写到白鹤村时停笔。那一行不再有收信人，只能请活着的人把名字记住。",
+    "after": "你写到白鹤村时停笔，半晌才把那一行轻轻折进去。旁边的人把墨磨浓一些，问自己这封该交给谁。",
+    "reason": "将没有收信人的抒情裁断收在具体停笔动作中。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_return_small.text.0",
+    "before": "你躲开招徒车和师兄，在远镇靠找井换饭。劝不动的人上了山，愿意迟一步的人保住了离开的机会。",
+    "after": "你不再追下一批招徒车，去了远镇，靠替人找井换饭。后来集市仍有人议论仙山；来向你问路的，你都先请他坐下。已经分路走掉的人没有再被你叫回来。",
+    "reason": "后期众人已获救，不能无条件声称他们上山；不否定已分路成果。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_return_small.text.1",
+    "before": "你没有再用白玉牌，也不收人跪拜。白鹤村只剩你能说清它原来什么样，你便每到一处讲一遍，讲完收好半旧行囊，去下一处还能动土的地方。",
+    "after": "讲到白鹤村，你会从井在哪儿、谁家门前有树说起。听的人有时离席，有时等你讲完。第二天你照常背起工具出门，走之前把昨日没吃完的饼包好。",
+    "reason": "去除不跪拜的宣言和唯一知情者这种未证断言。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "resources.energy.description",
+    "before": "核对任务、调查现场消耗。",
+    "after": "认路、搬食物水箱、扶人和补屋顶都耗精力；吃一份补给或请人接班能恢复。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "resources.supplies.description",
+    "before": "用于休整与团队夜间安排。",
+    "after": "补给含随身食物和节目可兑换的物资份额。备用炉具、接应船、人手和雨布都要从这里支取。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "mechanics.description",
+    "before": "潮线和天黑只等六刻。精力用于找路搬运，补给可换休息、照明与接应；节目效果不会替人补回体力。",
+    "after": "天黑、涨潮都有时刻。认路与搬运花精力，等待和补拍占余刻，备用物资与接应会扣补给。余量不够，仍可启用节目组应急安排，但要退出求生排名或取消后续录制。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.puzzle_1.text.1",
+    "before": "你叫住正要散开的人，问清几点在哪儿碰头。有人晚归该联系谁，也让他们对着传呼机重说了一遍。",
+    "after": "你按住传呼机，想把正要散开的几组叫回来。王玥把提示卡翻到背面，又问了一遍，是只交东西，还是还要一起做饭？",
+    "reason": "不在 answer_1 之前先问清一切。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.aftermath_1.text.0",
+    "before": "几个人把会合的话说定，传呼机留在能听见的位置。你跟谢骁进林子，脚步终于不用一边走一边回头。",
+    "after": "几组人各自拎起东西。谢骁朝临时茅屋指了指，提醒你至少还能回那里找工作人员；你们随后进了林子。",
+    "reason": "error/defer 入口并未说定交接，不能在汇合节点补成正确答案。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.aftermath_2.text.1",
+    "before": "传呼机催报收获。你低头数过篮里的食物，报出够几个人吃，再补一句刚才拍到的动物已经走远了。",
+    "after": "沿标记再走一段，你和谢骁才找到节目组留下的食物包。传呼机催报收获，你拆开外包装，低头数能分给几个人。",
+    "reason": "旧线之前只有动物观察，没有拿食物的行为，补共同发生的取包动作。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_water_source.choices.leave.text",
+    "before": "留溪边给摄影师拍空镜，你们原路回去",
+    "after": "不再等饮水答复，原路折回食物标记处",
+    "reason": "旧原路回去目的地不明，实际下一节点取食物。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_radio_gap.text.1",
+    "before": "她拿着水箱，若回不来，这一篮晚饭做熟也分不了多久。你们只够派一个人绕去找，另一个得守联络。",
+    "after": "水箱没到，营地就还缺饮水。谢骁把食物重新扎紧，说你若绕去找人，他便先把这篮送回；若一起走，他就背着它，免得把晚饭丢在岔路口。",
+    "reason": "保留 search 分头和 high 未分头不同，补食物全程由谁携带。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_radio_gap.choices.high.text",
+    "before": "借高处重新呼叫，问王玥看见哪块标牌",
+    "after": "登高请节目组转问王玥位置，再同谢骁带食物去找她",
+    "reason": "原只呼叫却下一幕已到了路牌且谢骁/食物消失；显式第二动作与单一传呼机转联络。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_wrong_turn.text.1",
+    "before": "你把纸翻过来，王玥先愣住，然后笑得差点从箱上滑下来。她说这段不许剪成她乱发脾气。",
+    "after": "你把纸翻过来，王玥先愣住，笑得差点从箱上滑下来。回程得带水也得带饭，你把东西分成能搬的几份；她抹掉提示纸上的水，说这一回要把箭头正面看牢。",
+    "reason": "所有路径把食物/水搬回的工作交接补上，不任由食物凭空在营地。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_wrong_turn.choices.share.text",
+    "before": "三人分搬水箱，沿原路回营",
+    "after": "和王玥、赵景之分搬水箱，把手边的物资一并带回营",
+    "reason": "未分头路径谢骁带着饭仍可同行，三人不意外抹掉第四人。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_camera_argument.text.1",
+    "before": "你把勺子递回去，说他抱回来的确实湿，故不故意你不知道。谢骁端着锅等你，不让锅悬着陪人吵架。",
+    "after": "秦白听见传呼机里的话，脸沉下来。苏苏捏着勺柄等你开口，谢骁端来的锅还空着，谁也没先往里下菜。",
+    "reason": "正文尚未选择拒绝却先作道德澄清，perform 立刻自相矛盾；改为等待玩家答。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_first_supper.choices.meal.text",
+    "before": "留一份补给给明早，今晚到此收工",
+    "after": "从可用补给里拨出一份封存作明早口粮，今晚收工",
+    "reason": "扣一份实际是转入已承诺早餐储备，而非吃掉或凭空失去。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_camp_good.text.1",
+    "before": "节目留下了整段做饭，没有剪出想要的争吵。你没靠一场危险表演翻身，观众看见的是八个人确实吃完了一锅饭；新一期合约里，你划掉了临时加演的条款。",
+    "after": "李姐要来了当晚从取食物到洗锅的完整片段，剪辑里那场争吵没有发生。下一期合约送到，你先翻伙食安排，拿笔划掉临时加演一栏；谢骁在旁边把洗干净的饭盒递给你。",
+    "reason": "去掉没靠危险翻身的评语；保留因没有争吵而素材不同。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_camp_small.title",
+    "before": "今晚由工作人员做饭",
+    "after": "交给应急厨房的下一餐",
+    "reason": "晚退已经吃过自做晚饭，标题不应还称今晚由工作人员做饭。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_camp_small.text.0",
+    "before": "你提出结束任务，节目组打开了应急厨房，接回散在岛上的人。直播少了一段高潮，大家换到了干铺盖和一顿不用抢时间的饭。",
+    "after": "你向节目组交还任务，工作人员从下一餐起接手供饭，也逐组确认人已回营。带回的食物照样下锅，修好的屋顶照样挡雨；还缺的由他们补齐，你不再继续攒求生分。",
+    "reason": "早退与吃饭/修屋之后晚退均保留部分成果，不重新把全员散在岛上。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_first_supper.choices.b_withdraw.text",
+    "before": "回到茅屋启用节目组应急供餐，结束今晚求生任务",
+    "after": "交还后续求生任务，明早由节目组供餐",
+    "reason": "已经回茅屋吃饭，不再让玩家回茅屋结束今晚未完成的饭。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_after_live.choices.b_withdraw.text",
+    "before": "回到茅屋启用节目组应急供餐，结束今晚求生任务",
+    "after": "交还后续求生任务，明早由节目组供餐",
+    "reason": "已经回茅屋吃饭，不再让玩家回茅屋结束今晚未完成的饭。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_shore_prop.text.1",
+    "before": "你合上箱盖。平常有鸟停在头上，不等于有人画一张图，你就得站到陌生东西面前去。",
+    "after": "你翻到分镜背面，还是没有动物来源和带领人的名字。谢骁问负责人谁会先下水，对方避开眼睛，只催你站到画着叉的位置。",
+    "reason": "让冲突由分镜缺项与催促推动，不让角色先替玩家拒演/说原则。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_shore_steps.text.0",
+    "before": "小林抱着空手跑来，鞋在泥里掉了一只。浪打上最低一级台阶，他停了半秒，谢骁便伸手接住他。",
+    "after": "小林空着手跑来，鞋在泥里掉了一只。浪打上最低一级台阶，他停了半秒，谢骁便伸手接住他。",
+    "reason": "修掉抱着空手病句。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_shore_steps.text.1",
+    "before": "你照着干处领王玥上去，没让谁回身捡鞋。那只道具箱转了个圈，消失在水面后。",
+    "after": "王玥在较高的干地朝你们招手，最低处还有人没上来。那只道具箱转了个圈，消失在水面后；你看向余下台阶，再看船靠过来的方向。",
+    "reason": "王玥可能早已上干地；选择前不把所有人上台阶写完，接应船方案仍成立。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_shore_small.text.0",
+    "before": "你中止参与，沿工作人员通道退出临时任务。节目组随后接回现场人员，你留在应急营地休息，错过了这一期的后半段镜头。",
+    "after": "你把余下的拍摄交回节目组，不再答应新的镜头。现场的清点和接回由工作人员接手，已撤回的人留在营地等候；你办完能办的交接，跟接驳船离岛，没有再下潮滩。",
+    "reason": "离岛船上晚退不重新走回营通道，也不否认已全部撤离。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_camera_stop.choices.b_withdraw.text",
+    "before": "停止临时拍摄，沿工作人员通道返回应急营地",
+    "after": "取消剩余录制，把未完交接交给李姐，直接返程",
+    "reason": "已经不在潮滩，避免退路叫玩家重新走工作人员通道。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_contract_shore.choices.b_withdraw.text",
+    "before": "停止临时拍摄，沿工作人员通道返回应急营地",
+    "after": "取消剩余录制，把未完交接交给李姐，直接返程",
+    "reason": "已经不在潮滩，避免退路叫玩家重新走工作人员通道。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.b_depart_shore.choices.b_withdraw.text",
+    "before": "停止临时拍摄，沿工作人员通道返回应急营地",
+    "after": "取消剩余录制，把未完交接交给李姐，直接返程",
+    "reason": "已经不在潮滩，避免退路叫玩家重新走工作人员通道。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "resources.charge.description",
+    "before": "保护调查和稳定现场消耗。",
+    "after": "护屏挡威压、隔开拦路人，也能临时给寒匣供能。用仓储配额换备用护屏可恢复能量。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "resources.reserve.description",
+    "before": "补充护屏与最后撤离使用。",
+    "after": "这是本次能即时调用的仓储份额，用来补护屏、续冷和换食宿；仓库里的总物资没有耗尽，但来不及每样都取。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "resources.b_time.description",
+    "before": "灵芝的寒匣只够六刻，宗门也会在日暮封门。护屏能量挡住施压，仓储配额维持寒匣与撤离；大量物资不等于可无限即时调用。",
+    "after": "余刻是还能在台上等候、绕路与维持保冷的工夫。归零后继续争执会误药，仍可放下赔物直接求医，或在驿舍接受较慢的疗程。",
+    "reason": "说明真实扣减的情境和可用范围，数值与门槛不变。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "mechanics.description",
+    "before": "寒匣六刻后失效，宗门也会在日暮封门。护屏抵住威压，仓储配额要分给冷藏和撤离，每次调用都在扣减。",
+    "after": "药匣的冷源正在变弱，山门也要封。护屏能量用来挡人或临时保冷，仓储配额能接冷源、撤离或换食宿；余刻用完便放弃继续周旋，先走仍开放的求助退路。",
+    "reason": "把资源所代表的行程或照料工夫说清，不用版本说明或劝诫替代玩法解释。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_witness_realm.text.1",
+    "before": "你没有逼他夸你，只问灵鹤起飞时妖兽跟着谁。他把鹤放到地上，说，跟着师姐。",
+    "after": "你问灵鹤起飞时妖兽跟着谁。他低头摆弄纸鹤，张了张口，周围的人还没听见回答；你得决定是让他说这一句，还是继续追问别的。",
+    "reason": "force_praise 后他退回沉默，选择前不能已经当众承认。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_sword_offer.text.1",
+    "before": "你看清这场交换里仍藏着的东西：她不要你赔剑，她要那夜没人回头接你的事一起消失。",
+    "after": "她把结清单摊开，指着末尾那句“秘境旧事不再议”。药明明还在你匣里，她却要拿这一行字换你带药出门。",
+    "reason": "她前句仍要还剑，后句却说不要赔剑；明确交换的是放行及闭口条件。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_verdict.text.0",
+    "before": "老执事迟迟不签，年轻裁判从他手里拿过笔。他将明渊上台、动手和败退写在同一行，手抖得墨点洇开。",
+    "after": "老执事迟迟不签，年轻裁判从他手里拿过笔，将明渊上台、动手和败退依次列出。纸边还留着秘境旧事那一栏；你方才答应或拒绝的条件，都得在落印前看清。",
+    "reason": "有 accept_silence 路，不应结局前自动消掉已经作出的沉默让步。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_verdict.choices.quiet.text",
+    "before": "只拿确认药归自己的收条，不再追究剑",
+    "after": "归还本命剑，只拿确认药归自己的收条",
+    "reason": "不再追究剑需明说还剑，才与获赔物路径不同。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_gate_realm.text.1",
+    "before": "你可以再亮护屏，也可以归还剑，换门卫不必在两边之间选一条会挨罚的路。",
+    "after": "你按住药匣，问门卫眼前这张收条还缺哪道手续。他不敢答，目光落在年轻裁判身上。继续争赔物还得维持护屏，你已经听见阵门合拢的声响。",
+    "reason": "quiet 路已经还剑，不再次说必须手持剑；保留完整赔付的资源门槛。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_gate_realm.choices.return_sword.text",
+    "before": "归还剑，带灵芝去药舍",
+    "after": "放下对剑的要求，只凭药材收条去药舍",
+    "reason": "避免 quiet 后重复归还同一把剑。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_judgment_good.text.1",
+    "before": "三个月后灵根开始恢复，你能自己走完药舍外的坡。明渊的赔物付了这段用度，年轻裁判来信说换了差事；你请他来喝茶，不请他再替谁站队。",
+    "after": "三个月后灵根开始恢复，你能自己走完药舍外的坡。明渊的赔物付了这段用度，年轻裁判来信说换了差事；你回信写了药舍地址，问他哪天能来喝茶。",
+    "reason": "不以不请站队作伦理收束，保留人物关系后续。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_judgment_small.text.1",
+    "before": "药赶上了治疗，恢复比盼望的慢，你靠旧任务留下的余资过了半年。每天醒来，药匣就在伸手够得着的地方；桌上的来信慢慢积了一叠，你不急着拆。",
+    "after": "药赶上了治疗，恢复比盼望的慢。医修将后续用度分月结算，你拿手头还能换用的物资陆续支付。来信渐渐在空药匣旁积了一叠；你每天练完步子便去做饭，吃完才拆当天那封。",
+    "reason": "支付来源不排除已售赔物，不撤销已得裁定，也不替未签沉默条款的入口作承诺。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_judgment_bad.text.1",
+    "before": "苏沁沁顺利稳住修为，你的灵根错过这次修复。后来你靠仓储离宗，活到了系统要的结尾；那只空匣一直留着，提醒你等待本身也会夺走东西。",
+    "after": "苏沁沁用那株药稳住了修为。你去公库只领回空匣，医修问药在哪，你把盖子掀给他看。后来你靠仓储离宗，灵根只能慢慢养；系统报任务结束时，你正在桌边拆换又磨坏的护腰。",
+    "reason": "用取空匣、延续伤病表达失败，不用等待本身夺走东西说教。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_outer_disciple.text.1",
+    "before": "他问你能不能带走留在外门的旧褥子，没人再给他添新的。你把钥匙交给他，说褥子和屋里剩的衣裳都拿去。",
+    "after": "他问外门旧屋里那床褥子能不能留给他。你摸到钥匙，尚未递过去；若请他指送柴路，他还得领你走一段，回来再收拾旧物。",
+    "reason": "trade 才交换钥匙指路，alone 不应先白送钥匙再说不拖下水。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_mingyuan_path.text.1",
+    "before": "他说这不一样。你忽然有点累，原来什么在他那里都能不一样。",
+    "after": "他说师尊没点头，你便不能走，手已经按到剑上。你看一眼药匣越来越薄的蓝光，往山壁边挪了半步。",
+    "reason": "重复不一样的反问改为拦路动作与冷藏压力。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_herbalist.choices.demand.text",
+    "before": "坚持立刻恢复全部修为，拒绝留下观察",
+    "after": "拒绝在这里观察，回驿舍另约能上门的医修",
+    "reason": "原要求立刻全愈，结局却默认接受同一医修；写清更换安排而不宣称速愈。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_seal_gate.choices.wait_approval.text",
+    "before": "留着牌等师尊改口，错过这次开门",
+    "after": "先退到门内等批复，再走次日的普通出山队列",
+    "reason": "原错过门就直接山脚，补等批复后的可走退路与延迟。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_pack_realm.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "请门房按普通出山手续放行，去驿舍求医，不再抢快",
+    "reason": "免费退路必须有不依赖送柴路和护屏的出山办法。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_outer_disciple.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "请门房按普通出山手续放行，去驿舍求医，不再抢快",
+    "reason": "免费退路必须有不依赖送柴路和护屏的出山办法。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_storage_realm.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "请门房按普通出山手续放行，去驿舍求医，不再抢快",
+    "reason": "免费退路必须有不依赖送柴路和护屏的出山办法。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_mingyuan_path.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "请门房按普通出山手续放行，去驿舍求医，不再抢快",
+    "reason": "免费退路必须有不依赖送柴路和护屏的出山办法。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_seal_gate.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "请门房按普通出山手续放行，去驿舍求医，不再抢快",
+    "reason": "免费退路必须有不依赖送柴路和护屏的出山办法。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_inn_realm.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "停下余下安排，留在驿舍请医修接着照看",
+    "reason": "药已入用的晚退不能再放弃已错过的修复窗口。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_herbalist.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "停下余下安排，留在驿舍请医修接着照看",
+    "reason": "药已入用的晚退不能再放弃已错过的修复窗口。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_cooling_realm.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "停下余下安排，留在驿舍请医修接着照看",
+    "reason": "药已入用的晚退不能再放弃已错过的修复窗口。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_night_realm.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "停下余下安排，留在驿舍请医修接着照看",
+    "reason": "药已入用的晚退不能再放弃已错过的修复窗口。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_walk_realm.choices.b_withdraw.text",
+    "before": "转去山脚驿舍求助，放弃最快的修复窗口",
+    "after": "停下余下安排，留在驿舍请医修接着照看",
+    "reason": "药已入用的晚退不能再放弃已错过的修复窗口。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_verdict.choices.b_withdraw.text",
+    "before": "放下夺来的剑，带灵芝离台，到山外药舍落脚",
+    "after": "不再争剑，带上已有收条和灵芝，先去山外药舍",
+    "reason": "quiet 可能已还剑，避免所有出口都重复放下剑。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_gate_realm.choices.b_withdraw.text",
+    "before": "放下夺来的剑，带灵芝离台，到山外药舍落脚",
+    "after": "不再争剑，带上已有收条和灵芝，先去山外药舍",
+    "reason": "quiet 可能已还剑，避免所有出口都重复放下剑。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_medicine_realm.choices.b_withdraw.text",
+    "before": "放下夺来的剑，带灵芝离台，到山外药舍落脚",
+    "after": "留下已带出的裁定，先在药舍安排治疗与住处",
+    "reason": "已离台到药舍，不瞬移回台归还剑；已获裁定保留。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.aftermath_3.choices.earned_ending.text",
+    "before": "留住上台的选择",
+    "after": "留人护送宋沐，请裁判复核并保留补赛机会",
+    "reason": "把结局标题改成玩家准备做的事，原有支援与线索门槛不变。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.b_stretcher.text.1",
+    "before": "宋沐昏着，手还攥住衣襟。你掰不开，只好连衣襟一起托着。他救过的那村人当年没有问过他排第几。",
+    "after": "宋沐昏着，手还攥住衣襟。你掰不开，只好连衣襟一起托着。师父伸手接了一次没接稳，大师兄赶紧挪到台阶下面，让你先把重量压到他肩上。",
+    "reason": "去掉村民不问名次的替人物表态，以抬人的具体困难呈现动机。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.puzzle_0.choices.error_0.text",
+    "before": "把早先的减三记了过来，报 13",
+    "after": "错把减九记成减三，报 13，再耗一张护符挡风",
+    "reason": "答错导致原有支援扣减，明确护符在此用掉。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.puzzle_1.choices.error_1.text",
+    "before": "顺口接上一句 I am fine, thank you.",
+    "after": "仍答 I am fine，用一张护符挡住收紧的字锁",
+    "reason": "解释原有支援扣减，不把减资源当抽象扣分。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.puzzle_2.choices.error_2.text",
+    "before": "情急串到我寄愁心与明月",
+    "after": "串到我寄愁心与明月，只好用护符挡下余劲",
+    "reason": "解释原有支援扣减，答错不无条件化解诗阵。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "path": "nodes.puzzle_3.choices.error_3.text",
+    "before": "先夸下能替所有人接招，继续撑场",
+    "after": "继续替所有人接招，耗掉一份护场支援",
+    "reason": "夸口后付出的是继续护场，而非伦理分数。",
+    "anchors": [
+      "b-six-arithmetic",
+      "b-six-save"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.aftermath_3.choices.earned_ending.text",
+    "before": "自己的宫务账",
+    "after": "用留下的银票安排米炭和工钱，本宫单独结账",
+    "reason": "使旧线末次选择为实际行动，不是结局标题。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.aftermath_3.choices.partial_ending.text",
+    "before": "留下不被改写的账",
+    "after": "带回核清的账页，先结当月用度，余款再谈",
+    "reason": "明确未达完整方案仍可做的事。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.puzzle_1.choices.error_1.text",
+    "before": "把朱家所有资助都算成这一册的数额",
+    "after": "把所有资助并作总额，先付一份查档费催人认账",
+    "reason": "原银票扣减缺支付情境，错误仍为混算。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.puzzle_2.choices.error_2.text",
+    "before": "今天再多服侍一回，盼明天好说话",
+    "after": "再服侍一回，添一份礼钱，盼她明天松口",
+    "reason": "多服侍不会自动扣钱；把额外礼钱写在选择中。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.puzzle_3.choices.error_3.text",
+    "before": "急着指责所有经手人，把正常支出也停掉",
+    "after": "连正常支出也叫停，付一份违约钱退掉已订米炭",
+    "reason": "停支却扣钱需要已订货的退订代价，明示而非暗扣。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.ending_receipts.text.0",
+    "before": "完整的新安排没谈成，你先把核清的部分留在私库，停掉争议之外不必要的排场。宫人照样领了当月的钱。",
+    "after": "完整的新安排没谈成，你把核清的部分留在私库。眼前余钱先付出去，不够的工钱由朱家管事垫上，等下笔分红再扣；小英拿到自己的那份，才去回太后的口信。",
+    "reason": "此结局能在零银票抵达，交代垫付而非凭空发全工资。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.ending_pause.text.0",
+    "before": "你关上宫门，缩减用度，先保住这一院人的吃饭与月钱。太后那边的口信暂不再接，朱家仍按月给你分红。",
+    "after": "你关上宫门，撤掉不必要的排场，请朱家将下一笔分红里的米炭和月钱先送来。小英把欠下的几笔付清，余下用度缩到一院人过日子所需，太后的口信留在门房。",
+    "reason": "耗尽资源仍可达，明确家里下一笔周转，代价为缩减用度。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.ending_budget.text.1",
+    "before": "三个月后小英领钱、买米都有固定日子。你仍做不讨喜的皇后，日子却终于归自己过。",
+    "after": "三个月后，小英每逢发钱日便提早到值房，挨个点名，不再等锦盒送走才开库。你照常被太后嫌弃，早饭却能在自己宫里吃完，桌上还有一张等你核的米单。",
+    "reason": "结尾不泛称日子归自己，以账期和早饭呈现变化。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "path": "nodes.ending_pause.text.1",
+    "before": "冬天过去，厨房没有断火。你没拿回所有体面，倒过了第一个不必每日低头去讨的年。",
+    "after": "冬天里停了几场宴席，偏殿只留一盆炭。小英给门缝塞上旧布，端饭来时先把盆挪到桌边。你们挤着吃完，饭碗还温，外头来催锦盒的人已经走了。",
+    "reason": "把省下排场后的寒冷与生活写实，不用体面得失作判语。",
+    "anchors": [
+      "b-palace-box",
+      "b-palace-feet"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.aftermath_3.choices.earned_ending.text",
+    "before": "院门内外都有名字",
+    "after": "拿菜粮换轮值，今后外出由自己陪着闹闹",
+    "reason": "结局名不是选项动作；写清承担的安排。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.aftermath_3.choices.partial_ending.text",
+    "before": "先把今天记下来",
+    "after": "请胡医生代记每天变化，减少外出，先留家照看",
+    "reason": "由写字慢的红梅口述，符合缓存人物，不泛称收集证据。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.puzzle_1.choices.error_1.text",
+    "before": "因为她不咬你，就替别人也作同样保证",
+    "after": "替她向众人保证不会再抓人，先送一份菜作赔礼",
+    "reason": "保证不应直接减粮，说明既有费用。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "path": "nodes.puzzle_2.choices.error_2.text",
+    "before": "听见一声妈，就宣布她已经好了",
+    "after": "宣布她已经好了，拿一份菜招呼邻人进来看看",
+    "reason": "承诺与扣粮对应招待，仍保留其误判。",
+    "anchors": [
+      "b-plum-chilli",
+      "b-plum-doll"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.b_copper_good.text.0",
+    "before": "这一批新丹没有送出去，下层的人也走出了一部分。蓬莱仍立在云上，管彤没杀尽仙人，却让一间丹房从那一夜起空了下来。",
+    "after": "这一批新丹没有送出去，下层的人也走出了一部分。几日后，山口传来丹房停发新药的消息，铜柱上仍有人值守。你们绕开上山的路，把借来的车推往集镇。",
+    "reason": "保留局部胜利与仙宫未倒的威胁，不用没杀尽仙人却如何作结论。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.aftermath_3.choices.earned_ending.text",
+    "before": "带下山的名字",
+    "after": "带着所见下山，找人领路回白鹤村",
+    "reason": "旧结局入口说明将做的核实与离山，不只报标题。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.aftermath_3.choices.partial_ending.text",
+    "before": "残页尚在",
+    "after": "先带记得的事离山，到集镇靠找井谋生",
+    "reason": "不要求未曾持有的残页物证。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.aftermath_3.choices.withdraw_ending.text",
+    "before": "无声下山",
+    "after": "脱下弟子袍，避开招徒处，独自去远镇",
+    "reason": "将旧线无声下山落实为行动。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.puzzle_0.choices.error_0.text",
+    "before": "惊惧中认定外面的药都一样，仓促烧毁",
+    "after": "惊惧中认定仙药都一样，烧出浓烟，引人来查房",
+    "reason": "既有掩护消耗来自暴露而非单纯观点错误。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.puzzle_1.choices.error_1.text",
+    "before": "见他能施法，便压下疑虑相信服药无事",
+    "after": "放下疑虑，答应让师兄以后盯着自己服丹",
+    "reason": "相信服药无事为何损掩护：交出日后的隐蔽机会。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.puzzle_2.choices.error_2.text",
+    "before": "拼命告诉自己他们只是随口说笑",
+    "after": "当作玩笑追出去问一句，让师兄发现你在附近",
+    "reason": "否认死讯的既有掩护损失落实为暴露。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "path": "nodes.puzzle_3.choices.error_3.text",
+    "before": "仓促写成天下仙门全都如此，连未见过的也算上",
+    "after": "在院外写下天下仙门皆如此，被巡守多看一眼",
+    "reason": "以写字被看见说明原有掩护扣减，保留轻率概括的错误。",
+    "anchors": [
+      "b-hollow-village",
+      "b-hollow-window"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.aftermath_3.choices.earned_ending.text",
+    "before": "镜头之外的晚饭",
+    "after": "按已有分工做饭，留下补给和轮值的人",
+    "reason": "旧末次按钮要说明行动，不只展示晚饭标题。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.aftermath_3.choices.partial_ending.text",
+    "before": "一份完整的当日记录",
+    "after": "把缺项报给节目组，接受扣分，请他们补齐",
+    "reason": "扣分来自请求介入，明确折中收束。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.aftermath_3.choices.withdraw_ending.text",
+    "before": "暂停镜头",
+    "after": "结束求生评分，叫工作人员送应急餐",
+    "reason": "暂停按钮应宣告具体任务代价和接应。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.puzzle_0.choices.error_0.text",
+    "before": "追着弹幕猜测解释自己，忘了问任务",
+    "after": "追着镜头解释传闻，等到饿了先吃一份补给",
+    "reason": "角色看不见弹幕，改为能听见的传闻；等待时吃掉原有费用。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.puzzle_1.choices.error_1.text",
+    "before": "只管自己的篮子，默认别人都已安排好",
+    "after": "只顾食物，花一份补给托工作人员处理其他缺项",
+    "reason": "原以默认安排扣物资，明确交给有偿援手。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.puzzle_2.choices.error_2.text",
+    "before": "为镜头许诺它们都会听你，再追一次",
+    "after": "许诺动物都会听你，追着补拍，途中吃掉一份补给",
+    "reason": "成本对应追拍耗时吃粮，动物亲近不变为服从。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "path": "nodes.puzzle_3.choices.error_3.text",
+    "before": "先去补拍热门片段，晚饭留着再说",
+    "after": "先去补拍，吃一份备用粮垫肚，晚饭留着再说",
+    "reason": "解释原有补给扣减，旧线晚饭仍需后来安排。",
+    "anchors": [
+      "b-island-radio",
+      "b-island-name"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.b_judgment_good.text.0",
+    "before": "裁定结清了赌约，玉灵芝没有再被送回苏沁沁手里。宗门没有突然喜欢你，却也不敢再用同一条规矩公开索药。",
+    "after": "公库撤掉了索取玉灵芝的条子，年轻裁判把药归你、明渊交剑的两项分开落印。离宗后仍有人寄信来求你还剑，药舍却已经收下药，第一剂在你自己的炉上煎着。",
+    "reason": "将宗门不喜欢却不敢的抽象评价改成撤条、落印和仍索剑的具体余波。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.aftermath_3.choices.partial_ending.text",
+    "before": "未被删掉的申诉",
+    "after": "请见证者受理已核实的部分，先带药离台",
+    "reason": "末次选择写明只作部分申诉，不显示抽象的未被删掉的申诉。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.aftermath_3.choices.withdraw_ending.text",
+    "before": "护屏外的山门",
+    "after": "停止交涉，把剩余护屏用在带药出山",
+    "reason": "选择实际撤离而非选结局标题。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.puzzle_0.choices.error_0.text",
+    "before": "暂信炮灰说法，白耗一轮等待",
+    "after": "暂信炮灰说法，调用一份仓储维持原地等待",
+    "reason": "等候期间设备维持原有扣款，明确不是系统惩罚观点。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.puzzle_1.choices.error_1.text",
+    "before": "为少一场争执，顺着偏袒承认她可索药",
+    "after": "口头认她可索药，却又调用一份仓储把药锁住",
+    "reason": "解释原效果为何仍保有药，同时支付仓储；这是明示的自相牵制决定。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.puzzle_2.choices.error_2.text",
+    "before": "为了平息指责，默认自己的掩护无关紧要",
+    "after": "默认自己掩护无关紧要，用一份仓储续屏忍下指责",
+    "reason": "妥协导致延长屏障占用，非无情境扣费。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "path": "nodes.puzzle_3.choices.error_3.text",
+    "before": "转而搬师尊强弱争胜，让条款退到一边",
+    "after": "搬师尊强弱争胜，调用一份仓储撑住这轮对峙",
+    "reason": "原争论耗配额有明确设备情境。",
+    "anchors": [
+      "b-realm-root",
+      "b-realm-bet"
+    ]
+  }
+]

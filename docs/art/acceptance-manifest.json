@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "scope": "initial-rejected-batch-only",
+  "currentDelivery": "docs/art/current-delivery.json",
+  "status": "stopped-for-style-calibration",
+  "inFlightRequests": 0,
+  "publishedAssets": [],
+  "postProcessingPerformed": false,
+  "assets": [
+    {
+      "worldId": "velvet-alibi",
+      "sourceStoryId": "2068540656734180439",
+      "path": "output/imagegen/initial-scenes/double-life-v2/double-life-01.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1692407,
+      "sha256": "285847e2439b82d397bd0d888aad14c4e6ac8d61b92500faf62fd0e4d3bff537",
+      "requestedResolution": "4K",
+      "native4K": false,
+      "referenceAttached": false,
+      "visuallyInspected": true,
+      "acceptance": "rejected-by-user",
+      "reason": "Reads as Korean webtoon art rather than the requested last-century Japanese animation. Do not publish."
+    },
+    {
+      "worldId": "blue-blood",
+      "sourceStoryId": "2025684191967294692",
+      "path": "output/imagegen/initial-scenes/blue-blood-reference-v2/blue-blood-01.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1681233,
+      "sha256": "272e34e88fceb303a953a999d93670fc6dd976c4b1ff5111c7db4f8d0d61884b",
+      "requestedResolution": "4K",
+      "native4K": false,
+      "referenceAttached": true,
+      "visuallyInspected": true,
+      "acceptance": "rejected-by-root",
+      "reason": "Long pointed chins, shiny fragmented hair and dark soft rendering fail the latest user calibration. Do not publish."
+    },
+    {
+      "worldId": "double-pursuit",
+      "sourceStoryId": "2025333783608537435",
+      "path": "output/imagegen/initial-scenes/double-pursuit-reference/double-pursuit-01.png",
+      "width": 4096,
+      "height": 2304,
+      "bytes": 9414323,
+      "sha256": "4c1c239a724d2acb57e1356eb121fc6bce0da0959d0ba0e679765a2feea4929d",
+      "requestedResolution": "4K",
+      "native4K": true,
+      "referenceAttached": true,
+      "visuallyInspected": true,
+      "acceptance": "unapproved-hold",
+      "reason": "Hold for root calibration. Tenant eyes and short nose are more youthful than the mature supplied reference. Do not publish until approved."
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "generatedAt": "2026-09-05T22:25:53.287Z",
+  "status": "Production plan, not generated assets",
+  "minimum": 30,
+  "uniqueCompositionsOrIdentities": 30,
+  "styleReferences": [
+    "docs/references/user-character-full-crop.png",
+    "docs/references/user-character-face.png",
+    "docs/references/user-anime-reference.png"
+  ],
+  "requiredStyle": "Original adult characters, 1998-2003 late-cel Japanese anime line hierarchy, flat opaque color, connected hard facial shadow planes, at most two shadow steps, dark red/black cold-weather silhouettes; painterly backgrounds only carry paper texture.",
+  "requiredFaceReview": "Stable skull, brow, eye spacing, nose length, jaw and hairline across expressions. Strong brow/nose/cheek cast shadow; no glossy skin or modern webtoon facial proportions.",
+  "note": "Minimum across the catalog. Full contextual scene and cast coverage exceeds this list and remains required by the wider project.",
+  "assets": [
+    {
+      "id": "blue-blood-primary-scene",
+      "kind": "background",
+      "worldId": "blue-blood",
+      "subject": "公司 · 培训室",
+      "publicPath": "/assets/blue-training-room.webp",
+      "status": "root-reviewed-awaiting-user-review"
+    },
+    {
+      "id": "double-pursuit-primary-scene",
+      "kind": "background",
+      "worldId": "double-pursuit",
+      "subject": "老公寓 · 楼梯平台",
+      "publicPath": "/assets/night-pursuit.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "velvet-alibi-primary-scene",
+      "kind": "background",
+      "worldId": "velvet-alibi",
+      "subject": "出租屋 · 餐桌",
+      "publicPath": "/assets/double-life.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "future-island-primary-scene",
+      "kind": "background",
+      "worldId": "future-island",
+      "subject": "末世游戏 · 初始货架",
+      "publicPath": "/assets/future-island.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "happy-home-primary-scene",
+      "kind": "background",
+      "worldId": "happy-home",
+      "subject": "楼前分房处",
+      "publicPath": "/assets/happy-home.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "rotten-pilgrimage-primary-scene",
+      "kind": "background",
+      "worldId": "rotten-pilgrimage",
+      "subject": "灵山外",
+      "publicPath": "/assets/rotten-pilgrimage.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "ming-whisper-primary-scene",
+      "kind": "background",
+      "worldId": "ming-whisper",
+      "subject": "宫中偏殿",
+      "publicPath": "/assets/ming-whisper.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "score-room-primary-scene",
+      "kind": "background",
+      "worldId": "score-room",
+      "subject": "梦中自习室",
+      "publicPath": "/assets/score-room.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "online-heir-primary-scene",
+      "kind": "background",
+      "worldId": "online-heir",
+      "subject": "营销部工位",
+      "publicPath": "/assets/online-heir.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "black-flood-primary-scene",
+      "kind": "background",
+      "worldId": "black-flood",
+      "subject": "御兽宗结契台",
+      "publicPath": "/assets/black-flood.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "radish-court-primary-scene",
+      "kind": "background",
+      "worldId": "radish-court",
+      "subject": "景华宫门口",
+      "publicPath": "/assets/radish-court.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "harvest-box-primary-scene",
+      "kind": "background",
+      "worldId": "harvest-box",
+      "subject": "农院堂屋",
+      "publicPath": "/assets/harvest-box.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "temple-heart-primary-scene",
+      "kind": "background",
+      "worldId": "temple-heart",
+      "subject": "山顶土庙",
+      "publicPath": "/assets/temple-heart.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "tiger-shelter-primary-scene",
+      "kind": "background",
+      "worldId": "tiger-shelter",
+      "subject": "山洞口",
+      "publicPath": "/assets/tiger-shelter.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "six-roots-primary-scene",
+      "kind": "background",
+      "worldId": "six-roots",
+      "subject": "青云宗擂台",
+      "publicPath": "/assets/six-roots.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "palace-ledger-primary-scene",
+      "kind": "background",
+      "worldId": "palace-ledger",
+      "subject": "皇后寝宫",
+      "publicPath": "/assets/palace-ledger.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "red-plum-primary-scene",
+      "kind": "background",
+      "worldId": "red-plum",
+      "subject": "菜棚",
+      "publicPath": "/assets/red-plum.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "hollow-immortals-primary-scene",
+      "kind": "background",
+      "worldId": "hollow-immortals",
+      "subject": "弟子卧房",
+      "publicPath": "/assets/hollow-immortals.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "island-broadcast-primary-scene",
+      "kind": "background",
+      "worldId": "island-broadcast",
+      "subject": "临时茅屋",
+      "publicPath": "/assets/island-broadcast.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "wrong-realm-primary-scene",
+      "kind": "background",
+      "worldId": "wrong-realm",
+      "subject": "擂台屏障内",
+      "publicPath": "/assets/wrong-realm.webp",
+      "status": "pending-generation"
+    },
+    {
+      "id": "blue-blood-fangnuo-identity",
+      "kind": "adult-character",
+      "worldId": "blue-blood",
+      "subject": "方诺",
+      "publicPath": "/assets/fang-nuo-main.webp",
+      "status": "root-reviewed-awaiting-user-review"
+    },
+    {
+      "id": "blue-blood-zhangwei-identity",
+      "kind": "adult-character",
+      "worldId": "blue-blood",
+      "subject": "张薇",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "blue-blood-observer-identity",
+      "kind": "adult-character",
+      "worldId": "blue-blood",
+      "subject": "灰夹克",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "double-pursuit-dongdong-identity",
+      "kind": "adult-character",
+      "worldId": "double-pursuit",
+      "subject": "张冬冬",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "double-pursuit-liyu-identity",
+      "kind": "adult-character",
+      "worldId": "double-pursuit",
+      "subject": "李宇",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "double-pursuit-elder-identity",
+      "kind": "adult-character",
+      "worldId": "double-pursuit",
+      "subject": "老住户",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "double-pursuit-operator-identity",
+      "kind": "adult-character",
+      "worldId": "double-pursuit",
+      "subject": "接警员",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "velvet-alibi-mansheng-identity",
+      "kind": "adult-character",
+      "worldId": "velvet-alibi",
+      "subject": "杜曼笙",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "velvet-alibi-wanglu-identity",
+      "kind": "adult-character",
+      "worldId": "velvet-alibi",
+      "subject": "林望鹿",
+      "publicPath": null,
+      "status": "pending-generation"
+    },
+    {
+      "id": "velvet-alibi-friend-identity",
+      "kind": "adult-character",
+      "worldId": "velvet-alibi",
+      "subject": "闺蜜",
+      "publicPath": null,
+      "status": "pending-generation"
+    }
+  ]
+}

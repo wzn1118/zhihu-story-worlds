@@ -1,0 +1,20 @@
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { StoryWorkshop } from '../server/story-workshop.ts';
+import { LiukanZhidaService } from '../server/liukan/zhida.ts';
+import { startSession, choose } from '../src/game.ts';
+
+const workshop = new StoryWorkshop();
+const id = 'import-6febc2f6-3a12-41ac-bae5-6d05ebc68c10';
+const world = await workshop.world(id);
+let session = startSession(world);
+const first = session.choices[0];
+const history = [{ nodeId: session.node.id, choiceId: first.id }];
+session = choose(session, first);
+const startedAt = new Date().toISOString(), start = performance.now();
+const service = new LiukanZhidaService((storyId, version) => workshop.world(storyId, version));
+const response = await service.recall({ playerId: 'liukan-live-verification', requestId: 'liukan-integration-live-20260912', storyId: id, worldId: world.id, worldVersion: world.version, history, currentParagraphIndex: session.paragraphs.length - 1, question: '你还记得我们刚才做了什么选择吗？帮我回忆现在发生的事，两三句话就好。' });
+const destination = resolve('output/liukan/real-zhida.json');
+await mkdir(resolve('output/liukan'), { recursive: true });
+await writeFile(destination, JSON.stringify({ startedAt, elapsedMs: Math.round(performance.now() - start), storyId: id, worldId: world.id, worldVersion: world.version, validatedSceneIds: response.context.visited.map(scene => scene.nodeId), selectedChoice: first.text, source: response.source, model: response.model, answer: response.answer, answeredAt: response.answeredAt }, null, 2), 'utf8');
+console.log(JSON.stringify({ ok: true, source: response.source, model: response.model, elapsedMs: Math.round(performance.now() - start), visitedScenes: response.context.visited.length, evidence: destination }));

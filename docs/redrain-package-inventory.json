@@ -1,0 +1,3111 @@
+{
+  "contentVersion": "20260910",
+  "entry": "/games/redrain/index.html",
+  "generatedAt": "2026-09-12T10:43:23.386Z",
+  "sourceFiles": 317,
+  "sourceBytes": 541002798,
+  "excluded": [
+    "alternate game",
+    "runtime binaries",
+    "release/provider metadata",
+    "unreferenced assets"
+  ],
+  "absentSourceReferences": [
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d35.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d36.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d37.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d38.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d39.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d40.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d41.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d42.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d43.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d44.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d45.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d49.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d35-d50/d50.png",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 15364,
+      "sha256": "eebbb6bdd31f1b9758e9d9b7fd4f5a5252a45c4c4ff0c98b24024da749cf6255",
+      "reasons": [
+        "main entry"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/01-rebirth.png",
+      "bytes": 1750058,
+      "sha256": "bc8b0ef42e4069bd60bc43cfd87692ec86e6fda4c6dd2acc106afd9606bdeec7",
+      "reasons": [
+        "literal in src/content.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/01-warning.png",
+      "bytes": 1511810,
+      "sha256": "9100c4258458c757ba7a9c3af439752992aa4e1a74bf346a27f58175fca641db",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/02-classroom.png",
+      "bytes": 2012560,
+      "sha256": "dfa0e0567b1e6117875aaa613f4bb90a98ad3433dc8fb16d973960e4720921d3",
+      "reasons": [
+        "literal in src/content.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/02-red-rain.png",
+      "bytes": 2278095,
+      "sha256": "c8ee39fd5035ae1507739c3dba61002a19ee5076a92fa3eb90f63143dcd8d200",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/03-proof.png",
+      "bytes": 2035029,
+      "sha256": "bc6dc4762eeaab410e9360a80ace2092c772c92c52e932d0060fe9d23c940e74",
+      "reasons": [
+        "literal in src/content.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/04-airport.png",
+      "bytes": 1970121,
+      "sha256": "6f9f201c2bb87ec57cee660c03c917f2a01f654d7f889f4aa27208387056fcee",
+      "reasons": [
+        "literal in src/content.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/04-four-calls.png",
+      "bytes": 1954199,
+      "sha256": "fddea851f43f474d85b19d966bdfb72e6391c402887a4600d46e8cf4a72d4625",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/prologue/05-safehouse.png",
+      "bytes": 2558347,
+      "sha256": "d1964df54772273270a23c3f43223e3d500ee78589207bc92ddb8a0752c95b3e",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in style.css"
+      ]
+    },
+    {
+      "path": "public/assets/v2/portraits/yansijing-daily.png",
+      "bytes": 814935,
+      "sha256": "409d8a7e237aa3140339a716e087e6f9f269f35ba7ed66a2bf7c72cdf82c5fb5",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/portraits/yirao-daily.png",
+      "bytes": 757069,
+      "sha256": "4fc40e0f499af3cd6d8ecfcd4846bde2426e101c30ebe9d833b6bdbff08f7e57",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/props/prop-car-keys.png",
+      "bytes": 702772,
+      "sha256": "65cdc9b87bc737ec12e9a3ac25e7c1a68b74ac81622859b78371c970fb687ed3",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/props/prop-louyi-tech-bag.png",
+      "bytes": 1151506,
+      "sha256": "c7f06dc2fa58be802f0b391ee27725b9d3ba36c26dd9590816a67f2cbe17dd1e",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/props/prop-medical-kit.png",
+      "bytes": 1246805,
+      "sha256": "bccb7e4eaa7cf400a24cd38bb2d8ca51a044796bbddef50a95825492c412ab8a",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/props/prop-yushen-go-board.png",
+      "bytes": 785577,
+      "sha256": "b007a63b3cfbec4d70e70a1176b5ca22452dca3b4c84c5ef9bd0a31fb9c18c5d",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/airport.png",
+      "bytes": 2591346,
+      "sha256": "b75f146b9d539ab47ccd0c63b51172a7dc79c45ecfc0f1fe49e4eb06607e2a01",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in src/content.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/canteen.png",
+      "bytes": 2187166,
+      "sha256": "823d940827e3471e2c90feb6d97e397b50af64948607535825b5ce9a6d51c193",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/classroom.png",
+      "bytes": 2112541,
+      "sha256": "03a8d1a241d9dd1c47efa75dbb7368ef62572b6581cf17f4a572caf313d4924f",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/cold-night.png",
+      "bytes": 1739659,
+      "sha256": "cd2e92fffffddbd1f7abf1f9e236e52109bfb9faba39c4080293397f67cfab23",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/eighth-floor.png",
+      "bytes": 1164368,
+      "sha256": "073f2f1f8a22bc23e582470f4373cd339913f95d191c3538be435f17bb1c05b4",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/fcity.png",
+      "bytes": 2323004,
+      "sha256": "ccbfb20e8244c9748df25f772facfa3270429bf6d5bcdea6de5971438d7b1064",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/helicopter.png",
+      "bytes": 1967958,
+      "sha256": "21d758b365d04c0bf109073c8e9c8659a50b32d6ce5021f8db0337ddac4248d5",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/lab-corridor.png",
+      "bytes": 1826783,
+      "sha256": "03ab447d5dd1f77bad3bba13042c446d3b4e8af572791cb11c2f948ff08e5656",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/safehouse.png",
+      "bytes": 2013892,
+      "sha256": "a3d8b2c6b0d725fdaeafd5e8c54d5f7ae9ef7c8a73fed1d1549cf44c385bb4c5",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/shelter-letter.png",
+      "bytes": 1977281,
+      "sha256": "9dd130d5636071e65b89c825c586d9d0df24c0f27f706510f19ffc776472df3d",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/tower.png",
+      "bytes": 1682625,
+      "sha256": "9c02ef6b0094265028d20efe247971e25c009d72df65ab532729628425c17b7f",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/scenes/window-king.png",
+      "bytes": 1532375,
+      "sha256": "e6168832a2a852ad17005e2e51e10b622349f0173b1d60bb139db05972803bb4",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/continue-indicator.png",
+      "bytes": 50796,
+      "sha256": "32763516b6cf04f1dc34e17276c007af36232be6e2246077aa6242ca7e74b77a",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/foreground-frame-corner.png",
+      "bytes": 81115,
+      "sha256": "3cdca0e02d4e42d4cce6d186ac25dff3b8c51b25b2e4bc2b62fa456cff561d80",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/icon-inventory.png",
+      "bytes": 122109,
+      "sha256": "8c237ac2f2e16be6506bab8171c6639b6d83b659aafc4e63a6a0b61d24a63b71",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/icon-map.png",
+      "bytes": 138563,
+      "sha256": "3d567633c150295efc49a89dde1195be6c1cc8f440a36a4477fe697e1ebfe1a9",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/icon-relationship.png",
+      "bytes": 88465,
+      "sha256": "ed9d7ecfe299bd83623368792cb964fa18ba30780cfd450192cc1d128b45f764",
+      "reasons": [
+        "literal in src/game.js",
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/icon-research.png",
+      "bytes": 114973,
+      "sha256": "8dda9a9afbec1c5c64c47aef37e41099966e6da5140de69fbd431488695c320e",
+      "reasons": [
+        "literal in index.html"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/nameplate-texture.png",
+      "bytes": 142018,
+      "sha256": "c2744447a3720cd4fc4593b6e0abe48c50d34cad4735185f1f80ec45dac580ca",
+      "reasons": [
+        "literal in style.css"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/progress-marker.png",
+      "bytes": 19395,
+      "sha256": "c0254e3cdeee3f639851d52b418f9af8507db8601bc2e2a40ac5d2812fccf290",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v2/ui/transition-texture.png",
+      "bytes": 122665,
+      "sha256": "863c1964d9cf6580fcb05244a96a7553dcd79918a74bf40f104508593143c156",
+      "reasons": [
+        "literal in src/game.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d01.png",
+      "bytes": 981765,
+      "sha256": "7bb6f32733ef9cd075bf2086189d60156a4d39e814846934b621e6ff62762d96",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d02.png",
+      "bytes": 998761,
+      "sha256": "52f6b96c97b65c9c310407464a5b0de01e935f3bbe93bd4176fdf58a80bcceee",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d03.png",
+      "bytes": 1089112,
+      "sha256": "2fbfd7efce5529d55de29a493fc2c9e422a43be2dd5b60ccd3b53e950f0af463",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d04.png",
+      "bytes": 1032492,
+      "sha256": "42192370a3b8a35402fd615c744c8d1ed3d60369d5cade1b57ab91583c369a64",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d05.png",
+      "bytes": 1106535,
+      "sha256": "6df6a0e5595a1104ecc72a0ed1a93c22d3062eb84ff71fa5e3cbd4a844230413",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d06.png",
+      "bytes": 1303342,
+      "sha256": "83af861718afe35511c501b9858319ae98debc5915e1cc4c03aaf183f58d0860",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d07.png",
+      "bytes": 886728,
+      "sha256": "9cb485a0b59c8f434659c38eaf4939914422dce41f77699bf29630b8f1e31ee0",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d08.png",
+      "bytes": 1060767,
+      "sha256": "def9ec640f51811a557bea290ac83037addd5e74a92c01b9031407e9367cc15e",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d09.png",
+      "bytes": 942059,
+      "sha256": "5086140b83959d9ec27a83bdf5ae3f316346508bfbdc61930be9526b444a9ada",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d10.png",
+      "bytes": 1202539,
+      "sha256": "fa5cd05ae48819c46429df81f86c2463f7436f549690c5b0a4b7ba47079c8922",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d11.png",
+      "bytes": 1007199,
+      "sha256": "761cea8c37fc71b5020ba18833c1d1ce903408805125e223b2ec9f61c92fa001",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d12.png",
+      "bytes": 1344968,
+      "sha256": "e306f00b152ddc070c2fa1ac756bbdf709e9f003247cc3bada520ab714665911",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d13.png",
+      "bytes": 826292,
+      "sha256": "794ecf8d9bb03e5d7fe71542c87f0c06fe289c1a90e66b24b973d13a03b7ea69",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d14.png",
+      "bytes": 1078469,
+      "sha256": "b523b529d1a3c2651ecc32eeba0077680be6fbb103cc657494612db57aec915e",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d15.png",
+      "bytes": 786745,
+      "sha256": "acce43f783859cb6ddb05c3b1cd448af9041734cf821a50e7ab30ce214c3d0d7",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d16.png",
+      "bytes": 1145796,
+      "sha256": "203ffb090aaa56c4a41db105f9811aafa8a3d6cedb9bf895c6915b394d2efe10",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d01-d17/d17.png",
+      "bytes": 1572409,
+      "sha256": "e777be3ec4870330de1236b3b782ca8744cc5127a00f68c550a0a4585603eda9",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d18.png",
+      "bytes": 703000,
+      "sha256": "400edd13bc326e56d365672db3700c35ff7c7b0053145382335bf41ba400062d",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d19.png",
+      "bytes": 880919,
+      "sha256": "af80632caaf1ba56ea8f319797de0fe156ccc8ab7d4733b08b3bf6186836e91a",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d20.png",
+      "bytes": 608687,
+      "sha256": "f4424140807a6c3eb6316a9751511a638d90ce1f8688796a217599aeeabf2291",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d21.png",
+      "bytes": 673452,
+      "sha256": "24054721c7ab47c5c23cae1d6221c668cb309fe06acafc82027076699602cd1e",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d22.png",
+      "bytes": 700970,
+      "sha256": "7d8d04ad0924bdd76fd816d6ca31b6ab3ec9a9cf6509389f893dce0a35de3474",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d23.png",
+      "bytes": 893000,
+      "sha256": "2fd3d33d5297446ceba2f0509028f6c210a1837f2d5e16b12574d3331296131b",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d24.png",
+      "bytes": 623079,
+      "sha256": "41d80058c5836fbb679f240ad5a6216b4a67382a35ad22c4f54c70438f979636",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d25.png",
+      "bytes": 597764,
+      "sha256": "c5a67d16b42437a183effb86d2693e9893c16c723b41dab6bdee9928c641eed3",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d26.png",
+      "bytes": 638319,
+      "sha256": "112a8e46f14940b49ce80a4421ac811b8bd21ab2ff80f7ab55af830dd26c21a6",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d27.png",
+      "bytes": 648860,
+      "sha256": "56df01b4183333fed3ccb4ff8a892d8f0cf60930d336e79c36b93eb1c223c88a",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d28.png",
+      "bytes": 620696,
+      "sha256": "bbb9f362b5cfbe9db0dc53b34bb77fc2e2310b245f6a1e66ca8e0a5054d4a513",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d29.png",
+      "bytes": 646554,
+      "sha256": "6309bff82bf820f3ee07fc9d8712b2ebfd504ce359642837321bec639f12a76d",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d30.png",
+      "bytes": 794161,
+      "sha256": "a06942f56d69fface038ac2486a3c70fe2de21dad8c37e58462fce765dcd89cd",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d31.png",
+      "bytes": 653747,
+      "sha256": "ddf6ec7d4a1235199ceaee8a80701b33b76e43d14ef16354c70c5699a5667996",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d32.png",
+      "bytes": 852768,
+      "sha256": "00f4d6776ee1ddaf66df5cef681881d0c1bc37ebe65c1630264a879be4c08e60",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d33.png",
+      "bytes": 851372,
+      "sha256": "21c4dbddc30f6910b9784279721e5f609216085700c39ca9e43ac19ab61f6619",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v3/portraits/d18-d34/d34.png",
+      "bytes": 684323,
+      "sha256": "5afd375fadb16f2011539758f166fbfbf6b35dceb7439a07024b34d9ba8fe462",
+      "reasons": [
+        "literal in src/decision-art.js",
+        "resolved export in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/cast/jia-qiaoying.png",
+      "bytes": 582677,
+      "sha256": "f1c905ed23db0e1365e7731247fa31df5d1d3acf213549791d5e3f9ca2f0f68a",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/cast/jia-zhong.png",
+      "bytes": 1151809,
+      "sha256": "d04d30eb355ba7163cdc36861cc3145f2fa66e4e85e180987211b457f0d6de01",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/cast/rescue-team-leader.png",
+      "bytes": 2101252,
+      "sha256": "2ec3ae226b9b54041dc019d8876e6834cbf08f9099b82d806ad3e985b565434e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/cast/ruan-ziyang.png",
+      "bytes": 507016,
+      "sha256": "3a44579a507946477ad89a07419af793df64f6fd759ca442b6d48f053bf413d2",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/cast/yin-professor.png",
+      "bytes": 1088553,
+      "sha256": "5fac80048acba5291687dacbb68bf725e07cc127bf2c9181dbffd58dba888d9e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d01/background.png",
+      "bytes": 1696539,
+      "sha256": "dcec3013c8884bcb455fcd96e981f0d8bb05ddfbf19e8e4a3bc689901b723f64",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d01/portrait-main.png",
+      "bytes": 1167943,
+      "sha256": "1a0300d60001f1e6131afc6b1d69546ef9c95f1212a0d7be63f4e565c8ea9cd9",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d01/portrait-reaction.png",
+      "bytes": 3028960,
+      "sha256": "3baec388862bae49ec2f687c76f791991319d1c377b734b08868d55fed92adb8",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d01/prop.png",
+      "bytes": 2921683,
+      "sha256": "a2bb1640332a602406ad2e0a58cf115b69771c99a416d8304234141589c05321",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d02/background.png",
+      "bytes": 5084269,
+      "sha256": "521f249b3479aa30709464509d1d1f74605d0b55e9f7e7c3a933229dd8c58545",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d02/portrait-main.png",
+      "bytes": 1096024,
+      "sha256": "a83806b7a016205c877fec2857aa7f16ca081041ac6e67b5af85c8bd2ed41070",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d02/portrait-reaction.png",
+      "bytes": 1052718,
+      "sha256": "724517e1684a817912649290470b0e93a9f44186bd953d2a4d24e5bca5503195",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d02/prop.png",
+      "bytes": 1122609,
+      "sha256": "b556c95278f08b7f87a4775cc415ab96ebb192f517eaad91fd5d0b62d993a329",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d03/background.png",
+      "bytes": 1382393,
+      "sha256": "e7578304ea9bddf682f1d800715955c747c301464296a400be856702757eeda9",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d03/portrait-main.png",
+      "bytes": 2146474,
+      "sha256": "f8827bc96f71ad4ea5a0b3e08cff0dbfccbbd853310dd2eba6b280f4fc867290",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d03/portrait-reaction.png",
+      "bytes": 947491,
+      "sha256": "93fcf04174254d5779f81f14cfb52b512e94cc92ac5f1bc7af8011104deedb78",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d03/prop.png",
+      "bytes": 1143178,
+      "sha256": "4452be02bbf5e4ab40c9a58ffc40651ed8849e4a3caecbc1b50dee2b4dd41feb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d04/background.png",
+      "bytes": 4024904,
+      "sha256": "7d599fc3a5c25ba5e4ccf85f7ecc126cb72d058ce3e1f1e9afa5d10afbf5cb29",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d04/portrait-main.png",
+      "bytes": 550832,
+      "sha256": "200fdfce1efcda442d7536c7c2ae39162d2712238d95295bd5254af5d14c078c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d04/portrait-reaction.png",
+      "bytes": 2276167,
+      "sha256": "2566ac0cb4dea53e21b2bbc7576457c8a9a393cb7acec9b36a885450d095336c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d04/prop.png",
+      "bytes": 1293444,
+      "sha256": "e29f714b33e9504f871fe012d798cee43bfa0f1b0a56647c771988df90f74c87",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d05/background.png",
+      "bytes": 1544563,
+      "sha256": "16a41d9a163685f89f655ce1d0335e57238b17b60ca8315f56d0c43a7bfe9083",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d05/portrait-main.png",
+      "bytes": 2118708,
+      "sha256": "632980fff2260c64e06678b31d774c64ecb664ff04ba49080618ffb14de36a11",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d05/portrait-reaction.png",
+      "bytes": 2208759,
+      "sha256": "745d6e119611a54f0b56225199ca15519fbf0d0c426b3ec079aff28833525691",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d05/prop.png",
+      "bytes": 1396086,
+      "sha256": "7d87cdf88f0fb1771b46611308a3d4a640f960e2cc7a99dbef1276ddad4dad1e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d06/background.png",
+      "bytes": 1806307,
+      "sha256": "dee4b89a399dc8dc04d540415403cbd994767fb1f4cbce4a403ebadb6392a930",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d06/portrait-main.png",
+      "bytes": 1038508,
+      "sha256": "6629e63fe9cf6108bf160c98877d85389923e1103af21b037471c005eb91bcd0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d06/portrait-reaction.png",
+      "bytes": 1047060,
+      "sha256": "54985673599b2389f5e1ccca20d4579c59b87fc1ea9e8627e79c32fa5538c2be",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d06/prop.png",
+      "bytes": 1469507,
+      "sha256": "68fa2a5171b1fce916d2809780c7b950b92f4ed811fff89c92b8901d57db66fb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d07/background.png",
+      "bytes": 2119457,
+      "sha256": "531e78377c9f90a5546ad58d78933a533f86dab2f02dd656d506bf4bf2ac5202",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d07/portrait-main.png",
+      "bytes": 2962076,
+      "sha256": "dd42ef3740b4d870e8b83522fbb551a82f2a95ebaf3a5a5796b61cce132a5f1b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d07/portrait-reaction.png",
+      "bytes": 2613790,
+      "sha256": "68a462fecdfa518ba89093d708339d0f5af816d0fc3e7837734a02015dd7b3e2",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d07/prop.png",
+      "bytes": 4103176,
+      "sha256": "dee3c8274cc49724cafebfd429a4a561e889a25310afc8a575e38ba700ee3c0f",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d08/background.png",
+      "bytes": 1559693,
+      "sha256": "77edabf718aa24cc931820a9aea55f3b0b1df5f5bf440d3a5b24edc62ce91e46",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d08/portrait-main.png",
+      "bytes": 1127720,
+      "sha256": "0c3c96c7d37820c0c5fbad553803a28cbbd8553c615751411f7b823ff95bd556",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d08/portrait-reaction.png",
+      "bytes": 2088962,
+      "sha256": "7285f1bf2a75b92349dd6c0f0054f04e9b8d2af48c66b60ad91243314e7ec912",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d08/prop.png",
+      "bytes": 1057167,
+      "sha256": "eea499c631955a19dea240862c17df394b1cf9bec5948b6e6f8967e8ef7ec64f",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d09/background.png",
+      "bytes": 1945444,
+      "sha256": "b0d42aa78ecdeca96d5b4ef18496d35e8fa819f262b1a531178aca9e27377864",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d09/portrait-main.png",
+      "bytes": 1100069,
+      "sha256": "9386b261f231fb844ef3b97f011d515f80d82461804a4c1a6fce3e8f9d20ecd5",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d09/portrait-reaction.png",
+      "bytes": 2632067,
+      "sha256": "686ae654c11bd74eff184397e7ff4732a5768b38e9d35c4dfc434f962e9f355e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d09/prop.png",
+      "bytes": 1317635,
+      "sha256": "ee3fb6319023852d8947fede7c59c7b0df8d6b8bb38e3a0b2404c5892b3ba292",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d10/background.png",
+      "bytes": 6887388,
+      "sha256": "ee071263e9ab3347ed81092e88e6b4870cb8fb66452a068b1549800b3e5e7e76",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d10/portrait-main.png",
+      "bytes": 1188487,
+      "sha256": "3dfaf291b309a2429663bd8fd8e9220e1eeeceb4952c4b74979ee178322ca998",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d10/portrait-reaction.png",
+      "bytes": 1110675,
+      "sha256": "a9941bd1540dcc8cd76e8f0b371b2dcdb80bc33c35063eefcafd6c2eaa54bdf9",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d10/prop.png",
+      "bytes": 2008794,
+      "sha256": "2ff124ccea5bdacf83460c8607b07795ec277d893455a8e3f5f268654b2f1ec5",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d11/background.png",
+      "bytes": 1382008,
+      "sha256": "a5c42afe30fd857c33f5886efa965161568b8c9d765124e9a29b06ae13278f6e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d11/portrait-main.png",
+      "bytes": 1039664,
+      "sha256": "0e5ec5966e54edac4afc84e09cab19155a2ef21dca725dfa1de10066137bab95",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d11/portrait-reaction.png",
+      "bytes": 2672638,
+      "sha256": "747741b8665e493ef15dd75e14981d7571e75d39b884800c8c6422363750e521",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d11/prop.png",
+      "bytes": 1161729,
+      "sha256": "7da4cb8bd3945a4dec40ade0a409559c194b83a5d9563f5a5308bcbdb6c784cb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d12/background.png",
+      "bytes": 1653354,
+      "sha256": "b54f058839a9fb21521849a9994ba30c1fbf7d7df535c042d31931c5c5a18d32",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d12/portrait-main.png",
+      "bytes": 1107958,
+      "sha256": "c6dcede8f011565be23afc2f953e7afa52c71b17d4964fb34d230846399a156e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d12/portrait-reaction.png",
+      "bytes": 2695621,
+      "sha256": "2ed3bc9760b69b351d6706afd7c45c327965f72d92ec09244898e1604d4424b8",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d12/prop.png",
+      "bytes": 3175712,
+      "sha256": "988639899113439eabf39aade012df8c209ef509985bbdde454d10ac422aeaca",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d13/background.png",
+      "bytes": 1401588,
+      "sha256": "b66286b382a3451f6b00bba88e33edd02b716c7f30038bfe40de706936f119f1",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d13/portrait-main.png",
+      "bytes": 1074946,
+      "sha256": "2da21c1b666ed5a4bb17e7be968bc8ec044b134fbb7416d0f168fc4545cb1c14",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d13/portrait-reaction.png",
+      "bytes": 2573624,
+      "sha256": "d5151f367fb2b20347abf293e382e9b1e74fcde013b3d0b879e13521d58cbc5c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d13/prop.png",
+      "bytes": 4629664,
+      "sha256": "2a9b5a06aca0c5a86b5b2fe51422019a06d21bc01bd7629cafe0e6971c123149",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d14/background.png",
+      "bytes": 1517611,
+      "sha256": "79bc9076e458ad28a36f87df573cd59f31a023f55ab4e42c8926bd442d23fbd1",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d14/portrait-main.png",
+      "bytes": 3161841,
+      "sha256": "5e54a520fa984ab02546e81035fe936efc3abff395f492ef7ec30d18ff7ca096",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d14/portrait-reaction.png",
+      "bytes": 2587914,
+      "sha256": "ebfbbfba53ef4352777443551524f7a07bdbce74c00e648b11622aef603c194b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d14/prop.png",
+      "bytes": 2761022,
+      "sha256": "508791cd5eb7372d5197c436a416fb7c980e36614f8fc904379575e4359571a0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d15/background.png",
+      "bytes": 1571909,
+      "sha256": "0812c012313e0965911da2a8c3963241363ce3ba283893a401a9f034d1039f53",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d15/portrait-main.png",
+      "bytes": 2867671,
+      "sha256": "c4af87035ad5857677008b5bc20cfe581622a929fb1b9c7d8c71bf698fb723f3",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d15/portrait-reaction.png",
+      "bytes": 998169,
+      "sha256": "1b3cee109a352ce7305c4b7c12dd954fb1e1e18eb7b5eca3fea15a617fb95349",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d15/prop.png",
+      "bytes": 1510867,
+      "sha256": "5f8d83422bf3b34e9617edfffa75fda925206bd2e96e7d0af3aed741fa913f3c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d16/background.png",
+      "bytes": 7056046,
+      "sha256": "86b2e98426bbb1abb0cfadc86df5902fba8540f1e29ac1bb64cabb6724b754aa",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d16/portrait-main.png",
+      "bytes": 1066306,
+      "sha256": "aad694146dfd471b42962d660341817c74f48c6ad8fc1f79f1e9d53da85ae1c7",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d16/portrait-reaction.png",
+      "bytes": 1090570,
+      "sha256": "fdee130f70dfdd092d9cde54d3dcbacd5b4f4753295cf88e15bcb9f8a410b8e1",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d16/prop.png",
+      "bytes": 1839185,
+      "sha256": "9768ec61359a5fbc4cc3f24f3b82cbd99176571ad4a5a957bfaade52c0045b27",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d17/background.png",
+      "bytes": 2022205,
+      "sha256": "258725eec83500a7f471242be125b490198c8aa5a64403c60ecfc933f3302659",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d17/portrait-main.png",
+      "bytes": 1094054,
+      "sha256": "a805d2fdf8021350d9dcb5f3c0f9ce63003fc46219cbbf65916ab09c2fd07700",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d17/portrait-reaction.png",
+      "bytes": 1063275,
+      "sha256": "2934dc49ca49a6d6dd6c59c7d395d5262e071336d42f33fa19ff599778d95cdc",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d17/prop.png",
+      "bytes": 5104401,
+      "sha256": "79d292bcbaef844df6277889dbb31721f5a45aaa2e88128e2ee9fdfff8a30388",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d18/background.png",
+      "bytes": 3022922,
+      "sha256": "8f85ab2f1033aba664f5e29826fa9943b11e9b56e5ad3f33cb6ec3c67d3a58b0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d18/portrait-main.png",
+      "bytes": 999637,
+      "sha256": "7879355a89cc864fd3d53d1200701a32a695dc2075748c17523409ec3aed3849",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d18/portrait-reaction.png",
+      "bytes": 2405746,
+      "sha256": "9bed5a8ede91faa7816ec8beccaefa8d9b0b91c66262a2a80c75018e2fda1750",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d18/prop.png",
+      "bytes": 1741601,
+      "sha256": "02fdb7b81b8f058e3b11fc17fd7cb43f7871dcc91480f59ae4108ad3a09dc357",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d19/background.png",
+      "bytes": 1428073,
+      "sha256": "8629e1c2b8ebe94051b4497a91257f8b6e9091d0784068ab864229acc2f39898",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d19/portrait-main.png",
+      "bytes": 1080358,
+      "sha256": "e74822a7a43f4bf3d4cf889f5283531c7e4ebdd51d15cf3f1f54ae7ef52b3c52",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d19/portrait-reaction.png",
+      "bytes": 2494716,
+      "sha256": "1b2efb29fe68226a85fd9d35730a2f10b6886fdb05f437f39d22198855947bd3",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d19/prop.png",
+      "bytes": 6094149,
+      "sha256": "c1995e66f93eaf1ad2a11f60397384a5fe022417733f50d68c0afd7aefc87370",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d20/background.png",
+      "bytes": 1721192,
+      "sha256": "c7f8d347afd655a1c02ed75295ef1232391be59dacab7ac9da3d37bb67169920",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d20/portrait-main.png",
+      "bytes": 2560007,
+      "sha256": "6cf8f0ac5ebff1d4e6b7d8f3dad41178c2c1c255613a96f0d4aba3fdabd193c6",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d20/portrait-reaction.png",
+      "bytes": 2181205,
+      "sha256": "8d657cc1fd952611c95a49bde1617822d58b37fb8aa87477522b026bd3bba22d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d20/prop.png",
+      "bytes": 1149900,
+      "sha256": "f1cb950a16b244eacc0c4b8eb49acd891bc2d638dcd1c3610d1c698f748ec0b6",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d21/background.png",
+      "bytes": 1424901,
+      "sha256": "a2dcca86981da2c35f6b815003780930412d348cbeab9e77db268de848396f97",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d21/portrait-main.png",
+      "bytes": 997798,
+      "sha256": "9e595912baf906e81c54feeb6239861e242a9aa39816741aad49fc77a739bddd",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d21/portrait-reaction.png",
+      "bytes": 2172975,
+      "sha256": "197cbc6ed46e38f0942f07f355960ba4935e8996e0a876c849c6cdf11507f8b2",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d21/prop.png",
+      "bytes": 3743644,
+      "sha256": "9bab9cf1c545d6555c2226f86fb541d30f0031a05146ef5639c0a3058e99e66d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d22/background.png",
+      "bytes": 1721529,
+      "sha256": "a1ea5aca49dd8de4d4c033ef698b2e210d39d9d37e95be2e4e0d16ae259745bb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d22/portrait-main.png",
+      "bytes": 3085666,
+      "sha256": "d2b81c700cd446125396bf3a86ca902804d1c906990be99ee1c6fb23598f1824",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d22/portrait-reaction.png",
+      "bytes": 1112382,
+      "sha256": "37974e848b1a21c42a3f7bc0e25c95805d29fd00158c970528d6786ab9101717",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d22/prop.png",
+      "bytes": 1034480,
+      "sha256": "b364a25da739f799e78937c33299c5d6be31981484f4018a5a4df3fc4a6d187b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d23/background.png",
+      "bytes": 6186418,
+      "sha256": "f045f924fbabc3532bd6a367d5cdacb1b895102e27eb6e553cb9ff434075ddd5",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d23/portrait-main.png",
+      "bytes": 1187307,
+      "sha256": "940ad03e6b8b346883ad761c765a86ae39f2210d1fbae65d100a02011faf735d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d23/portrait-reaction.png",
+      "bytes": 3012641,
+      "sha256": "1d007e4f570addb9faf1268e33efe52144697c498e4c86e9fcd9185f9c2b98d0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d23/prop.png",
+      "bytes": 3817705,
+      "sha256": "91eb50a67e91e3536c3d3960f1d1f97563c3c887004053b6af0e67daed74c1a7",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d24/background.png",
+      "bytes": 1691049,
+      "sha256": "1ee9f1bfefcb1fc09d45130005468baa50b6f782c7f7b062d82df8204b391a3e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d24/portrait-main.png",
+      "bytes": 2855133,
+      "sha256": "879dc3cac9367fef992ea69650bf4dd6668204b497a2b9aeed6cc727bcbff8be",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d24/portrait-reaction.png",
+      "bytes": 1058005,
+      "sha256": "cd060a60db30f56a3f271949c857607546d9db0095d022d181819e5618eda233",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d24/prop.png",
+      "bytes": 1595565,
+      "sha256": "59a4177ddfd603fe6879d067e960a5c15fa461d8dbd2c0ae78705496be88d522",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d25/background.png",
+      "bytes": 2861266,
+      "sha256": "6c3f220cd9f77b8375a79a11209b96afd8e746ded3c9d22f7a027f31d09b057d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d25/portrait-main.png",
+      "bytes": 1087997,
+      "sha256": "4eef904e4bfa1f896e877a4da25b7accfeda8cf8dc7cb099372893208945589d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d25/portrait-reaction.png",
+      "bytes": 1072175,
+      "sha256": "60b7004b12d625b3f5f117fc59d68bf8a8574cffe59976c1c569261b45c31fcf",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d25/prop.png",
+      "bytes": 1917240,
+      "sha256": "7eaf3e6bd5bda74b7a592ef2c0c76dde641e620b112ef48c50310164d56637b7",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d26/background.png",
+      "bytes": 1538898,
+      "sha256": "01a136fa82c107e56d89273190a284737e81b8300247afef3dc28abf44884da0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d26/portrait-main.png",
+      "bytes": 3142943,
+      "sha256": "ad552608e87fcf775c1abff55d9829472f3c622ef7bffc6efb180c1594ce32b1",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d26/portrait-reaction.png",
+      "bytes": 644298,
+      "sha256": "3e9c1ccbb9f6a1d993cad2dd9e555dd85e9c07bcf067fb3cd6151a40e4d1a84f",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d26/prop.png",
+      "bytes": 1431798,
+      "sha256": "675c256c3186e2174a3d227cd90ee9cbda791445fbd4ffe1c363dd7a6576ece4",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d27/background.png",
+      "bytes": 1744612,
+      "sha256": "bffc880398ee63e8c4b3501e4402f78f29921d50c37aa27eb4218021517f9ecc",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d27/portrait-main.png",
+      "bytes": 994914,
+      "sha256": "70083d0f9bf15e31018c90b5a9465f80a283fc683bc157c82308c1d8691fc271",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d27/portrait-reaction.png",
+      "bytes": 1989320,
+      "sha256": "1a0ed079cb0150887d08c2b6a678f961fe373c4c3791e2a1686be95f93261c1c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d27/prop.png",
+      "bytes": 4323462,
+      "sha256": "0b134e7d006dd1538bdbff3c53386e49298f3aad6cf2a6b3c58ed691f299100b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d28/background.png",
+      "bytes": 1847185,
+      "sha256": "c216b7731e3db183061e4ba1a26f0b0a1cfb8491c602812354916d5ca2db5553",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d28/portrait-main.png",
+      "bytes": 1142881,
+      "sha256": "f97bff5aa73c83ef334897446c0a2959fde32b796c5fe4da212a5c8508b9e9f8",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d28/portrait-reaction.png",
+      "bytes": 1132325,
+      "sha256": "14c2f405009dc853fd5008f39a79243d2b7a748204194e875904f50dcf860676",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d28/prop.png",
+      "bytes": 4833362,
+      "sha256": "1626cc6a890c2dd5e3f6191e54c5bf6f56341a3e4f10a57219f76d0a6800a579",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d29/background.png",
+      "bytes": 3990795,
+      "sha256": "ea2ea4d08fb5ba2c78922c6a9d93318faa4910578bc666aa5dc7dde9b357f60c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d29/portrait-main.png",
+      "bytes": 1085577,
+      "sha256": "282eb1dc2d2cf0828fb0fae09ce674bfcbdbaf1f319f0a160956254ac61089ea",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d29/portrait-reaction.png",
+      "bytes": 1652628,
+      "sha256": "79b4afe881d5a0b6669a72791dedf5be433557b101beb25c955d2ddabe7c86f2",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d29/prop.png",
+      "bytes": 1740628,
+      "sha256": "9ce48e2ae07fdeddb1ca49128daed1d6d20374b594de1772af1df0ca2f7ec8eb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d30/background.png",
+      "bytes": 2057841,
+      "sha256": "4297e0a190ccc024bc196ea5370f3b5e5400a90f68cae596c74ec68b3550088a",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d30/portrait-main.png",
+      "bytes": 1012791,
+      "sha256": "abe1d93f123f381d42bda01ec01854e9e42a638cb34808edaa9b25f4ae01eebf",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d30/portrait-reaction.png",
+      "bytes": 1023362,
+      "sha256": "4f246252e295f2a738030ce5f370c8221c4de6c2499cda8480a0068e2c9f7d21",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d30/prop.png",
+      "bytes": 2363067,
+      "sha256": "37f97de4fed947c2163d11fc614f37499147886126d8c326c35d5b2c5312f5ba",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d31/background.png",
+      "bytes": 1359363,
+      "sha256": "92495005f7d95b433e661b0335d42f8f662a5d11ef43f7860ef1e2224f2e0b57",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d31/portrait-main.png",
+      "bytes": 2548409,
+      "sha256": "98f668f0baf10d54f7c1882b1df7bc605cb4ae995393de00b9f4f436824a9c03",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d31/portrait-reaction.png",
+      "bytes": 973660,
+      "sha256": "fb9f3986b0a1476cdb365ec311acced691551e14e0ae8123e9f453b309373123",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d31/prop.png",
+      "bytes": 4471661,
+      "sha256": "1ba949372f6707a374784257358a6a4a9ce20bbf378c95fba185f43559d85296",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d32/background.png",
+      "bytes": 1550982,
+      "sha256": "b866f21e2ff84ebad367a21c31cac38b1386e3bfda45d4df8afe6196bdca3c68",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d32/portrait-main.png",
+      "bytes": 1121171,
+      "sha256": "909193a7bb01c93ec8e9069659ee28e90c27506bc94ccb75a7c2ea0ed8802b10",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d32/portrait-reaction.png",
+      "bytes": 2901109,
+      "sha256": "8aed1851c4b8f8e6b8167a4c43e8636adae4f123cda50d488628de02b11eed45",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d32/prop.png",
+      "bytes": 1362726,
+      "sha256": "910666967742cbb5400a4a47776f4271592df86f3b1bf91d7a91942aee9d5b15",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d33/background.png",
+      "bytes": 3285912,
+      "sha256": "aef36ec8a71437eb74a8ed3c5eac6821a3fda460b98cbf33b320e4a1bd995ba0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d33/portrait-main.png",
+      "bytes": 2450397,
+      "sha256": "1d5f5f0442add1336bb29e3b705ffc85c349f11988425e9711304b2df8a342f4",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d33/portrait-reaction.png",
+      "bytes": 1080755,
+      "sha256": "ce3bd89a1f6ce933c2a1a449e85e6d40528eb5843721e53e589fe32cc60ccae8",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d33/prop.png",
+      "bytes": 3150436,
+      "sha256": "ba55860e8c49169f5a4e41bea82554acb4b36cd7d614b39f6093ca4ee4e3ec6f",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d34/background.png",
+      "bytes": 1573506,
+      "sha256": "4a0b01c1a59de473e2d430ffe723ca31cb78df8ac5c2e174e0bbce1734b6f639",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d34/portrait-main.png",
+      "bytes": 1100994,
+      "sha256": "a65bf9a82679914e90956fd10ed8520b55cdd234e24d61a9c0144602a43a0ce5",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d34/portrait-reaction.png",
+      "bytes": 1049661,
+      "sha256": "1fc91ad523c58cfe905551365a366943e3dcffadce580d3bb061fdda38d9c425",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d34/prop.png",
+      "bytes": 6366318,
+      "sha256": "c284cd906b02bc65266cf586700606036b9150f555f135021933250af96dc68c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d35/background.png",
+      "bytes": 1813524,
+      "sha256": "12b3344e240f25adea11555ac7100d45e9a6060472a7fb8bd0e5e9a194a2771d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d35/portrait-main.png",
+      "bytes": 1456343,
+      "sha256": "27e4a1921d93b2412103c40af63b6ff2bd3aaa022d0bc321506fa6286cdbcfac",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d35/portrait-reaction.png",
+      "bytes": 2710595,
+      "sha256": "1b318ac4fb96261cac161dc951451579a0c9075b6379172c8f5e3cbea7eba8db",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d35/prop.png",
+      "bytes": 1758569,
+      "sha256": "5a7f1d6e33ea895752a89f7a0e76e66e4267aa550541215b996d1660255e7aef",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d36/background.png",
+      "bytes": 1404919,
+      "sha256": "b18da4602a25a0eaf3234c280ba680d23e2cb1e0cd10591130e2f7d9bd7be645",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d36/portrait-main.png",
+      "bytes": 1260942,
+      "sha256": "6a960e0ed8751cbe704c6d70a4870647f3b43774b12b1c76d78a29eb3920abb3",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d36/portrait-reaction.png",
+      "bytes": 2963655,
+      "sha256": "8b1281a7bb046ab3d2a37af06dcdc02ff3bf09279d544f2f98bfd46cdb1e3797",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d36/prop.png",
+      "bytes": 4703441,
+      "sha256": "b095465a668a1c3e19116d42a8e1c5a42f8b04f72ca4e68cc64e0d97ca897d46",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d37/background.png",
+      "bytes": 1485163,
+      "sha256": "7c8bdb5b571c2d445653e329ed149a65c4bc87422c7bafd0edb5e34183a9aedd",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d37/portrait-main.png",
+      "bytes": 1280880,
+      "sha256": "c632f7dd9d0d6a665fd30cecbb3357aad4c94459e498d73a3771586e010a8a25",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d37/portrait-reaction.png",
+      "bytes": 1240332,
+      "sha256": "9cf60a6192e6d32f19c8e591629fbc733008be6925f91bf90a31a19200155de6",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d37/prop.png",
+      "bytes": 1376308,
+      "sha256": "5d912dad462142efe05df70b4c64e394cfe5ce6ebf2cc86e50fd7604418a7e29",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d38/background.png",
+      "bytes": 1410510,
+      "sha256": "05aa68572858ba9e1412cd4d69557620481b15d6fc19ae18d8c2a114ec2afcf6",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d38/portrait-main.png",
+      "bytes": 2751832,
+      "sha256": "cfb5f3b43b89b8b3a2ce91030b5271993f8f55e6a57a1c805542cc9bb9a6b1e5",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d38/portrait-reaction.png",
+      "bytes": 1086784,
+      "sha256": "6509fe4f4a37a58fdbdd41a8d8f97626f08b4ca76e0f545ee523ed7b3c501745",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d38/prop.png",
+      "bytes": 3226035,
+      "sha256": "ee7dc86e00c2fe92e828d47e91bbecea912853f7b8ea1f710e95312afa382c82",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d39/background.png",
+      "bytes": 4178293,
+      "sha256": "e10d17f450912f05bc3ce0b188757e63ab0858161d70476ccb0d348337ae672d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d39/portrait-main.png",
+      "bytes": 1138254,
+      "sha256": "12286433f0123f1285eec433daeea6df53abdb31811855a64d211daea925d4cf",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d39/portrait-reaction.png",
+      "bytes": 1019208,
+      "sha256": "ab0de57b266580d07433ac9b6020af595a5329d25e3ca2f1b4bc3d282c6c763c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d39/prop.png",
+      "bytes": 1313247,
+      "sha256": "cbf00ebd470f98557637a9b280c4800f0aab4f0535d1a3cf026141455223caf0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d40/background.png",
+      "bytes": 1788485,
+      "sha256": "15c7060d414ba2e272a394edd8e9623b3fd474a8063167e64a09618e1bd068cb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d40/portrait-main.png",
+      "bytes": 3179108,
+      "sha256": "8d5df9024f121825ec9334a124156cfad23a436686c2cc17e082679d98cf4bca",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d40/portrait-reaction.png",
+      "bytes": 2930463,
+      "sha256": "e3ecb121633bb38066314c49349ccac57b296cade8f7b83da830fe304fe00c6b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d40/prop.png",
+      "bytes": 1293477,
+      "sha256": "f887dde87ff5f37ed79baa0d855167710f0d04435305e8d3b0e748e6822ecc0d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d41/background.png",
+      "bytes": 1956754,
+      "sha256": "6980f637ef00be4b446375b9ed6fa7f79979e13a9006439d584577e4bbf9cd32",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d41/portrait-main.png",
+      "bytes": 1106333,
+      "sha256": "cba5b29ce84446c70c0436a26a7bf83a0d4923adf45346ce47083e8804ad8dd7",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d41/portrait-reaction.png",
+      "bytes": 1035472,
+      "sha256": "d212cd4c706b205fe801102ce37f6b87f0699c29b61ba7b950e125730ebe6f73",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d41/prop.png",
+      "bytes": 1328824,
+      "sha256": "0b6a47cf92811c406ddab05cfe4ff4c9daaa8afabf704233679e6cd09166f028",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d42/background.png",
+      "bytes": 2236256,
+      "sha256": "39b2433050306df62a8d6ab0cb0c8087d9bf214994c1a67531c494d4e97c18c9",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d42/portrait-main.png",
+      "bytes": 4931938,
+      "sha256": "2a6d5cbf1c9978b3a2682e5d91a870b6e125d9865d0f19f0db86126fef8a2f27",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d42/portrait-reaction.png",
+      "bytes": 3936354,
+      "sha256": "024d4ebe07658a749843f5a7dfe77667c4f782a6b33b48b6fa5a495d656f390d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d42/prop.png",
+      "bytes": 2281223,
+      "sha256": "9adb22d9c99b0882d6c8f02d3375795e761b703216c538aa34b7ac3bb83725cb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d43/background.png",
+      "bytes": 7630687,
+      "sha256": "d5770797e0e60b2b17128d751ba4a2dc96b822a3d36220ba042c5c2dc2012204",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d43/portrait-main.png",
+      "bytes": 3213208,
+      "sha256": "0c6363260b517329807c072753da835f2c6f7f60a1f891349c0c8d26e2f69a97",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d43/portrait-reaction.png",
+      "bytes": 1086875,
+      "sha256": "99f831b977215d0b886467375134d8b67e08c9d2cae06f8a341f5324a2530ebe",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d43/prop.png",
+      "bytes": 6318592,
+      "sha256": "f61f50279251764ed658619e1660bd6dae4f2be0391421006ecadd98bfe49527",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d44/background.png",
+      "bytes": 1666532,
+      "sha256": "0dc9e49385dcf79f3f0d166e743b70f3d68f3f393eadf1bb48785cc2f2b0c6d0",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d44/portrait-main.png",
+      "bytes": 1053130,
+      "sha256": "f4da0708d20d0cd5f4e648d41d7018e48ad6fe7188dfd61b3785ec27c230b962",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d44/portrait-reaction.png",
+      "bytes": 1125387,
+      "sha256": "27cec797d893e8e046efff07b8c0858cbaac1fa2cc1a31ca7ab27743dca31025",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d44/prop.png",
+      "bytes": 7353181,
+      "sha256": "2d39fcc8631e7da75c6fd8502e4d19862f1a4118cb622568b8873638a3e7cc67",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d45/background.png",
+      "bytes": 1743118,
+      "sha256": "dcb47c9f7e0d0170922d561bb5abba4f07b09f631a8bdfcccc243e21d427e6bd",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d45/portrait-main.png",
+      "bytes": 2911499,
+      "sha256": "b90c468eaa6f9626803849e643f4dcbdc1fdbffab9a1921edfa2466755c8358e",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d45/portrait-reaction.png",
+      "bytes": 1095355,
+      "sha256": "b9256e3410445982aa126df07e1ec254e8e48d403767a46480a0e5be817b8cdf",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d45/prop.png",
+      "bytes": 1373583,
+      "sha256": "5f77d8792806170c17c09326d2da40f8fef7b8d210975927e631c15bc0ce305b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d46/background.png",
+      "bytes": 1697472,
+      "sha256": "a37c04418f7cd187fece68b539003cfed009149ec3165b8dab905e2e3f9ac239",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d46/portrait-main.png",
+      "bytes": 1199343,
+      "sha256": "57fcd8787715c2c04b2bf332ddab5ae391340df674394099dc270eeae8666c6a",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d46/portrait-reaction.png",
+      "bytes": 1112590,
+      "sha256": "c83ca214a8d8b72434802cf3ed6650fa2f5436e264373f4b99fc858ceb6c0365",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d46/prop.png",
+      "bytes": 1448338,
+      "sha256": "09be94e7052ca12987c83e19ad1d8d20b8a1474299fc1d372432c9d5687af859",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d47/background.png",
+      "bytes": 1945426,
+      "sha256": "1ef670f32f43be66d2ae56b56e12c939be01861ab3bcac4a5cab76dc8e1e3080",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d47/portrait-main.png",
+      "bytes": 1210203,
+      "sha256": "4af663fe90e8d8b311999c9db245205357ec548dba26ae47d2f73227e4634752",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d47/portrait-reaction.png",
+      "bytes": 1183759,
+      "sha256": "20e80d8dc9057d0863a653ca6c11ceec3fa2df27631226f6650d2b14d03c27ea",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d47/prop.png",
+      "bytes": 655315,
+      "sha256": "81c8c8fc9613901e51c59551cfff24208c172baf780e74e09e3a7a5a8b808469",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d48/background.png",
+      "bytes": 1826381,
+      "sha256": "cc4df4eb60230791aebdf3fbea9d4d575fd5f92155820a3fe549c95d3928e126",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d48/portrait-main.png",
+      "bytes": 1152556,
+      "sha256": "de78ae9d6f3738c3097962817d7c3ce7783e8e3e60eb74315dc375551beb0591",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d48/portrait-reaction.png",
+      "bytes": 1164373,
+      "sha256": "a8f1a1daec758293f2600334570b5a0d2ee001fafc3266f529028c5d58ac2dda",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d48/prop.png",
+      "bytes": 1822371,
+      "sha256": "9c597044fb645cc82ab6602c0b02ed0e93a4807ef01809a7f143646090ec3698",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d49/background.png",
+      "bytes": 1717921,
+      "sha256": "e4db82c826c32f05acae4d48472e537ffa5f5d844d53ae75934b755e727fca22",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d49/portrait-reaction.png",
+      "bytes": 1290234,
+      "sha256": "82579587809ce9502597345d47aad756ccb91bc24ede56a7589e967e41940170",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d49/prop.png",
+      "bytes": 2866263,
+      "sha256": "a89745efa3d5e808510fd79ff879bee418e370051620160a129a940f3de167da",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d50/background.png",
+      "bytes": 1341878,
+      "sha256": "44cd4f467abfabb508d5af7f41b5ec7076fecf41f79e91b8cf8c130f56d1250d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d50/portrait-main.png",
+      "bytes": 1347383,
+      "sha256": "81c107c34aa74850edc08601202800a02a49353c7a581338ab1b81f4190fc77b",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d50/portrait-reaction.png",
+      "bytes": 1226095,
+      "sha256": "1d5379eb10793cc44d70d74461bf267527cb63e45223d7110262345ffb14970c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/d50/prop.png",
+      "bytes": 1218783,
+      "sha256": "32d5906d0e435a7963cf8d51736ac49bf3d7b9f76030d3bc3c2931860bb0961f",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/decision-art.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/derived/eighth-floor-blackout.png",
+      "bytes": 1325926,
+      "sha256": "953113c3df019cf12efe45ef539249504b37cf4e32b0334fea05874346a79570",
+      "reasons": [
+        "literal in src/decision-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/prologue/01.png",
+      "bytes": 1821516,
+      "sha256": "e6f07c39661586356b6ea8293288dab4eb95c5936a1ebbd3ebc1822a39ecd9ff",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/prologue/02.png",
+      "bytes": 2018602,
+      "sha256": "905099005661eca48eb164f8f4964325b067eb7c9acba6e367cc7ada5e3fd86c",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/prologue/03.png",
+      "bytes": 2149963,
+      "sha256": "0368652af128c4b1c3033b09a800c846e20c69d440b7d335301324648b263582",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/prologue/04.png",
+      "bytes": 6636588,
+      "sha256": "76f62dc48ed1c232b019194a8131695d16859cf3abba23d884e1f6e50f2464eb",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/prologue/05.png",
+      "bytes": 1675840,
+      "sha256": "24fdcee43b755822d9595a85753782895a95a6e74c66ed1ca827f7f048d1278d",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/ui/inventory.png",
+      "bytes": 1039221,
+      "sha256": "6aa364d27f1dc2df9082f2d1bf45947cdc6ec30f27af576d11eb8056835346e3",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/ui/map.png",
+      "bytes": 1236050,
+      "sha256": "a28cbfedb18dfcb0fe5856e847b2a54034ed6dec6c872430f37820c52d2dadc1",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/ui/relations.png",
+      "bytes": 1055988,
+      "sha256": "06c2591f8993dcdf7eb3c1f8bbd348bf55a088073c64aba5267d81820e6443ee",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v6/retro-anime/ui/research.png",
+      "bytes": 726934,
+      "sha256": "336eb78e2ff76a5a3af09af4f4aa2bc29cbf55657fd06f81fdb988a59eb471a8",
+      "reasons": [
+        "literal in src/retro-assets.js",
+        "resolved export in src/retro-assets.js"
+      ]
+    },
+    {
+      "path": "public/assets/v7/bad-ends/be01.png",
+      "bytes": 1810719,
+      "sha256": "f344455e3740fcacceb6b1e741b9404c290df9d38e877a24da4bb19eb54f4875",
+      "reasons": [
+        "literal in src/bad-end-art.js",
+        "resolved export in src/bad-end-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v7/bad-ends/be02.png",
+      "bytes": 1963362,
+      "sha256": "36df976533508a7d1718e07cf809a7ef2b5d5c77ab22be956ecd9e300360df60",
+      "reasons": [
+        "literal in src/bad-end-art.js",
+        "resolved export in src/bad-end-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v7/bad-ends/be05.png",
+      "bytes": 1682905,
+      "sha256": "fe7127a5bcfdd4e449098e01b858c69613e8a61473f59c6cd5024d72dbe86d1f",
+      "reasons": [
+        "literal in src/bad-end-art.js",
+        "resolved export in src/bad-end-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v7/bad-ends/be07.png",
+      "bytes": 2008220,
+      "sha256": "74b4680d5f29627d9c5741b448fcb33298e6e7dab62bac92be2c55a29217cfd9",
+      "reasons": [
+        "literal in src/bad-end-art.js",
+        "resolved export in src/bad-end-art.js"
+      ]
+    },
+    {
+      "path": "public/assets/v7/bad-ends/be08.png",
+      "bytes": 2016634,
+      "sha256": "f4f41c88b31599db44cf088b46024ae3a1c08b8344d8716ac0079a1d0e53934a",
+      "reasons": [
+        "literal in src/bad-end-art.js",
+        "resolved export in src/bad-end-art.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/collapse.mp3",
+      "bytes": 1479884,
+      "sha256": "9687fb5aaa41d8a4a38570ad4a043bb48f2bdb89a6f4465a37985cb913220f4c",
+      "reasons": [
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/collapse.ogg",
+      "bytes": 1032403,
+      "sha256": "22260d1afb7aac999aaddc3eb14772ee00309344929b92c549d903de06fb20c5",
+      "reasons": [
+        "literal in src/audio-score.js",
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/dawn.mp3",
+      "bytes": 1190156,
+      "sha256": "768ecd1bb9e8ee4b100ef76ac7b87c9e48023a6ce3b7100362432a34d02e7a85",
+      "reasons": [
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/dawn.ogg",
+      "bytes": 878408,
+      "sha256": "eb3c4a788eb03266aacbc7452be51a701d022f9b2685875656d30bf6eb2731c1",
+      "reasons": [
+        "literal in src/audio-score.js",
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/pursuit.mp3",
+      "bytes": 819932,
+      "sha256": "8e7494bfabf2db9c8d778384c078a3d09e8aa1369a9ca1d7b2feda7390c7ccaa",
+      "reasons": [
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/pursuit.ogg",
+      "bytes": 622482,
+      "sha256": "01614b1ecdea767c2cb42eca5971ce30b71b8ec4cf904ceb8acdc5a29f357445",
+      "reasons": [
+        "literal in src/audio-score.js",
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/rewind.mp3",
+      "bytes": 1287308,
+      "sha256": "8080218da9b29eed5ed5af9fedd7288d413a63c4756e0d5ba0a11d8df41ca277",
+      "reasons": [
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/rewind.ogg",
+      "bytes": 909781,
+      "sha256": "990be68dc795a9309d7997a0b35d92b1bf9abb4c621d8e9b8878432334e7e254",
+      "reasons": [
+        "literal in src/audio-score.js",
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/watch.mp3",
+      "bytes": 1117484,
+      "sha256": "ac998d888668218a65117cda18a38cd7c6fc3865757b10c8a25046db15b48a78",
+      "reasons": [
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/audio/orchestral/watch.ogg",
+      "bytes": 810021,
+      "sha256": "598ac128498953ea404bbb618f9f42f75e6cf773b31ec14b1874cf158b8419f0",
+      "reasons": [
+        "literal in src/audio-score.js",
+        "resolved export in src/audio-score.js"
+      ]
+    },
+    {
+      "path": "public/vendor/lucide.min.js",
+      "bytes": 357796,
+      "sha256": "3411692820cb8d47543f69496aa25fd603a358f4498046f41c508a5a3342210e",
+      "reasons": [
+        "main entry"
+      ]
+    },
+    {
+      "path": "retro.css",
+      "bytes": 19279,
+      "sha256": "e7c8c119d80d8c81761e78481833c2f13bcd66fa3232fe7fde040827e8f3f1cf",
+      "reasons": [
+        "main entry"
+      ]
+    },
+    {
+      "path": "src/audio-score.js",
+      "bytes": 2180,
+      "sha256": "8212e1410e9310e1ab38349914f9972372c2e2f14a515b3bfaf884f655bbab44",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/audio.js",
+      "bytes": 6817,
+      "sha256": "4aea062bf1b6d0b2a69fcfaf9b9c1498cdd1232cf3d9f24c5c233a8c7612ace3",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/bad-end-art.js",
+      "bytes": 379,
+      "sha256": "d2fc68cf8671876ea10fafd001d45295968e1abdfe2fb706a142adbc80ec7ebd",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/branches.js",
+      "bytes": 47710,
+      "sha256": "ee0b3d9af4637c52d46683c45d15e444e423930d30de7ca6976c12714bb3d793",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/character-art.js",
+      "bytes": 3329,
+      "sha256": "ed5d394fac0fc3442abbaabd0f02222e00e9135ebe6f9e450c0513a9fae9885f",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/content.js",
+      "bytes": 141028,
+      "sha256": "750b2c4de50225cb34caa2c828e86b386962a68aceedc8b663e524b015ea4d08",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/continuation-choices.js",
+      "bytes": 21008,
+      "sha256": "3ced050df18cb42ac2a3e43fcc9ed622388feffd3a39f7c3b3a78e0128fc770b",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/danger.js",
+      "bytes": 17394,
+      "sha256": "b598bdd1f1253a0037de4c7482d96b99b28928d083aa5e9d4a2fec2e03e845f2",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/decision-art.js",
+      "bytes": 9175,
+      "sha256": "166e8c95a337237841a881eb7c65f0d790ccceec5d4b73af850f26fb871fd3f5",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/game.js",
+      "bytes": 64152,
+      "sha256": "603975a7810c1a2801fa72e52b062d6475a1ab44ca8091b8ebc18e4ce9184561",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/lane-copy-early.js",
+      "bytes": 45549,
+      "sha256": "8c9c2c88310845b4183307932dfd4d5b558cf0bfc817840490841470e3011f26",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/lane-copy-late.js",
+      "bytes": 45367,
+      "sha256": "4db488475d7b7347ea8f11087f6d5b3ad70c8d10f7cd768f49ec29f18469f358",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/reader-reveal.js",
+      "bytes": 1631,
+      "sha256": "56104d7e5d4f27f45d0a79b6486b597d7feaa07fe8ed1c2146e75fef34ce190c",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/reading.js",
+      "bytes": 1188,
+      "sha256": "4380cc7c63f8b0bb1ec5523037dd0f6180ed754d274e17e5b4ced53a59ccb6db",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "src/retro-assets.js",
+      "bytes": 16267,
+      "sha256": "1ca1eff1a24fb39cfa8659909292b6555b9b0a13c3d5f01d3ffa7f214f8dd839",
+      "reasons": [
+        "main module graph"
+      ]
+    },
+    {
+      "path": "style.css",
+      "bytes": 68163,
+      "sha256": "acf8154dbe36f2c0073211e34afc9079c2fbfe8bc1aa8e61ccba74d7fc73bfb2",
+      "reasons": [
+        "main entry"
+      ]
+    }
+  ]
+}

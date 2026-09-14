@@ -1,0 +1,10 @@
+#redleaf-liukan-pet { position: fixed; right: 22px; bottom: 88px; z-index: 2147483647; width: 56px; height: 56px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 8px 28px #1f171433; cursor: grab; display: grid; place-items: center; font-size: 30px; transition: transform .16s ease, box-shadow .16s ease; }
+#redleaf-liukan-pet:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 32px #1f171455; }
+#redleaf-liukan-pet:active { cursor: grabbing; transform: scale(.96); }
+#redleaf-liukan-pet[data-drop="true"] { transform: scale(1.14); box-shadow: 0 0 0 6px #6aa8ff55, 0 12px 34px #1764c766; }
+.redleaf-liukan-feed { position: absolute; right: 12px; top: 12px; z-index: 3; border: 1px solid #d8c4b7; border-radius: 999px; background: #fffaf7; color: #8d4d35; padding: 6px 10px; font: 600 12px/1.2 system-ui,sans-serif; cursor: pointer; box-shadow: 0 2px 8px #1f17141f; }
+.redleaf-liukan-feed[data-done="true"] { color: #287052; border-color: #9ac7b0; }
+[data-redleaf-drag="true"] { cursor: grab !important; }
+[data-redleaf-drag="true"]:active { cursor: grabbing !important; }
+@media (hover:hover) and (pointer:fine) { .redleaf-liukan-feed { display:none; } }
+@media (hover:none), (pointer:coarse) { #redleaf-liukan-pet { right:14px; bottom:72px; width:52px; height:52px; } }

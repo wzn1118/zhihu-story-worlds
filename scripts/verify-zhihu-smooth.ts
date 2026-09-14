@@ -1,0 +1,118 @@
+import { chromium } from 'playwright';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import assert from 'node:assert/strict';
+
+const output = resolve('output/playwright/zhihu-smooth');
+await mkdir(output, { recursive: true });
+const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
+const context = await browser.newContext({ baseURL: 'http://127.0.0.1:4178', viewport: { width: 1440, height: 960 }, deviceScaleFactor: 2 });
+const page = await context.newPage(); page.setDefaultTimeout(15000);
+const errors: string[] = [], frames: any[] = [], timings: any[] = [];
+let step = 'open workshop';
+page.on('pageerror', error => errors.push(error.message));
+page.on('response', async response => {
+  if (/\/api\/zhihu-browser\/(open|frame|action)$/.test(response.url())) {
+    const frame = await response.json().catch(() => null);
+    if (frame) frames.push({ path: new URL(response.url()).pathname, status: response.status(), frame });
+  }
+});
+try {
+  await page.goto('http://127.0.0.1:4178/', { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await page.getByRole('button', { name: /新故事工作台/ }).waitFor();
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: /新故事工作台/ }).click();
+  const start = performance.now();
+  await page.getByRole('button', { name: /去知乎选故事/ }).click();
+  const iframe = page.frameLocator('.zhw-live-page iframe');
+  const handle = iframe.locator('[data-redleaf-feed]').first();
+  step = 'real answer appears';
+  await handle.waitFor({ timeout: 30000 });
+  timings.push({ step, milliseconds: Math.round(performance.now() - start) });
+  await page.screenshot({ path: resolve(output, 'desktop.png'), scale: 'css' });
+  step = 'expand original answer';
+  const expand = iframe.locator('[data-redleaf-post]').first().locator('.ContentItem-more');
+  if (await expand.count()) {
+    const expanded = page.waitForResponse(row => /\/api\/zhihu-browser\/action$/.test(row.url()));
+    await expand.first().click();
+    assert.equal((await expanded).status(), 200);
+    await iframe.locator('[data-redleaf-post]').first().locator('.ContentItem-more').waitFor({ state: 'detached' });
+    await handle.waitFor();
+  }
+  const post = iframe.locator('[data-redleaf-post]').first();
+  const postId = await post.getAttribute('data-redleaf-post');
+  const sourceText = await post.locator('.RichContent-inner .RichText,.RichContent-inner .ztext,.Post-RichText,.RichText.ztext').first().innerText();
+  const latest = frames.at(-1)?.frame;
+  step = 'two passive frame readers';
+  const reads = await Promise.all([page.request.get('/api/zhihu-browser/frame'), page.request.get('/api/zhihu-browser/frame')]);
+  const values = await Promise.all(reads.map(response => response.json()));
+  assert.equal(values[0].document.id, latest.document.id); assert.equal(values[1].document.id, latest.document.id);
+  step = 'pointer drag to pet';
+  await handle.scrollIntoViewIfNeeded();
+  const source = (await handle.boundingBox())!, target = (await page.locator('.liukan-bubble').boundingBox())!;
+  const response = page.waitForResponse(row => /\/api\/liukan\/inbox$/.test(row.url()) && row.request().method() === 'POST');
+  const feedStart = performance.now();
+  await page.mouse.move(source.x + source.width / 2, source.y + source.height / 2); await page.mouse.down();
+  await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2, { steps: 20 });
+  await page.screenshot({ path: resolve(output, 'desktop-dragging.png'), scale: 'css' });
+  await page.mouse.up();
+  const savedResponse = await response; assert.equal(savedResponse.status(), 201);
+  const saved = await savedResponse.json();
+  timings.push({ step, milliseconds: Math.round(performance.now() - feedStart) });
+  const savedPost = saved.post ?? saved;
+  assert.equal(savedPost.candidate.excerpt, sourceText);
+  await page.locator('.liukan-post-kicker').waitFor();
+  await page.screenshot({ path: resolve(output, 'desktop-fed.png'), scale: 'css' });
+  await page.getByRole('button', { name: '收起刘看山', exact: true }).click();
+  step = 'drag selected native text';
+  const paragraph = post.locator('.RichText p').first();
+  await paragraph.scrollIntoViewIfNeeded();
+  await paragraph.click({ clickCount: 3 });
+  const selection = await paragraph.evaluate(() => {
+    const selected = window.getSelection()!;
+    const box = selected.getRangeAt(0).getClientRects()[0];
+    return { text: selected.toString(), x: box.x, y: box.y, width: box.width, height: box.height };
+  });
+  assert.ok(selection.text.length > 0);
+  await page.screenshot({ path: resolve(output, 'desktop-selection.png'), scale: 'css' });
+  const iframeBox = (await page.locator('.zhw-live-page iframe').boundingBox())!;
+  const nativeDrop = page.waitForResponse(row => /\/api\/liukan\/inbox$/.test(row.url()) && row.request().method() === 'POST').then(value => ({ value }), error => ({ error }));
+  await page.mouse.move(iframeBox.x + selection.x + Math.min(selection.width / 2, 30), iframeBox.y + selection.y + selection.height / 2);
+  await page.mouse.down(); await page.waitForTimeout(120);
+  await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2, { steps: 30 }); await page.mouse.up();
+  const nativeResult = await nativeDrop;
+  if ('error' in nativeResult) throw nativeResult.error;
+  assert.equal(nativeResult.value.status(), 201);
+  await page.getByRole('button', { name: '收起刘看山', exact: true }).click();
+  step = 'cancel drag then click';
+  await handle.scrollIntoViewIfNeeded();
+  const cancel = (await handle.boundingBox())!;
+  await page.mouse.move(cancel.x + 15, cancel.y + 15); await page.mouse.down();
+  await page.mouse.move(cancel.x - 80, cancel.y + 15, { steps: 10 }); await page.mouse.up();
+  await page.waitForTimeout(280);
+  const clicked = page.waitForResponse(row => /\/api\/liukan\/inbox$/.test(row.url()) && row.request().method() === 'POST');
+  await handle.click(); assert.equal((await clicked).status(), 201);
+  await page.getByRole('button', { name: '收起刘看山', exact: true }).click();
+  step = 'local scroll';
+  const requestsBeforeScroll = frames.length;
+  const scrollBefore = await iframe.locator('body').evaluate(() => window.scrollY);
+  await page.mouse.move(600, 500); await page.mouse.wheel(0, 300); await page.waitForTimeout(180);
+  const scrollAfter = await iframe.locator('body').evaluate(() => window.scrollY);
+  assert.ok(scrollAfter > scrollBefore); assert.equal(frames.length, requestsBeforeScroll);
+  step = 'workshop return and reopen';
+  await page.getByRole('button', { name: '回到改编工作台', exact: true }).click();
+  await page.getByRole('button', { name: /去知乎选故事/ }).click();
+  await handle.waitFor();
+  await page.waitForFunction(expected => document.querySelector<HTMLIFrameElement>('.zhw-live-page iframe')?.contentWindow?.scrollY === expected, scrollAfter, { timeout: 3000 });
+  assert.equal(await iframe.locator('body').evaluate(() => window.scrollY), scrollAfter);
+  await page.screenshot({ path: resolve(output, 'desktop-reopened.png'), scale: 'css' });
+  assert.equal(context.pages().length, 1); assert.deepEqual(errors, []);
+  await writeFile(resolve(output, 'verification.json'), JSON.stringify({ status: 'passed', timings, postId, title: savedPost.candidate.title, author: savedPost.candidate.author, characters: sourceText.length, sourceUrl: savedPost.candidate.origin.sourceUrl, exactSource: true, frameReadsStable: true, nativeSelectionDrag: 201, cancelThenClick: 201, localScrollRequests: 0, restoredScroll: scrollAfter, pages: context.pages().length, errors }, null, 2));
+  console.log(JSON.stringify({ status: 'passed', output, timings }));
+} catch (error) {
+  await page.screenshot({ path: resolve(output, 'failure.png'), scale: 'css' }).catch(() => {});
+  const frame = page.frames().find(item => item !== page.mainFrame());
+  const diagnostics = { status: 'failed', step, error: String(error), errors, page: (await page.locator('body').innerText().catch(() => '')).slice(-4000), embedded: await frame?.locator('body').innerText().catch(() => ''), frames: frames.map(({ path, status, frame }) => ({ path, status, url: frame.url, title: frame.title, posts: frame.posts?.length, document: Boolean(frame.document), state: frame.status, message: frame.message })) };
+  await writeFile(resolve(output, 'failure.json'), JSON.stringify(diagnostics, null, 2));
+  console.error(JSON.stringify({ status: diagnostics.status, step, error: String(error).slice(0,1600), errors, frames: diagnostics.frames })); process.exitCode = 1;
+} finally { await context.close(); await browser.close(); }

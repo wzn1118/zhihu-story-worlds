@@ -1,0 +1,61 @@
+.liukan-tour { position: fixed; inset: 0; z-index: 1500; isolation: isolate; color: #e9f3f8; font-family: var(--sans, "Microsoft YaHei", sans-serif); }
+.liukan-tour-shade { position: absolute; inset: 0; background: #040d18d6; }
+.liukan-tour-shade.has-target { background: transparent; }
+.liukan-tour-spotlight { position: fixed; border: 1.5px solid #beddf5; border-radius: 13px; box-shadow: 0 0 0 100vmax #040d18d6, 0 0 30px #75baf336; pointer-events: none; transition: left .24s ease, top .24s ease, width .24s ease, height .24s ease; }
+.liukan-tour-pin { position: absolute; top: -13px; right: 12px; padding: 3px 8px; border: 1px solid #9cc6e7; border-radius: 7px; background: #142d44; color: #d9edff; font-size: 10px; letter-spacing: .08em; }
+.liukan-tour-card { box-sizing: border-box; position: fixed; display: flex; flex-direction: column; width: 384px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 48px); overflow: auto; overscroll-behavior: contain; border: 1px solid #83aac75c; border-radius: 22px; background: radial-gradient(ellipse at 88% 8%, #315b702b, transparent 56%), linear-gradient(160deg, #1d3446 0%, #102331 68%); box-shadow: 0 24px 80px #0009, inset 0 1px 0 #d0eaff14; padding: 19px 24px 15px; transition: left .24s ease, top .24s ease; }
+.liukan-tour-card button { font: inherit; cursor: pointer; }
+.liukan-tour-card button:focus-visible { outline: 2px solid #e6f5ff; outline-offset: 4px; }
+.liukan-tour-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex: 0 0 auto; }
+.liukan-tour-signature { color: #a8c5d9; letter-spacing: .13em; font-size: 10px; }
+.liukan-tour-close { display: grid; place-items: center; width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: #95b4ca; }
+.liukan-tour-close:hover { background: #bdddf516; color: white; }
+.liukan-tour-stage { position: relative; height: 114px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin: -1px 0 5px; }
+.liukan-tour-stage > .liukan-avatar { position: relative; z-index: 1; }
+.liukan-tour-orbit { position: absolute; width: 142px; height: 29px; left: calc(50% - 71px); bottom: 11px; border: 1px solid #b1d4ea26; border-radius: 50%; background: radial-gradient(ellipse, #badcf41f, transparent 70%); transform: rotate(-5deg); }
+.liukan-tour-chapter { position: absolute; right: 0; bottom: 12px; font-size: 9px; color: #98b6cb; letter-spacing: .08em; writing-mode: vertical-rl; }
+.liukan-tour-copy { animation: liukan-tour-enter .23s ease both; }
+.liukan-tour-card.is-compact .liukan-tour-stage { display: none; }
+.liukan-tour-card.is-compact .liukan-tour-copy { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.liukan-tour-card.is-compact .liukan-tour-copy h2 { font-size: 19px; margin: 10px 0 7px; }
+.liukan-tour-card.is-compact .liukan-tour-progress { margin: 10px 0; }
+.liukan-tour-card.is-compact .liukan-tour-later { display: none; }
+.liukan-tour-loading { font-size: 12px; color: #c2d3df; }
+.liukan-tour-loading button { margin-left: 10px; color: #d1e4f2; border: 0; background: transparent; text-decoration: underline; }
+.liukan-tour-copy h2 { margin: 0 0 12px; color: #f3f3e9; font-family: var(--serif, "Noto Serif SC", "Songti SC", serif); font-size: 25px; line-height: 1.5; font-weight: 600; letter-spacing: .035em; outline: none; }
+.liukan-tour-copy p { margin: 0; color: #c2d3df; font-size: 13px; line-height: 1.95; overflow-wrap: anywhere; }
+.liukan-tour-copy .liukan-tour-hint { position: relative; margin-top: 14px; padding-left: 12px; color: #88a8bf; font-size: 10px; line-height: 1.85; border-left: 1px solid #7fa9c76b; }
+.liukan-tour-progress { display: flex; gap: 14px; align-items: center; margin: 22px 0 15px; flex-shrink: 0; }
+.liukan-tour-progress > span { white-space: nowrap; color: #d1e4f2; font-size: 10px; letter-spacing: .1em; }
+.liukan-tour-progress i { color: #7795ad; font-style: normal; }
+.liukan-tour-progress > div { height: 2px; flex: 1; background: #8eb0c52a; overflow: hidden; }
+.liukan-tour-progress > div > span { display: block; height: 100%; background: #a1ccea; transition: width .24s ease; }
+.liukan-tour-footer { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-shrink: 0; }
+.liukan-tour-previous, .liukan-tour-next { min-height: 41px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9px; font-size: 11px !important; }
+.liukan-tour-previous { color: #aac4d5; background: transparent; border: 0; padding: 0 3px; }
+.liukan-tour-previous:disabled { opacity: .3; cursor: default; }
+.liukan-tour-next { color: #132c40; background: #c6e1f2; border: 1px solid #e4f2fa; padding: 0 15px; box-shadow: inset 0 1px 0 #fff8, 0 5px 20px #00101d33; }
+.liukan-tour-next:hover { background: #e1f2fc; }
+.liukan-tour-later { align-self: center; flex-shrink: 0; margin-top: 13px; padding: 5px 10px; border: 0; border-radius: 6px; background: transparent; color: #7697af; font-size: 10px !important; }
+.liukan-tour-later:hover { color: #c7ddec; }
+.liukan-tour-reduced *, .liukan-tour-reduced *::before, .liukan-tour-reduced *::after { transition: none !important; animation: none !important; }
+@keyframes liukan-tour-enter { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) { .liukan-tour-card { max-height: calc(100dvh - 24px); padding: 16px 20px 12px; border-radius: 18px; } .liukan-tour-close { width: 36px; height: 36px; } .liukan-tour-stage { height: 91px; } .liukan-tour-stage > .liukan-avatar { width: 112px !important; height: 112px !important; } .liukan-tour-copy h2 { font-size: 22px; margin-bottom: 9px; } .liukan-tour-copy p { font-size: 12px; line-height: 1.8; } .liukan-tour-progress { margin-top: 17px; } }
+@media (max-height: 650px) { .liukan-tour-stage { height: 67px; } .liukan-tour-stage > .liukan-avatar { width: 88px !important; height: 88px !important; } .liukan-tour-copy h2 { font-size: 21px; } .liukan-tour-progress { margin-top: 13px; margin-bottom: 10px; } }
+@media (prefers-reduced-motion: reduce) { .liukan-tour *, .liukan-tour *::before, .liukan-tour *::after { transition: none !important; animation: none !important; } }
+
+/* A constrained guide scrolls its copy; its rounded outer edge stays clean. */
+html:has(.liukan-tour) { overflow: hidden; }
+@media (forced-colors: none) {
+.liukan-tour-card { color-scheme: dark; scrollbar-width: none; overflow-x: hidden; }
+.liukan-tour-card::-webkit-scrollbar { display: none; }
+.liukan-tour-card.is-compact .liukan-tour-copy { overflow-x: hidden; scrollbar-width: thin; scrollbar-color: #8db9d34d transparent; }
+@supports selector(::-webkit-scrollbar) {
+  .liukan-tour-card.is-compact .liukan-tour-copy { scrollbar-width: auto; scrollbar-color: auto; }
+  .liukan-tour-copy::-webkit-scrollbar { width: 4px; height: 4px; }
+  .liukan-tour-copy::-webkit-scrollbar-track, .liukan-tour-copy::-webkit-scrollbar-corner { background: transparent; }
+  .liukan-tour-copy::-webkit-scrollbar-thumb { min-height: 28px; border-radius: 999px; background: #8db9d34d; }
+  .liukan-tour-copy::-webkit-scrollbar-thumb:hover { background: #8db9d38c; }
+  .liukan-tour-copy::-webkit-scrollbar-button { display: none; }
+}
+}

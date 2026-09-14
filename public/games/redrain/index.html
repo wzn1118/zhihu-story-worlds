@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080706" />
+    <meta name="description" content="《末日的45度角躺平》互动改编，一部拥有二十种结局的末日文字冒险。" />
+    <title>末日的45度角躺平：重生周</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./retro.css" />
+    <link rel="stylesheet" href="./embedded.css" />
+  </head>
+  <body>
+    <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+    <main id="app" class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup" aria-label="末日的45度角躺平：重生周">
+          <span class="brand-mark">45°</span>
+          <div>
+            <strong>末日的45度角躺平</strong>
+            <small>REBIRTH WEEK / 末日倒数</small>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="archive-btn" class="icon-btn archive-btn" type="button" title="生存档案" aria-label="打开生存档案"><i data-lucide="library-big"></i></button>
+          <button id="reading-log-btn" class="icon-btn" type="button" title="本章全文" aria-label="打开本章全文"><i data-lucide="book-open"></i></button>
+          <button id="source-btn" class="icon-btn" type="button" title="创作来源" aria-label="查看创作来源"><i data-lucide="file-text"></i></button>
+          <button id="fullscreen-btn" class="icon-btn" type="button" title="全屏" aria-label="切换全屏"><i data-lucide="maximize"></i></button>
+          <button id="sound-btn" class="icon-btn" type="button" title="声音" aria-label="切换声音" aria-pressed="false"><i data-lucide="volume-x"></i></button>
+          <button id="guide-btn" class="icon-btn" type="button" title="新手引导" aria-label="打开新手引导"><i data-lucide="circle-help"></i></button>
+          <button id="menu-btn" class="icon-btn" type="button" title="控制台" aria-label="打开控制台"><i data-lucide="sliders-horizontal"></i></button>
+        </div>
+      </header>
+
+      <section id="prologue-view" class="view prologue-view" aria-live="polite">
+        <img id="prologue-image" class="scene-image" src="" alt="" />
+        <div class="scene-scrim"></div>
+        <div class="chapter-index" aria-hidden="true">
+          <em>原作剧情</em>
+          <span id="prologue-number">01</span>
+          <i></i>
+          <span>05</span>
+        </div>
+        <article class="prologue-copy">
+          <p id="prologue-kicker" class="kicker"></p>
+          <h1 id="prologue-title"></h1>
+          <blockquote id="prologue-excerpt" class="prologue-excerpt"></blockquote>
+          <div id="prologue-body" class="story-body prologue-body"></div>
+          <p id="prologue-sensory" class="sensory-line"></p>
+          <div class="story-actions">
+            <button id="prologue-prev" class="secondary-action prologue-prev" type="button" aria-label="返回上一章">← 上一章</button>
+            <button id="prologue-next" class="primary-action" type="button">
+              <span id="prologue-cta"></span><b aria-hidden="true">→</b>
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <section id="game-view" class="view game-view" hidden>
+        <section class="story-stage">
+          <div class="stage-visual">
+            <div class="stage-picture">
+            <img id="stage-background" class="stage-background" src="./public/assets/v2/scenes/safehouse.png" alt="" />
+            <div class="stage-tone" aria-hidden="true"></div>
+            <div class="metro-strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <div id="prop-stage" class="prop-stage" aria-label="当前场景关键道具"></div>
+            <div id="character-stage" class="character-stage" aria-label="当前场景人物"></div>
+            <img class="stage-corner" src="./public/assets/v2/ui/foreground-frame-corner.png" alt="" aria-hidden="true" />
+            </div>
+            <header class="scene-heading">
+              <p id="scene-kicker" class="kicker"></p>
+              <h1 id="scene-title"></h1>
+              <div class="heading-side">
+                <div class="decision-identity" aria-hidden="true">
+                  <b id="decision-code">D01</b>
+                  <i></i>
+                  <small id="decision-motif">TESTIMONY</small>
+                </div>
+                <div class="scene-meta">
+                  <span id="scene-location"></span>
+                  <span id="scene-time"></span>
+                  <span id="branch-label" class="branch-label" hidden></span>
+                </div>
+              </div>
+            </header>
+            <aside class="status-rail" aria-label="生存状态">
+              <div class="day-block">
+                <small>倒数进程</small>
+                <strong id="day-label">D-07</strong>
+                <span id="scene-progress">01 / 50</span>
+              </div>
+              <div id="stat-list" class="stat-list"></div>
+              <div class="route-block">
+                <small>本轮路径</small>
+                <strong id="route-signature">RB-00-000000</strong>
+                <span id="branch-space">3^49 条场景分支</span>
+              </div>
+            </aside>
+            <section class="decision-dock" aria-label="当前选择">
+              <div id="choice-list" class="choice-list"></div>
+              <div id="outcome-panel" class="outcome-panel" hidden>
+                <div class="outcome-heading"><i data-lucide="check"></i><span>行动结果</span></div>
+                <p id="outcome-text" hidden></p>
+                <button id="outcome-next" class="primary-action" type="button"><span>继续下一章</span><i data-lucide="arrow-right"></i></button>
+              </div>
+            </section>
+          </div>
+
+          <section class="dialogue-zone" aria-live="off">
+            <div class="dialogue-head">
+              <div class="speaker-lockup">
+                <span id="speaker-name">旁白</span>
+                <small id="speaker-role"></small>
+              </div>
+              <span class="dialogue-route">选择 <b id="dialogue-progress">01 / 50</b></span>
+            </div>
+            <div class="dialogue-copy" tabindex="0" aria-label="当前剧情段落">
+              <p id="scene-body" class="story-body"></p>
+              <blockquote id="scene-quote"></blockquote>
+            </div>
+            <span id="reading-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></span>
+            <div class="reading-controls">
+              <button id="reading-prev" class="icon-btn" type="button" title="上一段" aria-label="上一段"><i data-lucide="chevron-left"></i></button>
+              <span id="reading-progress" aria-live="off">01 / 01</span>
+              <button id="reading-advance" class="reading-advance" type="button"><span>显示全文</span><i data-lucide="chevron-down"></i></button>
+            </div>
+          </section>
+        </section>
+
+        <aside class="signal-panel" aria-label="广播与同行者">
+          <div class="signal-head">
+            <span class="signal-dot"></span>
+            <small>SAFEHOUSE / 守望中</small>
+          </div>
+          <p id="signal-text"></p>
+          <nav class="module-launcher" aria-label="生存档案">
+            <button type="button" data-module="inventory" title="物资档案"><img src="./public/assets/v2/ui/icon-inventory.png" alt="" /><span>物资</span></button>
+            <button type="button" data-module="map" title="路线地图"><img src="./public/assets/v2/ui/icon-map.png" alt="" /><span>地图</span></button>
+            <button type="button" data-module="relations" title="人物关系"><img src="./public/assets/v2/ui/icon-relationship.png" alt="" /><span>关系</span></button>
+            <button type="button" data-module="research" title="研究档案"><img src="./public/assets/v2/ui/icon-research.png" alt="" /><span>研究</span></button>
+          </nav>
+          <div id="companion-list" class="companion-list"></div>
+          <div class="rain-meter">
+            <span>危机强度</span>
+            <div><i id="rain-meter-fill"></i></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="ending-view" class="view ending-view" hidden>
+        <div class="ending-route" aria-hidden="true"></div>
+        <figure id="bad-end-art" class="bad-end-art" hidden><img id="bad-end-image" alt="" /><figcaption id="bad-end-image-status" hidden>插图暂时未能载入</figcaption></figure>
+        <div class="ending-content">
+          <p id="ending-grade" class="kicker"></p>
+          <h1 id="ending-title"></h1>
+          <p id="ending-epilogue" class="story-body"></p>
+          <section id="bad-end-review" class="bad-end-review" hidden aria-label="失败回顾">
+            <h2>留在这次记忆里的事</h2>
+            <p id="bad-end-reason"></p>
+            <p id="bad-end-hint"></p>
+          </section>
+          <div class="ending-proof">
+            <span id="ending-signature"></span>
+            <span id="ending-dominant"></span>
+          </div>
+          <div class="story-actions ending-actions">
+            <button id="retry-failure-btn" class="primary-action" type="button" hidden><i data-lucide="undo-2"></i><span>回到这次选择</span></button>
+            <button id="retry-preparation-btn" class="secondary-action" type="button" hidden><i data-lucide="history"></i><span>回到准备环节</span></button>
+            <button id="restart-btn" class="primary-action" type="button"><span>重走 12 月 3 日</span><b aria-hidden="true">↻</b></button>
+            <button id="copy-route-btn" class="secondary-action" type="button">复制路径</button>
+          </div>
+        </div>
+        <div id="ending-count" class="ending-count"></div>
+      </section>
+    </main>
+
+    <dialog id="failure-records-dialog" class="modal failure-records-dialog">
+      <form method="dialog">
+        <div class="reading-dialog-heading"><h2>失败记录</h2><button class="icon-btn" value="cancel" title="关闭失败记录" aria-label="关闭失败记录"><i data-lucide="x"></i></button></div>
+        <div id="failure-record-list" class="failure-record-list"></div>
+        <section id="failure-record-preview" hidden><img id="failure-record-image" alt="" /><h3 id="failure-record-title"></h3><p id="failure-record-body"></p></section>
+      </form>
+    </dialog>
+
+    <dialog id="reading-dialog" class="modal reading-dialog">
+      <form method="dialog">
+        <div class="reading-dialog-heading"><h2 id="reading-dialog-title">本章全文</h2><button class="icon-btn" value="cancel" title="关闭全文" aria-label="关闭全文"><i data-lucide="x"></i></button></div>
+        <div id="reading-transcript"></div>
+      </form>
+    </dialog>
+
+    <dialog id="tutorial-dialog" class="modal tutorial-modal">
+      <form method="dialog">
+        <div id="tutorial-index" class="modal-index">01 / 07</div>
+        <h2 id="tutorial-title">剧情与选择</h2>
+        <div class="tutorial-page">
+          <img id="tutorial-icon" src="./public/assets/v2/ui/continue-indicator.png" alt="" />
+          <p id="tutorial-body"></p>
+          <div id="tutorial-points" class="tutorial-points"></div>
+        </div>
+        <div id="tutorial-dots" class="tutorial-dots" aria-label="引导进度"></div>
+        <label class="sound-consent"><input id="sound-consent" type="checkbox" checked /><span>播放剧情配乐</span></label>
+        <div class="tutorial-actions">
+          <button id="tutorial-prev" class="secondary-action" type="button">上一步</button>
+          <button id="tutorial-next" class="primary-action" type="button"><span>下一步</span><b aria-hidden="true">→</b></button>
+          <button id="tutorial-start" class="primary-action" value="default" hidden><span>进入屠亦娆的记忆</span><b aria-hidden="true">→</b></button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="module-dialog" class="modal module-dialog">
+      <form method="dialog">
+        <div class="modal-index">ARCHIVE / 档案</div>
+        <nav id="module-tabs" class="module-tabs" aria-label="档案模块">
+          <button type="button" data-module="inventory">物资</button>
+          <button type="button" data-module="map">地图</button>
+          <button type="button" data-module="relations">关系</button>
+          <button type="button" data-module="research">研究</button>
+        </nav>
+        <section class="module-copy">
+          <h2 id="module-title"></h2>
+          <p id="module-intro"></p>
+          <div id="module-content"></div>
+        </section>
+        <button class="secondary-action" value="cancel">合上档案</button>
+      </form>
+    </dialog>
+
+    <dialog id="source-dialog" class="modal source-modal">
+      <form method="dialog">
+        <div class="modal-index">SOURCE / 原文</div>
+        <h2>《末日的45度角躺平》互动改编</h2>
+        <p>改编依据：用户提供的知乎原回答，原作署名见链接。本作沿用原回答的剧情、人物、世界观与关键事件；二十种生还结局和八种失败分支为互动改编，失败分支呈现关键选择走向另一种结果的可能。</p>
+        <a href="https://www.zhihu.com/question/540354406/answer/2588140006" target="_blank" rel="noreferrer">打开知乎原回答</a>
+        <button class="secondary-action" value="cancel">回到游戏</button>
+      </form>
+    </dialog>
+
+    <dialog id="menu-dialog" class="modal menu-modal">
+      <form method="dialog">
+        <div class="modal-index">CONTROL / 设置</div>
+        <h2>安全屋设置</h2>
+        <div id="music-track-info" class="music-track-info" role="status" aria-live="polite">
+          <span>当前曲目</span>
+          <strong id="music-track-name">回到十二月三日</strong>
+          <small id="music-track-meta">交响配乐 / 68 BPM / 16 小节</small>
+        </div>
+        <label class="volume-row" for="volume-slider"><span>音量</span><input id="volume-slider" type="range" min="0" max="100" value="62" /></label>
+        <label class="reading-speed-row" for="reading-speed"><span>文字速度</span><select id="reading-speed"><option value="slow">慢</option><option value="standard" selected>标准</option><option value="fast">快</option><option value="instant">即时</option></select></label>
+        <label class="reading-motion-row"><span>减少动态效果</span><input id="reading-reduced-motion" type="checkbox" /></label>
+        <div class="menu-actions">
+          <button id="failure-records-btn" class="secondary-action" type="button"><i data-lucide="book-open"></i><span>失败记录</span></button>
+          <button id="resume-btn" class="primary-action" value="cancel"><span>回到剧情</span><b aria-hidden="true">→</b></button>
+          <button id="reset-btn" class="secondary-action" type="button">清除当前存档</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="./public/vendor/lucide.min.js"></script>
+    <script type="module" src="./src/game.js"></script>
+  </body>
+</html>

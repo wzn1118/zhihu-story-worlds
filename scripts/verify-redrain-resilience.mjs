@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import { chromium } from 'playwright';
+import fs from 'node:fs/promises';
+import { createSnapshot, freshPlatformState } from '../public/games/redrain/src/platform-state.js';
+import { getSceneForRoute, applyEffects } from '../public/games/redrain/src/content.js';
+import { resolveDanger } from '../public/games/redrain/src/danger.js';
+const out='E:/知乎/output/playwright/redrain-integrated';
+const browser=await chromium.launch({headless:true,channel:'chrome'});
+const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});
+await context.addInitScript(()=>{localStorage.setItem('redleaf.liukan.introduction.v1',JSON.stringify({seen:true}));localStorage.setItem('redleaf.settings.v1',JSON.stringify({textSize:18,textSpeed:100,reducedMotion:true,sound:false}));});
+const page=await context.newPage();const errors=[];const checks=[];page.on('pageerror',e=>errors.push(e.message));
+const key='redleaf.redrain.v1';
+const frame=()=>page.frames().find(f=>f.url().includes('/games/redrain/index.html'));
+const fl=()=>page.frameLocator('iframe[title="末日的45度角躺平：重生周"]');
+const read=async()=>JSON.parse(await frame().evaluate(()=>window.render_game_to_text()));
+const open=async()=>{await page.locator('[data-story-id="redrain-rebirth-week"] .story-card-open').click();await page.locator('#redrain-start').click();await fl().locator('body.redleaf-embedded:not(.redleaf-waiting)').waitFor();};
+const reveal=async()=>{for(let i=0;i<40;i++){if((await read()).mode==='ending')return;if(await fl().locator('#choice-list button:visible').count())return;await fl().locator('#reading-advance').click();}throw Error('reading did not advance');};
+try{
+ await page.goto('http://127.0.0.1:4194/',{waitUntil:'domcontentloaded'});
+ let state=freshPlatformState();state.mode='game';state.tutorialSeen=true;
+ for(let i=0;i<49;i++){const c=[0,1,2].find(c=>!resolveDanger(i,c,state.route));state.stats=applyEffects(state.stats,getSceneForRoute(i,state.route).choices[c].effects);state.route.push(c);}
+ state.sceneIndex=49;const seeded=createSnapshot(state,[]);
+ await page.evaluate(v=>localStorage.setItem('redleaf.redrain.v1',JSON.stringify(v)),seeded);await page.reload({waitUntil:'domcontentloaded'});await open();await reveal();
+ const finalChoice=[0,1,2].find(c=>!resolveDanger(49,c,state.route));await fl().locator('#choice-list button').nth(finalChoice).click();
+ for(let i=0;i<30&&(await read()).mode!=='ending';i++)await fl().locator('#reading-advance').click();
+ await fl().locator('#ending-view:visible').waitFor();await page.waitForFunction(()=>JSON.parse(localStorage.getItem('redleaf.redrain.v1')).state.mode==='ending');
+ const ended=await page.evaluate(()=>JSON.parse(localStorage.getItem('redleaf.redrain.v1')));assert.equal(ended.state.route.length,50);assert.ok(ended.endings.includes(ended.state.endingId));assert.ok(!ended.state.endingId.startsWith('BE'));
+ await page.screenshot({path:out+'/normal-ending.png'});checks.push({flow:'seed49 then actual final choice and archive checkpoint',ending:ended.state.endingId});
+ await page.getByRole('button',{name:'返回书库',exact:true}).click();await page.locator('.library-shell').waitFor();
+ state=freshPlatformState();state.mode='game';state.tutorialSeen=true;
+ await page.evaluate(v=>localStorage.setItem('redleaf.redrain.v1',JSON.stringify(v)),createSnapshot(state,ended.endings));await page.reload({waitUntil:'domcontentloaded'});await open();await reveal();
+ await page.evaluate(()=>{window.__originalSet=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='redleaf.redrain.v1')throw new DOMException('Quota test','QuotaExceededError');return window.__originalSet.call(this,k,v);};window.__exports=[];const original=URL.createObjectURL.bind(URL);URL.createObjectURL=blob=>{blob.text().then(t=>window.__exports.push(t));return original(blob);};});
+ await fl().locator('#choice-list button').nth(1).click();await page.locator('.redrain-error').waitFor();
+ assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('redleaf.redrain.v1')))).state.route.length,0);
+ await page.getByRole('button',{name:'导出当前进度',exact:true}).click();await page.waitForFunction(()=>window.__exports.length>0);
+ const exported=JSON.parse(await page.evaluate(()=>window.__exports.at(-1)));assert.deepEqual(exported.state.route,[1]);assert.ok(exported.endings.includes(ended.state.endingId));
+ await page.getByRole('button',{name:'返回书库',exact:true}).click();await page.waitForTimeout(300);assert.equal(await page.locator('iframe').count(),1);
+ await page.evaluate(()=>{Storage.prototype.setItem=window.__originalSet;});await page.getByRole('button',{name:'保存重生周',exact:true}).click();await page.waitForFunction(()=>JSON.parse(localStorage.getItem('redleaf.redrain.v1')).state.route.length===1);
+ await page.getByRole('button',{name:'返回书库',exact:true}).click();await page.locator('.library-shell').waitFor();checks.push({flow:'storage quota error keeps fresh export and blocks exit until successful retry',route:[1],retainedEnding:ended.state.endingId});
+ assert.deepEqual(errors,[]);
+}finally{await fs.writeFile(out+'/resilience.json',JSON.stringify({checks,errors},null,2));await browser.close();}
+console.log(JSON.stringify({checks,errors},null,2));

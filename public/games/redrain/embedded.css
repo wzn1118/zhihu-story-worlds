@@ -1,0 +1,96 @@
+/* Keep the current chapter and its actions inside the iframe viewport. */
+.prologue-view .prologue-copy {
+  top: 120px;
+  bottom: 20px;
+  max-height: calc(100% - 140px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+.prologue-copy > .kicker,
+.prologue-copy > h1,
+.prologue-copy > .prologue-excerpt,
+.prologue-copy > .sensory-line,
+.prologue-copy > .story-actions { flex-shrink: 0; }
+.prologue-copy > .prologue-body {
+  min-height: 70px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  flex: 1 1 auto;
+  padding-right: 12px;
+}
+.prologue-copy > .story-actions {
+  position: relative;
+  bottom: auto;
+  margin-top: 12px;
+  padding: 10px 0;
+}
+.redleaf-embedded .topbar {
+  height: 48px;
+  padding: 4px 16px;
+  justify-content: flex-end;
+}
+.redleaf-embedded .brand-lockup,
+.redleaf-embedded #source-btn,
+.redleaf-embedded #fullscreen-btn { display: none; }
+.redleaf-embedded .topbar::before {
+  content: '剧情 · 本章全文 · 配乐';
+  margin-right: auto;
+  color: var(--paper-dim);
+  font: 12px var(--body);
+}
+.redleaf-embedded .topbar .icon-btn { width: 34px; height: 34px; }
+.redleaf-embedded .view { padding-top: 48px; }
+.redleaf-embedded .scene-image,
+.redleaf-embedded .scene-scrim { top: 48px; }
+.redleaf-embedded .scene-image { height: calc(100% - 48px); }
+.redleaf-embedded .chapter-index { top: 66px; }
+.redleaf-embedded .prologue-view .prologue-copy { top: 104px; max-height: calc(100% - 124px); }
+.redleaf-waiting #app { visibility: hidden; }
+.redleaf-waiting::after {
+  content: '正在接续你的阅读进度…';
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--paper);
+  background: var(--ink);
+}
+.redleaf-waiting .toast { z-index: 100; }
+.redleaf-paused #app { pointer-events: none; }
+.redleaf-embedded .dialogue-copy { font-size: var(--redleaf-font-size, 18px); line-height: var(--redleaf-line-height, 1.8); }
+@media (max-width: 700px) {
+  .prologue-view .prologue-copy,
+  .redleaf-embedded .prologue-view .prologue-copy {
+    position: absolute;
+    top: 42%;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    width: 100%;
+    max-height: none;
+    padding: 12px 14px 0;
+  }
+  .prologue-view { overflow: hidden; }
+  .prologue-view .scene-image { position: absolute; height: 43%; }
+  .prologue-copy > .prologue-excerpt { max-height: 64px; overflow-y: auto; }
+  .prologue-copy > .sensory-line { display: none; }
+  .prologue-copy > .story-actions { margin-top: 6px; padding: 6px 0; gap: 8px; }
+  .prologue-copy > .story-actions button { min-height: 44px; }
+  .redleaf-embedded .game-view { padding-top: 48px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  .prologue-copy > h1 { font-size: 34px; margin-block: 8px; }
+  .prologue-copy > .prologue-excerpt { max-height: 72px; overflow-y: auto; }
+  .prologue-copy > .sensory-line { display: none; }
+}
+
+@media (max-width: 700px) {
+  /* Keep the full original portrait visible in the shorter embedded stage. */
+  .redleaf-embedded .game-view[data-portrait-side] .character-portrait.active.decision-specific {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+}

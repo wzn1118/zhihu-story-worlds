@@ -1,0 +1,59 @@
+{
+  "provenance": "User supplied Liu Kan Shan animations and three-view archives, 2026-09-12",
+  "assets": [
+    {
+      "name": "greeting",
+      "sourceFile": "打招呼_4秒_320x320_20fps_透明.gif",
+      "width": 320,
+      "height": 320,
+      "frames": 80,
+      "sha256": "7cc8d9525a78503b0e746b0d3a9950fd94ab8c89439b3329bf729fc2a2470964",
+      "url": "/assets/liukan/greeting.gif"
+    },
+    {
+      "name": "sway",
+      "sourceFile": "晃悠_320x320_3秒_20fps_透明.gif",
+      "width": 320,
+      "height": 320,
+      "frames": 60,
+      "sha256": "c1a3bfc35af4b9faa1807ec75d6a4a4662ee7e8a3fd89cdcc2ebe863f107ce9e",
+      "url": "/assets/liukan/sway.gif"
+    },
+    {
+      "name": "idle",
+      "sourceFile": "待机_5秒_320x320_20fps_透明.gif",
+      "width": 320,
+      "height": 320,
+      "frames": 100,
+      "sha256": "e18748d708aba1d82917f41462bbbf2f120615b60d6e15b3c5d448a444d2ae12",
+      "url": "/assets/liukan/idle.gif"
+    },
+    {
+      "name": "computer",
+      "sourceFile": "电脑_6秒_320x320_20fps_透明.gif",
+      "width": 320,
+      "height": 320,
+      "frames": 120,
+      "sha256": "bf1a7bc0d28dc954d449e5d84ec0345f01ee0c57b56346aafc230cb669a0ef0e",
+      "url": "/assets/liukan/computer.gif"
+    },
+    {
+      "name": "sleep",
+      "sourceFile": "瞌睡_5秒_320x320_20fps_透明.gif",
+      "width": 320,
+      "height": 320,
+      "frames": 100,
+      "sha256": "3fffc7dd4f76b58d57a7d921f5c2a05fe01bf0621c5f9f68b9f5dc9a4e053a59",
+      "url": "/assets/liukan/sleep.gif"
+    },
+    {
+      "name": "ball",
+      "sourceFile": "运球_4秒_320x320_20fps_透明.gif",
+      "width": 320,
+      "height": 320,
+      "frames": 80,
+      "sha256": "a026fa4a76682fe6e3c04dd68b05b05e6c64cdbb39bd86749be1f1369f313812",
+      "url": "/assets/liukan/ball.gif"
+    }
+  ]
+}

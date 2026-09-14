@@ -1,0 +1,9 @@
+.liukan-avatar { position: relative; display: inline-block; flex: 0 0 auto; vertical-align: middle; isolation: isolate; pointer-events: none; }
+.liukan-avatar-body { position: absolute; inset: 0; display: block; transform-origin: 50% 82%; }
+.liukan-avatar.is-playing .liukan-avatar-body { will-change: transform; }
+.liukan-avatar-body>img { display: block; width: 100%; height: 100%; min-width: 100%; min-height: 100%; object-fit: contain; max-width: none; filter: drop-shadow(0 5px 4px #09182426); user-select: none; }
+.liukan-avatar-shadow { position: absolute; width: 41%; height: 9%; left: 30%; bottom: 9%; border-radius: 50%; background: #162c3626; filter: blur(5px); z-index: -1; }
+.liukan-avatar-accent { position: absolute; top: 8%; right: 7%; display: grid; place-items: center; min-width: 1.5em; height: 1.5em; padding: 0 .2em; border-radius: 50%; color: #365a6f; background: #f5fdfff0; border: 1px solid #b4d5e680; box-shadow: 0 3px 12px #08172212; font: 600 clamp(11px,1.2vw,18px)/1 Georgia,serif; opacity: 0; transform: scale(.8); transition: opacity .15s, transform .15s; }
+.liukan-avatar.is-playing .liukan-avatar-accent { opacity: 1; transform: scale(1); }
+.liukan-avatar.is-still .liukan-avatar-accent { opacity: 1; transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce) { .liukan-avatar * { transition: none !important; animation: none !important; } }

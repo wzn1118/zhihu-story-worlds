@@ -1,0 +1,30 @@
+node_modules/
+dist/
+.local/
+output/
+*.env
+*.env.*
+!.env.example
+*.recovery.json
+*.log
+test-results/
+
+# Local browser/tool caches and generated verification output
+.npm-playwright-cache/
+.playwright-browsers/
+.playwright-cli/
+tmp/
+output/
+dist/
+NUL
+--compact
+
+# Local scratch files
+.tmp*
+automation-*-receipt.json
+high32-dispatch-fix.*
+x.includes*
+%SystemDrive%/
+__pycache__/
+*.pyc
+*.tmp

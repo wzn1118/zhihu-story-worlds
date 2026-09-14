@@ -1,0 +1,5 @@
+.original-source-links { display: grid; gap: 8px; margin: 14px 0; justify-items: start; }
+.original-source-links .original-source-link { max-width: 100%; white-space: normal; text-align: left; }
+.original-source-links .source-footnote { margin: 0; line-height: 1.75; }
+.original-source-links.compact { display: inline-flex; margin: 0 0 0 12px; vertical-align: middle; }
+@media (max-width: 600px) { .original-source-links.compact { margin: 5px 0; } }

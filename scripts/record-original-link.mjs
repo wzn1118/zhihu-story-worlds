@@ -1,0 +1,15 @@
+import { readFile, writeFile } from 'node:fs/promises';
+const directory = 'output/source-links-20260910';
+const data = JSON.parse((await readFile(`${directory}/future-island-search.json`, 'utf8')).replace(/^\uFEFF/, ''));
+const match = data.Data.Items.find(item => item.AuthorName === '苏青瓷' && item.Url.includes('/answer/7639214615'));
+const url = match?.CommentInfoList?.flatMap(comment => comment.Content.match(/https:\/\/www\.zhihu\.com\/market\/paid_column\/\d+\/section\/1831621186162937856/g) ?? [])[0];
+if (!url) throw new Error('Original publication URL was not returned');
+const report = JSON.parse(await readFile(`${directory}/research.json`, 'utf8'));
+const record = report.results.find(item => item.id === '1831621186162937856');
+record.confirmed = { url, evidenceUrl: match.Url.split('?')[0], author: match.AuthorName, proof: 'Original author answer matches the opening and identifies the paid section with the exact API work_id.' };
+record.checkedAt = new Date().toISOString();
+report.confirmed = report.results.filter(item => item.confirmed).length;
+await writeFile(`${directory}/research.json`, JSON.stringify(report, null, 2));
+await writeFile(`${directory}/1831621186162937856.json`, JSON.stringify(record, null, 2));
+await writeFile('shared/original-links.ts', '// Verified original-author pages; evidence: output/source-links-20260910/research.json\nexport const originalStoryLinks: Record<string, string> = ' + JSON.stringify(Object.fromEntries(report.results.filter(item => item.confirmed).map(item => [item.id, item.confirmed.url])), null, 2) + ';\n');
+console.log(`${report.confirmed}/${report.total} original links verified`);

@@ -1,0 +1,1032 @@
+[
+  {
+    "worldId": "temple-heart",
+    "storyId": "2025954672918163637",
+    "version": "2.0.0",
+    "scenes": 43,
+    "dialogueScenes": 33,
+    "endings": 10,
+    "badEnds": 3,
+    "states": 1227,
+    "reachableNodes": 43,
+    "reachableChoices": 98,
+    "routes": [
+      {
+        "id": "grain",
+        "entry": "b_kitchen",
+        "dialogueIds": [
+          "b_kitchen",
+          "b_rice",
+          "b_pawn",
+          "b_ferry",
+          "b_mill",
+          "b_rope",
+          "b_grain",
+          "b_home",
+          "b_night",
+          "b_breakfast"
+        ],
+        "endings": [
+          "b_grain_good",
+          "b_grain_small",
+          "b_grain_bad",
+          "b_grain_debt"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_grain_good",
+            "choices": [
+              "b_enter_grain",
+              "rush_ferry",
+              "bank",
+              "wait",
+              "mend",
+              "ridge",
+              "warm",
+              "release",
+              "stay"
+            ]
+          },
+          {
+            "id": "b_grain_small",
+            "choices": [
+              "b_enter_grain",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_grain_bad",
+            "choices": [
+              "b_enter_grain",
+              "rush_ferry",
+              "bank",
+              "wait",
+              "gamble"
+            ]
+          },
+          {
+            "id": "b_grain_debt",
+            "choices": [
+              "b_enter_grain",
+              "rush_ferry",
+              "bank",
+              "wait",
+              "mend",
+              "ridge",
+              "warm",
+              "hold"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shrine",
+        "entry": "b_shrine_steps",
+        "dialogueIds": [
+          "b_shrine_steps",
+          "b_messenger",
+          "b_incense",
+          "b_table",
+          "b_bell",
+          "b_name",
+          "b_shadow",
+          "b_empty",
+          "b_ash",
+          "b_lantern"
+        ],
+        "endings": [
+          "b_shrine_good",
+          "b_shrine_small",
+          "b_shrine_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_shrine_good",
+            "choices": [
+              "b_enter_shrine",
+              "summon",
+              "go_alone",
+              "help",
+              "stop",
+              "tear",
+              "follow",
+              "burn_words",
+              "return",
+              "soup"
+            ]
+          },
+          {
+            "id": "b_shrine_small",
+            "choices": [
+              "b_enter_shrine",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_shrine_bad",
+            "choices": [
+              "b_enter_shrine",
+              "summon",
+              "go_alone",
+              "help",
+              "ring"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "tiger-shelter",
+    "storyId": "1962166083206242442",
+    "version": "2.0.0",
+    "scenes": 42,
+    "dialogueScenes": 33,
+    "endings": 9,
+    "badEnds": 2,
+    "states": 975,
+    "reachableNodes": 42,
+    "reachableChoices": 97,
+    "routes": [
+      {
+        "id": "court",
+        "entry": "b_cart",
+        "dialogueIds": [
+          "b_cart",
+          "b_lock",
+          "b_inn",
+          "b_keeper",
+          "b_gate",
+          "b_water",
+          "b_yard",
+          "b_audience",
+          "b_repay",
+          "b_homeward"
+        ],
+        "endings": [
+          "b_court_good",
+          "b_court_small",
+          "b_court_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_court_good",
+            "choices": [
+              "b_enter_court",
+              "inspect_cart",
+              "refuse",
+              "scale",
+              "open_book",
+              "speak",
+              "condition",
+              "work",
+              "return_named"
+            ]
+          },
+          {
+            "id": "b_court_small",
+            "choices": [
+              "b_enter_court",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_court_bad",
+            "choices": [
+              "b_enter_court",
+              "inspect_cart",
+              "trust"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mountain",
+        "entry": "b_den_dawn",
+        "dialogueIds": [
+          "b_den_dawn",
+          "b_den_talk",
+          "b_wind",
+          "b_wolf_parley",
+          "b_smoke",
+          "b_hunter",
+          "b_signal",
+          "b_move",
+          "b_crest",
+          "b_border_dawn"
+        ],
+        "endings": [
+          "b_mountain_good",
+          "b_mountain_small",
+          "b_mountain_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_mountain_good",
+            "choices": [
+              "b_enter_mountain",
+              "mother",
+              "quiet",
+              "smoke",
+              "speak",
+              "promise",
+              "name",
+              "climb",
+              "call",
+              "settle"
+            ]
+          },
+          {
+            "id": "b_mountain_small",
+            "choices": [
+              "b_enter_mountain",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_mountain_bad",
+            "choices": [
+              "b_enter_mountain",
+              "mother",
+              "quiet",
+              "smoke",
+              "speak",
+              "back",
+              "charge"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "six-roots",
+    "storyId": "1760265980192886784",
+    "version": "2.0.0",
+    "scenes": 42,
+    "dialogueScenes": 33,
+    "endings": 9,
+    "badEnds": 2,
+    "states": 2364,
+    "reachableNodes": 42,
+    "reachableChoices": 96,
+    "routes": [
+      {
+        "id": "arena",
+        "entry": "b_arena_name",
+        "dialogueIds": [
+          "b_arena_name",
+          "b_arena_referee",
+          "b_arena_math",
+          "b_arena_crack",
+          "b_arena_language",
+          "b_arena_poem",
+          "b_arena_spill",
+          "b_arena_sixfold",
+          "b_arena_bell",
+          "b_arena_result"
+        ],
+        "endings": [
+          "b_arena_good",
+          "b_arena_small",
+          "b_arena_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_arena_good",
+            "choices": [
+              "b_enter_arena",
+              "petition",
+              "back",
+              "thirteen",
+              "correct",
+              "break",
+              "poem",
+              "abandon",
+              "disconnect",
+              "stop",
+              "accept"
+            ]
+          },
+          {
+            "id": "b_arena_small",
+            "choices": [
+              "b_enter_arena",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_arena_bad",
+            "choices": [
+              "b_enter_arena",
+              "petition",
+              "back",
+              "dodge",
+              "break",
+              "clash"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "school",
+        "entry": "b_stretcher",
+        "dialogueIds": [
+          "b_stretcher",
+          "b_cart_school",
+          "b_medicine",
+          "b_watch",
+          "b_inn_school",
+          "b_village_road",
+          "b_grain_class",
+          "b_notice_school",
+          "b_rain_class",
+          "b_school_return"
+        ],
+        "endings": [
+          "b_school_good",
+          "b_school_small",
+          "b_school_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_school_good",
+            "choices": [
+              "b_enter_school",
+              "cart",
+              "exchange",
+              "work",
+              "learn",
+              "alone",
+              "accept",
+              "stones",
+              "argue",
+              "move",
+              "welcome"
+            ]
+          },
+          {
+            "id": "b_school_small",
+            "choices": [
+              "b_enter_school",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_school_bad",
+            "choices": [
+              "b_enter_school",
+              "cart",
+              "exchange",
+              "work",
+              "hurry"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "palace-ledger",
+    "storyId": "1793742089336532992",
+    "version": "2.0.0",
+    "scenes": 43,
+    "dialogueScenes": 33,
+    "endings": 10,
+    "badEnds": 3,
+    "states": 2261,
+    "reachableNodes": 43,
+    "reachableChoices": 96,
+    "routes": [
+      {
+        "id": "palace",
+        "entry": "b_empty_box",
+        "dialogueIds": [
+          "b_empty_box",
+          "b_palace_receipt",
+          "b_kitchen_closed",
+          "b_cook",
+          "b_pay_servants",
+          "b_old_ledger",
+          "b_audience_palace",
+          "b_seal_palace",
+          "b_supply_palace",
+          "b_month_end"
+        ],
+        "endings": [
+          "b_palace_good",
+          "b_palace_small",
+          "b_palace_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_palace_good",
+            "choices": [
+              "b_enter_palace",
+              "pay_gate",
+              "leave",
+              "ask_cook",
+              "ask_amount",
+              "promise_work",
+              "match",
+              "threat",
+              "fill",
+              "fund",
+              "keep"
+            ]
+          },
+          {
+            "id": "b_palace_small",
+            "choices": [
+              "b_enter_palace",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_palace_bad",
+            "choices": [
+              "b_enter_palace",
+              "pay_gate",
+              "leave",
+              "ask_cook",
+              "ask_amount",
+              "promise_work",
+              "match",
+              "cede"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "merchant",
+        "entry": "b_private_seal",
+        "dialogueIds": [
+          "b_private_seal",
+          "b_family_letter",
+          "b_gate_pass",
+          "b_gate_reply",
+          "b_dock",
+          "b_ship_hold",
+          "b_toll",
+          "b_city_shop",
+          "b_return_letter",
+          "b_shop_morning"
+        ],
+        "endings": [
+          "b_merchant_good",
+          "b_merchant_small",
+          "b_merchant_bad",
+          "b_merchant_signed"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_merchant_good",
+            "choices": [
+              "b_enter_merchant",
+              "alone",
+              "light",
+              "hire_runner",
+              "pass",
+              "help_load",
+              "sell",
+              "debit",
+              "learn",
+              "renounce",
+              "open"
+            ]
+          },
+          {
+            "id": "b_merchant_small",
+            "choices": [
+              "b_enter_merchant",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_merchant_bad",
+            "choices": [
+              "b_enter_merchant",
+              "alone",
+              "light",
+              "hire_runner",
+              "pass",
+              "charter",
+              "sell",
+              "bribe_title"
+            ]
+          },
+          {
+            "id": "b_merchant_signed",
+            "choices": [
+              "b_enter_merchant",
+              "alone",
+              "light",
+              "hire_runner",
+              "sign_away"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "red-plum",
+    "storyId": "1930445234262750503",
+    "version": "2.0.0",
+    "scenes": 42,
+    "dialogueScenes": 33,
+    "endings": 9,
+    "badEnds": 2,
+    "states": 2405,
+    "reachableNodes": 42,
+    "reachableChoices": 96,
+    "routes": [
+      {
+        "id": "village",
+        "entry": "b_night_knock",
+        "dialogueIds": [
+          "b_night_knock",
+          "b_shed_guard",
+          "b_window",
+          "b_cabinet",
+          "b_whistle",
+          "b_shed_return",
+          "b_hurt_man",
+          "b_south_gate",
+          "b_before_dawn",
+          "b_village_table"
+        ],
+        "endings": [
+          "b_village_good",
+          "b_village_small",
+          "b_village_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_village_good",
+            "choices": [
+              "b_enter_village",
+              "arrange",
+              "guard",
+              "call",
+              "chase",
+              "guarded",
+              "ask_doctor",
+              "paid_watch",
+              "rest",
+              "share"
+            ]
+          },
+          {
+            "id": "b_village_small",
+            "choices": [
+              "b_enter_village",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_village_bad",
+            "choices": [
+              "b_enter_village",
+              "arrange",
+              "guard",
+              "send_alone"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ferry",
+        "entry": "b_pack_doll",
+        "dialogueIds": [
+          "b_pack_doll",
+          "b_cart_plum",
+          "b_shed_key",
+          "b_ditch",
+          "b_toll_plum",
+          "b_boatman",
+          "b_lamp_plum",
+          "b_cut_rope",
+          "b_midriver",
+          "b_other_bank"
+        ],
+        "endings": [
+          "b_ferry_good",
+          "b_ferry_small",
+          "b_ferry_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_ferry_good",
+            "choices": [
+              "b_enter_ferry",
+              "cart",
+              "keep_load",
+              "lock",
+              "test",
+              "cargo",
+              "separate",
+              "food",
+              "board",
+              "leave_doll",
+              "settle"
+            ]
+          },
+          {
+            "id": "b_ferry_small",
+            "choices": [
+              "b_enter_ferry",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_ferry_bad",
+            "choices": [
+              "b_enter_ferry",
+              "cart",
+              "keep_load",
+              "lock",
+              "push_cart"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "hollow-immortals",
+    "storyId": "1558118587956662272",
+    "version": "2.0.0",
+    "scenes": 42,
+    "dialogueScenes": 33,
+    "endings": 9,
+    "badEnds": 3,
+    "states": 2115,
+    "reachableNodes": 42,
+    "reachableChoices": 95,
+    "routes": [
+      {
+        "id": "copper",
+        "entry": "b_copper_window",
+        "dialogueIds": [
+          "b_copper_window",
+          "b_copper_servant",
+          "b_copper_door",
+          "b_copper_rows",
+          "b_copper_awake",
+          "b_copper_sluice",
+          "b_copper_blackout",
+          "b_copper_stairs",
+          "b_copper_bridge",
+          "b_copper_foot"
+        ],
+        "endings": [
+          "b_copper_good",
+          "b_copper_small",
+          "b_copper_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_copper_good",
+            "choices": [
+              "b_enter_copper",
+              "bow",
+              "carry",
+              "follow",
+              "wake",
+              "follow_tap",
+              "cut_supply",
+              "evacuate",
+              "drop",
+              "divert",
+              "stay"
+            ]
+          },
+          {
+            "id": "b_copper_small",
+            "choices": [
+              "b_enter_copper",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_copper_bad",
+            "choices": [
+              "b_enter_copper",
+              "bow",
+              "watch",
+              "call_master"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "village",
+        "entry": "b_hill_pass",
+        "dialogueIds": [
+          "b_hill_pass",
+          "b_tea_stall",
+          "b_empty_village",
+          "b_new_recruit",
+          "b_recruit_master",
+          "b_recruit_dan",
+          "b_broken_cart",
+          "b_well_path",
+          "b_names_home",
+          "b_return_water"
+        ],
+        "endings": [
+          "b_return_good",
+          "b_return_small",
+          "b_return_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_return_good",
+            "choices": [
+              "b_enter_village",
+              "home",
+              "bury",
+              "ask_delay",
+              "public",
+              "water",
+              "scatter",
+              "lead",
+              "move",
+              "dig"
+            ]
+          },
+          {
+            "id": "b_return_small",
+            "choices": [
+              "b_enter_village",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_return_bad",
+            "choices": [
+              "b_enter_village",
+              "home",
+              "call"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "island-broadcast",
+    "storyId": "1783485301039054849",
+    "version": "2.0.0",
+    "scenes": 42,
+    "dialogueScenes": 33,
+    "endings": 9,
+    "badEnds": 2,
+    "states": 2377,
+    "reachableNodes": 42,
+    "reachableChoices": 94,
+    "routes": [
+      {
+        "id": "camp",
+        "entry": "b_forest_lunch",
+        "dialogueIds": [
+          "b_forest_lunch",
+          "b_water_source",
+          "b_food_box",
+          "b_radio_gap",
+          "b_wrong_turn",
+          "b_wet_fire",
+          "b_camera_argument",
+          "b_roof_leak",
+          "b_first_supper",
+          "b_after_live"
+        ],
+        "endings": [
+          "b_camp_good",
+          "b_camp_small",
+          "b_camp_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_camp_good",
+            "choices": [
+              "b_enter_camp",
+              "water",
+              "leave",
+              "reshoot",
+              "high",
+              "relay",
+              "dry_stock",
+              "cook",
+              "spare",
+              "meal",
+              "stay"
+            ]
+          },
+          {
+            "id": "b_camp_small",
+            "choices": [
+              "b_enter_camp",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_camp_bad",
+            "choices": [
+              "b_enter_camp",
+              "water",
+              "leave",
+              "reshoot",
+              "high",
+              "relay",
+              "dry_stock",
+              "perform"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shore",
+        "entry": "b_shore_call",
+        "dialogueIds": [
+          "b_shore_call",
+          "b_shore_path",
+          "b_shore_notice",
+          "b_shore_prop",
+          "b_radio_denial",
+          "b_missing_assistant",
+          "b_shore_steps",
+          "b_camera_stop",
+          "b_contract_shore",
+          "b_depart_shore"
+        ],
+        "endings": [
+          "b_shore_good",
+          "b_shore_small",
+          "b_shore_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_shore_good",
+            "choices": [
+              "b_enter_shore",
+              "path",
+              "tell_radio",
+              "call_back",
+              "refuse_scene",
+              "route",
+              "pay",
+              "help",
+              "stop",
+              "terms",
+              "leave"
+            ]
+          },
+          {
+            "id": "b_shore_small",
+            "choices": [
+              "b_enter_shore",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_shore_bad",
+            "choices": [
+              "b_enter_shore",
+              "path",
+              "tell_radio",
+              "call_back",
+              "perform"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "worldId": "wrong-realm",
+    "storyId": "1716453753710972928",
+    "version": "2.0.0",
+    "scenes": 42,
+    "dialogueScenes": 33,
+    "endings": 9,
+    "badEnds": 2,
+    "states": 2321,
+    "reachableNodes": 42,
+    "reachableChoices": 96,
+    "routes": [
+      {
+        "id": "judgment",
+        "entry": "b_sword_edge",
+        "dialogueIds": [
+          "b_sword_edge",
+          "b_rule_stone",
+          "b_steward_realm",
+          "b_witness_realm",
+          "b_master_realm",
+          "b_sword_offer",
+          "b_coldcase",
+          "b_verdict",
+          "b_gate_realm",
+          "b_medicine_realm"
+        ],
+        "endings": [
+          "b_judgment_good",
+          "b_judgment_small",
+          "b_judgment_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_judgment_good",
+            "choices": [
+              "b_enter_judgment",
+              "rule",
+              "wait",
+              "store",
+              "force_praise",
+              "equal",
+              "decline_silence",
+              "cool",
+              "settle",
+              "guard_exit",
+              "heal"
+            ]
+          },
+          {
+            "id": "b_judgment_small",
+            "choices": [
+              "b_enter_judgment",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_judgment_bad",
+            "choices": [
+              "b_enter_judgment",
+              "rule",
+              "wait",
+              "surrender"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "departure",
+        "entry": "b_pack_realm",
+        "dialogueIds": [
+          "b_pack_realm",
+          "b_outer_disciple",
+          "b_storage_realm",
+          "b_mingyuan_path",
+          "b_seal_gate",
+          "b_inn_realm",
+          "b_herbalist",
+          "b_cooling_realm",
+          "b_night_realm",
+          "b_walk_realm"
+        ],
+        "endings": [
+          "b_depart_good",
+          "b_depart_small",
+          "b_depart_bad"
+        ],
+        "endingWitnesses": [
+          {
+            "id": "b_depart_good",
+            "choices": [
+              "b_enter_departure",
+              "inform",
+              "alone",
+              "manual",
+              "shield",
+              "surrender_tag",
+              "pay",
+              "tell",
+              "screen",
+              "spend",
+              "new_work"
+            ]
+          },
+          {
+            "id": "b_depart_small",
+            "choices": [
+              "b_enter_departure",
+              "b_withdraw"
+            ]
+          },
+          {
+            "id": "b_depart_bad",
+            "choices": [
+              "b_enter_departure",
+              "inform",
+              "alone",
+              "manual",
+              "fight_long"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
