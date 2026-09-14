@@ -29,5 +29,8 @@ test('webpage selection stays exact and distinguishable from an official search 
   assert.equal((await workshop.importZhihuSearch(source)).id, project.id);
   assert.equal(project.status, 'idle'); assert.equal(project.jobId, undefined);
   await assert.rejects(service.capturePage({ ...selection, sourceUrl: 'https://outside.example/answer/87654321' }), { code: 'INVALID_ZHIHU_URL' });
-  await assert.rejects(service.capturePage({ ...selection, text: 'too short' }), { code: 'INVALID_PAGE_SELECTION' });
+  assert.equal((await service.capturePage({ ...selection, text: '短' })).excerpt, '短');
+  for (const text of ['', ' \r\n ', 'x'.repeat(120001), 'text\u0000']) {
+    await assert.rejects(service.capturePage({ ...selection, text }), { code: 'INVALID_PAGE_SELECTION' });
+  }
 });

@@ -1,5 +1,4 @@
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
+import { readArtSourceBook } from './art-production-books.ts';
 import type { ArtWorldInput } from '../shared/production.ts';
 import type { Character } from '../shared/types.ts';
 import { ART_WORLD_OWNERS } from './art-production-delegates.ts';
@@ -54,8 +53,7 @@ export async function buildArtSourceMetadata(root: string, worlds: ArtWorldInput
   const books = new Map<string, { profile: string; worlds: Record<string, SourceBookWorld> }>();
   for (const owner of new Set(worlds.map(world => ART_WORLD_OWNERS[world.id]))) {
     if (!owner) throw new Error('ART_SOURCE_OWNER_MISSING');
-    const book = JSON.parse(await readFile(path.join(root, 'output/imagegen/scene-production/art-team', owner,
-      'short-production-20260907/book.json'), 'utf8'));
+    const book = await readArtSourceBook<{ profile: string; worlds: Record<string, SourceBookWorld> }>(root, owner);
     if (book.profile !== 'short-production-20260907') throw new Error('ART_SOURCE_BOOK_PROFILE_MISMATCH');
     books.set(owner, book);
   }

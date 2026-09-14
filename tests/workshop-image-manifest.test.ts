@@ -24,7 +24,7 @@ test('project art reads use current independent snapshots and exact project/vers
   const root = await mkdtemp(join(tmpdir(), 'workshop-manifest-'));
   t.after(() => rm(root, { recursive: true, force: true }));
   const workshop = new StoryWorkshop(join(root, 'projects-store'));
-  const projects = await Promise.all([0, 1, 2].map(index => workshop.import({ ...originalSeed, scope: 'user-import', text: `${originalSeed.text}\nFixture ${index}` })));
+  const projects = await Promise.all([0, 1, 2].map(index => workshop.import({ ...originalSeed, scope: 'user-import', text: `${originalSeed.text}\nFixture ${index}`, generationOptions: { images: 'image2' } })));
   const service = createWorkshopImageService({ root, startWorker: () => { throw new Error('Reads must not start a worker'); } });
   const versions = [world(projects[0].id), world(projects[0].id, 'r2'), world(projects[1].id), world(projects[2].id)];
   versions[0].id = `workshop-${projects[0].id.slice('import-'.length)}-r1`;

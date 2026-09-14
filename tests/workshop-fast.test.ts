@@ -21,8 +21,8 @@ function fixture(): FastStoryDraft {
     characters: [{ id: 'tester', name: '测试员', role: '成年测试角色', description: prose }],
     facts: [{ quote: '海底中继站的值班钟每天慢七秒', fact: prose, sceneIds: ['start'] }, { quote: '备用电池只够维持闸门和录音台中的一个', fact: prose, sceneIds: ['a'] }],
     start: 'start', scenes: Object.entries(graph).map(([id, next]) => ({ id, title: `测试场景${id}`, location: '测试空间', time: '测试夜晚',
-      text: [`${id}。${prose}${id === 'start' ? '海底中继站的值班钟每天慢七秒' : id === 'a' ? '备用电池只够维持闸门和录音台中的一个' : ''}`],
-      choices: next.map((target, index) => ({ id: `choice_${index}`, text: `前往测试场景${target}`, hint: '这段提示仅用于验证测试路径', next: target, feedback: prose, gains: [`测试记录${id}${index}`] })),
+      text: [`${id}。测试员逐一检查装置。${prose}${id === 'start' ? '海底中继站的值班钟每天慢七秒' : id === 'a' ? '备用电池只够维持闸门和录音台中的一个' : ''}`],
+      choices: next.map((target, index) => ({ id: `choice_${index}`, text: `从${id}前往测试场景${target}`, hint: '这段提示仅用于验证测试路径', next: target, feedback: prose, gains: [`测试记录${id}${index}`] })),
       ending: next.length ? null : { title: `测试结局${id}`, resolution: prose.repeat(2), tone: id === 'good' ? 'hopeful' as const : id === 'bad' ? 'dark' as const : 'uneasy' as const },
     })),
   };
@@ -62,6 +62,8 @@ test('rejects missing or fabricated grounding and graph failures before publicat
     (draft: FastStoryDraft) => { draft.scenes[0].id = 'start\n-> END'; },
     (draft: FastStoryDraft) => { draft.scenes.at(-1)!.choices = draft.scenes[0].choices; },
     (draft: FastStoryDraft) => { draft.facts[1] = draft.facts[0]; },
+    (draft: FastStoryDraft) => { draft.characters[0].name = '从未出场的测试角色'; },
+    (draft: FastStoryDraft) => { draft.scenes[1].choices[0].text = draft.scenes[0].choices[0].text; },
   ]) {
     const draft = fixture(); change(draft);
     assert.throws(() => buildFastWorld(projectId, 1, originalSeed, draft));
@@ -72,7 +74,8 @@ test('a non-fiction answer is explicitly treated as inspiration under its origin
   const answer = { title: '停电时怎样分配备用电池？', author: '原作者', text: '优先保证关键设备供电，然后估算续航时间。所有数字必须以铭牌和实际负载为准。'.repeat(4), scope: 'user-import' as const };
   const prompt = fastStoryPrompt(answer);
   assert.ok(prompt.includes('把这篇回答当作灵感'));
-  assert.ok(prompt.includes(answer.title)); assert.ok(prompt.includes(JSON.stringify(answer)));
+  const supplied = JSON.parse(prompt.split('USER_SOURCE_DATA=')[1]);
+  assert.deepEqual(supplied, { title: answer.title, author: answer.author, text: answer.text, question: answer.title });
   assert.ok(fastStoryPrompt(answer, 'faithful').includes('保留已发生的事实'));
 });
 
@@ -101,7 +104,7 @@ test('transient relay failure retries once with bounded non-streaming output and
   const result = await runFastWorkshop({ ...api, id: projectId, revision: 1, source: originalSeed });
   assert.equal(result.attempts, 2); assert.equal(result.validation.endings, 3);
   assert.deepEqual(calls.map(call => call.stream), [true, false]);
-  assert.ok(calls.every(call => call.reasoning_effort === 'low' && call.max_completion_tokens === 14000));
+  assert.ok(calls.every(call => call.reasoning_effort === 'low' && call.max_completion_tokens === 10000));
   const receipt = await readFile(join(api.directory, 'fast-generation.json'), 'utf8');
   assert.ok(!receipt.includes(api.relay.apiKey)); assert.ok(!receipt.includes(api.relay.endpoint));
   const recovered = await runFastWorkshop({ ...api, id: projectId, revision: 1, source: originalSeed });

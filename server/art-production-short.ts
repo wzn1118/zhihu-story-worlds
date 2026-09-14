@@ -3,6 +3,7 @@ import path from 'node:path';
 import type { ArtJob, ArtJobKind, ArtWorldInput } from '../shared/production.ts';
 import type { SceneNode } from '../shared/types.ts';
 import { ART_WORLD_OWNERS } from './art-production-delegates.ts';
+import { readArtSourceBook } from './art-production-books.ts';
 import { canonical, sha256, type SceneBrief } from './art-production-prompts.ts';
 
 export const SHORT_PROFILE = 'formal-production-20260907';
@@ -151,8 +152,7 @@ export async function buildShortPlans(root: string, worlds: ArtWorldInput[]): Pr
     .then(JSON.parse).catch(error => { if (error.code === 'ENOENT') return {}; throw error; });
   const books = new Map<string, { worlds: Record<string, ShortBookWorld> }>();
   for (const owner of new Set(Object.values(ART_WORLD_OWNERS))) {
-    const book = JSON.parse(await readFile(path.join(root, 'output/imagegen/scene-production/art-team', owner,
-      'short-production-20260907/book.json'), 'utf8'));
+    const book = await readArtSourceBook<{ profile: string; worlds: Record<string, ShortBookWorld> }>(root, owner);
     if (book.profile !== 'short-production-20260907') throw new Error('SHORT_BOOK_PROFILE_MISMATCH');
     books.set(owner, book);
   }

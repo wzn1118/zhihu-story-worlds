@@ -1,14 +1,12 @@
 import test, { after, before } from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync } from 'node:fs';
 import { chromium, type Browser } from 'playwright';
 import { createZhihuPageDocument } from '../server/zhihu-page-document.ts';
 import type { ZhihuBrowserPost } from '../shared/zhihu-browser.ts';
 
 let browser: Browser;
 before(async () => {
-  const executablePath = 'C:/Users/10847/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe';
-  browser = await chromium.launch({ headless: true, ...(existsSync(executablePath) ? { executablePath } : {}) });
+  browser = await chromium.launch({ headless: true });
 });
 after(async () => { await browser?.close(); });
 

@@ -2,12 +2,13 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { createServer } from 'node:http';
 import { deflateSync } from 'node:zlib';
 import { currentSceneSourceHash, withApprovedArt } from '../server/workshop-art.ts';
 import { buildSceneBrief } from '../server/art-production-prompts.ts';
+import { VHD_REFERENCE_FILES } from '../server/art-production-references.ts';
 import { buildShortPlans } from '../server/art-production-short.ts';
 import { authoredWorlds } from '../content/worlds.ts';
 import { createApp } from '../server/app.ts';
@@ -89,10 +90,17 @@ test('one missing asset does not hide later valid scenes; distinct scene coverag
   assert.equal(duplicate.nodes.second.background, base.nodes.second.background);
 });
 
-test('current source projection matches the art producer without preparing a job', async () => {
+test('current source projection matches the art producer without preparing a job', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'art-source-projection-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  for (const relative of ['docs/art-direction.md', ...VHD_REFERENCE_FILES]) {
+    const file = join(root, relative);
+    await mkdir(dirname(file), { recursive: true });
+    await writeFile(file, `Synthetic reference bytes for source-hash testing: ${relative}`);
+  }
   const base = world();
   base.nodes.first.text = ['A different action.'];
-  assert.equal(currentSceneSourceHash(base, base.nodes.first), (await buildSceneBrief(resolve(), base, base.nodes.first)).sourceHash);
+  assert.equal(currentSceneSourceHash(base, base.nodes.first), (await buildSceneBrief(root, base, base.nodes.first)).sourceHash);
   const changedArt = structuredClone(base); changedArt.nodes.first.background = '/generated-art/old.png';
   assert.equal(currentSceneSourceHash(changedArt, changedArt.nodes.first), currentSceneSourceHash(base, base.nodes.first));
 });

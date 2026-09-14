@@ -37,18 +37,19 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
   // Imported worlds carry current, hash-checked images from their own API.
   // The authored publication manifest must not erase this separate namespace.
   if (world.storyId.startsWith('import-')) return world;
+  const clean = clearStagePortraits(world);
   try {
     const response = await fetch('/generated-art/production-manifest.json', { cache: 'no-store', signal: AbortSignal.timeout(8000) });
-    if (!response.ok) return world;
+    if (!response.ok) return clean;
     const manifest = await response.json() as { bindingPolicy?: string; worlds: PublishedWorld[] };
-    if (!['style-first-approved-current-v1', 'native-4k-current-evidence-v1', 'direct-delivery-current-v1'].includes(manifest.bindingPolicy ?? '')) return world;
+    if (!['style-first-approved-current-v1', 'native-4k-current-evidence-v1', 'direct-delivery-current-v1'].includes(manifest.bindingPolicy ?? '')) return clean;
     const entry = manifest.worlds.find(row => row.worldId === world.id && row.storyId === world.storyId && row.version === world.version);
-    if (!entry) return world;
+    if (!entry) return clean;
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(artBindingSource(world)));
-    if (Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('') !== entry.bindingSourceHash) return world;
+    if (Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('') !== entry.bindingSourceHash) return clean;
 
     // Only a successfully validated manifest may revoke the last accepted art snapshot.
-    const result = structuredClone(clearStagePortraits(world));
+    const result = structuredClone(clean);
     delete result.artCharacters;
     result.background = '';
     result.cover = '';
@@ -70,7 +71,7 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
     const sceneVariants = new Map<string, PublishedSceneVariant[]>();
     const priority = (row: PublishedAsset) => row.assetKind === 'character-anchor' ? 0 : row.assetKind === 'scene' ? 1 : 2;
     for (const row of [...entry.assets].sort((a, b) => priority(a) - priority(b))) {
-      if (!row.bindingReady || !/^\/generated-art\/scene_[a-f0-9]+\.png$/.test(row.asset.url)
+      if (row.review !== 'approved' || !row.bindingReady || !/^\/generated-art\/scene_[a-f0-9]+\.png$/.test(row.asset.url)
         || !/^[a-f0-9]{64}$/.test(row.asset.sha256) || hashes.has(row.asset.sha256)) continue;
       if (row.assetKind === 'scene' && row.gameReady && Object.hasOwn(result.nodes, row.nodeId)
         && !hasSceneArtHold(result.id, row.nodeId, row.asset.url)) {
@@ -115,8 +116,8 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
       || approvedStagePortrait(character.stagePortraits?.main) || approvedStagePortrait(character.stagePortraits?.reaction));
     return result;
   } catch {
-    // A transient manifest failure must not revoke the last validated snapshot.
-    return world;
+    // Keep the accepted scene illustration, but stage approvals need fresh evidence.
+    return clean;
   }
 }
 

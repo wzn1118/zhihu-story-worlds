@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 import { ZHIHU_READABLE_POSTS_SCRIPT, readableZhihuPosts } from '../server/zhihu-browser.ts';
 
 test('homepage answer extraction chooses answer identity after question metadata and preserves visible text', async () => {
-  const browser = await chromium.launch({ headless: true, channel: 'msedge' });
+  const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1100, height: 1200 } });
     await page.route('https://www.zhihu.com/', route => route.fulfill({ contentType: 'text/html', body: '<html><body></body></html>' }));

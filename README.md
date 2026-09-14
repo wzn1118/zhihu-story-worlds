@@ -250,9 +250,16 @@ node scripts/story-cli.mjs get 2025684191967294692
 接口结果保留来源、作者、获取时间及缓存状态。上游服务不可用时显示真实错误或缓存状态。
 
 ```bash
+git lfs pull --include="public/assets/liukan/**" --exclude=""
+npx playwright install --only-shell chromium
 npm test
 npm run build
 ```
+
+GitHub Actions 会在推送和 PR 中运行 Node.js 22 全量测试、TypeScript 检查及生产构建。
+测试使用仓库内记录的故事节选和美术设定，无需本机账号、故事缓存或制作输出目录。
+CI 仅下载测试实际读取的流看原始素材；生成图仍完整保存在 Git LFS 中。
+CI 的构建用于编译验证，不作为包含全部美术的部署包。
 
 发布时的验证记录见 [GitHub 发布说明](docs/github-publication.md)。
 

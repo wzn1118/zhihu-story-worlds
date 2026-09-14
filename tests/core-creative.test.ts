@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import test from 'node:test';
+import { recordedStoryExcerpt } from './recorded-story-excerpt.ts';
 import { authoredWorlds, type AuthoredWorld } from '../content/worlds.ts';
 import { compileWorld } from '../server/worlds.ts';
 import { restoreSession, rewindSession, saveSession } from '../src/game.ts';
@@ -30,7 +31,7 @@ for (const id of coreIds) {
       assert.ok(n.ending ? n.choices.length === 0 : n.choices.length >= 2);
       assert.ok(world.sourcePassages?.some(p => p.nodeIds.includes(n.id) && /原创/.test(p.note)));
     }
-    const cache = JSON.parse(readFileSync(new URL(`../.local/zhihu-cache/story-${world.storyId}.json`, import.meta.url), 'utf8'));
+    const cache = recordedStoryExcerpt(world.storyId);
     assert.equal(cache.data.content.length, 3000);
     assert.equal(world.source.url, original.source.url);
     for (const passage of world.sourcePassages ?? []) {
