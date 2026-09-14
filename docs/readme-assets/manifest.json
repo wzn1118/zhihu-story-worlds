@@ -1,0 +1,938 @@
+{
+  "sourceDocument": "产品说明计划书-可直接提交.md",
+  "sourceBytes": 114912644,
+  "imageOccurrences": 57,
+  "uniqueImages": 39,
+  "totalDisplayBytes": 3301432,
+  "images": [
+    {
+      "filename": "01-2b2f11f821.webp",
+      "sourceSha256": "2b2f11f82139897dc5d3a008ef7e13706115961f2814c5951e54e69c02957b9c",
+      "originalSize": [
+        2517,
+        1398
+      ],
+      "displaySize": [
+        1600,
+        889
+      ],
+      "bytes": 81968,
+      "firstLabel": "赤页知乎来源与内容工作台",
+      "index": 1
+    },
+    {
+      "filename": "02-e6f07c3966.webp",
+      "sourceSha256": "e6f07c39661586356b6ea8293288dab4eb95c5936a1ebbd3ebc1822a39ecd9ff",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 107562,
+      "firstLabel": "重生周序章：灾变前的倒计时与世界变化",
+      "index": 2
+    },
+    {
+      "filename": "03-9050990056.webp",
+      "sourceSha256": "905099005661eca48eb164f8f4964325b067eb7c9acba6e367cc7ada5e3fd86c",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 165284,
+      "firstLabel": "重生周：灾变现场与关键证据",
+      "index": 3
+    },
+    {
+      "filename": "04-0368652af1.webp",
+      "sourceSha256": "0368652af128c4b1c3033b09a800c846e20c69d440b7d335301324648b263582",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 187088,
+      "firstLabel": "重生周 03：证明与证据",
+      "index": 4
+    },
+    {
+      "filename": "05-76f62dc48e.webp",
+      "sourceSha256": "76f62dc48ed1c232b019194a8131695d16859cf3abba23d884e1f6e50f2464eb",
+      "originalSize": [
+        4096,
+        2305
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 153902,
+      "firstLabel": "重生周 04：机场与四通电话",
+      "index": 5
+    },
+    {
+      "filename": "06-24fdcee43b.webp",
+      "sourceSha256": "24fdcee43b755822d9595a85753782895a95a6e74c66ed1ca827f7f048d1278d",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 96172,
+      "firstLabel": "重生周 05：安全屋",
+      "index": 6
+    },
+    {
+      "filename": "07-dcec3013c8.webp",
+      "sourceSha256": "dcec3013c8884bcb455fcd96e981f0d8bb05ddfbf19e8e4a3bc689901b723f64",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 84160,
+      "firstLabel": "Day 1 场景：重生后的第一处行动",
+      "index": 7
+    },
+    {
+      "filename": "08-521f249b34.webp",
+      "sourceSha256": "521f249b3479aa30709464509d1d1f74605d0b55e9f7e7c3a933229dd8c58545",
+      "originalSize": [
+        4096,
+        2304
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 117582,
+      "firstLabel": "Day 2 场景：异常信号扩大",
+      "index": 8
+    },
+    {
+      "filename": "09-e7578304ea.webp",
+      "sourceSha256": "e7578304ea9bddf682f1d800715955c747c301464296a400be856702757eeda9",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 81328,
+      "firstLabel": "Day 3 场景：调查与证据",
+      "index": 9
+    },
+    {
+      "filename": "10-7d599fc3a5.webp",
+      "sourceSha256": "7d599fc3a5c25ba5e4ccf85f7ecc126cb72d058ce3e1f1e9afa5d10afbf5cb29",
+      "originalSize": [
+        4096,
+        2305
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 57552,
+      "firstLabel": "Day 4 场景：准备资源",
+      "index": 10
+    },
+    {
+      "filename": "11-16a41d9a16.webp",
+      "sourceSha256": "16a41d9a163685f89f655ce1d0335e57238b17b60ca8315f56d0c43a7bfe9083",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 99250,
+      "firstLabel": "Day 5 场景：关系与求助",
+      "index": 11
+    },
+    {
+      "filename": "12-dee4b89a39.webp",
+      "sourceSha256": "dee4b89a399dc8dc04d540415403cbd994767fb1f4cbce4a403ebadb6392a930",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 111810,
+      "firstLabel": "Day 6 场景：灾变前最后窗口",
+      "index": 12
+    },
+    {
+      "filename": "13-531e78377c.webp",
+      "sourceSha256": "531e78377c9f90a5546ad58d78933a533f86dab2f02dd656d506bf4bf2ac5202",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 223218,
+      "firstLabel": "Day 7 场景：进入灾变节点",
+      "index": 13
+    },
+    {
+      "filename": "14-f1c905ed23.webp",
+      "sourceSha256": "f1c905ed23db0e1365e7731247fa31df5d1d3acf213549791d5e3f9ca2f0f68a",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 61738,
+      "firstLabel": "角色：贾巧莹",
+      "index": 14
+    },
+    {
+      "filename": "15-d04d30eb35.webp",
+      "sourceSha256": "d04d30eb355ba7163cdc36861cc3145f2fa66e4e85e180987211b457f0d6de01",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 63998,
+      "firstLabel": "角色：贾忠",
+      "index": 15
+    },
+    {
+      "filename": "16-2ec3ae226b.webp",
+      "sourceSha256": "2ec3ae226b9b54041dc019d8876e6834cbf08f9099b82d806ad3e985b565434e",
+      "originalSize": [
+        2732,
+        4098
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 58046,
+      "firstLabel": "角色：救援队长",
+      "index": 16
+    },
+    {
+      "filename": "17-3a44579a50.webp",
+      "sourceSha256": "3a44579a507946477ad89a07419af793df64f6fd759ca442b6d48f053bf413d2",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 46826,
+      "firstLabel": "角色：阮子阳",
+      "index": 17
+    },
+    {
+      "filename": "18-5fac80048a.webp",
+      "sourceSha256": "5fac80048acba5291687dacbb68bf725e07cc127bf2c9181dbffd58dba888d9e",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 59052,
+      "firstLabel": "角色：尹教授",
+      "index": 18
+    },
+    {
+      "filename": "19-8c237ac2f2.webp",
+      "sourceSha256": "8c237ac2f2e16be6506bab8171c6639b6d83b659aafc4e63a6a0b61d24a63b71",
+      "originalSize": [
+        341,
+        241
+      ],
+      "displaySize": [
+        341,
+        241
+      ],
+      "bytes": 22586,
+      "firstLabel": "物资面板",
+      "index": 19
+    },
+    {
+      "filename": "20-3d567633c1.webp",
+      "sourceSha256": "3d567633c150295efc49a89dde1195be6c1cc8f440a36a4477fe697e1ebfe1a9",
+      "originalSize": [
+        370,
+        265
+      ],
+      "displaySize": [
+        370,
+        265
+      ],
+      "bytes": 24384,
+      "firstLabel": "地图面板",
+      "index": 20
+    },
+    {
+      "filename": "21-ed9d7ecfe2.webp",
+      "sourceSha256": "ed9d7ecfe299bd83623368792cb964fa18ba30780cfd450192cc1d128b45f764",
+      "originalSize": [
+        425,
+        188
+      ],
+      "displaySize": [
+        425,
+        188
+      ],
+      "bytes": 17262,
+      "firstLabel": "关系面板",
+      "index": 21
+    },
+    {
+      "filename": "22-8dda9a9afb.webp",
+      "sourceSha256": "8dda9a9afbec1c5c64c47aef37e41099966e6da5140de69fbd431488695c320e",
+      "originalSize": [
+        333,
+        332
+      ],
+      "displaySize": [
+        333,
+        332
+      ],
+      "bytes": 23422,
+      "firstLabel": "研究面板",
+      "index": 22
+    },
+    {
+      "filename": "23-65cdc9b87b.webp",
+      "sourceSha256": "65cdc9b87bc737ec12e9a3ac25e7c1a68b74ac81622859b78371c970fb687ed3",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 73226,
+      "firstLabel": "关键道具：车钥匙",
+      "index": 23
+    },
+    {
+      "filename": "24-c7f06dc2fa.webp",
+      "sourceSha256": "c7f06dc2fa58be802f0b391ee27725b9d3ba36c26dd9590816a67f2cbe17dd1e",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 100050,
+      "firstLabel": "关键道具：科技包",
+      "index": 24
+    },
+    {
+      "filename": "25-bccb7e4eaa.webp",
+      "sourceSha256": "bccb7e4eaa7cf400a24cd38bb2d8ca51a044796bbddef50a95825492c412ab8a",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 92400,
+      "firstLabel": "关键道具：医疗包",
+      "index": 25
+    },
+    {
+      "filename": "26-b007a63b3c.webp",
+      "sourceSha256": "b007a63b3cfbec4d70e70a1176b5ca22452dca3b4c84c5ef9bd0a31fb9c18c5d",
+      "originalSize": [
+        1024,
+        1536
+      ],
+      "displaySize": [
+        800,
+        1200
+      ],
+      "bytes": 74488,
+      "firstLabel": "关键道具：围棋",
+      "index": 26
+    },
+    {
+      "filename": "27-f344455e37.webp",
+      "sourceSha256": "f344455e3740fcacceb6b1e741b9404c290df9d38e877a24da4bb19eb54f4875",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 85524,
+      "firstLabel": "坏结局示例：BE01",
+      "index": 27
+    },
+    {
+      "filename": "28-36df976533.webp",
+      "sourceSha256": "36df976533508a7d1718e07cf809a7ef2b5d5c77ab22be956ecd9e300360df60",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 127028,
+      "firstLabel": "坏结局示例：BE02",
+      "index": 28
+    },
+    {
+      "filename": "29-fe7127a5bc.webp",
+      "sourceSha256": "fe7127a5bcfdd4e449098e01b858c69613e8a61473f59c6cd5024d72dbe86d1f",
+      "originalSize": [
+        1672,
+        940
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 80646,
+      "firstLabel": "坏结局示例：BE05",
+      "index": 29
+    },
+    {
+      "filename": "30-74b4680d5f.webp",
+      "sourceSha256": "74b4680d5f29627d9c5741b448fcb33298e6e7dab62bac92be2c55a29217cfd9",
+      "originalSize": [
+        1672,
+        940
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 119466,
+      "firstLabel": "坏结局示例：BE07",
+      "index": 30
+    },
+    {
+      "filename": "31-f4f41c88b3.webp",
+      "sourceSha256": "f4f41c88b31599db44cf088b46024ae3a1c08b8344d8716ac0079a1d0e53934a",
+      "originalSize": [
+        1672,
+        940
+      ],
+      "displaySize": [
+        1600,
+        900
+      ],
+      "bytes": 99478,
+      "firstLabel": "坏结局示例：BE08",
+      "index": 31
+    },
+    {
+      "filename": "32-d80db22188.webp",
+      "sourceSha256": "d80db22188fea3a54ae4fd5618c4893d6c633a484a087b9ecd0538350987d05b",
+      "originalSize": [
+        1440,
+        1000
+      ],
+      "displaySize": [
+        1440,
+        1000
+      ],
+      "bytes": 112844,
+      "firstLabel": "刘看山阅读手记与陪伴面板",
+      "index": 32
+    },
+    {
+      "filename": "33-b88ff2e9da.webp",
+      "sourceSha256": "b88ff2e9da4a09cb614a31d39ade4f295c1b4e314e3f12af396ce53167d4799c",
+      "originalSize": [
+        1440,
+        1000
+      ],
+      "displaySize": [
+        1440,
+        1000
+      ],
+      "bytes": 71556,
+      "firstLabel": "原文、作者与改编来源的对应界面",
+      "index": 33
+    },
+    {
+      "filename": "34-79724c22bd.webp",
+      "sourceSha256": "79724c22bdb30b879e2fc464669c4d8f96d765782e15925aea74568b1d9ee952",
+      "originalSize": [
+        1440,
+        1000
+      ],
+      "displaySize": [
+        1440,
+        1000
+      ],
+      "bytes": 72350,
+      "firstLabel": "从回答到游戏的创作工作台",
+      "index": 34
+    },
+    {
+      "filename": "35-87beeb948b.webp",
+      "sourceSha256": "87beeb948be30401da429b943b282435323021027f5e1b2e6f705165f3940924",
+      "originalSize": [
+        1440,
+        1000
+      ],
+      "displaySize": [
+        1440,
+        1000
+      ],
+      "bytes": 57022,
+      "firstLabel": "行动结果、线索和剧情回看的真实界面",
+      "index": 35
+    },
+    {
+      "filename": "36-dbd845ab96.webp",
+      "sourceSha256": "dbd845ab963f992dd5535e749e36ba11ccab179b9b576d09daadd8f9a85e2f81",
+      "originalSize": [
+        1440,
+        1000
+      ],
+      "displaySize": [
+        1440,
+        1000
+      ],
+      "bytes": 46254,
+      "firstLabel": "真实游玩中的场景、选择与反馈",
+      "index": 36
+    },
+    {
+      "filename": "37-cc648994a7.webp",
+      "sourceSha256": "cc648994a7a60d0ea269a5ad2631355c9db821dd63d6534dc7cd044a2818da34",
+      "originalSize": [
+        1440,
+        1000
+      ],
+      "displaySize": [
+        1440,
+        1000
+      ],
+      "bytes": 96784,
+      "firstLabel": "故事书库中的来源、类型与可玩状态",
+      "index": 37
+    },
+    {
+      "filename": "38-7a5593e0c7.webp",
+      "sourceSha256": "7a5593e0c7b48692e97c4f9105cc8e6fb2bb3962cd0cbdf7e0aa0d9343e343a5",
+      "originalSize": [
+        681,
+        1005
+      ],
+      "displaySize": [
+        681,
+        1005
+      ],
+      "bytes": 25358,
+      "firstLabel": "刘看山陪伴面板",
+      "index": 38
+    },
+    {
+      "filename": "39-048ac99858.webp",
+      "sourceSha256": "048ac9985892072bb02a3c328ff2e403f6e213a989bc091c0e6028759e3e0990",
+      "originalSize": [
+        1038,
+        918
+      ],
+      "displaySize": [
+        1038,
+        918
+      ],
+      "bytes": 22768,
+      "firstLabel": "游戏生成配置",
+      "index": 39
+    }
+  ],
+  "occurrences": [
+    {
+      "number": 1,
+      "label": "赤页知乎来源与内容工作台",
+      "filename": "01-2b2f11f821.webp",
+      "uniqueIndex": 1
+    },
+    {
+      "number": 2,
+      "label": "重生周序章：灾变前的倒计时与世界变化",
+      "filename": "02-e6f07c3966.webp",
+      "uniqueIndex": 2
+    },
+    {
+      "number": 3,
+      "label": "重生周：灾变现场与关键证据",
+      "filename": "03-9050990056.webp",
+      "uniqueIndex": 3
+    },
+    {
+      "number": 4,
+      "label": "重生周 01：重生",
+      "filename": "02-e6f07c3966.webp",
+      "uniqueIndex": 2
+    },
+    {
+      "number": 5,
+      "label": "重生周 02：红雨预警",
+      "filename": "03-9050990056.webp",
+      "uniqueIndex": 3
+    },
+    {
+      "number": 6,
+      "label": "重生周 03：证明与证据",
+      "filename": "04-0368652af1.webp",
+      "uniqueIndex": 4
+    },
+    {
+      "number": 7,
+      "label": "重生周 04：机场与四通电话",
+      "filename": "05-76f62dc48e.webp",
+      "uniqueIndex": 5
+    },
+    {
+      "number": 8,
+      "label": "重生周 05：安全屋",
+      "filename": "06-24fdcee43b.webp",
+      "uniqueIndex": 6
+    },
+    {
+      "number": 9,
+      "label": "Day 1 场景：重生后的第一处行动",
+      "filename": "07-dcec3013c8.webp",
+      "uniqueIndex": 7
+    },
+    {
+      "number": 10,
+      "label": "Day 2 场景：异常信号扩大",
+      "filename": "08-521f249b34.webp",
+      "uniqueIndex": 8
+    },
+    {
+      "number": 11,
+      "label": "Day 3 场景：调查与证据",
+      "filename": "09-e7578304ea.webp",
+      "uniqueIndex": 9
+    },
+    {
+      "number": 12,
+      "label": "Day 4 场景：准备资源",
+      "filename": "10-7d599fc3a5.webp",
+      "uniqueIndex": 10
+    },
+    {
+      "number": 13,
+      "label": "Day 5 场景：关系与求助",
+      "filename": "11-16a41d9a16.webp",
+      "uniqueIndex": 11
+    },
+    {
+      "number": 14,
+      "label": "Day 6 场景：灾变前最后窗口",
+      "filename": "12-dee4b89a39.webp",
+      "uniqueIndex": 12
+    },
+    {
+      "number": 15,
+      "label": "Day 7 场景：进入灾变节点",
+      "filename": "13-531e78377c.webp",
+      "uniqueIndex": 13
+    },
+    {
+      "number": 16,
+      "label": "角色：贾巧莹",
+      "filename": "14-f1c905ed23.webp",
+      "uniqueIndex": 14
+    },
+    {
+      "number": 17,
+      "label": "角色：贾忠",
+      "filename": "15-d04d30eb35.webp",
+      "uniqueIndex": 15
+    },
+    {
+      "number": 18,
+      "label": "角色：救援队长",
+      "filename": "16-2ec3ae226b.webp",
+      "uniqueIndex": 16
+    },
+    {
+      "number": 19,
+      "label": "角色：阮子阳",
+      "filename": "17-3a44579a50.webp",
+      "uniqueIndex": 17
+    },
+    {
+      "number": 20,
+      "label": "角色：尹教授",
+      "filename": "18-5fac80048a.webp",
+      "uniqueIndex": 18
+    },
+    {
+      "number": 21,
+      "label": "物资面板",
+      "filename": "19-8c237ac2f2.webp",
+      "uniqueIndex": 19
+    },
+    {
+      "number": 22,
+      "label": "地图面板",
+      "filename": "20-3d567633c1.webp",
+      "uniqueIndex": 20
+    },
+    {
+      "number": 23,
+      "label": "关系面板",
+      "filename": "21-ed9d7ecfe2.webp",
+      "uniqueIndex": 21
+    },
+    {
+      "number": 24,
+      "label": "研究面板",
+      "filename": "22-8dda9a9afb.webp",
+      "uniqueIndex": 22
+    },
+    {
+      "number": 25,
+      "label": "关键道具：车钥匙",
+      "filename": "23-65cdc9b87b.webp",
+      "uniqueIndex": 23
+    },
+    {
+      "number": 26,
+      "label": "关键道具：科技包",
+      "filename": "24-c7f06dc2fa.webp",
+      "uniqueIndex": 24
+    },
+    {
+      "number": 27,
+      "label": "关键道具：医疗包",
+      "filename": "25-bccb7e4eaa.webp",
+      "uniqueIndex": 25
+    },
+    {
+      "number": 28,
+      "label": "关键道具：围棋",
+      "filename": "26-b007a63b3c.webp",
+      "uniqueIndex": 26
+    },
+    {
+      "number": 29,
+      "label": "坏结局示例：BE01",
+      "filename": "27-f344455e37.webp",
+      "uniqueIndex": 27
+    },
+    {
+      "number": 30,
+      "label": "坏结局示例：BE02",
+      "filename": "28-36df976533.webp",
+      "uniqueIndex": 28
+    },
+    {
+      "number": 31,
+      "label": "坏结局示例：BE05",
+      "filename": "29-fe7127a5bc.webp",
+      "uniqueIndex": 29
+    },
+    {
+      "number": 32,
+      "label": "坏结局示例：BE07",
+      "filename": "30-74b4680d5f.webp",
+      "uniqueIndex": 30
+    },
+    {
+      "number": 33,
+      "label": "坏结局示例：BE08",
+      "filename": "31-f4f41c88b3.webp",
+      "uniqueIndex": 31
+    },
+    {
+      "number": 34,
+      "label": "刘看山阅读手记与陪伴面板",
+      "filename": "32-d80db22188.webp",
+      "uniqueIndex": 32
+    },
+    {
+      "number": 35,
+      "label": "原文、作者与改编来源的对应界面",
+      "filename": "33-b88ff2e9da.webp",
+      "uniqueIndex": 33
+    },
+    {
+      "number": 36,
+      "label": "从回答到游戏的创作工作台",
+      "filename": "34-79724c22bd.webp",
+      "uniqueIndex": 34
+    },
+    {
+      "number": 37,
+      "label": "行动结果、线索和剧情回看的真实界面",
+      "filename": "35-87beeb948b.webp",
+      "uniqueIndex": 35
+    },
+    {
+      "number": 38,
+      "label": "真实游玩中的场景、选择与反馈",
+      "filename": "36-dbd845ab96.webp",
+      "uniqueIndex": 36
+    },
+    {
+      "number": 39,
+      "label": "故事书库中的来源、类型与可玩状态",
+      "filename": "37-cc648994a7.webp",
+      "uniqueIndex": 37
+    },
+    {
+      "number": 40,
+      "label": "故事书库与作品档案",
+      "filename": "37-cc648994a7.webp",
+      "uniqueIndex": 37
+    },
+    {
+      "number": 41,
+      "label": "重生周：安全屋与生存准备场景",
+      "filename": "06-24fdcee43b.webp",
+      "uniqueIndex": 6
+    },
+    {
+      "number": 42,
+      "label": "重生周：灾变警告与角色反应",
+      "filename": "04-0368652af1.webp",
+      "uniqueIndex": 4
+    },
+    {
+      "number": 43,
+      "label": "重生周：机场场景",
+      "filename": "05-76f62dc48e.webp",
+      "uniqueIndex": 5
+    },
+    {
+      "number": 44,
+      "label": "知乎网页选取",
+      "filename": "01-2b2f11f821.webp",
+      "uniqueIndex": 1
+    },
+    {
+      "number": 45,
+      "label": "知乎内容实时阅读",
+      "filename": "33-b88ff2e9da.webp",
+      "uniqueIndex": 33
+    },
+    {
+      "number": 46,
+      "label": "刘看山陪伴面板",
+      "filename": "38-7a5593e0c7.webp",
+      "uniqueIndex": 38
+    },
+    {
+      "number": 47,
+      "label": "改编创作工作台",
+      "filename": "34-79724c22bd.webp",
+      "uniqueIndex": 34
+    },
+    {
+      "number": 48,
+      "label": "游戏生成配置",
+      "filename": "39-048ac99858.webp",
+      "uniqueIndex": 39
+    },
+    {
+      "number": 49,
+      "label": "拖拽回答进入创作",
+      "filename": "35-87beeb948b.webp",
+      "uniqueIndex": 35
+    },
+    {
+      "number": 50,
+      "label": "已验证的故事游玩界面",
+      "filename": "36-dbd845ab96.webp",
+      "uniqueIndex": 36
+    },
+    {
+      "number": 51,
+      "label": "故事书库",
+      "filename": "37-cc648994a7.webp",
+      "uniqueIndex": 37
+    },
+    {
+      "number": 52,
+      "label": "阅读手记桌面",
+      "filename": "32-d80db22188.webp",
+      "uniqueIndex": 32
+    },
+    {
+      "number": 53,
+      "label": "重生周序章画面",
+      "filename": "02-e6f07c3966.webp",
+      "uniqueIndex": 2
+    },
+    {
+      "number": 54,
+      "label": "重生周红雨降临",
+      "filename": "03-9050990056.webp",
+      "uniqueIndex": 3
+    },
+    {
+      "number": 55,
+      "label": "重生周关键证据",
+      "filename": "04-0368652af1.webp",
+      "uniqueIndex": 4
+    },
+    {
+      "number": 56,
+      "label": "重生周机场转场",
+      "filename": "05-76f62dc48e.webp",
+      "uniqueIndex": 5
+    },
+    {
+      "number": 57,
+      "label": "重生周安全屋",
+      "filename": "06-24fdcee43b.webp",
+      "uniqueIndex": 6
+    }
+  ]
+}

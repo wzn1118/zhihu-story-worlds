@@ -11,3 +11,6 @@
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.ogg filter=lfs diff=lfs merge=lfs -text
 docs/产品说明计划书-可直接提交.md filter=lfs diff=lfs merge=lfs -text
+
+# Small README previews render directly from Git; original art remains in LFS.
+docs/readme-assets/*.webp -filter -diff -merge -text
