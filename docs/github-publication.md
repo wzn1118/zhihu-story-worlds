@@ -12,4 +12,5 @@ PNG、JPEG、WebP、GIF、音频和大型内嵌图片文档使用 Git LFS。
 完整测试：1,139 项，1,125 通过，14 失败，0 跳过。
 测试状态来自首次发布准备阶段的 `npm test` 完整执行。
 发布过程中修复了 `server/auth.ts` 的 Express 请求头类型兼容问题。
+修复后 `npm run build` 通过（TypeScript 检查及 Vite 生产构建）。
 部分开发验证脚本需要本机生产记录或外部服务；请按 README 克隆资源并安装依赖后运行。
