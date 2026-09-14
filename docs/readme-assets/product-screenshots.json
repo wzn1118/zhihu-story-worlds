@@ -1,0 +1,52 @@
+{
+  "screenshots": [
+    {
+      "path": "docs/readme-assets/product-library.webp",
+      "label": "故事书库与产品导航",
+      "source": "output/demo-video/current-bluewhite/02-source-reader-bluewhite.png",
+      "sourceSha256": "d80db22188fea3a54ae4fd5618c4893d6c633a484a087b9ecd0538350987d05b",
+      "sourceDimensions": [
+        1440,
+        1000
+      ],
+      "capture": "existing-product-screenshot",
+      "processing": "display compression only; no UI recoloring or reconstruction"
+    },
+    {
+      "path": "docs/readme-assets/product-workshop.webp",
+      "label": "新故事工作台",
+      "source": "output/demo-video/current-bluewhite/03-workshop-bluewhite.png",
+      "sourceSha256": "79724c22bdb30b879e2fc464669c4d8f96d765782e15925aea74568b1d9ee952",
+      "sourceDimensions": [
+        1440,
+        1000
+      ],
+      "capture": "existing-product-screenshot",
+      "processing": "display compression only; no UI recoloring or reconstruction"
+    },
+    {
+      "path": "docs/readme-assets/product-source-selection.webp",
+      "label": "知乎原文选取",
+      "source": "docs/readme-assets/01-2b2f11f821.webp",
+      "sourceSha256": "363ea81f69306fd1b2ee1725ee4cb1f0921b51e0b670bd55d9d56eb283f04b5a",
+      "sourceDimensions": [
+        1600,
+        889
+      ],
+      "capture": "existing-product-screenshot",
+      "processing": "display compression only; no UI recoloring or reconstruction"
+    },
+    {
+      "path": "docs/readme-assets/product-generation.webp",
+      "label": "故事生成进度",
+      "source": "docs/readme-assets/39-048ac99858.webp",
+      "sourceSha256": "b1e90919db6a530f0483fba0bb43d746fc6d7f5aed9f3aaf99bb557e721dd2d0",
+      "sourceDimensions": [
+        1038,
+        918
+      ],
+      "capture": "existing-product-screenshot",
+      "processing": "display compression only; no UI recoloring or reconstruction"
+    }
+  ]
+}
