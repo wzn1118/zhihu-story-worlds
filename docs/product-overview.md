@@ -88,3 +88,10 @@ flowchart LR
 [运行与开发说明](../README.md#开始使用) · [资源校验清单](public-assets-manifest.json) · [原始图文计划书存档](original-product-plan.md)
 
 本页展示已有产品运行截图，保留蓝白主题原貌，仅对图片进行网页展示压缩；截图来源记录见 [产品截图清单](readme-assets/product-screenshots.json)。
+
+
+## 刘看山全模块图文指南
+
+新增 77 张真实蓝白产品截图，逐项讲解 19 种阅读与改编工具、13 项知乎能力、7 类动作、14 步引导，以及原文、手记、活动记录和手机界面。
+
+[查看完整图文指南](liukan-guide.md)

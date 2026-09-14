@@ -131,7 +131,7 @@ export function LiukanActivityDesk({ playerId, onClose, onProject, onOpenMemorie
     const url = URL.createObjectURL(blob); const anchor = document.createElement('a'); anchor.href = url; anchor.download = `${memory.endingTitle.replace(/[\\/:*?"<>|]/g, '-').slice(0, 60) || '关卡回忆'}.md`; anchor.click(); URL.revokeObjectURL(url);
   }
 
-  return <div className="lad-overlay" ref={overlayRef} role="presentation">
+  return createPortal(<div className="lad-overlay" ref={overlayRef} role="presentation">
     <section className="lad-desk" ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="刘看山活动记录">
       <header className="lad-header"><div className="lad-heading"><div className="lad-avatar"><LiuKanShanAvatar action={tab === 'memories' ? 'recall-ending' : 'make-game'} size={58} reducedMotion /></div><div><p>刘看山 · 活动记录</p><h2>你留下的故事，和走过的路</h2></div></div><button type="button" className="lad-close" onClick={onClose} aria-label="关闭活动记录"><X size={18} /></button></header>
       <nav className="lad-tabs" aria-label="活动记录分类"><button type="button" aria-pressed={tab === 'projects'} onClick={() => switchTab('projects')}><FolderOpen size={15} />制作中的故事<span>{projects.length}</span></button><button type="button" aria-pressed={tab === 'preflight'} onClick={() => switchTab('preflight')}><Check size={15} />开工检查<span>{preflight.confirmed}/5</span></button><button type="button" aria-pressed={tab === 'memories'} onClick={() => switchTab('memories')}><History size={15} />走过的关卡<span>{playerId ? memories.length : '—'}</span></button></nav>
@@ -145,5 +145,6 @@ export function LiukanActivityDesk({ playerId, onClose, onProject, onOpenMemorie
       </div>
       <div className="lad-check"><Check size={13} />只展示本机实际保存的进度与回忆</div>
     </section>
-  </div>;
+  </div>, document.body);
 }
+import { createPortal } from 'react-dom';

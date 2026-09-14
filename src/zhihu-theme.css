@@ -64,3 +64,34 @@ html[data-ui-theme='zhihu'] :is(.text-reading .chapter-number, .text-reading .ch
 html[data-ui-theme='zhihu'] :is(.text-reading .scene-stats, .text-reading .locked-choice, .text-reading .action-outcome) { background: #edf3fa; border-color: #dce5f0; color: #536984; }
 html[data-ui-theme='zhihu'] :is(.text-reading .scene-stat, .text-reading .scene-stat b) { color: #536984; }
 html[data-ui-theme='zhihu'] :is(.text-reading .dialogue-panel, .text-reading .resource-strip) { border-color: #dce5f0; }
+/* Companion surfaces follow the same user-selected blue-and-white theme. */
+html[data-ui-theme='zhihu'] .liukan-tour-card { color-scheme: light; background: #fbfdff; border-color: #c6dff1; box-shadow: 0 24px 80px #234c7040; }
+html[data-ui-theme='zhihu'] .liukan-tour-copy h2 { color: #173c58; }
+html[data-ui-theme='zhihu'] .liukan-tour :is(.liukan-tour-copy p, .liukan-tour-signature, .liukan-tour-chapter, .liukan-tour-progress>span, .liukan-tour-previous, .liukan-tour-later, .liukan-tour-close) { color: #56758b; }
+html[data-ui-theme='zhihu'] .liukan-tour-spotlight { border-color: #086bcb; box-shadow: 0 0 0 100vmax #29475b85; }
+html[data-ui-theme='zhihu'] .liukan-tour-shade:not(.has-target) { background: #29475b85; }
+html[data-ui-theme='zhihu'] :is(.liukan-tour-next, .liukan-tour-pin) { color: #fff; background: #086bcb; border-color: #086bcb; }
+html[data-ui-theme='zhihu'] .liukan-tour-card button:focus-visible { outline-color: #086bcb; }
+html[data-ui-theme='zhihu'] .liukan-panel { color-scheme: light; color: #253b50; background: #fbfdff; border-color: #cbddec; box-shadow: 0 20px 70px #234c7030; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(header b, h3, .liukan-memory, .liukan-memories b) { color: #163952; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(p, small, label, .liukan-current, .liukan-source-preview summary, .liukan-source-preview>div) { color: #56758b; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(header, .liukan-tabs, .liukan-source-preview, .liukan-provenance) { border-color: #d7e5f0; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(.liukan-post, .liukan-create-game, .liukan-reading-desk-entry, .liukan-message, .liukan-memories li) { color: #294d67; background: #f0f7fc; border-color: #cbdfee; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(.liukan-create-game b, .liukan-reading-desk-entry b) { color: #214e70; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(.liukan-quick-tools button, .liukan-prompts button, .liukan-actions button) { color: #236491; background: #f0f7ff; border-color: #c8dff3; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(.liukan-quick-tools button:hover, .liukan-prompts button:hover, .liukan-actions button:hover) { color: #075fb7; background: #e2f0ff; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(textarea, input, select) { color: #253b50; background: #fff; border-color: #c4d9eb; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(.liukan-tabs button[aria-pressed=true], .liukan-source-link, .liukan-memory-toggle) { color: #086bcb; border-bottom-color: #086bcb; }
+html[data-ui-theme='zhihu'] .liukan-panel :is(.liukan-send, .liukan-generate) { color: #fff; background: #086bcb; border-color: #086bcb; }
+html[data-ui-theme='zhihu'] .liukan-panel .liukan-error { color: #a13c32; }
+html[data-ui-theme='zhihu'] :is(.liukan-gallery-overlay, .liukan-capabilities-overlay) { background: #29475b85; }
+html[data-ui-theme='zhihu'] .liukan-gallery { --lk-ink: #24455e; --lk-muted: #5f7c90; --lk-line: #d1e2ef; background: #fbfdff; box-shadow: 0 24px 90px #234c7030; }
+html[data-ui-theme='zhihu'] .liukan-gallery :is(h2, h3, .liukan-gallery-item) { color: #20445f; }
+html[data-ui-theme='zhihu'] .liukan-gallery :is(.liukan-gallery-kicker, .liukan-gallery-close, .liukan-gallery-stage-top, .liukan-gallery-stage-top>span:first-child, .liukan-gallery-caption p, .liukan-gallery-playback button, .liukan-gallery-notice, .liukan-gallery-item small, .liukan-gallery-filters button) { color: #52758e; }
+html[data-ui-theme='zhihu'] .liukan-gallery-stage { background: radial-gradient(ellipse at 50% 32%, #daefff, transparent 70%); }
+html[data-ui-theme='zhihu'] .liukan-gallery-search { background: #f1f7fc; }
+html[data-ui-theme='zhihu'] .liukan-gallery-search input { color: #23455f; }
+html[data-ui-theme='zhihu'] .liukan-gallery-item { background: #fff; border-color: #d4e3ef; }
+html[data-ui-theme='zhihu'] .liukan-gallery :is(.liukan-gallery-item[aria-pressed=true], .liukan-gallery-filters button[aria-pressed=true]) { background: #e7f3ff; border-color: #78afe0; color: #075fab; }
+html[data-ui-theme='zhihu'] .liukan-gallery-send { background: #086bcb; border-color: #086bcb; color: #fff; }
+html[data-ui-theme='zhihu'] .liukan-gallery-list { scrollbar-color: #8eafc8 #f1f7fc; }
