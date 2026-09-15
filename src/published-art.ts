@@ -46,9 +46,9 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
     const manifest = await manifestRequest;
     if (!['style-first-approved-current-v1', 'native-4k-current-evidence-v1', 'direct-delivery-current-v1'].includes(manifest.bindingPolicy ?? '')) return world;
     const entry = manifest.worlds.find(row => row.worldId === world.id && row.storyId === world.storyId && row.version === world.version);
-    if (!entry) return world;
+    if (!entry) return clearStagePortraits(world);
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(artBindingSource(world)));
-    if (Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('') !== entry.bindingSourceHash) return world;
+    if (Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('') !== entry.bindingSourceHash) return clearStagePortraits(world);
 
     // Only a successfully validated manifest may revoke the last accepted art snapshot.
     const result = structuredClone(clearStagePortraits(world));
@@ -73,7 +73,7 @@ export async function withPublishedArt(world: GameWorld): Promise<GameWorld> {
     const sceneVariants = new Map<string, PublishedSceneVariant[]>();
     const priority = (row: PublishedAsset) => row.assetKind === 'character-anchor' ? 0 : row.assetKind === 'scene' ? 1 : 2;
     for (const row of [...entry.assets].sort((a, b) => priority(a) - priority(b))) {
-      if (!row.bindingReady || !/^\/generated-art\/scene_[a-f0-9]+\.png$/.test(row.asset.url)
+      if (row.review !== 'approved' || !row.bindingReady || !/^\/generated-art\/scene_[a-f0-9]+\.png$/.test(row.asset.url)
         || !/^[a-f0-9]{64}$/.test(row.asset.sha256) || hashes.has(row.asset.sha256)) continue;
       if (row.assetKind === 'scene' && row.gameReady && Object.hasOwn(result.nodes, row.nodeId)
         && !hasSceneArtHold(result.id, row.nodeId, row.asset.url)) {

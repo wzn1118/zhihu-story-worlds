@@ -70,7 +70,7 @@ test('older 77/166 character duplicates fold on read while both original records
   const longText = fullText.slice(0, 166);
   const shortText = `${author}：${longText.slice(0, 71)}…`;
   assert.equal(shortText.length, 77); assert.equal(longText.length, 166);
-  const short = await discovery.capturePage({ ...selection, author, text: shortText });
+  const short = await discovery.capturePage({ ...selection, author, text: shortText }, { visibleScope: 'excerpt' });
   const long = await discovery.capturePage({ ...selection, author, text: longText });
   short.origin.fetchedAt = '2026-09-14T12:01:00.000Z'; long.origin.fetchedAt = '2026-09-14T12:00:00.000Z';
   const legacyShort: LiukanInboxPost = { id: short.id, candidate: short, learnedAt: '2026-09-14T12:01:00.000Z', projectId: 'legacy-project-reference' };

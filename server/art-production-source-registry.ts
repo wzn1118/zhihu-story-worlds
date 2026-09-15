@@ -54,8 +54,14 @@ export async function buildArtSourceMetadata(root: string, worlds: ArtWorldInput
   const books = new Map<string, { profile: string; worlds: Record<string, SourceBookWorld> }>();
   for (const owner of new Set(worlds.map(world => ART_WORLD_OWNERS[world.id]))) {
     if (!owner) throw new Error('ART_SOURCE_OWNER_MISSING');
-    const book = JSON.parse(await readFile(path.join(root, 'output/imagegen/scene-production/art-team', owner,
-      'short-production-20260907/book.json'), 'utf8'));
+    let book;
+    try {
+      book = JSON.parse(await readFile(path.join(root, 'output/imagegen/scene-production/art-team', owner,
+        'short-production-20260907/book.json'), 'utf8'));
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+      book = JSON.parse(await readFile(path.join(root, 'content/art-books', `${owner}.json`), 'utf8'));
+    }
     if (book.profile !== 'short-production-20260907') throw new Error('ART_SOURCE_BOOK_PROFILE_MISMATCH');
     books.set(owner, book);
   }

@@ -74,8 +74,11 @@ test('real owner books cover every authored-world identity and every current sou
   const plans = await buildShortPlans(resolve(), authoredWorlds);
   const registry = await buildArtSourceMetadata(resolve(), authoredWorlds, plans);
   const books = new Map<string, { worlds: Record<string, SourceBookWorld> }>();
-  for (const owner of new Set(Object.values(ART_WORLD_OWNERS))) books.set(owner, JSON.parse(await readFile(resolve(
-    'output/imagegen/scene-production/art-team', owner, 'short-production-20260907/book.json'), 'utf8')));
+  for (const owner of new Set(Object.values(ART_WORLD_OWNERS))) {
+    const production = resolve('output/imagegen/scene-production/art-team', owner, 'short-production-20260907/book.json');
+    const source = await readFile(production, 'utf8').catch(() => readFile(resolve('content/art-books', `${owner}.json`), 'utf8'));
+    books.set(owner, JSON.parse(source));
+  }
   assert.equal(registry.size, authoredWorlds.length);
   for (const world of authoredWorlds) {
     const metadata = registry.get(world.id)!, book = books.get(ART_WORLD_OWNERS[world.id])!.worlds[world.id];

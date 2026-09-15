@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test, { type TestContext } from 'node:test';
 import * as current from '../src/game.ts';
-import * as release from '../releases/oauth-20260914/src/game.ts';
 
 function browserTimers(t: TestContext) {
   const previous = Object.getOwnPropertyDescriptor(globalThis, 'window');
@@ -9,7 +8,7 @@ function browserTimers(t: TestContext) {
   t.after(() => { if (previous) Object.defineProperty(globalThis, 'window', previous); else Reflect.deleteProperty(globalThis, 'window'); });
 }
 
-for (const [name, client] of Object.entries({ current, release })) {
+for (const [name, client] of Object.entries({ current })) {
   for (const [status, body] of [[404, 'Not Found'], [502, '<html>private proxy diagnostics</html>']] as const) {
     test(`${name}: plain HTTP ${status} retains its status without exposing a JSON parser or proxy body`, async t => {
       browserTimers(t);

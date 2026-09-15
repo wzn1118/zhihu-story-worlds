@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 
 test('newly loaded recommendation cards are immediately draggable', { timeout: 30_000 }, async () => {
-  const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe' });
+  const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage();
     await page.setContent('<main></main>');

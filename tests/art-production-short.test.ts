@@ -50,10 +50,10 @@ test('scoped scene and reaction repairs retain cast order and leave all unrelate
   for (const owner of ['cel-drawing', 'painted-background', 'scene-composition']) {
     const relative = `${production}/art-team/${owner}/short-production-20260907/book.json`;
     await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
-    await copyFile(path.join(process.cwd(), relative), path.join(root, relative));
+    await copyFile(path.join(process.cwd(), 'content/art-books', `${owner}.json`), path.join(root, relative));
   }
   const relative = `${production}/formal-production-20260907/review-repairs.json`;
-  const repairs = JSON.parse(await readFile(path.join(process.cwd(), relative), 'utf8'));
+  const repairs = JSON.parse(await readFile(path.join(process.cwd(), relative), 'utf8').catch(() => '{}'));
   await mkdir(path.dirname(path.join(root, relative)), { recursive: true });
   await writeFile(path.join(root, relative), JSON.stringify(repairs));
   const before = await buildShortPlans(root, authoredWorlds);

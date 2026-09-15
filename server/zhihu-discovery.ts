@@ -150,7 +150,8 @@ export class ZhihuDiscoveryService {
     const data = value as Record<string, unknown> | null;
     let identity: ReturnType<typeof canonicalZhihuSource>;
     try { identity = canonicalZhihuSource(data?.sourceUrl); } catch { throw new WorkshopError('INVALID_ZHIHU_URL', '页面选择只支持知乎回答和文章链接。'); }
-    if (!data || typeof data.title !== 'string' || !data.title.trim() || data.title.length > 120 || typeof data.author !== 'string' || !data.author.trim() || data.author.length > 120 || typeof data.text !== 'string' || !data.text.trim() || data.text.length > 120000 || data.text.includes('\u0000')) throw new WorkshopError('INVALID_PAGE_SELECTION', '网页选文需要标题、作者和1–120000字正文；请先展开原页面正文再选择。');
+    const minimumTextLength = observed.visibleScope ? 1 : 80;
+    if (!data || typeof data.title !== 'string' || !data.title.trim() || data.title.length > 120 || typeof data.author !== 'string' || !data.author.trim() || data.author.length > 120 || typeof data.text !== 'string' || data.text.trim().length < minimumTextLength || data.text.length > 120000 || data.text.includes('\u0000')) throw new WorkshopError('INVALID_PAGE_SELECTION', '网页选文需要标题、作者和80–120000字正文；请先展开原页面正文再选择。');
     const candidate = withSourceHash({ id: '', title: data.title, author: data.author, excerpt: data.text,
       origin: { ...identity, contentScope: 'webpage-selection', ...(observed.visibleScope === 'excerpt' || observed.visibleScope === 'expanded' ? { webpageScope: observed.visibleScope } : {}), fetchedAt: new Date().toISOString() }, query: '', characters: data.text.length });
     candidate.id = candidate.sourceHash!.slice(0, 32);

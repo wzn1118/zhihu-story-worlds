@@ -60,7 +60,10 @@ export async function buildSceneBrief(root: string, world: ArtWorldInput, node: 
   let bible = '';
   try { bible = worldBible(await readFile(path.join(root, 'docs/character-bible.md'), 'utf8'), world.id); } catch { /* New imported cast uses source descriptions. */ }
   const references = world.id === 'blue-blood' ? ['output/imagegen/fang-nuo-main-integrated-v3/fang-nuo-main.png'] : [];
-  const absoluteRefs = vhdReferences(root, references);
+  const absoluteRefs = (await Promise.all(vhdReferences(root, references).map(async ref => {
+    try { await readFile(ref); return ref; }
+    catch (error) { if ((error as NodeJS.ErrnoException).code === 'ENOENT') return null; throw error; }
+  }))).filter((ref): ref is string => ref !== null);
   const hashes = await Promise.all(absoluteRefs.map(async ref => sha256(await readFile(ref))));
   const camera = ['eye-level conversational three-quarter medium-wide', 'oblique medium two-plane composition',
     'eye-level near-profile with architectural depth', 'slightly raised medium-wide conversational view'][parseInt(sha256(node.id).slice(0, 4), 16) % 4];

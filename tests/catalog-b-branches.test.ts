@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
 import { catalogWorldsB } from '../content/catalog-b.ts';
 import { catalogBExpansions } from '../content/catalog-b-expansions.ts';
 import { compileWorld } from '../server/worlds.ts';
 import { choiceBlockers } from '../shared/choice-rules.ts';
 import { choose, restoreSession, saveSession, startSession } from '../src/game.ts';
 import { auditBGraph } from './catalog-b-graph.ts';
+import { recordedStoryExcerpt } from './recorded-story-excerpt.ts';
 
 for (const authored of catalogWorldsB) {
   test(`${authored.id}: B routes have 30+ dialogue scenes, exclusive sequences and reachable endings`, () => {
@@ -77,7 +77,7 @@ for (const authored of catalogWorldsB) {
   });
 
   test(`${authored.id}: real source attribution and uniquely findable excerpt anchors survive`, () => {
-    const file = JSON.parse(readFileSync(new URL(`../.local/zhihu-cache/story-${authored.storyId}.json`, import.meta.url), 'utf8'));
+    const file = recordedStoryExcerpt(authored.storyId);
     assert.equal(authored.source.author, file.data.author_name);
     assert.equal(authored.source.title, file.data.chapter_name);
     assert.ok(authored.source.url.endsWith(authored.storyId));

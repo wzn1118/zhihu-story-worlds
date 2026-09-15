@@ -157,7 +157,7 @@ async function candidateSources(t: { after: (cleanup: () => Promise<void>) => vo
   const temporary = await mkdtemp(join(tmpdir(), 'zhihu-owned-candidates-'));
   t.after(() => rm(temporary, { recursive: true, force: true }));
   const sources = new Map(['alice', 'bob'].map(owner => [owner, new ZhihuDiscoveryService(join(temporary, owner), async () => { throw new Error('No official API calls in this test'); })]));
-  const candidate = await sources.get('alice')!.capturePage({ title: '未展开的回答', author: '测试作者', sourceUrl: 'https://www.zhihu.com/question/123456/answer/654321', text: 'Alice 自己看到的节选…' });
+  const candidate = await sources.get('alice')!.capturePage({ title: '未展开的回答', author: '测试作者', sourceUrl: 'https://www.zhihu.com/question/123456/answer/654321', text: 'Alice 自己看到的节选…' }, { visibleScope: 'excerpt' });
   return { sources, candidate };
 }
 
@@ -219,7 +219,7 @@ test('candidate router ignores client account and URL substitutions and binds sa
 
 test('background candidate reads reserve bounded slots, remain active during idle sweep and release failed launches', async t => {
   const { sources, candidate } = await candidateSources(t);
-  const bob = await sources.get('bob')!.capturePage({ title: candidate.title, author: candidate.author, sourceUrl: candidate.origin.sourceUrl, text: 'Bob 自己看到的节选…' });
+  const bob = await sources.get('bob')!.capturePage({ title: candidate.title, author: candidate.author, sourceUrl: candidate.origin.sourceUrl, text: 'Bob 自己看到的节选…' }, { visibleScope: 'excerpt' });
   let now = 0, finishRead!: () => void, startRead!: () => void, closes = 0;
   const pending = new Promise<void>(yes => { finishRead = yes; });
   const entered = new Promise<void>(yes => { startRead = yes; });

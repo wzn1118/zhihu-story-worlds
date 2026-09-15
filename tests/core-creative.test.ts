@@ -7,6 +7,7 @@ import { compileWorld } from '../server/worlds.ts';
 import { restoreSession, rewindSession, saveSession } from '../src/game.ts';
 import { choiceBlockers } from '../shared/choice-rules.ts';
 import { coreIds, explore, replay, routeClues } from './core-creative-support.ts';
+import { recordedStoryExcerpt } from './recorded-story-excerpt.ts';
 
 const before: AuthoredWorld[] = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/core-pre-creative.json.gz', import.meta.url))).toString());
 const prefixes = ['b_', 'p_', 'v_', 'f_'];
@@ -30,7 +31,7 @@ for (const id of coreIds) {
       assert.ok(n.ending ? n.choices.length === 0 : n.choices.length >= 2);
       assert.ok(world.sourcePassages?.some(p => p.nodeIds.includes(n.id) && /原创/.test(p.note)));
     }
-    const cache = JSON.parse(readFileSync(new URL(`../.local/zhihu-cache/story-${world.storyId}.json`, import.meta.url), 'utf8'));
+    const cache = recordedStoryExcerpt(world.storyId);
     assert.equal(cache.data.content.length, 3000);
     assert.equal(world.source.url, original.source.url);
     for (const passage of world.sourcePassages ?? []) {

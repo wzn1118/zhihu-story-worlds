@@ -31,9 +31,8 @@ export function createApp(source = new StorySourceService(), workshop = new Stor
     return project;
   }
   async function withCurrentImages(projects: WorkshopProject[]) {
-    const batches = projects.some(project => !project.generationOptions || project.generationOptions.images === 'image2') ? await imageLookup.listImages().catch(() => null) : [];
+    const batches = projects.some(project => project.generationOptions?.images !== 'gpt6') ? await imageLookup.listImages().catch(() => null) : [];
     return Promise.all(projects.map(async project => {
-      if (project.generationOptions?.images === 'none') return project;
       const world = project.publishedVersion ? await workshop.world(project.id, project.publishedVersion).catch(() => null) : null;
       if (project.generationOptions?.images === 'gpt6') {
         if (!world || world.version !== `r${project.revision}`) return project;
@@ -43,6 +42,10 @@ export function createApp(source = new StorySourceService(), workshop = new Stor
         return { ...project, art };
       }
       const batch = world && batches ? findWorkshopImageBatch(world, batches) : null;
+      if (project.generationOptions?.images === 'none' && !batch) {
+        const { batchId: _staleBatchId, ...art } = project.art;
+        return { ...project, art };
+      }
       const unavailable = !batches || Boolean(project.publishedVersion && !world);
       const art: WorkshopProject['art'] = batch ? artStatus(batch) : { status: unavailable ? 'failed' : 'pending', approved: 0, total: project.validation?.scenes ?? 0,
         ...(unavailable ? { message: '独立美术清单暂时无法读取。' } : {}) };

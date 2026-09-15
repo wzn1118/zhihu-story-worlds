@@ -146,13 +146,25 @@ export const anchorNodeId = (id: string) => `__art_character_${id}`;
 export const sourceSnapshotHash = (world: ArtWorldInput, node: SceneNode) =>
   sha256(JSON.stringify({ worldId: world.id, node, characters: world.characters }));
 
+async function readOwnerBook(root: string, owner: string) {
+  const productionBook = path.join(root, 'output/imagegen/scene-production/art-team', owner,
+    'short-production-20260907/book.json');
+  try {
+    return JSON.parse(await readFile(productionBook, 'utf8'));
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+    // Public books keep clean checkouts reproducible; deployments may provide
+    // a private production copy at the original path above.
+    return JSON.parse(await readFile(path.join(root, 'content/art-books', `${owner}.json`), 'utf8'));
+  }
+}
+
 export async function buildShortPlans(root: string, worlds: ArtWorldInput[]): Promise<ShortAssetPlan[]> {
   const repairs: Record<string, { prompt: string; referenceFiles: string[] }> = await readFile(path.join(root, SHORT_REPAIR_FILE), 'utf8')
     .then(JSON.parse).catch(error => { if (error.code === 'ENOENT') return {}; throw error; });
   const books = new Map<string, { worlds: Record<string, ShortBookWorld> }>();
   for (const owner of new Set(Object.values(ART_WORLD_OWNERS))) {
-    const book = JSON.parse(await readFile(path.join(root, 'output/imagegen/scene-production/art-team', owner,
-      'short-production-20260907/book.json'), 'utf8'));
+    const book = await readOwnerBook(root, owner);
     if (book.profile !== 'short-production-20260907') throw new Error('SHORT_BOOK_PROFILE_MISMATCH');
     books.set(owner, book);
   }
